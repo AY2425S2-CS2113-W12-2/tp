@@ -1,7 +1,7 @@
 package seedu.navi.canteenfinder.nus.landmark;
 
-public class Building extends Landmark {
-    public Building(String name) {
+public class Faculty extends Landmark {
+    public Faculty(String name) {
         super(name);
     }
 
