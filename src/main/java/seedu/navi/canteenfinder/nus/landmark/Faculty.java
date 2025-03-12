@@ -6,7 +6,10 @@ import seedu.navi.canteenfinder.nus.landmark.canteen.stall.Stall;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class Faculty extends Landmark {
 
@@ -84,9 +87,6 @@ public class Faculty extends Landmark {
         super.setNearestCanteens((ArrayList<Canteen>) nearest);
     }
 
-    public String getName() {
-        return name;
-    }
 
 
 

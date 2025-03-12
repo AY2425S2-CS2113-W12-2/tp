@@ -1,6 +1,4 @@
 //test code
-
-/*
 package seedu.navi.canteenfinder.nus.landmark;
 
 import seedu.navi.canteenfinder.nus.landmark.canteen.Canteen;
@@ -23,4 +21,3 @@ public class CanteenStallPair {
         return stall;
     }
 }
- */
