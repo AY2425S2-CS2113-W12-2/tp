@@ -20,4 +20,11 @@ public class Canteen {
     public void addStall(Stall stall) {
         stalls.add(stall);
     }
+
+    //test code
+    /*
+    public ArrayList<Stall> getStalls() { // Added getStalls method
+        return stalls;
+    }
+     */
 }

@@ -23,4 +23,12 @@ public class Stall {
                 "  " + stallCharacteristic.getVegetarianIcon() + "\n" +
                 "  " + stallCharacteristic.getInAirconAreaIcon() + "\n";
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public StallCharacteristic getStallCharacteristic() {
+        return stallCharacteristic;
+    }
 }
