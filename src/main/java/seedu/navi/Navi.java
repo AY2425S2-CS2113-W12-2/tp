@@ -1,6 +1,5 @@
 package seedu.navi;
 
-import java.io.IOException;
 import java.util.Scanner;
 
 public class Navi {

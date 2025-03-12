@@ -1,15 +1,17 @@
 package seedu.navi.canteenfinder.nus.landmark;
 
+import seedu.navi.canteenfinder.nus.landmark.canteen.Canteen;
+
 import java.util.ArrayList;
 
 public abstract class Landmark {
     protected String name;
     // nearest canteen starting at index 0
-    protected ArrayList<String> nearestCanteens;
+    protected ArrayList<Canteen> nearestCanteens;
 
     public Landmark(String name) {
         this.name = name;
-        nearestCanteens = new ArrayList<String>();
+        nearestCanteens = new ArrayList<>();
     }
 
     public void setNearestCanteens(String order) {
