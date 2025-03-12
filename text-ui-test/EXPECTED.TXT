@@ -1,3 +1,13 @@
-Hello from: Navi
-What is your name?
-Hello Jack
+G'day mate! I'm:
+ _   _             _
+| \ | | __ ___   _(_)
+|  \| |/ _` \ \ / / |
+| |\  | (_| |\ V /| |
+|_| \_|\__,_| \_/ |_|
+What’s your name, legend?
+Aye, Jack! Stoked to have ya here!
+Alrighty, what can I do for ya?
+_________________________________________
+Ahh, you’re headin’ off? No worries!
+Keep on keepin’ on, and we’ll catch ya next time!
+_________________________________________

@@ -8,12 +8,12 @@ public class Navi {
      */
     public static void main(String[] args) {
         String logo = "\n" +
-                " _   _             _ \n" +
+                " _   _             _\n" +
                 "| \\ | | __ ___   _(_)\n" +
                 "|  \\| |/ _` \\ \\ / / |\n" +
                 "| |\\  | (_| |\\ V /| |\n" +
                 "|_| \\_|\\__,_| \\_/ |_|";
-        System.out.println("G'day mate! I'm: " + logo);
+        System.out.println("G'day mate! I'm:" + logo);
         System.out.println("What’s your name, legend?");
 
         Scanner in = new Scanner(System.in);
