@@ -18,6 +18,24 @@ public class StallCharacteristic {
         this.inAirconArea = inAirconArea;
     }
 
+    //test code
+    /*
+    public boolean getHalalCertified() {
+        return halalCertified;
+    }
+
+    public boolean getMuslimOwned() {
+        return muslimOwned;
+    }
+
+    public boolean getVegetarian() {
+        return vegetarian;
+    }
+
+    public boolean getInAirconArea() {
+        return inAirconArea;
+    }
+ */
     public String getHalalCertifiedIcon() {
         String type = "Halal Certified";
         if (halalCertified) {
@@ -49,4 +67,5 @@ public class StallCharacteristic {
         }
         return "[N] " + type;
     }
+
 }

@@ -14,7 +14,15 @@ public abstract class Landmark {
         nearestCanteens = new ArrayList<>();
     }
 
-    public void setNearestCanteens(String order) {
+    public String getName() {
+        return name;
+    }
 
+    public void setNearestCanteens(ArrayList<Canteen> canteens) {
+        this.nearestCanteens = canteens;
+    }
+
+    public ArrayList<Canteen> getNearestCanteens() {
+        return nearestCanteens;
     }
 }
