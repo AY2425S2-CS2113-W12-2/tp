@@ -34,7 +34,7 @@ public class Navi {
     public void showExitMessage() {
         System.out.println("_________________________________________");
         System.out.println("Ahh, you’re headin’ off? No worries!");
-        System.out.println("Keep on keepin’ on, and we’ll catch ya next time! 🦘✨");
+        System.out.println("Keep on keepin’ on, and we’ll catch ya next time!");
         System.out.println("_________________________________________");
     }
 
