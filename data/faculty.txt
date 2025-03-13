@@ -1,0 +1,5 @@
+CDE: Techno | Deck | Terrace | Fine Food | Flavours | Frontier | PGP
+FASS: Deck | Terrace | Techno | PGP | Frontier  | Fine Food | Flavours
+COM: Terrace | Deck | PGP | Techno | Frontier | Fine Food | Flavours
+BIZ: Terrace | Deck | PGP | Techno | Frontier | Fine Food | Flavours
+FoS & Medicine:  Frontier | PGP | Deck | Terrace | Techno | Fine Food | Flavours
