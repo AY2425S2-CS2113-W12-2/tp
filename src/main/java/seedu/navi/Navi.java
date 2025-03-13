@@ -11,24 +11,15 @@ public class Navi {
      */
     public static void main(String[] args) {
         Storage.processDataFromFiles();
-        String logo = """
-                
-                 _   _             _
-                | \\ | | __ ___   _(_)
-                |  \\| |/ _` \\ \\ / / |
-                | |\\  | (_| |\\ V /| |
-                |_| \\_|\\__,_| \\_/ |_|""";
-        System.out.println("G'day mate! I'm:" + logo);
-        System.out.println("What’s your name, legend?");
 
+        TextUi.printGreeting();
         Scanner in = new Scanner(System.in);
-        System.out.println("Aye, " + in.nextLine() + "! Stoked to have ya here!");
+        TextUi.printGreetUser(in.nextLine());
 
         // Start command processing
         Navi ui = new Navi();
         Parser parser = new Parser(ui);
 
-        System.out.println("Alrighty, what can I do for ya?");
         while (true) {
             String input = in.nextLine();
             parser.handleCommand(input);
