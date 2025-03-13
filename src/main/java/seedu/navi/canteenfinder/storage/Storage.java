@@ -2,7 +2,6 @@ package seedu.navi.canteenfinder.storage;
 
 import seedu.navi.canteenfinder.nus.NUS;
 import seedu.navi.canteenfinder.nus.landmark.Faculty;
-import seedu.navi.canteenfinder.nus.landmark.Landmark;
 import seedu.navi.canteenfinder.nus.landmark.canteen.Canteen;
 import seedu.navi.canteenfinder.nus.landmark.canteen.stall.Stall;
 
@@ -79,6 +78,6 @@ public class Storage {
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         }
-        NUS.landmarks.addAll(faculties);
+        NUS.LANDMARKS.addAll(faculties);
     }
 }

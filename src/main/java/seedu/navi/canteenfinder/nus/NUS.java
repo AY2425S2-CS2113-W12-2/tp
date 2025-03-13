@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 // this class will do the searching
 public class NUS {
-    public static final ArrayList<Landmark> landmarks = new ArrayList<>();
+    public static final ArrayList<Landmark> LANDMARKS = new ArrayList<>();
 
     public NUS() {
         Storage.processDataFromFiles();
