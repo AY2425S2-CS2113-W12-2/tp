@@ -1,5 +1,6 @@
 package seedu.navi;
 
+import seedu.navi.storage.Storage;
 import seedu.navi.textui.TextUi;
 
 import java.util.Scanner;
@@ -9,6 +10,7 @@ public class Navi {
      * Main entry-point for the java.duke.Duke application.
      */
     public static void main(String[] args) {
+        Storage.processDataFromFiles();
         String logo = """
                 
                  _   _             _
