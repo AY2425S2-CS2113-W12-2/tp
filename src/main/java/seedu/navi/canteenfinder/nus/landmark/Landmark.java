@@ -18,8 +18,8 @@ public abstract class Landmark {
         return name;
     }
 
-    public void setNearestCanteens(ArrayList<Canteen> canteens) {
-        this.nearestCanteens = canteens;
+    public void setNearestCanteens(Canteen canteen) {
+        nearestCanteens.add(canteen);
     }
 
     public ArrayList<Canteen> getNearestCanteens() {
