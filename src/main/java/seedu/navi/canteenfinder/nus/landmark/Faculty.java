@@ -1,91 +1,10 @@
 package seedu.navi.canteenfinder.nus.landmark;
 
-import seedu.navi.canteenfinder.nus.landmark.canteen.Canteen;
-import seedu.navi.canteenfinder.nus.landmark.canteen.stall.Stall;
-
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 public class Faculty extends Landmark {
-
-    //read both the files and store in hashmap
-    private static final String CANTEEN_FILE = "C:\\CS2113\\tp\\data\\canteen.txt";
-    private static final String LANDMARK_FILE = "C:\\CS2113\\tp\\data\\landmark.txt";
-    private final Map<String, List<String>> facultyCanteens;
-    private final Map<String, Canteen> canteenStalls;
-
     public Faculty(String name) {
         super(name);
-        this.facultyCanteens = loadFacultyCanteens();
-        this.canteenStalls = loadCanteenStalls();
-        setNearestCanteens();
     }
-
-    private Map<String, List<String>> loadFacultyCanteens() {
-        Map<String, List<String>> facultyCanteens = new HashMap<>();
-        try (BufferedReader reader = new BufferedReader(new FileReader(CANTEEN_FILE))) {
-            String line;
-            while ((line = reader.readLine()) != null) {
-                String[] parts = line.split(": ");
-                if (parts.length == 2) {
-                    String facultyName = parts[0];
-                    String[] canteenNames = parts[1].split("\\|");
-                    List<String> canteens = new ArrayList<>();
-                    for (String canteenName : canteenNames) {
-                        canteens.add(canteenName.trim());
-                    }
-                    facultyCanteens.put(facultyName, canteens);
-                }
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return facultyCanteens;
-    }
-
-    private Map<String, Canteen> loadCanteenStalls() {
-        Map<String, Canteen> canteenStalls = new HashMap<>();
-        try (BufferedReader reader = new BufferedReader(new FileReader(LANDMARK_FILE))) {
-            String line;
-            while ((line = reader.readLine()) != null) {
-                String[] parts = line.split("\\|");
-                if (parts.length >= 6) {
-                    String canteenName = parts[0].trim();
-                    String stallName = parts[1].trim();
-                    boolean halal = parts[2].trim().equals("T");
-                    boolean muslim = parts[3].trim().equals("T");
-                    boolean vegetarian = parts[4].trim().equals("T");
-                    boolean aircon = parts[5].trim().equals("T");
-
-                    Canteen canteen = canteenStalls.getOrDefault(canteenName, new Canteen(canteenName));
-                    canteen.addStall(new Stall(stallName, halal, muslim, vegetarian, aircon));
-                    canteenStalls.put(canteenName, canteen);
-                }
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return canteenStalls;
-    }
-
-    private void setNearestCanteens() {
-        List<Canteen> nearest = new ArrayList<>();
-        List<String> canteenNames = facultyCanteens.get(name);
-        if (canteenNames != null) {
-            for (String canteenName : canteenNames) {
-                Canteen canteen = canteenStalls.get(canteenName.trim());
-                if (canteen != null) {
-                    nearest.add(canteen);
-                }
-            }
-        }
-        super.setNearestCanteens((ArrayList<Canteen>) nearest);
-    }
+}
 
 
 
@@ -152,4 +71,3 @@ public class Faculty extends Landmark {
         }
         return null;
     } */
-}

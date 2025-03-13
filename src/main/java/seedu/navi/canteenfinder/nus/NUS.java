@@ -1,19 +1,15 @@
 package seedu.navi.canteenfinder.nus;
 
 import seedu.navi.canteenfinder.nus.landmark.Landmark;
+import seedu.navi.canteenfinder.storage.Storage;
 
 import java.util.ArrayList;
 
 // this class will do the searching
 public class NUS {
-    private final ArrayList<Landmark> landmarks;
+    public static final ArrayList<Landmark> landmarks = new ArrayList<>();
 
     public NUS() {
-        landmarks = new ArrayList<>();
+        Storage.processDataFromFiles();
     }
-
-    public void addLandmark(Landmark landmark) {
-        landmarks.add(landmark);
-    }
-
 }
