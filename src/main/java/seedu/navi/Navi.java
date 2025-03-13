@@ -1,6 +1,6 @@
 package seedu.navi;
 
-import seedu.navi.storage.Storage;
+import seedu.navi.textui.TextUi;
 
 import java.util.Scanner;
 
@@ -9,7 +9,6 @@ public class Navi {
      * Main entry-point for the java.duke.Duke application.
      */
     public static void main(String[] args) {
-        Storage.processDataFromFiles();
         String logo = """
                 
                  _   _             _
@@ -35,10 +34,10 @@ public class Navi {
     }
 
     public void showExitMessage() {
-        System.out.println("_________________________________________");
+        TextUi.printLineSeparator();
         System.out.println("Ahh, you’re headin’ off? No worries!");
         System.out.println("Keep on keepin’ on, and we’ll catch ya next time!");
-        System.out.println("_________________________________________");
+        TextUi.printLineSeparator();
     }
 
     public void showError(String message) {

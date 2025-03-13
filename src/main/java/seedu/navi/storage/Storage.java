@@ -70,13 +70,13 @@ public class Storage {
         try {
             processCanteenFromFile(canteenMap);
         } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
+            System.err.println("File not found: " + e.getMessage());
         }
         ArrayList<Faculty> faculties = new ArrayList<>();
         try {
             processFacultyFromFile(faculties, canteenMap);
         } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
+            System.err.println("File not found: " + e.getMessage());
         }
         CanteenFinder.LANDMARKS.addAll(faculties);
     }
