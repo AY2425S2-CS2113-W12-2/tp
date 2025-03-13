@@ -1,5 +1,8 @@
 package seedu.navi;
 
+import seedu.navi.storage.Storage;
+import seedu.navi.textui.TextUi;
+
 import java.util.Scanner;
 
 public class Navi {
@@ -7,23 +10,16 @@ public class Navi {
      * Main entry-point for the java.duke.Duke application.
      */
     public static void main(String[] args) {
-        String logo = "\n" +
-                " _   _             _\n" +
-                "| \\ | | __ ___   _(_)\n" +
-                "|  \\| |/ _` \\ \\ / / |\n" +
-                "| |\\  | (_| |\\ V /| |\n" +
-                "|_| \\_|\\__,_| \\_/ |_|";
-        System.out.println("G'day mate! I'm:" + logo);
-        System.out.println("What’s your name, legend?");
+        Storage.processDataFromFiles();
 
+        TextUi.printGreeting();
         Scanner in = new Scanner(System.in);
-        System.out.println("Aye, " + in.nextLine() + "! Stoked to have ya here!");
+        TextUi.printGreetUser(in.nextLine());
 
         // Start command processing
         Navi ui = new Navi();
         Parser parser = new Parser(ui);
 
-        System.out.println("Alrighty, what can I do for ya?");
         while (true) {
             String input = in.nextLine();
             parser.handleCommand(input);
@@ -31,10 +27,10 @@ public class Navi {
     }
 
     public void showExitMessage() {
-        System.out.println("_________________________________________");
+        TextUi.printLineSeparator();
         System.out.println("Ahh, you’re headin’ off? No worries!");
         System.out.println("Keep on keepin’ on, and we’ll catch ya next time!");
-        System.out.println("_________________________________________");
+        TextUi.printLineSeparator();
     }
 
     public void showError(String message) {

@@ -1,4 +1,4 @@
-package seedu.navi.canteenfinder.nus.landmark;
+package seedu.navi.canteenfinder.landmark;
 
 public class Hostel extends Landmark {
     public Hostel(String name) {

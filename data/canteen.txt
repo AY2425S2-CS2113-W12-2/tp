@@ -11,7 +11,6 @@ Techno | Ramen & Soup | F | F  |F | F
 Techno | Noodles | F | F | F | F
 Techno | Chicken Rice | F | F | F | F
 Techno | Bistro Box | T | F | T | F
-
 Frontier | Vegetarian | F | F | F | T
 Frontier | Korean | F | F | F | F
 Frontier | Indian | F | F | F | F
@@ -30,7 +29,6 @@ Frontier | Uncle Penyet Fusion | T | F | T | F
 Frontier | Li Ji Coffee House | F | F | T | F
 Frontier | Pasta Express | F | F | T | F
 Frontier | Taiwan Ichiban | F | F | T | F
-
 Deck | Yong Tau Foo & Laksa | F | F | F | F
 Deck | Chinese Cooked Food | F | F | F | F
 Deck | Japanese | F | F | F | F
@@ -48,13 +46,11 @@ Deck | Drinks & Snacks | F | F | F | F
 Deck | Liang Ban Gong Fu | F | F | T | F
 Deck | Pasta Express | F | F | T | F
 Deck | Mrs Hen | T | F | T | F
-
 Terrace | Local Noodles | F | F | F | F
 Terrace | Five Grains Noodles | F | F | F | F
 Terrace | Mixed Rice, Mala & Sichuan | F | F | F | F
 Terrace | Korean & Japanese | F | F | F | F
 Terrace | Drinks & Hot Foods | F | F | F | F
-
 PGP | PGP Indian Veg | F | F | F | T
 PGP | PGP Salad | F | F | F | F
 PGP | PGP Dough Magic | F | F | F | F
@@ -66,7 +62,6 @@ PGP | PGP Western | F | F | F | F
 PGP | PGP Mixed Veg Rice | F | F | F | F
 PGP | PGP Chicken Rice | F | F | F | F
 PGP | PGP Drinks and Snacks | F | F | F | F
-
 Fine Food | Nasi Campur | T | F | F | F
 Fine Food | Japanese Fusion | T | F | T | F
 Fine Food | Duck & Chicken Rice | F | F | T | F
@@ -79,7 +74,6 @@ Fine Food | Hot Pot Snail Noodle | F | F | T | F
 Fine Food | Taiwan Cuisine | F | F | T | F
 Fine Food | Pasta/Fried Rice | F | F | T | F
 Fine Food | Western Cuisine | T | F | T | F
-
 Flavours | Dan Lao | F | F | F | F
 Flavours | Tenderfresh | T | F | F | F
 Flavours | Beverage | F | F | F | F

@@ -1,4 +1,4 @@
-package seedu.navi.canteenfinder.nus.landmark;
+package seedu.navi.canteenfinder.landmark;
 
 public class OtherBuildings extends Landmark {
     public OtherBuildings(String name) {

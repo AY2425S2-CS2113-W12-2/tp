@@ -1,6 +1,6 @@
-package seedu.navi.canteenfinder.nus.landmark;
+package seedu.navi.canteenfinder.landmark;
 
-import seedu.navi.canteenfinder.nus.landmark.canteen.Canteen;
+import seedu.navi.canteenfinder.landmark.canteen.Canteen;
 
 import java.util.ArrayList;
 
