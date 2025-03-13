@@ -1,5 +1,7 @@
 package seedu.navi;
 
+import seedu.navi.storage.Storage;
+
 import java.util.Scanner;
 
 public class Navi {
@@ -7,12 +9,14 @@ public class Navi {
      * Main entry-point for the java.duke.Duke application.
      */
     public static void main(String[] args) {
-        String logo = "\n" +
-                " _   _             _\n" +
-                "| \\ | | __ ___   _(_)\n" +
-                "|  \\| |/ _` \\ \\ / / |\n" +
-                "| |\\  | (_| |\\ V /| |\n" +
-                "|_| \\_|\\__,_| \\_/ |_|";
+        Storage.processDataFromFiles();
+        String logo = """
+                
+                 _   _             _
+                | \\ | | __ ___   _(_)
+                |  \\| |/ _` \\ \\ / / |
+                | |\\  | (_| |\\ V /| |
+                |_| \\_|\\__,_| \\_/ |_|""";
         System.out.println("G'day mate! I'm:" + logo);
         System.out.println("What’s your name, legend?");
 

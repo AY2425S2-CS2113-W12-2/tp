@@ -1,9 +1,9 @@
-package seedu.navi.canteenfinder.storage;
+package seedu.navi.storage;
 
-import seedu.navi.canteenfinder.nus.NUS;
-import seedu.navi.canteenfinder.nus.landmark.Faculty;
-import seedu.navi.canteenfinder.nus.landmark.canteen.Canteen;
-import seedu.navi.canteenfinder.nus.landmark.canteen.stall.Stall;
+import seedu.navi.canteenfinder.CanteenFinder;
+import seedu.navi.canteenfinder.landmark.Faculty;
+import seedu.navi.canteenfinder.landmark.canteen.Canteen;
+import seedu.navi.canteenfinder.landmark.canteen.stall.Stall;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -78,6 +78,6 @@ public class Storage {
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         }
-        NUS.LANDMARKS.addAll(faculties);
+        CanteenFinder.LANDMARKS.addAll(faculties);
     }
 }
