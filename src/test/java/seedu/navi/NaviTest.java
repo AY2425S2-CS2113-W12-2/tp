@@ -17,13 +17,15 @@ class NaviTest {
 
         navi.showExitMessage();
 
-        String expectedOutput = "------------------------------------------------------------\n" +
+        String expectedOutput = "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n" +
                 "Ahh, you’re headin’ off? No worries!\n" +
                 "Keep on keepin’ on, and we’ll catch ya next time!\n" +
-                "------------------------------------------------------------\n";
-        assertEquals(expectedOutput, outContent.toString());
+                "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
+        String actualOutput = outContent.toString().replace("\r\n", "\n");
 
-        System.setOut(System.out); // Restore original System.out
+        assertEquals(expectedOutput, actualOutput);
+
+        System.setOut(System.out);
     }
 
     @Test
