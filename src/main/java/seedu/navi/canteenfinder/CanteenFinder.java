@@ -12,10 +12,14 @@ public class CanteenFinder {
     public static final ArrayList<Landmark> LANDMARKS = new ArrayList<>();
 
     private static Canteen searchFaculty(String userLocation, String[] dietRestrictions) {
+        Canteen nearestCanteen = null;
         for (Landmark landmark : LANDMARKS) {
             if (landmark.getName().equals(userLocation)) {
-                Canteen nearestCanteen = landmark.getNearestCanteen(dietRestrictions);
+                nearestCanteen = landmark.getNearestCanteen(dietRestrictions);
             }
+        }
+        if (nearestCanteen != null) {
+            return nearestCanteen;
         }
         throw new LandmarkNotInStorage();
     }
