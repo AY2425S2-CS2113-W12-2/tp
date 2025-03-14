@@ -6,7 +6,9 @@ import seedu.navi.canteenfinder.landmark.Faculty;
 import seedu.navi.canteenfinder.landmark.Landmark;
 import seedu.navi.canteenfinder.landmark.canteen.Canteen;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
+
 
 class CanteenFinderTest {
     @BeforeEach
