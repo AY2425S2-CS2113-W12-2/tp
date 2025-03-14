@@ -11,75 +11,34 @@ import java.util.ArrayList;
 public class CanteenFinder {
     public static final ArrayList<Landmark> LANDMARKS = new ArrayList<>();
 
-    private static Canteen searchSOC() {
+    private static Canteen searchFaculty(String userLocation, String[] dietRestrictions) {
         for (Landmark landmark : LANDMARKS) {
-            if (landmark.getName().equals("SOC")) {
-                ArrayList<Canteen> nearestCanteens = landmark.getNearestCanteens();
-                return nearestCanteens.get(0);
+            if (landmark.getName().equals(userLocation)) {
+                Canteen nearestCanteen = landmark.getNearestCanteen(dietRestrictions);
             }
         }
         throw new LandmarkNotInStorage();
     }
 
-    private static Canteen searchCDE() {
-        for (Landmark landmark : LANDMARKS) {
-            if (landmark.getName().equals("CDE")) {
-                ArrayList<Canteen> nearestCanteens = landmark.getNearestCanteens();
-                return nearestCanteens.get(0);
-            }
-        }
-        throw new LandmarkNotInStorage();
-    }
-
-    private static Canteen searchFASS() {
-        for (Landmark landmark : LANDMARKS) {
-            if (landmark.getName().equals("FASS")) {
-                ArrayList<Canteen> nearestCanteens = landmark.getNearestCanteens();
-                return nearestCanteens.get(0);
-            }
-        }
-        throw new LandmarkNotInStorage();
-    }
-
-    private static Canteen searchNBS() {
-        for (Landmark landmark : LANDMARKS) {
-            if (landmark.getName().equals("NBS")) {
-                ArrayList<Canteen> nearestCanteens = landmark.getNearestCanteens();
-                return nearestCanteens.get(0);
-            }
-        }
-        throw new LandmarkNotInStorage();
-    }
-
-    private static Canteen searchScience() {
-        for (Landmark landmark : LANDMARKS) {
-            if (landmark.getName().equals("Science")) {
-                ArrayList<Canteen> nearestCanteens = landmark.getNearestCanteens();
-                return nearestCanteens.get(0);
-            }
-        }
-        throw new LandmarkNotInStorage();
-    }
-
-    public static Canteen findNearestCanteenToMe(String landmark) {
+    public static Canteen findNearestCanteenToMe(String landmark, String[] dietRestrictions) {
         Canteen nearestCanteen;
         switch (landmark.toLowerCase()) {
         case "soc":
         case "school of computing":
-            nearestCanteen = searchSOC();
+            nearestCanteen = searchFaculty("SOC", dietRestrictions);
             break;
         case "cde":
         case "college of design and engineering":
-            nearestCanteen = searchCDE();
+            nearestCanteen = searchFaculty("CDE", dietRestrictions);
             break;
         case "fass":
         case "faculty of arts and social sciences":
-            nearestCanteen = searchFASS();
+            nearestCanteen = searchFaculty("FASS", dietRestrictions);
             break;
         case "biz":
         case "nus business school":
         case "nbs":
-            nearestCanteen = searchNBS();
+            nearestCanteen = searchFaculty("NBS", dietRestrictions);
             break;
         case "fos":
         case "faculty of science":
@@ -87,7 +46,7 @@ public class CanteenFinder {
         case "school of public health":
         case "som":
         case "school of medicine":
-            nearestCanteen = searchScience();
+            nearestCanteen = searchFaculty("Science", dietRestrictions);
             break;
         default:
             throw new LocationNotFound();

@@ -22,7 +22,14 @@ public abstract class Landmark {
         nearestCanteens.add(canteen);
     }
 
-    public ArrayList<Canteen> getNearestCanteens() {
-        return nearestCanteens;
+    public Canteen getNearestCanteen(String[] dietRestrictions) {
+        for (Canteen canteen : nearestCanteens) {
+            if (canteen.isValidCanteen(dietRestrictions)) {
+                return canteen;
+            }
+        }
+        return null;
     }
+
+
 }

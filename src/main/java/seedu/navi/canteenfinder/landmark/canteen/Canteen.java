@@ -24,4 +24,13 @@ public class Canteen {
     public ArrayList<Stall> getStalls() {
         return stalls;
     }
+
+    public boolean isValidCanteen(String[] dietRestrictions) {
+        for (Stall stall : stalls) {
+            if (stall.hasValidStall(dietRestrictions)) {
+                return true;
+            }
+        }
+        return false;
+    }
 }

@@ -31,4 +31,8 @@ public class Stall {
     public StallCharacteristic getStallCharacteristic() {
         return stallCharacteristic;
     }
+
+    public boolean hasValidStall(String[] dietRestrictions) {
+        return stallCharacteristic.containsFields(dietRestrictions);
+    }
 }

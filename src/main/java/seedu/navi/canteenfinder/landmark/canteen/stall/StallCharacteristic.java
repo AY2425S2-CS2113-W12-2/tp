@@ -50,4 +50,34 @@ public class StallCharacteristic {
         return "[N] " + type;
     }
 
+    public boolean containsFields(String[] dietRestrictions) {
+        if (dietRestrictions == null) {
+            return true;
+        }
+        for (String dietRestriction : dietRestrictions) {
+            switch (dietRestriction.toLowerCase()) {
+            case "halal certified":
+                if (!halalCertified) {
+                    return false;
+                }
+                break;
+            case "muslim owned":
+                if (!muslimOwned) {
+                    return false;
+                }
+                break;
+            case "vegetarian":
+                if (!vegetarian) {
+                    return false;
+                }
+                break;
+            case "in aircon area":
+                if (!inAirconArea) {
+                    return false;
+                }
+                break;
+            }
+        }
+        return true;
+    }
 }
