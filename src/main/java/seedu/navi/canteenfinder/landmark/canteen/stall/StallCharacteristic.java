@@ -1,5 +1,7 @@
 package seedu.navi.canteenfinder.landmark.canteen.stall;
 
+import seedu.navi.exceptions.IncorrectDietRestriction;
+
 public class StallCharacteristic {
     private final boolean halalCertified;
     private final boolean muslimOwned;
@@ -50,4 +52,36 @@ public class StallCharacteristic {
         return "[N] " + type;
     }
 
+    public boolean containsFields(String[] dietRestrictions) {
+        if (dietRestrictions == null) {
+            return true;
+        }
+        for (String dietRestriction : dietRestrictions) {
+            switch (dietRestriction.toLowerCase()) {
+            case "halal certified":
+                if (!halalCertified) {
+                    return false;
+                }
+                break;
+            case "muslim owned":
+                if (!muslimOwned) {
+                    return false;
+                }
+                break;
+            case "vegetarian":
+                if (!vegetarian) {
+                    return false;
+                }
+                break;
+            case "aircon":
+                if (!inAirconArea) {
+                    return false;
+                }
+                break;
+            default:
+                throw new IncorrectDietRestriction();
+            }
+        }
+        return true;
+    }
 }

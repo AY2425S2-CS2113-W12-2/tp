@@ -47,8 +47,8 @@ public class Storage {
         String stallName = dataFields[1].trim();
         boolean halal = dataFields[2].trim().equals("T");
         boolean muslim = dataFields[3].trim().equals("T");
-        boolean vegetarian = dataFields[4].trim().equals("T");
-        boolean aircon = dataFields[5].trim().equals("T");
+        boolean aircon = dataFields[4].trim().equals("T");
+        boolean vegetarian = dataFields[5].trim().equals("T");
 
         Canteen canteen = canteenMap.getOrDefault(canteenName, new Canteen(canteenName));
         canteen.addStall(new Stall(stallName, halal, muslim, vegetarian, aircon));
