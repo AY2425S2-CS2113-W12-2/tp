@@ -1,0 +1,6 @@
+CELC: Techno | Deck | Terrace | Fine Food | Flavours | Frontier | PGP
+HSSML: Terrace | Deck | PGP | Techno | Frontier | Fine Food | Flavours
+CLB: Deck | Terrace | Techno | PGP | Frontier  | Fine Food | Flavours
+MSL: Frontier | PGP | Deck | Terrace | Techno | Fine Food | Flavours
+UTown SRC: Fine Food | Flavours | Techno | Deck | Terrace | Frontier | PGP
+UTown ERC: Fine Food | Flavours | Techno | Deck | Terrace | Frontier | PGP
