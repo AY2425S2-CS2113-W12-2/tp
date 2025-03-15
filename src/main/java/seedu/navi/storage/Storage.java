@@ -17,9 +17,11 @@ import java.util.Scanner;
 public class Storage {
     private static final String FACULTY_FILE = "data/faculty.txt";
     private static final String CANTEEN_FILE = "data/canteen.txt";
-    //newly added
     private static final String HOSTEL_FILE = "data/hostel.txt";
     private static final String OTHERBUILDING_FILE = "data/otherbuilding.txt";
+
+    // Add a class-level canteenMap field
+    private static Map<String, Canteen> canteenMap = new HashMap<>();
 
     private static void insertFacultyFromData(String facultyData, ArrayList<Faculty> faculties,
                                               Map<String, Canteen> canteenMap) {
@@ -39,7 +41,7 @@ public class Storage {
             throws FileNotFoundException {
         File f = new File(FACULTY_FILE);
         Scanner s = new Scanner(f);
-        while(s.hasNext()) {
+        while (s.hasNext()) {
             String facultyData = s.nextLine();
             insertFacultyFromData(facultyData, faculties, canteenMap);
         }
@@ -64,7 +66,7 @@ public class Storage {
             throws FileNotFoundException {
         File f = new File(CANTEEN_FILE);
         Scanner s = new Scanner(f);
-        while(s.hasNext()) {
+        while (s.hasNext()) {
             String canteenData = s.nextLine();
             insertCanteenFromData(canteenData, canteenMap);
         }
@@ -118,8 +120,12 @@ public class Storage {
         }
     }
 
+    public static Map<String, Canteen> getCanteenMap() {
+        return canteenMap; // Return the class-level field
+    }
+
     public static void processDataFromFiles() {
-        Map<String, Canteen> canteenMap = new HashMap<>();
+        canteenMap.clear(); // Clear the map before processing new data
         try {
             processCanteenFromFile(canteenMap);
         } catch (FileNotFoundException e) {
@@ -156,4 +162,3 @@ public class Storage {
         CanteenFinder.LANDMARKS.addAll(otherBuildings);
     }
 }
-
