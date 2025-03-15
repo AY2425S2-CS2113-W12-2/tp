@@ -35,7 +35,7 @@ public class StallCharacteristic {
     public boolean getInAirconArea() {
         return inAirconArea;
     }
-    
+
     public String getHalalCertifiedIcon() {
         String type = "Halal Certified";
         if (halalCertified) {

@@ -14,7 +14,9 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Map;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 public class StorageTest {
 
@@ -29,7 +31,13 @@ public class StorageTest {
 
     private void createTestDataFiles() throws IOException {
         Files.createDirectories(Paths.get(TEST_DATA_DIR));
-        createFile(CANTEEN_FILE, "Techno | Chicken Rice | T | F | T | F\nDeck | Noodle | F | T | F | T\nFine Food | Western | T | T | T | F\nFlavours | Mala | F | F | F | T");
+        String canteenData = """
+                Techno | Chicken Rice | T | F | T | F
+                Deck | Noodle | F | T | F | T
+                Fine Food | Western | T | T | T | F
+                Flavours | Mala | F | F | F | T
+                """;
+        createFile(CANTEEN_FILE, canteenData);
     }
 
     private void createFile(String filePath, String content) throws IOException {
@@ -76,7 +84,8 @@ public class StorageTest {
         Map<String, Canteen> canteenMap = Storage.getCanteenMap();
 
         Canteen techno = canteenMap.get("Techno");
-        Stall chickenRice = techno.getStalls().stream().filter(s -> s.getName().equals("Chicken Rice")).findFirst().orElse(null);
+        var stalls = techno.getStalls().stream();
+        Stall chickenRice = stalls.filter(s -> s.getName().equals("Chicken Rice")).findFirst().orElse(null);
         assertNotNull(chickenRice);
         StallCharacteristic chickenRiceChar = chickenRice.getStallCharacteristic();
         assertFalse(chickenRiceChar.gethalalCertified());
@@ -85,7 +94,8 @@ public class StorageTest {
         assertFalse(chickenRiceChar.getVegetarian());
 
         Canteen deck = canteenMap.get("Deck");
-        Stall noodle = deck.getStalls().stream().filter(s -> s.getName().equals("Noodle")).findFirst().orElse(null);
+        var noodleStalls = deck.getStalls().stream();
+        Stall noodle = noodleStalls.filter(s -> s.getName().equals("Noodle")).findFirst().orElse(null);
         assertNotNull(noodle);
         StallCharacteristic noodleChar = noodle.getStallCharacteristic();
         assertFalse(noodleChar.gethalalCertified());
@@ -95,7 +105,8 @@ public class StorageTest {
 
 
         Canteen fineFood = canteenMap.get("Fine Food");
-        Stall western = fineFood.getStalls().stream().filter(s -> s.getName().equals("Western Cuisine")).findFirst().orElse(null);
+        var westernStalls = fineFood.getStalls().stream();
+        Stall western = westernStalls.filter(s -> s.getName().equals("Western Cuisine")).findFirst().orElse(null);
         assertNotNull(western);
         StallCharacteristic westernChar = western.getStallCharacteristic();
         assertTrue(westernChar.gethalalCertified());
@@ -104,7 +115,8 @@ public class StorageTest {
         assertFalse(westernChar.getVegetarian());
 
         Canteen flavours = canteenMap.get("Flavours");
-        Stall mala = flavours.getStalls().stream().filter(s -> s.getName().equals("Mala Hotpot")).findFirst().orElse(null);
+        var malaStalls = flavours.getStalls().stream();
+        Stall mala = malaStalls.filter(s -> s.getName().equals("Mala Hotpot")).findFirst().orElse(null);
         assertNotNull(mala);
         StallCharacteristic malaChar = mala.getStallCharacteristic();
         assertFalse(malaChar.gethalalCertified());
