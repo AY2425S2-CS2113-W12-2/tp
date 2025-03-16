@@ -11,7 +11,7 @@ import java.util.ArrayList;
 public class CanteenFinder {
     public static final ArrayList<Landmark> LANDMARKS = new ArrayList<>();
 
-    private static Canteen searchFaculty(String userLocation, String[] dietRestrictions) {
+    private static Canteen searchLandmark(String userLocation, String[] dietRestrictions) {
         Canteen nearestCanteen = null;
         for (Landmark landmark : LANDMARKS) {
             if (landmark.getName().equals(userLocation)) {
@@ -29,20 +29,20 @@ public class CanteenFinder {
         switch (landmark.toLowerCase()) {
         case "soc":
         case "school of computing":
-            nearestCanteen = searchFaculty("SOC", dietRestrictions);
+            nearestCanteen = searchLandmark("SOC", dietRestrictions);
             break;
         case "cde":
         case "college of design and engineering":
-            nearestCanteen = searchFaculty("CDE", dietRestrictions);
+            nearestCanteen = searchLandmark("CDE", dietRestrictions);
             break;
         case "fass":
         case "faculty of arts and social sciences":
-            nearestCanteen = searchFaculty("FASS", dietRestrictions);
+            nearestCanteen = searchLandmark("FASS", dietRestrictions);
             break;
         case "biz":
         case "nus business school":
         case "nbs":
-            nearestCanteen = searchFaculty("NBS", dietRestrictions);
+            nearestCanteen = searchLandmark("NBS", dietRestrictions);
             break;
         case "fos":
         case "faculty of science":
@@ -50,7 +50,47 @@ public class CanteenFinder {
         case "school of public health":
         case "som":
         case "school of medicine":
-            nearestCanteen = searchFaculty("Science", dietRestrictions);
+            nearestCanteen = searchLandmark("Science", dietRestrictions);
+            break;
+        case "raffles hall":
+        case "raffles":
+            nearestCanteen = searchLandmark("Raffles", dietRestrictions);
+            break;
+        case "eusoff hall":
+        case "eusoff":
+            nearestCanteen = searchLandmark("Eusoff", dietRestrictions);
+            break;
+        case "temasek hall":
+        case "temasek":
+            nearestCanteen = searchLandmark("Temasek", dietRestrictions);
+            break;
+        case "sheares hall":
+        case "sheares":
+            nearestCanteen = searchLandmark("Sheares", dietRestrictions);
+            break;
+        case "kent ridge hall":
+            nearestCanteen = searchLandmark("Kent Ridge", dietRestrictions);
+            break;
+        case "king edward hall":
+            nearestCanteen = searchLandmark("King Edward", dietRestrictions);
+            break;
+        case "celc":
+            nearestCanteen = searchLandmark("CELC", dietRestrictions);
+            break;
+        case "hssml":
+            nearestCanteen = searchLandmark("HSSML", dietRestrictions);
+            break;
+        case "clb":
+            nearestCanteen = searchLandmark("CLB", dietRestrictions);
+            break;
+        case "msl":
+            nearestCanteen = searchLandmark("MSL", dietRestrictions);
+            break;
+        case "utown src":
+            nearestCanteen = searchLandmark("UTown SRC", dietRestrictions);
+            break;
+        case "utown erc":
+            nearestCanteen = searchLandmark("UTown ERC", dietRestrictions);
             break;
         default:
             throw new LocationNotFound();
