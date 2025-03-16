@@ -1,5 +1,6 @@
 package seedu.navi;
 
+import seedu.navi.canteenfinder.CanteenFinder;
 import seedu.navi.storage.Storage;
 import seedu.navi.textui.TextUi;
 
@@ -34,8 +35,10 @@ public class Navi {
     }
 
     public void showError(String message) {
+        TextUi.printLineSeparator();
         System.out.println("⚠ Whoops! " + message);
         System.out.println("That one’s a bit crook, but no dramas – give it another go!");
+        TextUi.printLineSeparator();
     }
 }
 
@@ -44,7 +47,8 @@ public class Navi {
  */
 class NaviException extends Exception {
     public NaviException(String message) {
-        super("⚠ Oi! " + message + " Let's get this sorted, mate.");
+        super("⚠ Oi! " + message +
+                "\nLet's get this sorted, mate.");
     }
 }
 
@@ -57,10 +61,15 @@ class Parser {
 
     public void handleCommand(String input) {
         try {
-            if (input.equalsIgnoreCase("bye")) {
+            switch (input.toLowerCase()) {
+            case "bye":
                 ui.showExitMessage(); // Use instance method via object
                 System.exit(0);
-            } else {
+                break;
+            case "canteen":
+                CanteenFinder.canteenFinderParser();
+                break;
+            default:
                 throw new NaviException("That’s not quite right, mate. Give it another shot!");
             }
         } catch (NaviException e) {
