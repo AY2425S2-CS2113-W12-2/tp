@@ -73,6 +73,11 @@ public class StallCharacteristic {
             return true;
         }
         for (String dietRestriction : dietRestrictions) {
+            assert dietRestriction.equalsIgnoreCase("halal certified") ||
+                    dietRestriction.equalsIgnoreCase("muslim owned") ||
+                    dietRestriction.equalsIgnoreCase("vegetarian") ||
+                    dietRestriction.equalsIgnoreCase("aircon") : "Invalid diet restriction";
+
             switch (dietRestriction.toLowerCase()) {
             case "halal certified":
                 if (!halalCertified) {
