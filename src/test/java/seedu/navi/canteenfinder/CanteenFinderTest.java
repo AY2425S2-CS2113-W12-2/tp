@@ -3,7 +3,7 @@ package seedu.navi.canteenfinder;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import seedu.navi.canteenfinder.landmark.canteen.Canteen;
-import seedu.navi.exceptions.LandmarkNotInStorage;
+import seedu.navi.exceptions.CanteenNotFound;
 import seedu.navi.exceptions.LocationNotFound;
 import seedu.navi.storage.Storage;
 
@@ -111,7 +111,7 @@ class CanteenFinderTest {
             Canteen actualCanteen = CanteenFinder.findNearestCanteenToMe("eusoff",
                     dietRestrictions);
             fail();
-        } catch (LandmarkNotInStorage e) {
+        } catch (CanteenNotFound e) {
             assertTrue(true);
         }
     }
