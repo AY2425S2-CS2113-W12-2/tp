@@ -7,7 +7,10 @@ import seedu.navi.exceptions.CanteenNotFound;
 import seedu.navi.exceptions.LocationNotFound;
 import seedu.navi.storage.Storage;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.fail;
 
 
 class CanteenFinderTest {

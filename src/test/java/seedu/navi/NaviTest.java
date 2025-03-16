@@ -17,10 +17,10 @@ class NaviTest {
 
         navi.showExitMessage();
 
-        String expectedOutput = "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n" +
+        String expectedOutput = "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n" +
                 "Ahh, you’re headin’ off? No worries!\n" +
                 "Keep on keepin’ on, and we’ll catch ya next time!\n" +
-                "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
+                "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
         String actualOutput = outContent.toString().replace("\r\n", "\n");
 
         assertEquals(expectedOutput, actualOutput);
