@@ -17,6 +17,7 @@ public class CanteenFinder {
 
     private static Canteen searchLandmark(String userLocation, String[] dietRestrictions)
             throws CanteenNotFound {
+        assert !userLocation.isEmpty() : "userLocation should not be empty";
         Canteen nearestCanteen = null;
         for (Landmark landmark : LANDMARKS) {
             if (landmark.getName().equals(userLocation)) {
@@ -149,11 +150,15 @@ public class CanteenFinder {
         Canteen nearestCanteen;
         while (true) {
             String dietRestriction = in.nextLine();
+
             if (dietRestriction.isEmpty()) {
                 TextUi.printEmptyDietRestrictionCF();
                 continue;
             }
+
             String[] dietRestrictions = dietRestriction.split(", ");
+            assert dietRestrictions.length != 0 : "dietRestrictions should not be empty";
+
             try {
                 if (!isValidDietRestrictions(dietRestrictions)) {
                     TextUi.printIsNotValidDietRestrictionsCF();
@@ -163,15 +168,19 @@ public class CanteenFinder {
                 TextUi.printNILWithOtherRestrictionsErrorCF();
                 continue;
             }
+
             if (dietRestrictions[0].equalsIgnoreCase("nil")) {
                 dietRestrictions = null;
             }
+
             TextUi.printWhereIsUserCF();
             String landmark = in.nextLine();
+
             while (landmark.isEmpty()) {
                 TextUi.printEmptyLandmarkCF();
                 landmark = in.nextLine();
             }
+
             try {
                 nearestCanteen = findNearestCanteenToMe(landmark, dietRestrictions);
                 TextUi.printNearestCanteenCF(nearestCanteen);
