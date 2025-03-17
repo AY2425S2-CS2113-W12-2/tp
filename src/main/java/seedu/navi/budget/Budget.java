@@ -2,11 +2,11 @@ package seedu.navi.budget;
 import java.text.DecimalFormat;
 
 public class Budget {
+    private static final DecimalFormat df = new DecimalFormat("0.00");
+
     private double dailyBudget;   // Money available for today
     private double monthlyTotal;  // Total spent this month
     private double dailyExpenses;
-
-    private static final DecimalFormat df = new DecimalFormat("0.00");
 
     public Budget() {
         this.dailyBudget = 0.0;
