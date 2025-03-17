@@ -7,7 +7,6 @@ public class BudgetParser {
 
     public BudgetParser(Budget budget) {
         BudgetParser.budget = budget;
-
     }
 
     public static void start() {
@@ -37,20 +36,20 @@ public class BudgetParser {
             }
 
             switch (command) {
-                case "add":
-                    budget.addDailyBudget(amount);
-                    break;
-                case "deduct":
-                    budget.deductExpense(amount);
-                    break;
-                case "view":
-                    budget.viewExpenses();
-                    break;
-                case "exit":
-                    System.out.println("👋 Exiting Budget Tracker.");
-                    return;
-                default:
-                    System.out.println("⚠️ Unknown command. Try: add X, deduct X, view, exit.");
+            case "add":
+                budget.addDailyBudget(amount);
+                break;
+            case "deduct":
+                budget.deductExpense(amount);
+                break;
+            case "view":
+                budget.viewExpenses();
+                break;
+            case "exit":
+                System.out.println("👋 Exiting Budget Tracker.");
+                return;
+            default:
+                System.out.println("⚠️ Unknown command. Try: add X, deduct X, view, exit.");
             }
         }
     }
