@@ -81,12 +81,10 @@ class Parser {
                 CanteenFinder.canteenFinderParser();
                 break;
             case "budget":
-             // Pass control to the BudgetParser for budget-related commands
                 BudgetParser budgetParser = new BudgetParser(budget);
                 budgetParser.start();
                 break;
             case "favorites":
-                // Pass control to the FavoritesParser for favorites-related commands
                 FavoritesParser favoritesParser = new FavoritesParser(favorites);
                 favoritesParser.start();
                 break;
