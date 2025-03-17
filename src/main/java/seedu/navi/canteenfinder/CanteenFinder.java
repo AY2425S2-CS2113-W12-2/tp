@@ -4,12 +4,7 @@ import seedu.navi.canteenfinder.landmark.Landmark;
 import seedu.navi.canteenfinder.landmark.canteen.Canteen;
 import seedu.navi.exceptions.CanteenNotFound;
 import seedu.navi.exceptions.LocationNotFound;
-import seedu.navi.textui.TextUi;
-
 import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Scanner;
-import java.util.Set;
 
 // main class for canteen finder feature
 public class CanteenFinder {

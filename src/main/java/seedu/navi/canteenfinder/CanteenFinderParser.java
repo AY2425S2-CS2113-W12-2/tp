@@ -74,11 +74,17 @@ public class CanteenFinderParser {
 
     public static void startCanteenFinder() {
         Scanner in = new Scanner(System.in);
+        TextUi.printEnterFunctionCF();
+        String[] dietRestrictions;
+        String command;
         while (true) {
-            TextUi.printEnterFunctionCF();
-            String[] dietRestrictions;
+            command = in.nextLine();
+            if (command.trim().equalsIgnoreCase("exit")) {
+                TextUi.printExitCanteenFinderCF();
+                break;
+            }
             try {
-                dietRestrictions = handleDietRestrictions(in.nextLine());
+                dietRestrictions = handleDietRestrictions(command);
             } catch (EmptyDietRestriction e) {
                 TextUi.printEmptyDietRestrictionCF();
                 continue;
@@ -91,22 +97,26 @@ public class CanteenFinderParser {
             }
 
             TextUi.printWhereIsUserCF();
-            String landmark = in.nextLine();
+            command = in.nextLine();
 
-            while (landmark.isEmpty()) {
+            while (command.isEmpty()) {
                 TextUi.printEmptyLandmarkCF();
-                landmark = in.nextLine();
+                command = in.nextLine();
+            }
+
+            if (command.trim().equalsIgnoreCase("exit")) {
+                TextUi.printExitCanteenFinderCF();
+                break;
             }
 
             try {
-                Canteen nearestCanteen = CanteenFinder.findNearestCanteenToMe(landmark, dietRestrictions);
+                Canteen nearestCanteen = CanteenFinder.findNearestCanteenToMe(command, dietRestrictions);
                 TextUi.printNearestCanteenCF(nearestCanteen);
             } catch (LocationNotFound e) {
                 TextUi.printLocationNotFoundCF();
             } catch (CanteenNotFound e) {
                 TextUi.printCanteenNotFoundCF();
             }
-            break;
         }
     }
 }
