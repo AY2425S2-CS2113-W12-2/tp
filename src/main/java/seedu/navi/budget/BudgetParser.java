@@ -7,7 +7,6 @@ public class BudgetParser {
 
     public BudgetParser(Budget budget) {
         BudgetParser.budget = budget;
-
     }
 
     public static void start() {
