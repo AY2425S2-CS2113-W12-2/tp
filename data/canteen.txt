@@ -1,16 +1,16 @@
-Techno | Western Food | F | F | F | F
-Techno | Nasi Padang | F | T | F | F
-Techno | Vegetarian | F | F | F | T
-Techno | Mala Hotpot | T | F | F | F
-Techno | Indian | F | F | F | F
-Techno | Mixed Rice | F | F | F | F
-Techno | Drinks & Snacks | F | F | F | F
-Techno | Fruit Juice | F | F | F | F
-Techno | Taiwan | F | F | F | F
-Techno | Ramen & Soup | F | F  |F | F
-Techno | Noodles | F | F | F | F
-Techno | Chicken Rice | F | F | F | F
-Techno | Bistro Box | T | F | T | F
+Techno Edge | Western Food | F | F | F | F
+Techno Edge | Nasi Padang | F | T | F | F
+Techno Edge | Vegetarian | F | F | F | T
+Techno Edge | Mala Hotpot | T | F | F | F
+Techno Edge | Indian | F | F | F | F
+Techno Edge | Mixed Rice | F | F | F | F
+Techno Edge | Drinks & Snacks | F | F | F | F
+Techno Edge | Fruit Juice | F | F | F | F
+Techno Edge | Taiwan | F | F | F | F
+Techno Edge | Ramen & Soup | F | F  |F | F
+Techno Edge | Noodles | F | F | F | F
+Techno Edge | Chicken Rice | F | F | F | F
+Techno Edge | Bistro Box | T | F | T | F
 Frontier | Vegetarian | F | F | F | T
 Frontier | Korean | F | F | F | F
 Frontier | Indian | F | F | F | F
@@ -29,39 +29,39 @@ Frontier | Uncle Penyet Fusion | T | F | T | F
 Frontier | Li Ji Coffee House | F | F | T | F
 Frontier | Pasta Express | F | F | T | F
 Frontier | Taiwan Ichiban | F | F | T | F
-Deck | Yong Tau Foo & Laksa | F | F | F | F
-Deck | Chinese Cooked Food | F | F | F | F
-Deck | Japanese | F | F | F | F
-Deck | Snacks & Fried Kway Teow | F | F | F | F
-Deck | Thai | F | F | F | F
-Deck | Western | F | T | F | F
-Deck | Noodle | F | F | F | F
-Deck | Roasted Delights | F | F | F | F
-Deck | Vegetarian | F | F | F | T
-Deck | Indian Vegetarian | F | F | F | T
-Deck | Muslim | F | T | F | F
-Deck | Fresh Fruits & Juices | F | F | F | F
-Deck | Bubble Tea | F | F | F | F
-Deck | Drinks & Snacks | F | F | F | F
-Deck | Liang Ban Gong Fu | F | F | T | F
-Deck | Pasta Express | F | F | T | F
-Deck | Mrs Hen | T | F | T | F
+The Deck | Yong Tau Foo & Laksa | F | F | F | F
+The Deck | Chinese Cooked Food | F | F | F | F
+The Deck | Japanese | F | F | F | F
+The Deck | Snacks & Fried Kway Teow | F | F | F | F
+The Deck | Thai | F | F | F | F
+The Deck | Western | F | T | F | F
+The Deck | Noodle | F | F | F | F
+The Deck | Roasted Delights | F | F | F | F
+The Deck | Vegetarian | F | F | F | T
+The Deck | Indian Vegetarian | F | F | F | T
+The Deck | Muslim | F | T | F | F
+The Deck | Fresh Fruits & Juices | F | F | F | F
+The Deck | Bubble Tea | F | F | F | F
+The Deck | Drinks & Snacks | F | F | F | F
+The Deck | Liang Ban Gong Fu | F | F | T | F
+The Deck | Pasta Express | F | F | T | F
+The Deck | Mrs Hen | T | F | T | F
 Terrace | Local Noodles | F | F | F | F
 Terrace | Five Grains Noodles | F | F | F | F
 Terrace | Mixed Rice, Mala & Sichuan | F | F | F | F
 Terrace | Korean & Japanese | F | F | F | F
 Terrace | Drinks & Hot Foods | F | F | F | F
-PGP | PGP Indian Veg | F | F | F | T
-PGP | PGP Salad | F | F | F | F
-PGP | PGP Dough Magic | F | F | F | F
-PGP | PGP Fish Soup | F | F | F | F
-PGP | PGP Mala Hotpot | F | F | F | F
-PGP | PGP Vietnamese | F | F | F | F
-PGP | PGP Mini Wok | F | F | F | F
-PGP | PGP Western | F | F | F | F
-PGP | PGP Mixed Veg Rice | F | F | F | F
-PGP | PGP Chicken Rice | F | F | F | F
-PGP | PGP Drinks and Snacks | F | F | F | F
+PGP Canteen | PGP Indian Veg | F | F | F | T
+PGP Canteen | PGP Salad | F | F | F | F
+PGP Canteen | PGP Dough Magic | F | F | F | F
+PGP Canteen | PGP Fish Soup | F | F | F | F
+PGP Canteen | PGP Mala Hotpot | F | F | F | F
+PGP Canteen | PGP Vietnamese | F | F | F | F
+PGP Canteen | PGP Mini Wok | F | F | F | F
+PGP Canteen | PGP Western | F | F | F | F
+PGP Canteen | PGP Mixed Veg Rice | F | F | F | F
+PGP Canteen | PGP Chicken Rice | F | F | F | F
+PGP Canteen | PGP Drinks and Snacks | F | F | F | F
 Fine Food | Nasi Campur | T | F | F | F
 Fine Food | Japanese Fusion | T | F | T | F
 Fine Food | Duck & Chicken Rice | F | F | T | F

@@ -1,6 +1,6 @@
-CELC: Techno | Deck | Terrace | Fine Food | Flavours | Frontier | PGP
-HSSML: Terrace | Deck | PGP | Techno | Frontier | Fine Food | Flavours
-CLB: Deck | Terrace | Techno | PGP | Frontier  | Fine Food | Flavours
-MSL: Frontier | PGP | Deck | Terrace | Techno | Fine Food | Flavours
-UTown SRC: Fine Food | Flavours | Techno | Deck | Terrace | Frontier | PGP
-UTown ERC: Fine Food | Flavours | Techno | Deck | Terrace | Frontier | PGP
+CELC: Techno Edge | The Deck | Terrace | Fine Food | Flavours | Frontier | PGP Canteen
+HSSML: Terrace | The Deck | PGP Canteen | Techno Edge | Frontier | Fine Food | Flavours
+CLB: The Deck | Terrace | Techno Edge | PGP Canteen | Frontier  | Fine Food | Flavours
+MSL: Frontier | PGP Canteen | The Deck | Terrace | Techno Edge | Fine Food | Flavours
+UTown SRC: Fine Food | Flavours | Techno Edge | The Deck | Terrace | Frontier | PGP Canteen
+UTown ERC: Fine Food | Flavours | Techno Edge | The Deck | Terrace | Frontier | PGP Canteen
