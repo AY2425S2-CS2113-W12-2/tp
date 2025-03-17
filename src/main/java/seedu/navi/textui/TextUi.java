@@ -84,7 +84,7 @@ public class TextUi {
         printLineSeparator();
     }
 
-    public static void printIsNotValidDietRestrictionsCF() {
+    public static void printInvalidDietRestrictionsCF() {
         printLineSeparator();
         System.out.println("Please enter a valid criteria that is,");
         System.out.println("""
