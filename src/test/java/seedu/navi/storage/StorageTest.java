@@ -32,8 +32,8 @@ public class StorageTest {
     private void createTestDataFiles() throws IOException {
         Files.createDirectories(Paths.get(TEST_DATA_DIR));
         String canteenData = """
-                Techno | Chicken Rice | T | F | T | F
-                Deck | Noodle | F | T | F | T
+                Techno Edge | Chicken Rice | T | F | T | F
+                The Deck | Noodle | F | T | F | T
                 Fine Food | Western | T | T | T | F
                 Flavours | Mala | F | F | F | T
                 """;
@@ -50,8 +50,8 @@ public class StorageTest {
     public void testProcessDataFromFiles_canteenMapContainsCorrectCanteens() {
         Storage.processDataFromFiles();
         Map<String, Canteen> canteenMap = Storage.getCanteenMap();
-        assertNotNull(canteenMap.get("Techno"));
-        assertNotNull(canteenMap.get("Deck"));
+        assertNotNull(canteenMap.get("Techno Edge"));
+        assertNotNull(canteenMap.get("The Deck"));
         assertNotNull(canteenMap.get("Fine Food"));
         assertNotNull(canteenMap.get("Flavours"));
     }
@@ -61,11 +61,11 @@ public class StorageTest {
         Storage.processDataFromFiles();
         Map<String, Canteen> canteenMap = Storage.getCanteenMap();
 
-        Canteen techno = canteenMap.get("Techno");
+        Canteen techno = canteenMap.get("Techno Edge");
         assertNotNull(techno);
         assertTrue(techno.getStalls().stream().anyMatch(s -> s.getName().equals("Chicken Rice")));
 
-        Canteen deck = canteenMap.get("Deck");
+        Canteen deck = canteenMap.get("The Deck");
         assertNotNull(deck);
         assertTrue(deck.getStalls().stream().anyMatch(s -> s.getName().equals("Noodle")));
 
@@ -83,7 +83,7 @@ public class StorageTest {
         Storage.processDataFromFiles();
         Map<String, Canteen> canteenMap = Storage.getCanteenMap();
 
-        Canteen techno = canteenMap.get("Techno");
+        Canteen techno = canteenMap.get("Techno Edge");
         var stalls = techno.getStalls().stream();
         Stall chickenRice = stalls.filter(s -> s.getName().equals("Chicken Rice")).findFirst().orElse(null);
         assertNotNull(chickenRice);
@@ -93,7 +93,7 @@ public class StorageTest {
         assertFalse(chickenRiceChar.getInAirconArea());
         assertFalse(chickenRiceChar.getVegetarian());
 
-        Canteen deck = canteenMap.get("Deck");
+        Canteen deck = canteenMap.get("The Deck");
         var noodleStalls = deck.getStalls().stream();
         Stall noodle = noodleStalls.filter(s -> s.getName().equals("Noodle")).findFirst().orElse(null);
         assertNotNull(noodle);

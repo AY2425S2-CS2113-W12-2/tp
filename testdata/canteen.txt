@@ -1,4 +1,4 @@
-Techno | Chicken Rice | T | F | T | F
-Deck | Noodle | F | T | F | T
+Techno Edge | Chicken Rice | T | F | T | F
+The Deck | Noodle | F | T | F | T
 Fine Food | Western | T | T | T | F
 Flavours | Mala | F | F | F | T
