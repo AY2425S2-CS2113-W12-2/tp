@@ -3,7 +3,8 @@ package seedu.navi;
 import seedu.navi.canteenfinder.CanteenFinder;
 import seedu.navi.storage.Storage;
 import seedu.navi.textui.TextUi;
-
+//import seedu.navi.budget.Budget;
+//import seedu.navi.budget.BudgetParser;
 
 import java.util.Scanner;
 
@@ -18,7 +19,8 @@ public class Navi {
         Scanner in = new Scanner(System.in);
         TextUi.printGreetUser(in.nextLine());
 
-
+//        // Initialize Budget instance
+//        Budget budget = new Budget();
 
         // Start command processing
         Navi ui = new Navi();
@@ -57,26 +59,33 @@ class NaviException extends Exception {
 
 class Parser {
     private final Navi ui;
+//    private final Budget budget;
 
     public Parser(Navi ui) {
         this.ui = ui;
+//        this.budget = budget;
     }
 
     public void handleCommand(String input) {
         try {
             switch (input.toLowerCase()) {
-            case "bye":
-                ui.showExitMessage(); // Use instance method via object
-                System.exit(0);
-                break;
-            case "canteen":
-                CanteenFinder.canteenFinderParser();
-                break;
-            default:
-                throw new NaviException("That’s not quite right, mate. Give it another shot!");
+                case "bye":
+                    ui.showExitMessage(); // Use instance method via object
+                    System.exit(0);
+                    break;
+                case "canteen":
+                    CanteenFinder.canteenFinderParser();
+                    break;
+//                case "budget":
+//                    BudgetParser budgetParser = new BudgetParser(budget);
+//                    budgetParser.start();
+//                    break;
+                default:
+                    throw new NaviException("That’s not quite right, mate. Give it another shot!");
             }
         } catch (NaviException e) {
             ui.showError(e.getMessage());
         }
     }
 }
+
