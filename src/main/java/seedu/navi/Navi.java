@@ -3,7 +3,8 @@ package seedu.navi;
 import seedu.navi.canteenfinder.CanteenFinderParser;
 import seedu.navi.storage.Storage;
 import seedu.navi.textui.TextUi;
-
+import seedu.navi.budget.Budget;
+import seedu.navi.budget.BudgetParser;
 import seedu.navi.favorites.Favorites;
 import seedu.navi.favorites.FavoritesParser;
 
@@ -25,8 +26,9 @@ public class Navi {
         // Start command processing
         Navi ui = new Navi();
         Favorites favorites = new Favorites();
-        Parser parser = new Parser(ui, favorites);
-    
+        Budget budget = new Budget();
+        Parser parser = new Parser(ui, favorites, budget);
+
 
 
         while (true) {
@@ -62,14 +64,13 @@ class NaviException extends Exception {
 
 class Parser {
     private final Navi ui;
-
-
-   
     private final Favorites favorites;
+    private final Budget budget;
 
-    public Parser(Navi ui, Favorites favorites) {
+    public Parser(Navi ui, Favorites favorites, Budget budget) {
         this.ui = ui;
         this.favorites = favorites;
+        this.budget = budget;
     }
 
     public void handleCommand(String input) {
@@ -85,6 +86,10 @@ class Parser {
             case "favorites":
                 FavoritesParser favoritesParser = new FavoritesParser(favorites);
                 favoritesParser.start();
+                break;
+            case "budget":
+                BudgetParser budgetParser = new BudgetParser(budget);
+                budgetParser.start();
                 break;
             default:
                 throw new NaviException("That’s not quite right, mate. Give it another shot!");
