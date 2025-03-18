@@ -2,6 +2,7 @@ package seedu.navi.textui;
 
 import seedu.navi.canteenfinder.landmark.canteen.Canteen;
 
+
 public class TextUi {
     private static final String logo = """
                 
@@ -15,6 +16,9 @@ public class TextUi {
         System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
     }
 
+    /**
+     * @author kevinchangckc
+     */
     public static void printGreeting() {
         printLineSeparator();
         System.out.println("G'day mate! I'm:" + logo);
@@ -22,6 +26,9 @@ public class TextUi {
         printLineSeparator();
     }
 
+    /**
+     * @author kevinchangckc
+     */
     public static void printGreetUser(String name) {
         printLineSeparator();
         System.out.println("Aye, " + name + "! Stoked to have ya here!");

@@ -13,6 +13,7 @@ import java.util.Scanner;
 public class Navi {
     /**
      * Main entry-point for the java.duke.Duke application.
+     * @author kevinchangckc
      */
     public static void main(String[] args) {
         Storage.processDataFromFiles();
@@ -34,6 +35,9 @@ public class Navi {
         }
     }
 
+    /**
+     * @author kevinchangckc
+     */
     public void showExitMessage() {
         TextUi.printLineSeparator();
         System.out.println("Ahh, you’re headin’ off? No worries!");
@@ -41,6 +45,9 @@ public class Navi {
         TextUi.printLineSeparator();
     }
 
+    /**
+     * @author kevinchangckc
+     */
     public void showError(String message) {
         TextUi.printLineSeparator();
         System.out.println("⚠ Whoops! " + message);
@@ -59,6 +66,9 @@ class NaviException extends Exception {
     }
 }
 
+/**
+ * @author kevinchangckc
+ */
 class Parser {
     private final Navi ui;
     private final Budget budget;
@@ -70,26 +80,34 @@ class Parser {
         this.favorites = favorites;
     }
 
+    /**
+     * @author kevinchangckc
+     */
     public void handleCommand(String input) {
         try {
             switch (input.toLowerCase()) {
-            case "bye":
-                ui.showExitMessage(); // Use instance method via object
-                System.exit(0);
-                break;
-            case "canteen":
-                CanteenFinderParser.startCanteenFinder();
-                break;
-            case "budget":
-                BudgetParser budgetParser = new BudgetParser(budget);
-                budgetParser.start();
-                break;
-            case "favorites":
-                FavoritesParser favoritesParser = new FavoritesParser(favorites);
-                favoritesParser.start();
-                break;
-            default:
-                throw new NaviException("That’s not quite right, mate. Give it another shot!");
+                case "bye":
+                    ui.showExitMessage(); // Use instance method via object
+                    System.exit(0);
+                    break;
+                case "canteen":
+                    CanteenFinderParser.startCanteenFinder();
+                    break;
+                case "budget":
+                    BudgetParser budgetParser = new BudgetParser(budget);
+                    budgetParser.start();
+                    break;
+                case "favorites":
+                    FavoritesParser favoritesParser = new FavoritesParser(favorites);
+                    favoritesParser.start();
+                    break;
+                default:
+                    throw new NaviException("That’s not quite right, mate. Give it another shot!\n\n"
+                            + "Remember that I can help you with:\n"
+                            + "- 'canteen' to find canteens\n"
+                            + "- 'budget' to set or check your budget\n"
+                            + "- 'favorites' to manage your favorite spots\n"
+                            + " ");
             }
         } catch (NaviException e) {
             ui.showError(e.getMessage());
