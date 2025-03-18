@@ -29,6 +29,9 @@ public class Favorites {
         }
     }
 
+    public List<String> getFavoriteItems() {
+        return new ArrayList<>(favoriteItems);
+    }
     // Views all favorite items
     public void viewFavorites() {
         if (favoriteItems.isEmpty()) {
