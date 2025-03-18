@@ -66,7 +66,7 @@ class Parser {
     private final Navi ui;
 
     public Parser(Navi ui) {
-        this.ui = ui;
+        this.ui = ui; }
    
     private final Favorites favorites;
 
