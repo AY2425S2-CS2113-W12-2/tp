@@ -1,4 +1,5 @@
 package seedu.navi.favorites;
+
 import java.util.ArrayList;
 import java.util.List;
 

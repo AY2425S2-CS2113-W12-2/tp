@@ -1,4 +1,5 @@
 package seedu.navi.favorites;
+
 import java.util.Scanner;
 
 public class FavoritesParser {
