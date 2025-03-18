@@ -3,8 +3,7 @@ package seedu.navi;
 import seedu.navi.canteenfinder.CanteenFinderParser;
 import seedu.navi.storage.Storage;
 import seedu.navi.textui.TextUi;
-import seedu.navi.budget.Budget;
-import seedu.navi.budget.BudgetParser;
+
 import seedu.navi.favorites.Favorites;
 import seedu.navi.favorites.FavoritesParser;
 
@@ -21,12 +20,16 @@ public class Navi {
         Scanner in = new Scanner(System.in);
         TextUi.printGreetUser(in.nextLine());
 
-        // Initialize Budget instance
-        Budget budget = new Budget();
+
+
+        // Start command processing
+        Navi ui = new Navi();
+        Parser parser = new Parser(ui);
+    
         Favorites favorites = new Favorites();
         // Start command processing
         Navi ui = new Navi();
-        Parser parser = new Parser(ui, budget, favorites);
+        Parser parser = new Parser(ui, favorites);
 
         while (true) {
             String input = in.nextLine();
@@ -61,12 +64,15 @@ class NaviException extends Exception {
 
 class Parser {
     private final Navi ui;
-    private final Budget budget;
+
+    public Parser(Navi ui) {
+        this.ui = ui; }
+   
     private final Favorites favorites;
 
-    public Parser(Navi ui, Budget budget, Favorites favorites) {
+    public Parser(Navi ui,  Favorites favorites) {
         this.ui = ui;
-        this.budget = budget;
+        
         this.favorites = favorites;
     }
 
@@ -79,10 +85,6 @@ class Parser {
                 break;
             case "canteen":
                 CanteenFinderParser.startCanteenFinder();
-                break;
-            case "budget":
-                BudgetParser budgetParser = new BudgetParser(budget);
-                budgetParser.start();
                 break;
             case "favorites":
                 FavoritesParser favoritesParser = new FavoritesParser(favorites);
