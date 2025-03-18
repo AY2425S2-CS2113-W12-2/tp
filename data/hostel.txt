@@ -1,6 +1,6 @@
-Raffles: Techno | Deck | Terrace | Fine Food | Flavours | Frontier | PGP
-Eusoff: Deck | Terrace | Techno | PGP | Frontier  | Fine Food | Flavours
-Temasek: Deck | Terrace | Techno | PGP | Frontier  | Fine Food | Flavours
-Sheares: Terrace | Deck | PGP | Techno | Frontier | Fine Food | Flavours
-Kent Ridge: Terrace | Deck | PGP | Techno | Frontier | Fine Food | Flavours
-King Edward: PGP | Terrace | Deck | Frontier | Techno | Fine Food | Flavours
+Raffles: Techno Edge | The Deck | Terrace | Fine Food | Flavours | Frontier | PGP Canteen
+Eusoff: The Deck | Terrace | Techno Edge | PGP Canteen | Frontier  | Fine Food | Flavours
+Temasek: The Deck | Terrace | Techno Edge | PGP Canteen | Frontier  | Fine Food | Flavours
+Sheares: Terrace | The Deck | PGP Canteen | Techno Edge | Frontier | Fine Food | Flavours
+Kent Ridge: Terrace | The Deck | PGP Canteen | Techno Edge | Frontier | Fine Food | Flavours
+King Edward: PGP Canteen | Terrace | The Deck | Frontier | Techno Edge | Fine Food | Flavours

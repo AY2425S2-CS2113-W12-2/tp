@@ -67,6 +67,7 @@ public class TextUi {
         printLineSeparator();
         System.out.println("Alrighty! The nearest canteen to you that fit your criteria is");
         System.out.println(nearestCanteen.getName());
+        printRepeatCanteenFinderCF();
         printLineSeparator();
     }
 
@@ -74,6 +75,7 @@ public class TextUi {
         printLineSeparator();
         System.out.println("Sorry! The location you entered does not exist in my data. :(");
         System.out.println("Please try another location!");
+        printRepeatCanteenFinderCF();
         printLineSeparator();
     }
 
@@ -81,10 +83,11 @@ public class TextUi {
         printLineSeparator();
         System.out.println("Sorry! I couldn't find any canteen that meets you're criteria. :(");
         System.out.println("Please try another set of criteria!");
+        printRepeatCanteenFinderCF();
         printLineSeparator();
     }
 
-    public static void printIsNotValidDietRestrictionsCF() {
+    public static void printInvalidDietRestrictionsCF() {
         printLineSeparator();
         System.out.println("Please enter a valid criteria that is,");
         System.out.println("""
@@ -97,5 +100,16 @@ public class TextUi {
         printLineSeparator();
         System.out.println("You can't include other criteria with \"NIL\"!");
         printLineSeparator();
+    }
+
+    public static void printExitCanteenFinderCF() {
+        printLineSeparator();
+        System.out.println("You have exited the Canteen Finder feature!");
+        printLineSeparator();
+    }
+
+    private static void printRepeatCanteenFinderCF() {
+        System.out.println("You can enter your canteen criteria again to start the search again,");
+        System.out.println("or \"exit\" to exit canteen finder.");
     }
 }

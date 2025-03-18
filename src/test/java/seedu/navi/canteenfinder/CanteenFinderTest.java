@@ -38,7 +38,7 @@ class CanteenFinderTest {
         String[] dietRestrictions = {"halal certified", "aircon"};
         Canteen actualCanteen = CanteenFinder.findNearestCanteenToMe("soc",
                 dietRestrictions);
-        assertEquals("Deck", actualCanteen.getName());
+        assertEquals("The Deck", actualCanteen.getName());
     }
 
     @Test
@@ -74,7 +74,7 @@ class CanteenFinderTest {
         String[] dietRestrictions = {"halal certified", "aircon"};
         Canteen actualCanteen = CanteenFinder.findNearestCanteenToMe("hssml",
                 dietRestrictions);
-        assertEquals("Deck", actualCanteen.getName());
+        assertEquals("The Deck", actualCanteen.getName());
     }
 
     @Test
@@ -89,7 +89,7 @@ class CanteenFinderTest {
     public void testFindNearestCanteenToMe_correctCanteenEusoff_success() {
         Canteen actualCanteen = CanteenFinder.findNearestCanteenToMe("eusoff",
                 null);
-        assertEquals("Deck", actualCanteen.getName());
+        assertEquals("The Deck", actualCanteen.getName());
     }
 
     @Test
@@ -104,7 +104,7 @@ class CanteenFinderTest {
         String[] dietRestrictions = {"vegetarian"};
         Canteen actualCanteen = CanteenFinder.findNearestCanteenToMe("eusoff",
                 dietRestrictions);
-        assertEquals("Deck", actualCanteen.getName());
+        assertEquals("The Deck", actualCanteen.getName());
     }
 
     @Test
