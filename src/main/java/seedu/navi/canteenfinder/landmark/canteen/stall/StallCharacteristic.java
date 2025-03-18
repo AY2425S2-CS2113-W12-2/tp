@@ -1,7 +1,5 @@
 package seedu.navi.canteenfinder.landmark.canteen.stall;
 
-import seedu.navi.exceptions.IncorrectDietRestriction;
-
 public class StallCharacteristic {
     private final boolean halalCertified;
     private final boolean muslimOwned;
@@ -100,7 +98,6 @@ public class StallCharacteristic {
                 }
                 break;
             default:
-                throw new IncorrectDietRestriction();
             }
         }
         return true;
