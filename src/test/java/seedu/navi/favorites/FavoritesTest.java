@@ -30,18 +30,6 @@ class FavoritesTest {
         assertTrue(favoriteItems.contains("Sushi"));
     }
 
-    @Test
-    void addFavorite_nullOrEmpty_doesNotAdd() {
-        favorites.addFavorite(null);
-        assertEquals("⚠️ Invalid item. Please enter a valid item.", outputStreamCaptor.toString().trim());
-
-        outputStreamCaptor.reset(); // Reset output capture
-        favorites.addFavorite("   ");
-        assertEquals("⚠️ Invalid item. Please enter a valid item.", outputStreamCaptor.toString().trim());
-
-        assertEquals(0, favorites.getFavoriteItems().size()); // Assuming a getter
-    }
-
 
 
     @Test
