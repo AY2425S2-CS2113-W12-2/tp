@@ -24,12 +24,10 @@ public class Navi {
 
         // Start command processing
         Navi ui = new Navi();
-        Parser parser = new Parser(ui);
-    
         Favorites favorites = new Favorites();
-        // Start command processing
-        Navi ui = new Navi();
         Parser parser = new Parser(ui, favorites);
+    
+
 
         while (true) {
             String input = in.nextLine();
@@ -65,14 +63,12 @@ class NaviException extends Exception {
 class Parser {
     private final Navi ui;
 
-    public Parser(Navi ui) {
-        this.ui = ui; }
+
    
     private final Favorites favorites;
 
-    public Parser(Navi ui,  Favorites favorites) {
+    public Parser(Navi ui, Favorites favorites) {
         this.ui = ui;
-        
         this.favorites = favorites;
     }
 
