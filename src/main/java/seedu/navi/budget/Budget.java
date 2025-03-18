@@ -50,5 +50,18 @@ public class Budget {
         System.out.println("📅 Total spent this month: $" + df.format(monthlyTotal));
     }
 
+    // Getter methods to allow access to private fields
+    public double getDailyBudget() {
+        return dailyBudget;
+    }
+
+    public double getDailyExpenses() {
+        return dailyExpenses;
+    }
+
+    public double getMonthlyTotal() {
+        return monthlyTotal;
+    }
+
 }
 
