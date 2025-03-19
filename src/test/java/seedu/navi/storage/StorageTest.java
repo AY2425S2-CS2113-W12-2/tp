@@ -14,10 +14,6 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Map;
 
-import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-
 public class StorageTest {
 
     private static final String TEST_DATA_DIR = "testdata/";
@@ -50,10 +46,10 @@ public class StorageTest {
     public void testProcessDataFromFiles_canteenMapContainsCorrectCanteens() {
         Storage.processDataFromFiles();
         Map<String, Canteen> canteenMap = Storage.getCanteenMap();
-        assertNotNull(canteenMap.get("Techno Edge"));
-        assertNotNull(canteenMap.get("The Deck"));
-        assertNotNull(canteenMap.get("Fine Food"));
-        assertNotNull(canteenMap.get("Flavours"));
+        assert canteenMap.get("Techno Edge") != null;
+        assert canteenMap.get("The Deck") != null;
+        assert canteenMap.get("Fine Food") != null;
+        assert canteenMap.get("Flavours") != null;
     }
 
     @Test
@@ -62,20 +58,20 @@ public class StorageTest {
         Map<String, Canteen> canteenMap = Storage.getCanteenMap();
 
         Canteen techno = canteenMap.get("Techno Edge");
-        assertNotNull(techno);
-        assertTrue(techno.getStalls().stream().anyMatch(s -> s.getName().equals("Chicken Rice")));
+        assert techno != null;
+        assert techno.getStalls().stream().anyMatch(s -> s.getName().equals("Chicken Rice"));
 
         Canteen deck = canteenMap.get("The Deck");
-        assertNotNull(deck);
-        assertTrue(deck.getStalls().stream().anyMatch(s -> s.getName().equals("Noodle")));
+        assert deck != null;
+        assert deck.getStalls().stream().anyMatch(s -> s.getName().equals("Noodle"));
 
         Canteen fineFood = canteenMap.get("Fine Food");
-        assertNotNull(fineFood);
-        assertTrue(fineFood.getStalls().stream().anyMatch(s -> s.getName().equals("Western Cuisine")));
+        assert fineFood != null;
+        assert fineFood.getStalls().stream().anyMatch(s -> s.getName().equals("Western Cuisine"));
 
         Canteen flavours = canteenMap.get("Flavours");
-        assertNotNull(flavours);
-        assertTrue(flavours.getStalls().stream().anyMatch(s -> s.getName().equals("Mala Hotpot")));
+        assert flavours != null;
+        assert flavours.getStalls().stream().anyMatch(s -> s.getName().equals("Mala Hotpot"));
     }
 
     @Test
@@ -86,43 +82,42 @@ public class StorageTest {
         Canteen techno = canteenMap.get("Techno Edge");
         var stalls = techno.getStalls().stream();
         Stall chickenRice = stalls.filter(s -> s.getName().equals("Chicken Rice")).findFirst().orElse(null);
-        assertNotNull(chickenRice);
+        assert chickenRice != null;
         StallCharacteristic chickenRiceChar = chickenRice.getStallCharacteristic();
-        assertFalse(chickenRiceChar.gethalalCertified());
-        assertFalse(chickenRiceChar.getMuslimOwned());
-        assertFalse(chickenRiceChar.getInAirconArea());
-        assertFalse(chickenRiceChar.getVegetarian());
+        assert !chickenRiceChar.gethalalCertified();
+        assert !chickenRiceChar.getMuslimOwned();
+        assert !chickenRiceChar.getInAirconArea();
+        assert !chickenRiceChar.getVegetarian();
 
         Canteen deck = canteenMap.get("The Deck");
         var noodleStalls = deck.getStalls().stream();
         Stall noodle = noodleStalls.filter(s -> s.getName().equals("Noodle")).findFirst().orElse(null);
-        assertNotNull(noodle);
+        assert noodle != null;
         StallCharacteristic noodleChar = noodle.getStallCharacteristic();
-        assertFalse(noodleChar.gethalalCertified());
-        assertFalse(noodleChar.getMuslimOwned());
-        assertFalse(noodleChar.getInAirconArea());
-        assertFalse(noodleChar.getVegetarian());
-
+        assert !noodleChar.gethalalCertified();
+        assert !noodleChar.getMuslimOwned();
+        assert !noodleChar.getInAirconArea();
+        assert !noodleChar.getVegetarian();
 
         Canteen fineFood = canteenMap.get("Fine Food");
         var westernStalls = fineFood.getStalls().stream();
         Stall western = westernStalls.filter(s -> s.getName().equals("Western Cuisine")).findFirst().orElse(null);
-        assertNotNull(western);
+        assert western != null;
         StallCharacteristic westernChar = western.getStallCharacteristic();
-        assertTrue(westernChar.gethalalCertified());
-        assertFalse(westernChar.getMuslimOwned());
-        assertTrue(westernChar.getInAirconArea());
-        assertFalse(westernChar.getVegetarian());
+        assert westernChar.gethalalCertified();
+        assert !westernChar.getMuslimOwned();
+        assert westernChar.getInAirconArea();
+        assert !westernChar.getVegetarian();
 
         Canteen flavours = canteenMap.get("Flavours");
         var malaStalls = flavours.getStalls().stream();
         Stall mala = malaStalls.filter(s -> s.getName().equals("Mala Hotpot")).findFirst().orElse(null);
-        assertNotNull(mala);
+        assert mala != null;
         StallCharacteristic malaChar = mala.getStallCharacteristic();
-        assertFalse(malaChar.gethalalCertified());
-        assertFalse(malaChar.getMuslimOwned());
-        assertFalse(malaChar.getInAirconArea());
-        assertFalse(malaChar.getVegetarian());
+        assert !malaChar.gethalalCertified();
+        assert !malaChar.getMuslimOwned();
+        assert !malaChar.getInAirconArea();
+        assert !malaChar.getVegetarian();
     }
 
     public static Map<String, Canteen> getCanteenMap() {
