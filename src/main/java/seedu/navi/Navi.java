@@ -47,7 +47,7 @@ public class Navi {
     public void showError(String message) {
         TextUi.printLineSeparator();
         System.out.println("⚠ Whoops! " + message);
-        System.out.println("That one’s a bit crook, but no dramas – give it another go!");
+        System.out.println("Sorry! Please use one of these commands: canteen, budget, favourites, or guide.");
         TextUi.printLineSeparator();
     }
 }
