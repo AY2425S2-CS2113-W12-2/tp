@@ -19,7 +19,6 @@ public class Storage {
     private static final String CANTEEN_FILE = "data/canteen.txt";
     private static final String HOSTEL_FILE = "data/hostel.txt";
     private static final String OTHER_BUILDING_FILE = "data/otherbuilding.txt";
-    // Add a class-level canteenMap field
     private static final Map<String, Canteen> CANTEEN_MAP = new HashMap<>();
 
     private static void insertFacultyFromData(String facultyData, ArrayList<Faculty> faculties) {
@@ -83,6 +82,7 @@ public class Storage {
     private static void processHostelFromFile(ArrayList<Hostel> hostels)
             throws FileNotFoundException {
         File f = new File(HOSTEL_FILE);
+        assert f.exists() : "Hostel file does not exist: " + HOSTEL_FILE; // Assert file exists
         Scanner s = new Scanner(f);
         while (s.hasNext()) {
             String hostelData = s.nextLine();
@@ -106,6 +106,7 @@ public class Storage {
     private static void processOtherBuildingFromFile(ArrayList<OtherBuildings> otherBuildings)
             throws FileNotFoundException {
         File f = new File(OTHER_BUILDING_FILE);
+        assert f.exists() : "Other building file does not exist: " + OTHER_BUILDING_FILE;
         Scanner s = new Scanner(f);
         while (s.hasNext()) {
             String otherBuildingData = s.nextLine();
@@ -121,6 +122,7 @@ public class Storage {
         CANTEEN_MAP.clear(); // Clear the map before processing new data
         try {
             processCanteenFromFile();
+            assert !CANTEEN_MAP.isEmpty() : "Canteen map is empty after processing.";
         } catch (FileNotFoundException e) {
             System.err.println("File not found: " + e.getMessage());
         }
