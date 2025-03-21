@@ -1,6 +1,9 @@
 CELC: Techno Edge | The Deck | Terrace | Fine Food | Flavours | Frontier | PGP Canteen
 HSSML: Terrace | The Deck | PGP Canteen | Techno Edge | Frontier | Fine Food | Flavours
-CLB: The Deck | Terrace | Techno Edge | PGP Canteen | Frontier  | Fine Food | Flavours
+CLB: Techno Edge (200m) | The Deck (750m) | Terrace (900m) | Fine Food (1000m) | Frontier (1100m) | Flavours (1100m) | PGP Canteen (1900m)
 MSL: Frontier | PGP Canteen | The Deck | Terrace | Techno Edge | Fine Food | Flavours
 UTown SRC: Fine Food | Flavours | Techno Edge | The Deck | Terrace | Frontier | PGP Canteen
 UTown ERC: Fine Food | Flavours | Techno Edge | The Deck | Terrace | Frontier | PGP Canteen
+University Hall: Fine Food | Techno Edge | Flavours | Frontier | The Deck | Terrace | PGP Canteen
+MPSH: Fine Food (750m) | Techno Edge (850m) | Flavours (900m) | Frontier (1100m) | The Deck (1500m) | Terrace (2100m) | PGP Canteen (2500m)
+UHC: Fine Food | Techno Edge | Flavours | Frontier | The Deck | Terrace | PGP Canteen
