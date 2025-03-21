@@ -28,7 +28,8 @@ public class Budget {
         }
 
         dailyBudget += amount;
-        logger.log(Level.INFO, "Added ${0} to today's budget. New daily budget: ${1}", new Object[]{df.format(amount), df.format(dailyBudget)});
+        logger.log(Level.INFO, "Added ${0} to today's budget. New daily budget: ${1}",
+                new Object[]{df.format(amount), df.format(dailyBudget)});
     }
 
     // Deducts money from daily budget, records daily expenses, and adds to monthly spending
@@ -39,7 +40,8 @@ public class Budget {
             throw new IllegalArgumentException("Invalid amount. Please enter a positive value.");
         }
         if (dailyBudget < amount) {
-            logger.log(Level.WARNING, "Insufficient budget: Tried to deduct {0}, but only {1} available", new Object[]{df.format(amount), df.format(dailyBudget)});
+            logger.log(Level.WARNING, "Insufficient budget: Tried to deduct {0}, but only {1} available",
+                    new Object[]{df.format(amount), df.format(dailyBudget)});
             throw new IllegalStateException("Error: You cannot deduct more than your current daily budget.");
         }
 
@@ -47,13 +49,16 @@ public class Budget {
         dailyExpenses += amount;
         monthlyTotal += amount;
 
-        logger.log(Level.INFO, "Deducted ${0} from daily budget. Remaining: ${1}", new Object[]{df.format(amount), df.format(dailyBudget)});
-        logger.log(Level.INFO, "📆 Total spent today: ${0}, 📅 Total spent this month: ${1}", new Object[]{df.format(dailyExpenses), df.format(monthlyTotal)});
+        logger.log(Level.INFO, "Deducted ${0} from daily budget. Remaining: ${1}", new Object[]{df.format(amount),
+                df.format(dailyBudget)});
+        logger.log(Level.INFO, "📆 Total spent today: ${0}, 📅 Total spent this month: ${1}",
+                new Object[]{df.format(dailyExpenses), df.format(monthlyTotal)});
     }
 
     // Views remaining daily budget & total spent this month
     public void viewExpenses() {
-        logger.log(Level.INFO, "Viewing expenses: Daily budget: ${0}, Total spent today: ${1}, Total spent this month: ${2}",
+        logger.log(Level.INFO, "Viewing expenses: Daily budget: ${0}, Total spent today: ${1}, " +
+                        "Total spent this month: ${2}",
                 new Object[]{df.format(dailyBudget), df.format(dailyExpenses), df.format(monthlyTotal)});
 
         System.out.println("📌 Remaining daily budget: $" + df.format(dailyBudget));
