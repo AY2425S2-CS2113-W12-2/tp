@@ -26,10 +26,20 @@ public class Storage {
         String facultyName = parts[0];
         Faculty faculty = new Faculty(facultyName);
         faculties.add(faculty);
-        String[] canteenNames = parts[1].split("\\|");
-        for (String canteenName : canteenNames) {
+        String[] canteenData = parts[1].split("\\|");
+        for (String canteenInfo : canteenData) {
+            String[] canteenParts = canteenInfo.trim().split("\\("); // Split by "("
+            String canteenName = canteenParts[0].trim(); // Canteen name
+            int distance = 0; // Default distance
+            if (canteenParts.length > 1) { // If distance exists
+                String distancePart = canteenParts[1].replaceAll("[^\\d]", "").trim(); // Extract digits
+                if (!distancePart.isEmpty()) {
+                    distance = Integer.parseInt(distancePart); // Parse distance
+                }
+            }
             Canteen canteen = CANTEEN_MAP.get(canteenName.trim());
             faculty.setNearestCanteens(canteen);
+            faculty.setCanteenDistance(canteen, distance); // Store distance
         }
     }
 
@@ -72,10 +82,20 @@ public class Storage {
         String hostelName = parts[0];
         Hostel hostel = new Hostel(hostelName);
         hostels.add(hostel);
-        String[] canteenNames = parts[1].split("\\|");
-        for (String canteenName : canteenNames) {
+        String[] canteenData = parts[1].split("\\|");
+        for (String canteenInfo : canteenData) {
+            String[] canteenParts = canteenInfo.trim().split("\\("); // Split by "(" to separate name and distance
+            String canteenName = canteenParts[0].trim(); // Canteen name
+            int distance = 0; // Default distance
+            if (canteenParts.length > 1) { // If distance exists
+                String distancePart = canteenParts[1].replaceAll("[^\\d]", "").trim(); // Extract digits only
+                if (!distancePart.isEmpty()) {
+                    distance = Integer.parseInt(distancePart); // Parse distance
+                }
+            }
             Canteen canteen = CANTEEN_MAP.get(canteenName.trim());
             hostel.setNearestCanteens(canteen);
+            hostel.setCanteenDistance(canteen, distance); // Store distance (assuming Hostel has this method)
         }
     }
 
@@ -96,10 +116,20 @@ public class Storage {
         String otherBuildingName = parts[0];
         OtherBuildings otherBuilding = new OtherBuildings(otherBuildingName);
         otherBuildings.add(otherBuilding);
-        String[] canteenNames = parts[1].split("\\|");
-        for (String canteenName : canteenNames) {
+        String[] canteenData = parts[1].split("\\|");
+        for (String canteenInfo : canteenData) {
+            String[] canteenParts = canteenInfo.trim().split("\\("); // Split by "("
+            String canteenName = canteenParts[0].trim(); // Canteen name
+            int distance = 0; // Default distance
+            if (canteenParts.length > 1) { // If distance exists
+                String distancePart = canteenParts[1].replaceAll("[^\\d]", "").trim(); // Extract digits
+                if (!distancePart.isEmpty()) {
+                    distance = Integer.parseInt(distancePart); // Parse distance
+                }
+            }
             Canteen canteen = CANTEEN_MAP.get(canteenName.trim());
             otherBuilding.setNearestCanteens(canteen);
+            otherBuilding.setCanteenDistance(canteen, distance); // Store distance
         }
     }
 
@@ -151,7 +181,6 @@ public class Storage {
         } catch (FileNotFoundException e) {
             System.err.println("File not found: " + e.getMessage());
         }
-
         CanteenFinder.LANDMARKS.addAll(faculties);
         CanteenFinder.LANDMARKS.addAll(hostels); //added building to landmarks.
         CanteenFinder.LANDMARKS.addAll(otherBuildings);
