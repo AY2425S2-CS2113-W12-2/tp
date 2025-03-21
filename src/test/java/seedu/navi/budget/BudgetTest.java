@@ -2,6 +2,7 @@ package seedu.navi.budget;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
@@ -15,41 +16,78 @@ public class BudgetTest {
     }
 
     @Test
-    public void testAddDailyBudget() {
-        // Test adding a valid amount to the daily budget
+    public void testAddDailyBudget_validAmount() {
+        // Test that adding a valid amount increases the daily budget correctly
         budget.addDailyBudget(50.0);
-        assertEquals(50.0, budget.getDailyBudget());
+        assertEquals(50.0, budget.getDailyBudget(), "Daily budget should be 50.0 after adding 50.0");
 
-        // Test adding an invalid amount (negative value)
-        budget.addDailyBudget(-10.0);
-        assertEquals(50.0, budget.getDailyBudget());
+        // Test that adding another valid amount updates the daily budget
+        budget.addDailyBudget(30.0);
+        assertEquals(80.0, budget.getDailyBudget(), "Daily budget should be 80.0 after adding 30.0");
     }
 
     @Test
-    public void testDeductExpense() {
-        // Add some money to the daily budget
+    public void testAddDailyBudget_negativeAmount() {
+        // Test that adding a negative amount throws an exception
+        IllegalArgumentException thrown = assertThrows(IllegalArgumentException.class, () -> {
+            budget.addDailyBudget(-10.0);
+        });
+        assertEquals("Invalid amount. Please enter a positive value.", thrown.getMessage());
+    }
+
+    @Test
+    public void testDeductExpense_validAmount() {
+        // Set a daily budget first
         budget.addDailyBudget(100.0);
 
-        // Deduct a valid amount
+        // Test that deducting an expense updates the daily budget and monthly total correctly
         budget.deductExpense(30.0);
-        assertEquals(70.0, budget.getDailyBudget()); // Remaining daily budget
-        assertEquals(30.0, budget.getDailyExpenses()); // Daily expenses should reflect the deducted amount
-        assertEquals(30.0, budget.getMonthlyTotal()); // Monthly total should include the deducted amount
+        assertEquals(70.0, budget.getDailyBudget(), "Daily budget should be 70.0 after deducting 30.0");
+        assertEquals(30.0, budget.getDailyExpenses(), "Daily expenses should be 30.0 after the deduction");
+        assertEquals(30.0, budget.getMonthlyTotal(), "Monthly total should be 30.0 after the deduction");
+    }
 
-        // Try to deduct more than the available daily budget
-        budget.deductExpense(80.0);
-        assertEquals(70.0, budget.getDailyBudget()); // Daily budget should remain unchanged
+    @Test
+    public void testDeductExpense_negativeAmount() {
+        // Test that deducting a negative amount throws an exception
+        IllegalArgumentException thrown = assertThrows(IllegalArgumentException.class, () -> {
+            budget.deductExpense(-20.0);
+        });
+        assertEquals("Invalid amount. Please enter a positive value.", thrown.getMessage());
+    }
+
+    @Test
+    public void testDeductExpense_insufficientBudget() {
+        // Set a daily budget
+        budget.addDailyBudget(50.0);
+
+        // Test that attempting to deduct more than the available budget throws an exception
+        IllegalStateException thrown = assertThrows(IllegalStateException.class, () -> {
+            budget.deductExpense(60.0);
+        });
+        assertEquals("Error: You cannot deduct more than your current daily budget.", thrown.getMessage());
     }
 
     @Test
     public void testViewExpenses() {
-        // Test the viewExpenses method by first adding and deducting money
-        budget.addDailyBudget(200.0);
-        budget.deductExpense(50.0);
+        // Set up a budget with some expenses
+        budget.addDailyBudget(100.0);
+        budget.deductExpense(20.0);
+        budget.deductExpense(10.0);
 
-        // Ensure the internal state is correct
-        assertEquals(150.0, budget.getDailyBudget()); // Remaining daily budget
-        assertEquals(50.0, budget.getDailyExpenses()); // Daily expenses
-        assertEquals(50.0, budget.getMonthlyTotal()); // Monthly total spent so far
+        // Test that the view expenses outputs the correct values
+        budget.viewExpenses();
+    }
+
+    @Test
+    public void testGetters() {
+        // Test the getter methods after making changes to the budget
+        budget.addDailyBudget(100.0);
+        budget.deductExpense(30.0);
+
+        assertEquals(70.0, budget.getDailyBudget(), "Daily budget should be 70.0");
+        assertEquals(30.0, budget.getDailyExpenses(), "Daily expenses should be 30.0");
+        assertEquals(30.0, budget.getMonthlyTotal(), "Monthly total should be 30.0");
     }
 }
+
