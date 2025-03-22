@@ -65,7 +65,7 @@ public class BudgetTest {
         IllegalStateException thrown = assertThrows(IllegalStateException.class, () -> {
             budget.deductExpense(60.0);
         });
-        assertEquals("Error: You cannot deduct more than your current daily budget.", thrown.getMessage());
+        assertEquals("You cannot deduct more than your current daily budget.", thrown.getMessage());
     }
 
     @Test
