@@ -2,10 +2,9 @@ package seedu.navi.storage;
 
 import seedu.navi.canteenfinder.CanteenFinderParser;
 import seedu.navi.canteenfinder.landmark.Faculty;
-import seedu.navi.canteenfinder.landmark.OtherBuildings;
+import seedu.navi.canteenfinder.landmark.Landmark;
 import seedu.navi.canteenfinder.landmark.canteen.Canteen;
 import seedu.navi.canteenfinder.landmark.canteen.stall.Stall;
-import seedu.navi.canteenfinder.landmark.Hostel;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -77,10 +76,10 @@ public class Storage {
         }
     }
 
-    private static void insertHostelFromData(String hostelData, ArrayList<Hostel> hostels) {
+    private static void insertHostelFromData(String hostelData, ArrayList<Landmark> hostels) {
         String[] parts = hostelData.split(": ");
         String hostelName = parts[0];
-        Hostel hostel = new Hostel(hostelName);
+        Landmark hostel = new Landmark(hostelName);
         hostels.add(hostel);
         String[] canteenData = parts[1].split("\\|");
         for (String canteenInfo : canteenData) {
@@ -99,7 +98,7 @@ public class Storage {
         }
     }
 
-    private static void processHostelFromFile(ArrayList<Hostel> hostels)
+    private static void processHostelFromFile(ArrayList<Landmark> hostels)
             throws FileNotFoundException {
         File f = new File(HOSTEL_FILE);
         assert f.exists() : "Hostel file does not exist: " + HOSTEL_FILE; // Assert file exists
@@ -111,10 +110,10 @@ public class Storage {
     }
 
     private static void insertOtherBuildingFromData(String otherBuildingData,
-                                                    ArrayList<OtherBuildings> otherBuildings) {
+                                                    ArrayList<Landmark> otherBuildings) {
         String[] parts = otherBuildingData.split(": ");
         String otherBuildingName = parts[0];
-        OtherBuildings otherBuilding = new OtherBuildings(otherBuildingName);
+        Landmark otherBuilding = new Landmark(otherBuildingName);
         otherBuildings.add(otherBuilding);
         String[] canteenData = parts[1].split("\\|");
         for (String canteenInfo : canteenData) {
@@ -133,7 +132,7 @@ public class Storage {
         }
     }
 
-    private static void processOtherBuildingFromFile(ArrayList<OtherBuildings> otherBuildings)
+    private static void processOtherBuildingFromFile(ArrayList<Landmark> otherBuildings)
             throws FileNotFoundException {
         File f = new File(OTHER_BUILDING_FILE);
         assert f.exists() : "Other building file does not exist: " + OTHER_BUILDING_FILE;
@@ -168,14 +167,14 @@ public class Storage {
             System.err.println("File not found: " + e.getMessage());
         }
 
-        ArrayList<Hostel> hostels = new ArrayList<>(); // Added hostel ArrayList
+        ArrayList<Landmark> hostels = new ArrayList<>(); // Added hostel ArrayList
         try {
             processHostelFromFile(hostels); // Added processHostelFromFile call
         } catch (FileNotFoundException e) {
             System.err.println("File not found: " + e.getMessage());
         }
 
-        ArrayList<OtherBuildings> otherBuildings = new ArrayList<>(); // Added Place ArrayList
+        ArrayList<Landmark> otherBuildings = new ArrayList<>(); // Added Place ArrayList
         try {
             processOtherBuildingFromFile(otherBuildings); // Added processOtherBuildingFromFile call
         } catch (FileNotFoundException e) {

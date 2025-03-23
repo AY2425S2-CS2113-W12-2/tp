@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public abstract class Landmark {
+public class Landmark {
     protected String name;
     // nearest canteen starting at index 0
     protected ArrayList<Canteen> nearestCanteens;

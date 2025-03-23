@@ -2,6 +2,7 @@ package seedu.navi.canteenfinder;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import seedu.navi.canteenfinder.helperclasses.NearestCanteenData;
 import seedu.navi.exceptions.CanteenNotFound;
 import seedu.navi.exceptions.LocationNotFound;
 import seedu.navi.storage.Storage;

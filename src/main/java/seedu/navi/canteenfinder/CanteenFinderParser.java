@@ -1,6 +1,8 @@
 package seedu.navi.canteenfinder;
 
 import javafx.util.Pair;
+import seedu.navi.canteenfinder.helperclasses.NearestCanteenData;
+import seedu.navi.canteenfinder.helperclasses.UserShortcuts;
 import seedu.navi.canteenfinder.landmark.Landmark;
 import seedu.navi.canteenfinder.landmark.canteen.Canteen;
 import seedu.navi.exceptions.CanteenNotFound;
@@ -35,76 +37,11 @@ public class CanteenFinderParser {
 
     public static NearestCanteenData findNearestCanteenToMe(String landmark, String[] dietRestrictions)
             throws LocationNotFound, CanteenNotFound {
-        NearestCanteenData nearestCanteenData;
-        switch (landmark.toLowerCase()) {
-        case "soc":
-        case "school of computing":
-            nearestCanteenData = searchLandmark("SOC", dietRestrictions);
-            break;
-        case "cde":
-        case "college of design and engineering":
-            nearestCanteenData = searchLandmark("CDE", dietRestrictions);
-            break;
-        case "fass":
-        case "faculty of arts and social sciences":
-            nearestCanteenData = searchLandmark("FASS", dietRestrictions);
-            break;
-        case "biz":
-        case "nus business school":
-        case "nbs":
-            nearestCanteenData = searchLandmark("NBS", dietRestrictions);
-            break;
-        case "fos":
-        case "faculty of science":
-        case "soph":
-        case "school of public health":
-        case "som":
-        case "school of medicine":
-            nearestCanteenData = searchLandmark("Science", dietRestrictions);
-            break;
-        case "raffles hall":
-        case "raffles":
-            nearestCanteenData = searchLandmark("Raffles", dietRestrictions);
-            break;
-        case "eusoff hall":
-        case "eusoff":
-            nearestCanteenData = searchLandmark("Eusoff", dietRestrictions);
-            break;
-        case "temasek hall":
-        case "temasek":
-            nearestCanteenData = searchLandmark("Temasek", dietRestrictions);
-            break;
-        case "sheares hall":
-        case "sheares":
-            nearestCanteenData = searchLandmark("Sheares", dietRestrictions);
-            break;
-        case "kent ridge hall":
-            nearestCanteenData = searchLandmark("Kent Ridge", dietRestrictions);
-            break;
-        case "king edward hall":
-            nearestCanteenData = searchLandmark("King Edward", dietRestrictions);
-            break;
-        case "celc":
-            nearestCanteenData = searchLandmark("CELC", dietRestrictions);
-            break;
-        case "hssml":
-            nearestCanteenData = searchLandmark("HSSML", dietRestrictions);
-            break;
-        case "clb":
-            nearestCanteenData = searchLandmark("CLB", dietRestrictions);
-            break;
-        case "msl":
-            nearestCanteenData = searchLandmark("MSL", dietRestrictions);
-            break;
-        case "utown src":
-            nearestCanteenData = searchLandmark("UTown SRC", dietRestrictions);
-            break;
-        case "utown erc":
-            nearestCanteenData = searchLandmark("UTown ERC", dietRestrictions);
-            break;
-        default:
+        String normalisedLandmark = landmark.toLowerCase();
+        String searchKey = UserShortcuts.LANDMARK_MAP.get(normalisedLandmark);
+        if (searchKey == null) {
             throw new LocationNotFound();
         }
-        return nearestCanteenData;
+        return searchLandmark(searchKey, dietRestrictions);
     }
 }
