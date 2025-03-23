@@ -1,6 +1,8 @@
 package seedu.navi.textui;
 
-import seedu.navi.canteenfinder.landmark.canteen.Canteen;
+import seedu.navi.canteenfinder.NearestCanteenData;
+
+import java.util.ArrayList;
 
 public class TextUi {
     private static final String logo = """
@@ -63,10 +65,14 @@ public class TextUi {
         printLineSeparator();
     }
 
-    public static void printNearestCanteenCF(Canteen nearestCanteen) {
+    public static void printNearestCanteenCF(NearestCanteenData nearestCanteenData) {
         printLineSeparator();
         System.out.println("Alrighty! The nearest canteen to you that fit your criteria is");
-        System.out.println(nearestCanteen.getName());
+        System.out.println(nearestCanteenData.nearestCanteen().getName());
+        System.out.println("which has: ");
+        printValidStallsCF(nearestCanteenData.validStalls());
+        System.out.println("and it is approximately at most " + nearestCanteenData.landmarkToCanteenDist()
+                + "m from where you are.");
         printRepeatCanteenFinderCF();
         printLineSeparator();
     }
@@ -112,4 +118,11 @@ public class TextUi {
         System.out.println("You can enter your canteen criteria again to start the search again,");
         System.out.println("or \"exit\" to exit canteen finder.");
     }
+
+    private static void printValidStallsCF(ArrayList<String> validStalls) {
+        for (String stall : validStalls) {
+            System.out.println(stall);
+        }
+    }
 }
+

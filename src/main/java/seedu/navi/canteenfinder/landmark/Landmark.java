@@ -1,5 +1,6 @@
 package seedu.navi.canteenfinder.landmark;
 
+import javafx.util.Pair;
 import seedu.navi.canteenfinder.landmark.canteen.Canteen;
 
 import java.util.ArrayList;
@@ -26,10 +27,11 @@ public abstract class Landmark {
         nearestCanteens.add(canteen);
     }
 
-    public Canteen getNearestCanteen(String[] dietRestrictions) {
+    public Pair<Canteen, ArrayList<String>> getNearestCanteen(String[] dietRestrictions) {
         for (Canteen canteen : nearestCanteens) {
-            if (canteen.isValidCanteen(dietRestrictions)) {
-                return canteen;
+            ArrayList<String> validStalls = canteen.findValidStalls(dietRestrictions);
+            if (!validStalls.isEmpty()) {
+                return new Pair<>(canteen, validStalls);
             }
         }
         return null;
