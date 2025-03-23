@@ -105,7 +105,8 @@ public class CanteenFinder {
                 break;
             }
             try {
-                NearestCanteenData nearestCanteenData = CanteenFinderParser.findNearestCanteenToMe(command, dietRestrictions);
+                NearestCanteenData nearestCanteenData =
+                        CanteenFinderParser.findNearestCanteenToMe(command, dietRestrictions);
                 TextUi.printNearestCanteenCF(nearestCanteenData);
             } catch (LocationNotFound e) {
                 TextUi.printLocationNotFoundCF();
