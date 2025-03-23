@@ -1,6 +1,6 @@
 package seedu.navi.storage;
 
-import seedu.navi.canteenfinder.CanteenFinder;
+import seedu.navi.canteenfinder.CanteenFinderParser;
 import seedu.navi.canteenfinder.landmark.Faculty;
 import seedu.navi.canteenfinder.landmark.OtherBuildings;
 import seedu.navi.canteenfinder.landmark.canteen.Canteen;
@@ -181,8 +181,8 @@ public class Storage {
         } catch (FileNotFoundException e) {
             System.err.println("File not found: " + e.getMessage());
         }
-        CanteenFinder.LANDMARKS.addAll(faculties);
-        CanteenFinder.LANDMARKS.addAll(hostels); //added building to landmarks.
-        CanteenFinder.LANDMARKS.addAll(otherBuildings);
+        CanteenFinderParser.LANDMARKS.addAll(faculties);
+        CanteenFinderParser.LANDMARKS.addAll(hostels); //added building to landmarks.
+        CanteenFinderParser.LANDMARKS.addAll(otherBuildings);
     }
 }
