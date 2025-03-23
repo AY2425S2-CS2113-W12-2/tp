@@ -1,5 +1,6 @@
 package seedu.navi.canteenfinder;
 
+import javafx.util.Pair;
 import seedu.navi.canteenfinder.landmark.canteen.Canteen;
 import seedu.navi.exceptions.CanteenNotFound;
 import seedu.navi.exceptions.EmptyDietRestriction;
@@ -12,15 +13,18 @@ import java.util.Scanner;
 import java.util.Set;
 
 public class CanteenFinder {
+    private static final Set<String> validRestrictions = new HashSet<>();
+
     private static boolean isValidDietRestrictions(String[] dietRestrictions)
             throws IllegalArgumentException {
         // Define the set of valid diet restrictions
-        Set<String> validRestrictions = new HashSet<>();
-        validRestrictions.add("halal certified");
-        validRestrictions.add("muslim owned");
-        validRestrictions.add("vegetarian");
-        validRestrictions.add("aircon");
-        validRestrictions.add("nil");
+        if (validRestrictions.isEmpty()) {
+            validRestrictions.add("halal certified");
+            validRestrictions.add("muslim owned");
+            validRestrictions.add("vegetarian");
+            validRestrictions.add("aircon");
+            validRestrictions.add("nil");
+        }
 
         Set<String> uniqueRestrictions = new HashSet<>();
 
@@ -28,16 +32,13 @@ public class CanteenFinder {
 
         for (String dietRestriction : dietRestrictions) {
             String lowerCaseRestriction = dietRestriction.toLowerCase().trim();
-
             if (!validRestrictions.contains(lowerCaseRestriction)) {
                 return false;
             }
-
             // Check for duplicates
             if (!uniqueRestrictions.add(lowerCaseRestriction)) {
                 return false;
             }
-
             if ("nil".equals(lowerCaseRestriction)) {
                 isNILPresent = true;
             }
@@ -64,11 +65,9 @@ public class CanteenFinder {
         } catch (IllegalArgumentException e) {
             throw new IllegalArgumentException();
         }
-
         if (dietRestrictions[0].trim().equalsIgnoreCase("nil")) {
             dietRestrictions = null;
         }
-
         return dietRestrictions;
     }
 
@@ -103,15 +102,13 @@ public class CanteenFinder {
                 TextUi.printEmptyLandmarkCF();
                 command = in.nextLine();
             }
-
             if (command.trim().equalsIgnoreCase("exit")) {
                 TextUi.printExitCanteenFinderCF();
                 break;
             }
-
             try {
-                Canteen nearestCanteen = CanteenFinderParser.findNearestCanteenToMe(command, dietRestrictions);
-                TextUi.printNearestCanteenCF(nearestCanteen);
+                Pair<Canteen, Integer> canteenDistPair = CanteenFinderParser.findNearestCanteenToMe(command, dietRestrictions);
+                TextUi.printNearestCanteenCF(canteenDistPair);
             } catch (LocationNotFound e) {
                 TextUi.printLocationNotFoundCF();
             } catch (CanteenNotFound e) {

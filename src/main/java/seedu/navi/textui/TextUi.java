@@ -1,5 +1,6 @@
 package seedu.navi.textui;
 
+import javafx.util.Pair;
 import seedu.navi.canteenfinder.landmark.canteen.Canteen;
 
 public class TextUi {
@@ -63,10 +64,11 @@ public class TextUi {
         printLineSeparator();
     }
 
-    public static void printNearestCanteenCF(Canteen nearestCanteen) {
+    public static void printNearestCanteenCF(Pair<Canteen, Integer> canteenDistPair) {
         printLineSeparator();
         System.out.println("Alrighty! The nearest canteen to you that fit your criteria is");
-        System.out.println(nearestCanteen.getName());
+        System.out.println(canteenDistPair.getKey().getName());
+        System.out.println("and it is approximately at most " + canteenDistPair.getValue() + "m from where you are.");
         printRepeatCanteenFinderCF();
         printLineSeparator();
     }
