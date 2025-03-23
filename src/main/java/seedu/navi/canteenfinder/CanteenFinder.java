@@ -1,7 +1,5 @@
 package seedu.navi.canteenfinder;
 
-import javafx.util.Pair;
-import seedu.navi.canteenfinder.landmark.canteen.Canteen;
 import seedu.navi.exceptions.CanteenNotFound;
 import seedu.navi.exceptions.EmptyDietRestriction;
 import seedu.navi.exceptions.InvalidDietRestrictions;
@@ -107,8 +105,8 @@ public class CanteenFinder {
                 break;
             }
             try {
-                Pair<Canteen, Integer> canteenDistPair = CanteenFinderParser.findNearestCanteenToMe(command, dietRestrictions);
-                TextUi.printNearestCanteenCF(canteenDistPair);
+                NearestCanteenData nearestCanteenData = CanteenFinderParser.findNearestCanteenToMe(command, dietRestrictions);
+                TextUi.printNearestCanteenCF(nearestCanteenData);
             } catch (LocationNotFound e) {
                 TextUi.printLocationNotFoundCF();
             } catch (CanteenNotFound e) {

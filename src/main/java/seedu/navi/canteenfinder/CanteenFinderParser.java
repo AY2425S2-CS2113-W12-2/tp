@@ -11,43 +11,46 @@ import java.util.ArrayList;
 public class CanteenFinderParser {
     public static final ArrayList<Landmark> LANDMARKS = new ArrayList<>();
 
-    private static Pair<Canteen, Integer> searchLandmark(String userLocation, String[] dietRestrictions)
+    private static NearestCanteenData searchLandmark(String userLocation, String[] dietRestrictions)
             throws CanteenNotFound {
         assert !userLocation.isEmpty() : "userLocation should not be empty";
-        Canteen nearestCanteen = null;
-        Integer landmarkToCanteenDist = null;
+        Pair<Canteen, ArrayList<String>> canteenValidStallsPair = null;
+        Landmark userLandmark = null;
         for (Landmark landmark : LANDMARKS) {
             if (landmark.getName().equals(userLocation)) {
-                nearestCanteen = landmark.getNearestCanteen(dietRestrictions);
-                landmarkToCanteenDist = landmark.getCanteenDistance(nearestCanteen);
+                canteenValidStallsPair = landmark.getNearestCanteen(dietRestrictions);
+                userLandmark = landmark;
             }
         }
-        if (nearestCanteen != null) {
-            return new Pair<>(nearestCanteen, landmarkToCanteenDist);
+        if (canteenValidStallsPair != null) {
+            Canteen nearestCanteen = canteenValidStallsPair.getKey();
+            Integer landmarkToCanteenDist = userLandmark.getCanteenDistance(nearestCanteen);
+            ArrayList<String> validStalls = canteenValidStallsPair.getValue();
+            return new NearestCanteenData(nearestCanteen, landmarkToCanteenDist, validStalls);
         }
         throw new CanteenNotFound();
     }
 
-    public static Pair<Canteen, Integer> findNearestCanteenToMe(String landmark, String[] dietRestrictions)
+    public static NearestCanteenData findNearestCanteenToMe(String landmark, String[] dietRestrictions)
             throws LocationNotFound, CanteenNotFound {
-        Pair<Canteen, Integer> canteenDistPair;
+        NearestCanteenData nearestCanteenData;
         switch (landmark.toLowerCase()) {
         case "soc":
         case "school of computing":
-            canteenDistPair = searchLandmark("SOC", dietRestrictions);
+            nearestCanteenData = searchLandmark("SOC", dietRestrictions);
             break;
         case "cde":
         case "college of design and engineering":
-            canteenDistPair = searchLandmark("CDE", dietRestrictions);
+            nearestCanteenData = searchLandmark("CDE", dietRestrictions);
             break;
         case "fass":
         case "faculty of arts and social sciences":
-            canteenDistPair = searchLandmark("FASS", dietRestrictions);
+            nearestCanteenData = searchLandmark("FASS", dietRestrictions);
             break;
         case "biz":
         case "nus business school":
         case "nbs":
-            canteenDistPair = searchLandmark("NBS", dietRestrictions);
+            nearestCanteenData = searchLandmark("NBS", dietRestrictions);
             break;
         case "fos":
         case "faculty of science":
@@ -55,51 +58,51 @@ public class CanteenFinderParser {
         case "school of public health":
         case "som":
         case "school of medicine":
-            canteenDistPair = searchLandmark("Science", dietRestrictions);
+            nearestCanteenData = searchLandmark("Science", dietRestrictions);
             break;
         case "raffles hall":
         case "raffles":
-            canteenDistPair = searchLandmark("Raffles", dietRestrictions);
+            nearestCanteenData = searchLandmark("Raffles", dietRestrictions);
             break;
         case "eusoff hall":
         case "eusoff":
-            canteenDistPair = searchLandmark("Eusoff", dietRestrictions);
+            nearestCanteenData = searchLandmark("Eusoff", dietRestrictions);
             break;
         case "temasek hall":
         case "temasek":
-            canteenDistPair = searchLandmark("Temasek", dietRestrictions);
+            nearestCanteenData = searchLandmark("Temasek", dietRestrictions);
             break;
         case "sheares hall":
         case "sheares":
-            canteenDistPair = searchLandmark("Sheares", dietRestrictions);
+            nearestCanteenData = searchLandmark("Sheares", dietRestrictions);
             break;
         case "kent ridge hall":
-            canteenDistPair = searchLandmark("Kent Ridge", dietRestrictions);
+            nearestCanteenData = searchLandmark("Kent Ridge", dietRestrictions);
             break;
         case "king edward hall":
-            canteenDistPair = searchLandmark("King Edward", dietRestrictions);
+            nearestCanteenData = searchLandmark("King Edward", dietRestrictions);
             break;
         case "celc":
-            canteenDistPair = searchLandmark("CELC", dietRestrictions);
+            nearestCanteenData = searchLandmark("CELC", dietRestrictions);
             break;
         case "hssml":
-            canteenDistPair = searchLandmark("HSSML", dietRestrictions);
+            nearestCanteenData = searchLandmark("HSSML", dietRestrictions);
             break;
         case "clb":
-            canteenDistPair = searchLandmark("CLB", dietRestrictions);
+            nearestCanteenData = searchLandmark("CLB", dietRestrictions);
             break;
         case "msl":
-            canteenDistPair = searchLandmark("MSL", dietRestrictions);
+            nearestCanteenData = searchLandmark("MSL", dietRestrictions);
             break;
         case "utown src":
-            canteenDistPair = searchLandmark("UTown SRC", dietRestrictions);
+            nearestCanteenData = searchLandmark("UTown SRC", dietRestrictions);
             break;
         case "utown erc":
-            canteenDistPair = searchLandmark("UTown ERC", dietRestrictions);
+            nearestCanteenData = searchLandmark("UTown ERC", dietRestrictions);
             break;
         default:
             throw new LocationNotFound();
         }
-        return canteenDistPair;
+        return nearestCanteenData;
     }
 }
