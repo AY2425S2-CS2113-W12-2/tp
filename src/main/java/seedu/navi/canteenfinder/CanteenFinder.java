@@ -1,5 +1,6 @@
 package seedu.navi.canteenfinder;
 
+import seedu.navi.canteenfinder.helperclasses.NearestCanteenData;
 import seedu.navi.exceptions.CanteenNotFound;
 import seedu.navi.exceptions.EmptyDietRestriction;
 import seedu.navi.exceptions.InvalidDietRestrictions;
@@ -11,17 +12,17 @@ import java.util.Scanner;
 import java.util.Set;
 
 public class CanteenFinder {
-    private static final Set<String> validRestrictions = new HashSet<>();
+    private static final Set<String> VALID_RESTRICTIONS = new HashSet<>();
 
     private static boolean isValidDietRestrictions(String[] dietRestrictions)
             throws IllegalArgumentException {
         // Define the set of valid diet restrictions
-        if (validRestrictions.isEmpty()) {
-            validRestrictions.add("halal certified");
-            validRestrictions.add("muslim owned");
-            validRestrictions.add("vegetarian");
-            validRestrictions.add("aircon");
-            validRestrictions.add("nil");
+        if (VALID_RESTRICTIONS.isEmpty()) {
+            VALID_RESTRICTIONS.add("halal certified");
+            VALID_RESTRICTIONS.add("muslim owned");
+            VALID_RESTRICTIONS.add("vegetarian");
+            VALID_RESTRICTIONS.add("aircon");
+            VALID_RESTRICTIONS.add("nil");
         }
         Set<String> uniqueRestrictions = new HashSet<>();
 
@@ -29,7 +30,7 @@ public class CanteenFinder {
 
         for (String dietRestriction : dietRestrictions) {
             String lowerCaseRestriction = dietRestriction.toLowerCase().trim();
-            if (!validRestrictions.contains(lowerCaseRestriction)) {
+            if (!VALID_RESTRICTIONS.contains(lowerCaseRestriction)) {
                 return false;
             }
             // Check for duplicates

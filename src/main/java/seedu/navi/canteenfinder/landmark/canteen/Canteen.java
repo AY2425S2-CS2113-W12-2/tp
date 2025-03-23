@@ -5,8 +5,8 @@ import seedu.navi.canteenfinder.landmark.canteen.stall.Stall;
 import java.util.ArrayList;
 
 public class Canteen {
-    private final String name;
-    private final ArrayList<Stall> stalls;
+    private String name;
+    private ArrayList<Stall> stalls;
 
     public Canteen(String name) {
         this.name = name;

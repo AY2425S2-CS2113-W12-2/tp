@@ -1,4 +1,4 @@
-package seedu.navi.canteenfinder;
+package seedu.navi.canteenfinder.helperclasses;
 
 import seedu.navi.canteenfinder.landmark.canteen.Canteen;
 
