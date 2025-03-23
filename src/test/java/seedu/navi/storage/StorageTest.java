@@ -4,9 +4,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import seedu.navi.canteenfinder.CanteenFinderParser;
 import seedu.navi.canteenfinder.landmark.Faculty;
-import seedu.navi.canteenfinder.landmark.Hostel;
 import seedu.navi.canteenfinder.landmark.Landmark;
-import seedu.navi.canteenfinder.landmark.OtherBuildings;
 import seedu.navi.canteenfinder.landmark.canteen.Canteen;
 import seedu.navi.canteenfinder.landmark.canteen.stall.Stall;
 import seedu.navi.canteenfinder.landmark.canteen.stall.StallCharacteristic;
@@ -152,12 +150,12 @@ public class StorageTest {
     @Test
     public void testProcessDataFromFiles_hostelDistancesAreCorrect() {
         Storage.processDataFromFiles();
-        Hostel raffles = findLandmarkByName("Raffles", Hostel.class);
+        Landmark raffles = findLandmarkByName("Raffles", Landmark.class);
         assert raffles != null;
         assert raffles.getCanteenDistance(Storage.getCanteenMap().get("Techno Edge")) == 550;
         assert raffles.getCanteenDistance(Storage.getCanteenMap().get("Fine Food")) == 650;
 
-        Hostel eusoff = findLandmarkByName("Eusoff", Hostel.class);
+        Landmark eusoff = findLandmarkByName("Eusoff", Landmark.class);
         assert eusoff != null;
         assert eusoff.getCanteenDistance(Storage.getCanteenMap().get("The Deck")) == 400;
         assert eusoff.getCanteenDistance(Storage.getCanteenMap().get("Flavours")) == 1600;
@@ -180,12 +178,12 @@ public class StorageTest {
     @Test
     public void testProcessDataFromFiles_otherBuildingDistancesAreCorrect() {
         Storage.processDataFromFiles();
-        OtherBuildings library = findLandmarkByName("CLB", OtherBuildings.class);
+        Landmark library = findLandmarkByName("CLB", Landmark.class);
         assert library != null;
         assert library.getCanteenDistance(Storage.getCanteenMap().get("Techno Edge")) == 200;
         assert library.getCanteenDistance(Storage.getCanteenMap().get("Fine Food")) == 1000;
 
-        OtherBuildings sportsHall = findLandmarkByName("MPSH", OtherBuildings.class);
+        Landmark sportsHall = findLandmarkByName("MPSH", Landmark.class);
         assert sportsHall != null;
         assert sportsHall.getCanteenDistance(Storage.getCanteenMap().get("The Deck")) == 1500;
         assert sportsHall.getCanteenDistance(Storage.getCanteenMap().get("Flavours")) == 900;
