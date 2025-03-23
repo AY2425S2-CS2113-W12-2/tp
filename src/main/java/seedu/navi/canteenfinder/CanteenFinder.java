@@ -23,7 +23,6 @@ public class CanteenFinder {
             validRestrictions.add("aircon");
             validRestrictions.add("nil");
         }
-
         Set<String> uniqueRestrictions = new HashSet<>();
 
         boolean isNILPresent = false;

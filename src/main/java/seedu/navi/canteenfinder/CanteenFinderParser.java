@@ -22,9 +22,11 @@ public class CanteenFinderParser {
                 userLandmark = landmark;
             }
         }
+        assert userLandmark != null : "userLandmark should always find a valid landmark";
         if (canteenValidStallsPair != null) {
             Canteen nearestCanteen = canteenValidStallsPair.getKey();
-            Integer landmarkToCanteenDist = userLandmark.getCanteenDistance(nearestCanteen);
+            int landmarkToCanteenDist = userLandmark.getCanteenDistance(nearestCanteen);
+            assert landmarkToCanteenDist != -1 : "landmarkToCanteenDist should always have a valid distance";
             ArrayList<String> validStalls = canteenValidStallsPair.getValue();
             return new NearestCanteenData(nearestCanteen, landmarkToCanteenDist, validStalls);
         }
