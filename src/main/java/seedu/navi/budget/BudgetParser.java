@@ -1,6 +1,7 @@
 package seedu.navi.budget;
 import seedu.navi.textui.TextUi;
 
+import java.time.LocalDate;
 import java.util.Scanner;
 
 public class BudgetParser {
@@ -13,9 +14,20 @@ public class BudgetParser {
 
     public static void start() {
         scanner = new Scanner(System.in);
+        budget.resetIfNeeded(); // Check if a reset is needed (daily, weekly, monthly)
+
         TextUi.printLineSeparator();
         System.out.println("💰 Budget Tracker: Enter a command (add X, deduct X, view, exit)");
         TextUi.printLineSeparator();
+
+        LocalDate today = LocalDate.now();
+        if (today.getDayOfWeek().getValue() == 1) { // Monday
+            System.out.println("Do you want to carry over last week's remaining budget? (yes/no)");
+            System.out.print("> ");
+            String response = scanner.nextLine().trim().toLowerCase();
+            budget.resetWeeklyBudget(response.equals("yes"));
+        }
+
 
         while (true) {
             System.out.print("> ");
@@ -46,7 +58,7 @@ public class BudgetParser {
             switch (command) {
             case "add":
                 try {
-                    budget.addDailyBudget(amount);
+                    budget.addWeeklyBudget(amount);
                 } catch (IllegalArgumentException e) {
                     TextUi.printLineSeparator();
                     System.out.println("⚠ Error: " + e.getMessage());
@@ -64,6 +76,9 @@ public class BudgetParser {
                 break;
             case "view":
                 budget.viewExpenses();
+                break;
+            case "reset":
+                budget.resetWeeklyBudget(false); // Reset weekly budget (user chooses whether to carry over)
                 break;
             case "exit":
                 TextUi.printLineSeparator();

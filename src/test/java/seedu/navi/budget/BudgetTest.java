@@ -18,12 +18,12 @@ public class BudgetTest {
     @Test
     public void testAddDailyBudget_validAmount() {
         // Test that adding a valid amount increases the daily budget correctly
-        budget.addDailyBudget(50.0);
-        assertEquals(50.0, budget.getDailyBudget(), "Daily budget should be 50.0 after adding 50.0");
+        budget.addWeeklyBudget(50.0);
+        assertEquals(50.0, budget.getWeeklyBudget(), "Daily budget should be 50.0 after adding 50.0");
 
         // Test that adding another valid amount updates the daily budget
-        budget.addDailyBudget(30.0);
-        assertEquals(80.0, budget.getDailyBudget(), "Daily budget should be 80.0 after adding 30.0");
+        budget.addWeeklyBudget(30.0);
+        assertEquals(80.0, budget.getWeeklyBudget(), "Daily budget should be 80.0 after adding 30.0");
     }
 
     @Test
@@ -44,7 +44,7 @@ public class BudgetTest {
         budget.deductExpense(30.0);
         assertEquals(70.0, budget.getDailyBudget(), "Daily budget should be 70.0 after deducting 30.0");
         assertEquals(30.0, budget.getDailyExpenses(), "Daily expenses should be 30.0 after the deduction");
-        assertEquals(30.0, budget.getMonthlyTotal(), "Monthly total should be 30.0 after the deduction");
+        assertEquals(30.0, budget.getMonthlyExpenses(), "Monthly total should be 30.0 after the deduction");
     }
 
     @Test
@@ -87,7 +87,7 @@ public class BudgetTest {
 
         assertEquals(70.0, budget.getDailyBudget(), "Daily budget should be 70.0");
         assertEquals(30.0, budget.getDailyExpenses(), "Daily expenses should be 30.0");
-        assertEquals(30.0, budget.getMonthlyTotal(), "Monthly total should be 30.0");
+        assertEquals(30.0, budget.getMonthlyExpenses(), "Monthly total should be 30.0");
     }
 }
 
