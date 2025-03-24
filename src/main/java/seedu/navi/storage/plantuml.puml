@@ -1,0 +1,27 @@
+@startuml
+
+actor Navi
+participant Storage
+participant Faculty
+participant Landmark
+participant Canteen
+participant Stall
+
+Navi -> Storage : processDataFromFiles()
+Storage -> Storage : processCanteenFromFile()
+Storage -> Canteen : insertCanteenFromData(canteenData)
+Canteen -> Stall : addStall(stallData)
+Storage -> Storage : processFacultyFromFile(faculties)
+Storage -> Faculty : insertFacultyFromData(facultyData, faculties)
+Faculty -> Canteen : setNearestCanteens(canteen)
+Faculty -> Canteen : setCanteenDistance(canteen, distance)
+Storage -> Storage : processHostelFromFile(hostels)
+Storage -> Landmark : insertHostelFromData(hostelData, hostels)
+Landmark -> Canteen : setNearestCanteens(canteen)
+Landmark -> Canteen : setCanteenDistance(canteen, distance)
+Storage -> Storage : processOtherBuildingFromFile(otherBuildings)
+Storage -> Landmark : insertOtherBuildingFromData(otherBuildingData, otherBuildings)
+Landmark -> Canteen : setNearestCanteens(canteen)
+Landmark -> Canteen : setCanteenDistance(canteen, distance)
+
+@enduml
