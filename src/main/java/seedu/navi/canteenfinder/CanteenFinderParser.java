@@ -3,11 +3,9 @@ package seedu.navi.canteenfinder;
 import seedu.navi.canteenfinder.helperclasses.NearestCanteenData;
 import seedu.navi.canteenfinder.helperclasses.UserShortcuts;
 import seedu.navi.canteenfinder.landmark.Landmark;
-import seedu.navi.canteenfinder.landmark.canteen.Canteen;
 import seedu.navi.exceptions.CanteenNotFound;
 import seedu.navi.exceptions.LocationNotFound;
 
-import java.util.AbstractMap;
 import java.util.ArrayList;
 
 // main class for canteen finder feature
