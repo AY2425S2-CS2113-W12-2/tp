@@ -21,11 +21,12 @@ public class BudgetParser {
         TextUi.printLineSeparator();
 
         LocalDate today = LocalDate.now();
-        if (today.getDayOfWeek().getValue() == 1) { // Monday
+        LocalDate lastUpdated = budget.getLastUpdatedDate();
+        if (today.getDayOfWeek().getValue() == 1 &&budget.isNewWeek(today)) {
             System.out.println("Do you want to carry over last week's remaining budget? (yes/no)");
             System.out.print("> ");
             String response = scanner.nextLine().trim().toLowerCase();
-            budget.resetWeeklyBudget(response.equals("yes"));
+            budget.resetWeeklyBudget(!response.equals("yes"));
         }
 
 
@@ -93,6 +94,3 @@ public class BudgetParser {
         }
     }
 }
-
-
-

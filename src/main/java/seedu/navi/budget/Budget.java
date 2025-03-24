@@ -12,28 +12,31 @@ import java.util.HashMap;
 
 public class Budget {
     private static final DecimalFormat df = new DecimalFormat("0.00");
-    private static final String FILE_PATH = "budget_data.json";
+    private static String filePath = "budget_data.json";
 
     private double weeklyBudget;   // Money available for today
     private double monthlyExpenses;  // Total spent this month
     private double weeklyExpenses;
     private double dailyExpenses;
     private LocalDate lastUpdatedDate;
+    private LocalDate currentDateForTesting; // Add this field
 
     public Budget() {
         loadBudgetData();
         resetIfNeeded();
     }
 
+    public static void setFilePath(String path) {
+        filePath = path;
+    }
+
     public void resetIfNeeded() {
-        LocalDate today = LocalDate.now();
-        if (!today.equals(lastUpdatedDate)) {
+        LocalDate today = getCurrentDate();
+        if (lastUpdatedDate == null || !today.equals(lastUpdatedDate)) {
             if (lastUpdatedDate == null || !today.getMonth().equals(lastUpdatedDate.getMonth())) {
                 monthlyExpenses = 0; // Reset monthly spending
             }
-            if (lastUpdatedDate == null || today.getDayOfWeek().getValue() == 1) {
-                weeklyExpenses = 0; // Reset weekly expenses
-            }
+            // Don't reset weekly expenses here - let BudgetParser handle it
             dailyExpenses = 0; // Reset daily expenses
             lastUpdatedDate = today;
             saveBudgetData();
@@ -93,7 +96,7 @@ public class Budget {
     }
 
     private void saveBudgetData() {
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(FILE_PATH))) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath))) {
             HashMap<String, String> data = new HashMap<>();
             data.put("weeklyBudget", String.valueOf(weeklyBudget));
             data.put("dailyExpenses", String.valueOf(dailyExpenses));
@@ -107,7 +110,7 @@ public class Budget {
     }
 
     private void loadBudgetData() {
-        File file = new File(FILE_PATH);
+        File file = new File(filePath);
         if (!file.exists()) {
             return;
         }
@@ -154,5 +157,38 @@ public class Budget {
         assert monthlyExpenses >= 0 : "Monthly total should never be negative";
         return monthlyExpenses;
     }
-}
 
+    public double getWeeklyExpenses() {
+        assert weeklyExpenses >= 0 : "Weekly budget should never be negative";
+        return weeklyExpenses;
+    }
+
+    public LocalDate getLastUpdatedDate() {
+        return lastUpdatedDate;
+    }
+
+    public void setLastUpdatedDate(LocalDate lastUpdatedDate) {
+        this.lastUpdatedDate = lastUpdatedDate;
+    }
+
+    public boolean isNewWeek(LocalDate today) {
+        if (lastUpdatedDate == null) {
+            return true;
+        }
+        return today.getDayOfWeek().getValue() == 1 &&
+                lastUpdatedDate.isBefore(today.minusDays(today.getDayOfWeek().getValue() - 1));
+    }
+
+
+    public void setCurrentDateForTesting(LocalDate date) {
+        this.currentDateForTesting = date;
+    }
+
+    private LocalDate getCurrentDate() {
+        return currentDateForTesting != null ? currentDateForTesting : LocalDate.now();
+    }
+
+    public void clearTestDate() {
+        this.currentDateForTesting = null;
+    }
+}
