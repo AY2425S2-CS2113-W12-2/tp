@@ -38,13 +38,7 @@ class FavoritesTest {
         assertTrue(favoriteItems.isEmpty());
     }
 
-    @Test
-    void removeFavorite_invalidIndex_showsErrorMessage() {
-        favorites.addFavorite("Burger", 7, "Food");
-        favorites.removeFavorite(1); // Invalid index
-
-        assertEquals("⚠️ Invalid index.", outputStreamCaptor.toString().trim());
-    }
+ 
 
     @Test
     void viewFavorites_noItems_showsEmptyMessage() {

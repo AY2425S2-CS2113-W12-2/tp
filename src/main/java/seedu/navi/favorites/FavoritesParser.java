@@ -12,7 +12,8 @@ public class FavoritesParser {
 
     public static void start() {
         scanner = new Scanner(System.in);
-        System.out.println("🌟 Favorites Tracker: Enter a command (add X : Y : Z, remove N, view, sort asc/desc, search X, undo, exit)");
+        System.out.println("🌟 Favorites Tracker: Enter a command (add X : Y : Z, remove N, view, sort asc/desc, " +
+                "search X, undo, exit)");
 
         while (true) {
             System.out.print("> ");
@@ -50,7 +51,8 @@ public class FavoritesParser {
                 System.out.println("👋 Exiting Favorites Tracker.");
                 return;
             default:
-                System.out.println("⚠️ Unknown command. Try: add X : Y : Z, remove N, view, sort asc/desc, search X, undo, exit.");
+                System.out.println("⚠️ Unknown command. Try: add X : Y : Z, remove N, view, sort asc/desc, search X, "
+                        + "undo, exit.");
             }
         }
     }
