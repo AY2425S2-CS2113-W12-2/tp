@@ -1,25 +1,26 @@
 package seedu.navi.canteenfinder;
 
-import javafx.util.Pair;
 import seedu.navi.canteenfinder.helperclasses.NearestCanteenData;
 import seedu.navi.canteenfinder.helperclasses.UserShortcuts;
 import seedu.navi.canteenfinder.landmark.Landmark;
 import seedu.navi.canteenfinder.landmark.canteen.Canteen;
 import seedu.navi.exceptions.CanteenNotFound;
 import seedu.navi.exceptions.LocationNotFound;
+
+import java.util.AbstractMap;
 import java.util.ArrayList;
 
 // main class for canteen finder feature
 public class CanteenFinderParser {
     public static final ArrayList<Landmark> LANDMARKS = new ArrayList<>();
 
-    private static NearestCanteenData searchLandmark(String userLocation, String[] dietRestrictions)
+    private static NearestCanteenData searchLandmark(String landmarkName, String[] dietRestrictions)
             throws CanteenNotFound {
-        assert !userLocation.isEmpty() : "userLocation should not be empty";
-        Pair<Canteen, ArrayList<String>> canteenValidStallsPair = null;
+        assert !landmarkName.isEmpty() : "landmarkName should not be empty";
+        AbstractMap.SimpleEntry<Canteen, ArrayList<String>> canteenValidStallsPair = null;
         Landmark userLandmark = null;
         for (Landmark landmark : LANDMARKS) {
-            if (landmark.getName().equals(userLocation)) {
+            if (landmark.getName().equals(landmarkName)) {
                 canteenValidStallsPair = landmark.getNearestCanteen(dietRestrictions);
                 userLandmark = landmark;
             }
@@ -35,13 +36,12 @@ public class CanteenFinderParser {
         throw new CanteenNotFound();
     }
 
-    public static NearestCanteenData findNearestCanteenToMe(String landmark, String[] dietRestrictions)
+    public static NearestCanteenData findNearestCanteen(String userLocation, String[] dietRestrictions)
             throws LocationNotFound, CanteenNotFound {
-        String normalisedLandmark = landmark.toLowerCase();
-        String searchKey = UserShortcuts.LANDMARK_MAP.get(normalisedLandmark);
-        if (searchKey == null) {
+        String landmarkName = UserShortcuts.LANDMARK_MAP.get(userLocation.toLowerCase());
+        if (landmarkName == null) {
             throw new LocationNotFound();
         }
-        return searchLandmark(searchKey, dietRestrictions);
+        return searchLandmark(landmarkName, dietRestrictions);
     }
 }
