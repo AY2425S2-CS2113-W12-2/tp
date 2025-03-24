@@ -28,10 +28,10 @@ public class Landmark {
     }
 
     public NearestCanteenData getNearestCanteen(String[] dietRestrictions) {
-        for (Canteen canteen : nearestCanteens) {
-            ArrayList<String> validStalls = canteen.findValidStalls(dietRestrictions);
+        for (Canteen nearestCanteen : nearestCanteens) {
+            ArrayList<String> validStalls = nearestCanteen.findValidStalls(dietRestrictions);
             if (!validStalls.isEmpty()) {
-                return new NearestCanteenData(canteen, getCanteenDistance(canteen), validStalls);
+                return new NearestCanteenData(nearestCanteen, getCanteenDistance(nearestCanteen), validStalls);
             }
         }
         return null;
