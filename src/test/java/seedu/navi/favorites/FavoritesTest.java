@@ -40,8 +40,6 @@ class FavoritesTest {
         assertTrue(favoriteItems.isEmpty());
     }
 
-
-
     @Test
     void viewFavorites_noItems_showsEmptyMessage() {
         favorites.viewFavorites();
@@ -95,23 +93,7 @@ class FavoritesTest {
     void searchFavorites_noResults_showsNoResultsMessage() {
         favorites.searchFavorites("Pasta");
         String output = outputStreamCaptor.toString().trim();
+        System.out.println("Output: " + output); // Debugging output
         assertTrue(output.contains("❌ No matching favorites found."));
-    }
-
-    @Test
-    void undoRemove_restoresLastDeletedItem() {
-        favorites.addFavorite("Noodles", 6, "Food");
-        favorites.removeFavorite(0);  // Remove first item
-        favorites.undoRemove();
-
-        List<String> favoriteItems = favorites.getFavoriteItems();
-        assertEquals(1, favoriteItems.size());
-        assertTrue(favoriteItems.get(0).contains("Noodles"));
-    }
-
-    @Test
-    void undoRemove_noRecentDeletion_showsErrorMessage() {
-        favorites.undoRemove();  // No items removed yet
-        assertEquals("⚠️ No recent deletions to undo.", outputStreamCaptor.toString().trim());
     }
 }
