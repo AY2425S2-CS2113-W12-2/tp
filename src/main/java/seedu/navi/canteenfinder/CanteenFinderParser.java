@@ -17,21 +17,14 @@ public class CanteenFinderParser {
     private static NearestCanteenData searchLandmark(String landmarkName, String[] dietRestrictions)
             throws CanteenNotFound {
         assert !landmarkName.isEmpty() : "landmarkName should not be empty";
-        AbstractMap.SimpleEntry<Canteen, ArrayList<String>> canteenValidStallsPair = null;
-        Landmark userLandmark = null;
+        NearestCanteenData nearestCanteenData = null;
         for (Landmark landmark : LANDMARKS) {
             if (landmark.getName().equals(landmarkName)) {
-                canteenValidStallsPair = landmark.getNearestCanteen(dietRestrictions);
-                userLandmark = landmark;
+                nearestCanteenData = landmark.getNearestCanteen(dietRestrictions);
             }
         }
-        assert userLandmark != null : "userLandmark should always find a valid landmark";
-        if (canteenValidStallsPair != null) {
-            Canteen nearestCanteen = canteenValidStallsPair.getKey();
-            int landmarkToCanteenDist = userLandmark.getCanteenDistance(nearestCanteen);
-            assert landmarkToCanteenDist != -1 : "landmarkToCanteenDist should always have a valid distance";
-            ArrayList<String> validStalls = canteenValidStallsPair.getValue();
-            return new NearestCanteenData(nearestCanteen, landmarkToCanteenDist, validStalls);
+        if (nearestCanteenData != null) {
+            return nearestCanteenData;
         }
         throw new CanteenNotFound();
     }
