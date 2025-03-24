@@ -1,16 +1,18 @@
 package seedu.navi.budget;
 
-import static org.junit.jupiter.api.Assertions.*;
-import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import java.io.File;
 import java.time.LocalDate;
-import java.io.ByteArrayInputStream;
-import java.io.InputStream;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class BudgetTest {
-    private Budget budget;
     private static final String TEST_FILE_PATH = "budget_data.json";
+    private Budget budget;
 
     @BeforeEach
     void setUp() {
