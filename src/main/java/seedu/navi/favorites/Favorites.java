@@ -24,6 +24,7 @@ public class Favorites {
         TextUi.printLineSeparator();
     }
 
+ favorites-increment
     // Removes an item by index
     public void removeFavorite(int index) {
         if (index < 0 || index >= favoriteItems.size()) {
@@ -46,6 +47,25 @@ public class Favorites {
             System.out.println("⚠️ No recent deletions to undo.");
             TextUi.printLineSeparator();
             return;
+
+    // Adds an item to favorites
+    public void addFavorite(String item) {
+        assert item != null && !item.trim().isEmpty() : "Item should not be null or empty";
+
+
+        favoriteItems.add(item);
+        System.out.println("Added '" + item + "' to your favorites.");
+    }
+
+    // Removes an item from favorites
+    public void removeFavorite(String item) {
+        assert item != null && !item.trim().isEmpty() : "Item should not be null or empty";
+
+        if (favoriteItems.remove(item)) {
+            System.out.println("Removed '" + item + "' from your favorites.");
+        } else {
+            System.out.println("⚠️ Item not found in favorites.");
+ master
         }
         String restoredItem = undoStack.pop();
         favoriteItems.add(restoredItem);

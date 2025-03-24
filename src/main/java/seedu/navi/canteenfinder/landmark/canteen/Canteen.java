@@ -5,8 +5,8 @@ import seedu.navi.canteenfinder.landmark.canteen.stall.Stall;
 import java.util.ArrayList;
 
 public class Canteen {
-    private final String name;
-    private final ArrayList<Stall> stalls;
+    private String name;
+    private ArrayList<Stall> stalls;
 
     public Canteen(String name) {
         this.name = name;
@@ -25,12 +25,13 @@ public class Canteen {
         return stalls;
     }
 
-    public boolean isValidCanteen(String[] dietRestrictions) {
+    public ArrayList<String> findValidStalls(String[] dietRestrictions) {
+        ArrayList<String> validStalls = new ArrayList<>();
         for (Stall stall : stalls) {
-            if (stall.hasValidStall(dietRestrictions)) {
-                return true;
+            if (stall.isValidStall(dietRestrictions)) {
+                validStalls.add(stall.getName());
             }
         }
-        return false;
+        return validStalls;
     }
 }

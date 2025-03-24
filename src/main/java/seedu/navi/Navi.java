@@ -1,6 +1,6 @@
 package seedu.navi;
 
-import seedu.navi.canteenfinder.CanteenFinderParser;
+import seedu.navi.canteenfinder.CanteenFinder;
 import seedu.navi.storage.Storage;
 import seedu.navi.textui.TextUi;
 import seedu.navi.budget.Budget;
@@ -21,12 +21,15 @@ public class Navi {
         Scanner in = new Scanner(System.in);
         TextUi.printGreetUser(in.nextLine());
 
-        // Initialize Budget instance
-        Budget budget = new Budget();
-        Favorites favorites = new Favorites();
+
+
         // Start command processing
         Navi ui = new Navi();
-        Parser parser = new Parser(ui, budget, favorites);
+        Favorites favorites = new Favorites();
+        Budget budget = new Budget();
+        Parser parser = new Parser(ui, favorites, budget);
+
+
 
         while (true) {
             String input = in.nextLine();
@@ -44,7 +47,7 @@ public class Navi {
     public void showError(String message) {
         TextUi.printLineSeparator();
         System.out.println("⚠ Whoops! " + message);
-        System.out.println("That one’s a bit crook, but no dramas – give it another go!");
+        System.out.println("Sorry! Please use one of these commands: canteen, budget, favourites, or guide.");
         TextUi.printLineSeparator();
     }
 }
@@ -61,13 +64,13 @@ class NaviException extends Exception {
 
 class Parser {
     private final Navi ui;
-    private final Budget budget;
     private final Favorites favorites;
+    private final Budget budget;
 
-    public Parser(Navi ui, Budget budget, Favorites favorites) {
+    public Parser(Navi ui, Favorites favorites, Budget budget) {
         this.ui = ui;
-        this.budget = budget;
         this.favorites = favorites;
+        this.budget = budget;
     }
 
     public void handleCommand(String input) {
@@ -78,15 +81,15 @@ class Parser {
                 System.exit(0);
                 break;
             case "canteen":
-                CanteenFinderParser.startCanteenFinder();
-                break;
-            case "budget":
-                BudgetParser budgetParser = new BudgetParser(budget);
-                budgetParser.start();
+                CanteenFinder.startCanteenFinder();
                 break;
             case "favorites":
                 FavoritesParser favoritesParser = new FavoritesParser(favorites);
                 favoritesParser.start();
+                break;
+            case "budget":
+                BudgetParser budgetParser = new BudgetParser(budget);
+                budgetParser.start();
                 break;
             default:
                 throw new NaviException("That’s not quite right, mate. Give it another shot!");
