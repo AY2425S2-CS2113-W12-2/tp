@@ -7,7 +7,19 @@
 ## Design & implementation
 
 {Describe the design and implementation of the product. Use UML diagrams and short code snippets where applicable.}
+### Canteen finder feature 
+The canteen finder feature allows the user to find the nearest canteen relative to where the user is in NUS.
+This functionality is controlled by the `CanteenFinder` class where it calls `findNearestCanteen(userLocation, dietRestrictions)`, 
+a class level method, of the `CanteenFinderParser` class. `findNearestCanteen()` would then call a helper 
+method to search the collection of landmark objects to find the landmark that corresponds to `userLocation`. Once the landmark is found,
+`findNearestCanteen()` will then call `getNearestCanteen(dietRestrictions)` of landmark to get the nearest canteen that fits the criteria
+stated by the user listed in `dietRestrictions`. Once retrieved, `getNearestCanteen()` would also call a helper method 
+`getCanteenDistance(nearestCanteen)` to retrieve the distance of the canteen to the landmark where the user is located.
+`getNearestCanteen()` would then return the object `nearestCanteenData` of the Record `NearestCanteenData` which stores the three attributes: 
+`nearestCanteen`, `landmarkToCanteenDist` and `validStalls`. `nearestCanteenData` is then return back to `CanteenFinder` which will print
+the attributes to the user.
 
+![CanteenFinderDiagram.drawio.png](diagrams/CanteenFinderDiagram.drawio.png)
 
 ## Product scope
 ### Target user profile
