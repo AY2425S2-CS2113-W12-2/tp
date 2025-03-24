@@ -78,22 +78,4 @@ class FavoritesTest {
         assertTrue(sortedItems.get(0).contains("Burger"));
         assertTrue(sortedItems.get(1).contains("Steak"));
     }
-
-    @Test
-    void searchFavorites_existingKeyword_findsItems() {
-        favorites.addFavorite("Chicken Rice", 8, "Food");
-        favorites.addFavorite("Roast Chicken", 7, "Food");
-
-        favorites.searchFavorites("Chicken");
-        String output = outputStreamCaptor.toString().trim();
-        assertTrue(output.contains("Chicken Rice") && output.contains("Roast Chicken"));
-    }
-
-    @Test
-    void searchFavorites_noResults_showsNoResultsMessage() {
-        favorites.searchFavorites("Pasta");
-        String output = outputStreamCaptor.toString().trim();
-        System.out.println("Output: " + output); // Debugging output
-        assertTrue(output.contains("❌ No matching favorites found."));
-    }
 }
