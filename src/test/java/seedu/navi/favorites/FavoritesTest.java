@@ -2,10 +2,12 @@ package seedu.navi.favorites;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class FavoritesTest {
 
@@ -38,7 +40,7 @@ class FavoritesTest {
         assertTrue(favoriteItems.isEmpty());
     }
 
- 
+
 
     @Test
     void viewFavorites_noItems_showsEmptyMessage() {
