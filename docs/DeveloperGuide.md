@@ -40,7 +40,7 @@ The following UML Sequence diagram shows the process of loading data from files 
 The first arrow represents Navi, the main program, calling the class-level method processDataFromFiles() of the 
 Storage class to begin loading data into the application.
 
-![](diagrams/Storage.png)
+![](diagrams/StorageRefactored.png)
 
 
 ## Product scope
