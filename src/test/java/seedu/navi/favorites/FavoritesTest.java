@@ -44,7 +44,7 @@ class FavoritesTest {
     void removeFavorite_invalidIndex_showsWarning() {
         favorites.removeFavorite(0);
         String output = outputStreamCaptor.toString().trim();
-        assertTrue(output.contains("⚠️ Invalid index."));
+        assertTrue(output.contains("Invalid index."));
     }
 
     @Test
@@ -57,7 +57,7 @@ class FavoritesTest {
     void undoRemove_noRecentDeletion_showsErrorMessage() {
         favorites.undoRemove();
         String output = outputStreamCaptor.toString().trim();
-        assertTrue(output.contains("⚠️ No recent deletions to undo."));
+        assertTrue(output.contains("No recent deletions to undo."));
     }
 
     @Test
