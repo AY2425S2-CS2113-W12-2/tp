@@ -24,6 +24,49 @@ level method `startCanteenFinder()` of `CanteenFinder` to begin the canteen find
 
 ![CanteenFinderDiagram.drawio.png](diagrams/CanteenFinderDiagram.drawio.png)
 
+### Favorites feature 
+Favorites Feature
+The favorites feature provides users with a system to manage their preferred items through a centralized `Favorites` 
+class. This class maintains two core data structures - an ArrayList called `favoriteItems` that stores all favorite 
+entries in a formatted string representation, and a Stack called `undoStack` that tracks recently deleted items to 
+support undo functionality.
+
+When adding new favorites, the `addFavorite` method accepts three parameters - description, rating, and category. 
+These components are combined into a standardized string format "Description | Rating: X | Category: Y" which 
+gets added to the `favoriteItems` collection. The method provides immediate visual feedback through console output to
+confirm the successful addition.
+
+For removal operations, the `removeFavorite` method first validates the provided index against the current list 
+bounds. If valid, it extracts the target item from `favoriteItems`, pushes it onto the undoStack for potential recovery, 
+and displays a removal confirmation message. Invalid indices trigger an appropriate warning message.
+
+The `undoRemove` functionality checks the undoStack for available operations. When items exist in the stack, it pops the 
+most recent deletion and restores it to `favoriteItems` while providing visual confirmation. If the stack is empty, it 
+informs the user that no undo operations are available.
+
+The `viewFavorites` method handles display operations by first checking if `favoriteItems` is empty. When populated, it 
+presents all items in a clean numbered list format, while empty states trigger a "No favorites yet" message. This 
+ensures users always receive appropriate feedback.
+
+Advanced operations include the `sortFavorites` method which implements rating-based sorting through a custom 
+Comparator. The method parses the rating values from the stored strings, performs the sort in either ascending
+or descending order based on the boolean parameter, and confirms completion to the user. The `searchFavorites` method 
+provides case-insensitive keyword matching across all favorite entries, displaying matches or notifying the user 
+when no results are found.
+
+The system architecture emphasizes simplicity through in-memory storage using formatted strings, though this 
+requires parsing operations for certain features. The undo functionality currently supports single-level undo
+for deletions only. All operations provide immediate visual feedback through the console interface. Future extensions
+could introduce persistent storage, enhanced search capabilities, additional sorting criteria, and more comprehensive 
+undo/redo functionality while maintaining the current straightforward user interaction model.
+
+The following UML Sequence diagram illustrates the core favorite management workflow. The starting arrow indicates the 
+main program initializing the Favorites feature through its constructor.
+
+
+
+
+
 ### Storage feature
 The Storage class handles the persistent storage of canteen, faculty, hostel, and other building data. 
 This functionality is managed through the Storage class, which calls processDataFromFiles() to load data from various 
