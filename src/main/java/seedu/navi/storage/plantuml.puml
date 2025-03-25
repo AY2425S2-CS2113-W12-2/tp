@@ -2,25 +2,33 @@
 
 actor Navi
 participant Storage
+participant CanteenDataProcessor
+participant FacultyDataProcessor
+participant HostelDataProcessor
+participant OtherBuildingDataProcessor
 participant Faculty
 participant Landmark
 participant Canteen
 participant Stall
 
 Navi -> Storage : processDataFromFiles()
-Storage -> Storage : processCanteenFromFile()
-Storage -> Canteen : insertCanteenFromData(canteenData)
+Storage -> CanteenDataProcessor : processData()
+CanteenDataProcessor -> CanteenDataProcessor : insertCanteenFromData(canteenData)
+CanteenDataProcessor -> Canteen : new Canteen(canteenName)
 Canteen -> Stall : addStall(stallData)
-Storage -> Storage : processFacultyFromFile(faculties)
-Storage -> Faculty : insertFacultyFromData(facultyData, faculties)
+Storage -> FacultyDataProcessor : processData(faculties)
+FacultyDataProcessor -> FacultyDataProcessor : insertFacultyFromData(facultyData, faculties)
+FacultyDataProcessor -> Faculty : new Faculty(facultyName)
 Faculty -> Canteen : setNearestCanteens(canteen)
 Faculty -> Canteen : setCanteenDistance(canteen, distance)
-Storage -> Storage : processHostelFromFile(hostels)
-Storage -> Landmark : insertHostelFromData(hostelData, hostels)
+Storage -> HostelDataProcessor : processData(hostels)
+HostelDataProcessor -> HostelDataProcessor : insertHostelFromData(hostelData, hostels)
+HostelDataProcessor -> Landmark : new Landmark(hostelName)
 Landmark -> Canteen : setNearestCanteens(canteen)
 Landmark -> Canteen : setCanteenDistance(canteen, distance)
-Storage -> Storage : processOtherBuildingFromFile(otherBuildings)
-Storage -> Landmark : insertOtherBuildingFromData(otherBuildingData, otherBuildings)
+Storage -> OtherBuildingDataProcessor : processData(otherBuildings)
+OtherBuildingDataProcessor -> OtherBuildingDataProcessor : insertOtherBuildingFromData(otherBuildingData, otherBuildings)
+OtherBuildingDataProcessor -> Landmark : new Landmark(otherBuildingName)
 Landmark -> Canteen : setNearestCanteens(canteen)
 Landmark -> Canteen : setCanteenDistance(canteen, distance)
 
