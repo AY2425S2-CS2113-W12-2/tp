@@ -36,3 +36,4 @@ public class CanteenFinderParser {
         return searchLandmark(landmarkName, dietRestrictions);
     }
 }
+
