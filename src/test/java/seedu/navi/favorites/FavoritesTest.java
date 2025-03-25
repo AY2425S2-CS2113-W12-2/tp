@@ -123,7 +123,16 @@ class FavoritesTest {
     @Test
     void searchFavorites_noResults_showsNoResultsMessage() {
         favorites.searchFavorites("Pasta");
+
+        // Capture output and normalize it
         String output = outputStreamCaptor.toString().trim();
-        assertTrue(output.contains("❌ No matching favorites found."));
+
+        // Debugging: Print output to console (remove later)
+        System.out.println("Captured Output: " + output);
+
+        // Check if output contains the expected message
+        assertTrue(output.contains("❌ No matching favorites found."),
+                "Expected '❌ No matching favorites found.' but got: " + output);
     }
+
 }
