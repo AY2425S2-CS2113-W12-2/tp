@@ -25,20 +25,29 @@ level method `startCanteenFinder()` of `CanteenFinder` to begin the canteen find
 ![CanteenFinderDiagram.drawio.png](diagrams/CanteenFinderDiagram.drawio.png)
 
 ### Storage feature
-The Storage class handles the persistent storage of canteen, faculty, hostel, and other building data. 
-This functionality is managed through the Storage class, which calls processDataFromFiles() to load data from various 
-files into appropriate data structures. `processDataFromFiles()` first clears the CANTEEN_MAP, which is a 
-static Map<String, Canteen>, and then sequentially calls methods to process data from the files: `processCanteenFromFile()`,
-`processFacultyFromFile()`, `processHostelFromFile()`, and `processOtherBuildingFromFile()`. Each of these methods reads the 
-respective file and parses the data to create objects such as Canteen, Faculty, Landmark, and stores them in the CANTEEN_MAP 
-and `CanteenFinderParser.LANDMARKS`. Once all the data has been processed, `processDataFromFiles()` ensures that
-`CanteenFinderParser.LANDMARKS` is populated with the loaded objects. This list is used by the CanteenFinder feature to 
-determine the nearest canteen relative to the location of various landmarks. In case of errors, such as missing files, 
-the method throws a FileNotFoundException and prints appropriate error messages to System.err.
+The Storage class is responsible for managing the persistent storage of canteen, faculty, hostel, and other building data. 
+The data loading process is initiated by calling processDataFromFiles(), which sequentially processes different 
+categories of data from files into appropriate data structures.
 
-The following UML Sequence diagram shows the process of loading data from files in the Storage class. 
-The first arrow represents Navi, the main program, calling the class-level method processDataFromFiles() of the 
-Storage class to begin loading data into the application.
+The method follows these key steps:
+It first clears CANTEEN_MAP, a static Map<String, Canteen>, to ensure that previously loaded data does not persist.
+It then sequentially calls:
+processCanteenFromFile() to read and parse canteen data, creating Canteen objects and storing them in CANTEEN_MAP.
+processFacultyFromFile() to process faculty data, creating Faculty objects and updating CanteenFinderParser.LANDMARKS.
+processHostelFromFile() to handle hostel data, creating Landmark objects for hostels.
+processOtherBuildingFromFile() to process other buildings, creating Landmark objects accordingly.
+
+Once all data is processed, CanteenFinderParser.LANDMARKS is populated with the loaded objects. This enables the 
+CanteenFinder feature to determine the nearest canteens relative to various landmarks.
+
+In case of missing or inaccessible files, processDataFromFiles() throws a FileNotFoundException and logs errors to 
+System.err.
+
+The following UML Sequence Diagram illustrates the interaction between different components during data loading. 
+It shows Navi, the main program, invoking processDataFromFiles() in the Storage class, which in turn delegates the 
+processing of specific data types to CanteenDataProcessor, FacultyDataProcessor, HostelDataProcessor, and 
+OtherBuildingDataProcessor. These processors create appropriate objects (Canteen, Faculty, Landmark) and establish 
+relationships such as nearest canteens and distances between entities.
 
 ![](diagrams/StorageRefactored.png)
 
