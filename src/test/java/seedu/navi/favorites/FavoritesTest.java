@@ -41,10 +41,39 @@ class FavoritesTest {
     }
 
     @Test
+    void removeFavorite_invalidIndex_showsWarning() {
+        favorites.removeFavorite(0);
+        String output = outputStreamCaptor.toString().trim();
+        assertTrue(output.contains("Invalid index."));
+    }
+
+    @Test
     void viewFavorites_noItems_showsEmptyMessage() {
         favorites.viewFavorites();
         assertEquals("No favorites yet.", outputStreamCaptor.toString().trim());
     }
+
+    @Test
+    void undoRemove_noRecentDeletion_showsErrorMessage() {
+        favorites.undoRemove();
+        String output = outputStreamCaptor.toString().trim();
+        assertTrue(output.contains("No recent deletions to undo."));
+    }
+
+    @Test
+    void undoRemove_afterValidDeletion_restoresItem() {
+        favorites.addFavorite("Pasta", 8, "Food");
+        favorites.removeFavorite(0);
+        favorites.undoRemove();
+
+        List<String> favoriteItems = favorites.getFavoriteItems();
+        assertEquals(1, favoriteItems.size());
+        assertTrue(favoriteItems.get(0).contains("Pasta"));
+
+        String output = outputStreamCaptor.toString().trim();
+        assertTrue(output.contains("🔄 Restored: Pasta | Rating: 8 | Category: Food"));
+    }
+
 
     @Test
     void viewFavorites_withItems_showsAllItems() {
@@ -78,4 +107,27 @@ class FavoritesTest {
         assertTrue(sortedItems.get(0).contains("Burger"));
         assertTrue(sortedItems.get(1).contains("Steak"));
     }
+
+    @Test
+    void searchFavorites_existingKeyword_findsItems() {
+        favorites.addFavorite("Chicken Rice", 8, "Food");
+        favorites.addFavorite("Roast Chicken", 7, "Food");
+
+        favorites.searchFavorites("Chicken");
+        String output = outputStreamCaptor.toString().trim();
+        assertTrue(output.contains("🔎 Search results for 'Chicken':"));
+        assertTrue(output.contains("Chicken Rice | Rating: 8 | Category: Food"));
+        assertTrue(output.contains("Roast Chicken | Rating: 7 | Category: Food"));
+    }
+
+    @Test
+    void searchFavorites_noResults_showsNoResultsMessage() {
+        favorites.searchFavorites("Pasta");
+        String output = outputStreamCaptor.toString().trim();
+
+        // Instead of assertTrue(output.equals("❌ No matching favorites found."))
+        assertTrue(output.contains("No matching favorites found."));
+
+    }
+
 }
