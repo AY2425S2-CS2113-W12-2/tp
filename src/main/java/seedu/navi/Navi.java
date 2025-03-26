@@ -21,15 +21,11 @@ public class Navi {
         Scanner in = new Scanner(System.in);
         TextUi.printGreetUser(in.nextLine());
 
-
-
         // Start command processing
         Navi ui = new Navi();
         Favorites favorites = new Favorites();
         Budget budget = new Budget();
         Parser parser = new Parser(ui, favorites, budget);
-
-
 
         while (true) {
             String input = in.nextLine();
@@ -57,8 +53,8 @@ public class Navi {
  */
 class NaviException extends Exception {
     public NaviException(String message) {
-        super("⚠ Oi! " + message +
-                "\nLet's get this sorted, mate.");
+        super("⚠ Oi! " + message
+                + "\nLet's get this sorted, mate.");
     }
 }
 
@@ -77,7 +73,7 @@ class Parser {
         try {
             switch (input.toLowerCase()) {
             case "bye":
-                ui.showExitMessage(); // Use instance method via object
+                ui.showExitMessage();
                 System.exit(0);
                 break;
             case "canteen":
@@ -91,8 +87,8 @@ class Parser {
                 BudgetParser budgetParser = new BudgetParser(budget);
                 budgetParser.start();
                 break;
-            default:
-                throw new NaviException("That’s not quite right, mate. Give it another shot!");
+                default:
+                    throw new NaviException("That’s not quite right, mate. Give it another shot!");
             }
         } catch (NaviException e) {
             ui.showError(e.getMessage());
