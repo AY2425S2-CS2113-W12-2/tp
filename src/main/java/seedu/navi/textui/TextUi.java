@@ -4,6 +4,7 @@ import seedu.navi.canteenfinder.helperclasses.NearestCanteenData;
 
 import java.util.ArrayList;
 
+
 public class TextUi {
     private static final String logo = """
                 
@@ -17,6 +18,9 @@ public class TextUi {
         System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
     }
 
+    /**
+     * @author kevinchangckc
+     */
     public static void printGreeting() {
         printLineSeparator();
         System.out.println("G'day mate! I'm:" + logo);
@@ -24,6 +28,9 @@ public class TextUi {
         printLineSeparator();
     }
 
+    /**
+     * @author kevinchangckc
+     */
     public static void printGreetUser(String name) {
         printLineSeparator();
         System.out.println("Aye, " + name + "! Stoked to have ya here!");
@@ -118,11 +125,9 @@ public class TextUi {
         System.out.println("You can enter your canteen criteria again to start the search again,");
         System.out.println("or \"exit\" to exit canteen finder.");
     }
-
     private static void printValidStallsCF(ArrayList<String> validStalls) {
         for (String stall : validStalls) {
             System.out.println(stall);
         }
     }
 }
-
