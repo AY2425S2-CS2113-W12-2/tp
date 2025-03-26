@@ -1,8 +1,8 @@
 package seedu.navi.canteenfinder.landmark.canteen.stall;
 
 public class Stall {
-    private final String name;
-    private final StallCharacteristic stallCharacteristic;
+    private String name;
+    private StallCharacteristic stallCharacteristic;
 
     public Stall(String name) {
         this.name = name;
@@ -32,7 +32,7 @@ public class Stall {
         return stallCharacteristic;
     }
 
-    public boolean hasValidStall(String[] dietRestrictions) {
+    public boolean isValidStall(String[] dietRestrictions) {
         return stallCharacteristic.containsFields(dietRestrictions);
     }
 }

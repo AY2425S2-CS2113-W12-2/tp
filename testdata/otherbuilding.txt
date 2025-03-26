@@ -1,1 +1,2 @@
-CELC: Fine Food | Flavours
+Library: Techno Edge (1500m) | Fine Food (2500m)
+Museum: The Deck (3500m) | Flavours (4500m)
