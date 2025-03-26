@@ -75,7 +75,7 @@ class Parser {
 
     public void handleCommand(String input) {
         try {
-            switch (input.toLowerCase()) {
+        switch (input.toLowerCase()) {
             case "bye":
                 ui.showExitMessage(); // Use instance method via object
                 System.exit(0);
