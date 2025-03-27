@@ -2,7 +2,11 @@ package seedu.navi.canteenfinder;
 
 import seedu.navi.canteenfinder.helperclasses.CanteenCriterionParser;
 import seedu.navi.canteenfinder.helperclasses.NearestCanteenData;
-import seedu.navi.exceptions.*;
+import seedu.navi.exceptions.CanteenNotFound;
+import seedu.navi.exceptions.DuplicateCanteenCriterion;
+import seedu.navi.exceptions.EmptyCanteenCriteria;
+import seedu.navi.exceptions.InvalidCanteenCriteria;
+import seedu.navi.exceptions.LocationNotFound;
 import seedu.navi.textui.TextUi;
 
 import java.util.Scanner;
