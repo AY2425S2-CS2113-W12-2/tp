@@ -1,8 +1,10 @@
-package seedu.navi.canteenfinder.helperclasses;
+package seedu.navi.canteenfinder.canteencrtierionparser;
 
+import seedu.navi.canteenfinder.usershortcuts.UserShortcuts;
 import seedu.navi.exceptions.DuplicateCanteenCriterion;
 import seedu.navi.exceptions.EmptyCanteenCriteria;
 import seedu.navi.exceptions.InvalidCanteenCriteria;
+import seedu.navi.exceptions.NILWithOtherCriteria;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -10,7 +12,7 @@ import java.util.Set;
 public class CanteenCriterionParser {
 
     private static void verifyCanteenCriteria(String[] canteenCriteria)
-            throws IllegalArgumentException, DuplicateCanteenCriterion {
+            throws NILWithOtherCriteria, DuplicateCanteenCriterion, InvalidCanteenCriteria {
         Set<String> uniqueCriteria = new HashSet<>();
         boolean isNILPresent = false;
         String[] validCanteenCriteria = new String[canteenCriteria.length];
@@ -19,7 +21,7 @@ public class CanteenCriterionParser {
             String lowerCaseCriterion = canteenCriteria[i].toLowerCase().trim();
             String validCanteenCriterion = UserShortcuts.CANTEEN_CRITERIA_MAP.get(lowerCaseCriterion);
             if (validCanteenCriterion == null) {
-                throw new IllegalArgumentException();
+                throw new InvalidCanteenCriteria();
             }
             // Check for duplicates
             if (!uniqueCriteria.add(validCanteenCriterion)) {
@@ -31,13 +33,13 @@ public class CanteenCriterionParser {
             validCanteenCriteria[i] = validCanteenCriterion;
         }
         if (isNILPresent && uniqueCriteria.size() > 1) {
-            throw new IllegalArgumentException();
+            throw new NILWithOtherCriteria();
         }
         System.arraycopy(validCanteenCriteria, 0, canteenCriteria, 0, validCanteenCriteria.length);
     }
 
     public static String[] handleCanteenCriterion(String canteenCriterion) throws EmptyCanteenCriteria,
-            InvalidCanteenCriteria, IllegalArgumentException, DuplicateCanteenCriterion {
+            InvalidCanteenCriteria, NILWithOtherCriteria, DuplicateCanteenCriterion {
         if (canteenCriterion.isEmpty()) {
             throw new EmptyCanteenCriteria();
         }
@@ -45,13 +47,8 @@ public class CanteenCriterionParser {
         String[] canteenCriteria = canteenCriterion.split(", ");
         assert canteenCriteria.length != 0 : "canteenCriteria should not be empty";
 
-        try {
-            verifyCanteenCriteria(canteenCriteria);
-        } catch (IllegalArgumentException e) {
-            throw new IllegalArgumentException();
-        } catch (DuplicateCanteenCriterion e) {
-            throw new DuplicateCanteenCriterion();
-        }
+        verifyCanteenCriteria(canteenCriteria);
+
         if (canteenCriteria[0].trim().equalsIgnoreCase("nil")) {
             canteenCriteria = null;
         }

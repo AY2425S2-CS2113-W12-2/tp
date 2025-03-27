@@ -1,7 +1,7 @@
 package seedu.navi.canteenfinder.landmark;
 
-import seedu.navi.canteenfinder.helperclasses.NearestCanteenData;
-import seedu.navi.canteenfinder.landmark.canteen.Canteen;
+import seedu.navi.canteenfinder.nearestcanteendata.NearestCanteenData;
+import seedu.navi.canteenfinder.canteen.Canteen;
 
 import java.util.ArrayList;
 import java.util.HashMap;

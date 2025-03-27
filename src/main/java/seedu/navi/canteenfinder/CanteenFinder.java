@@ -1,12 +1,14 @@
 package seedu.navi.canteenfinder;
 
-import seedu.navi.canteenfinder.helperclasses.CanteenCriterionParser;
-import seedu.navi.canteenfinder.helperclasses.NearestCanteenData;
+import seedu.navi.canteenfinder.canteencrtierionparser.CanteenCriterionParser;
+import seedu.navi.canteenfinder.canteenfinderparser.CanteenFinderParser;
+import seedu.navi.canteenfinder.nearestcanteendata.NearestCanteenData;
 import seedu.navi.exceptions.CanteenNotFound;
 import seedu.navi.exceptions.DuplicateCanteenCriterion;
 import seedu.navi.exceptions.EmptyCanteenCriteria;
 import seedu.navi.exceptions.InvalidCanteenCriteria;
 import seedu.navi.exceptions.LocationNotFound;
+import seedu.navi.exceptions.NILWithOtherCriteria;
 import seedu.navi.textui.TextUi;
 
 import java.util.Scanner;
@@ -29,10 +31,10 @@ public class CanteenFinder {
             } catch (EmptyCanteenCriteria e) {
                 TextUi.printEmptyCanteenCriteriaCF();
                 continue;
-            } catch (InvalidCanteenCriteria e ) {
+            } catch (InvalidCanteenCriteria e) {
                 TextUi.printInvalidCanteenCriteriaCF();
                 continue;
-            } catch (IllegalArgumentException e) {
+            } catch (NILWithOtherCriteria e) {
                 TextUi.printNILWithOtherCriteriaErrorCF();
                 continue;
             } catch (DuplicateCanteenCriterion e) {

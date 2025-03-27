@@ -1,4 +1,4 @@
-package seedu.navi.canteenfinder.landmark.canteen.stall;
+package seedu.navi.canteenfinder.canteen.stall;
 
 public class Stall {
     private String name;

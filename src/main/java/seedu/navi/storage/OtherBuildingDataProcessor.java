@@ -1,7 +1,7 @@
 package seedu.navi.storage;
 
 import seedu.navi.canteenfinder.landmark.Landmark;
-import seedu.navi.canteenfinder.landmark.canteen.Canteen;
+import seedu.navi.canteenfinder.canteen.Canteen;
 
 import java.io.File;
 import java.io.FileNotFoundException;

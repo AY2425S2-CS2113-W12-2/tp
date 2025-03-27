@@ -1,6 +1,6 @@
 package seedu.navi.textui;
 
-import seedu.navi.canteenfinder.helperclasses.NearestCanteenData;
+import seedu.navi.canteenfinder.nearestcanteendata.NearestCanteenData;
 
 import java.util.ArrayList;
 
