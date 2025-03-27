@@ -122,3 +122,67 @@ relationships such as nearest canteens and distances between entities.
 ## Instructions for manual testing
 
 {Give instructions on how to do a manual product testing e.g., how to load sample data to be used for testing}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## Budget feature
+This feature allows users to track their daily, weekly and monthly expenses on food as well as the weekly budget.
+* Budget class: Handles core budget logic, including managing expenses, budget resets, and file persistence.
+* BudgetParser class: Handles user interaction and command parsing
+* Data storage: Data Storage - Budget data is stored persistently in a JSON-like format.
+
+#### Core Logic
+The Budget class maintains several key pieces of data:
+* weeklyBudget: Current available budget
+* dailyExpenses, weeklyExpenses, monthlyExpenses: Tracked expenses
+* lastUpdatedDate: Ensures proper period resets
+
+
+Key operations include:
+
+1. addWeeklyBudget(): Adds to current weekly budget
+2. deductExpense(): Records and deducts expenses
+3. viewExpenses():  Displays the remaining weekly budget and total monthly spending.
+4. resetIfNeeded(): Checks and performs periodic resets
+* *Daily Reset*: Resets daily expenses at midnight.
+* *Weekly Reset*: Resets weekly expenses every Monday. 
+* *Monthly Reset*: Resets total monthly expenses at the start of a new month.
