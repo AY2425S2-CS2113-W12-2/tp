@@ -1,6 +1,6 @@
 package seedu.navi.canteenfinder;
 
-import seedu.navi.canteenfinder.helperclasses.DietRestrictionParser;
+import seedu.navi.canteenfinder.helperclasses.CanteenCriterionParser;
 import seedu.navi.canteenfinder.helperclasses.NearestCanteenData;
 import seedu.navi.exceptions.*;
 import seedu.navi.textui.TextUi;
@@ -12,7 +12,7 @@ public class CanteenFinder {
     public static void startCanteenFinder() {
         Scanner in = new Scanner(System.in);
         TextUi.printEnterFunctionCF();
-        String[] dietRestrictions;
+        String[] canteenCriterion;
         String command;
         while (true) {
             command = in.nextLine().trim();
@@ -21,18 +21,18 @@ public class CanteenFinder {
                 break;
             }
             try {
-                dietRestrictions = DietRestrictionParser.handleDietRestrictions(command);
-            } catch (EmptyDietRestriction e) {
-                TextUi.printEmptyDietRestrictionCF();
+                canteenCriterion = CanteenCriterionParser.handleCanteenCriterion(command);
+            } catch (EmptyCanteenCriteria e) {
+                TextUi.printEmptyCanteenCriteriaCF();
                 continue;
-            } catch (InvalidDietRestrictions e ) {
-                TextUi.printInvalidDietRestrictionsCF();
+            } catch (InvalidCanteenCriteria e ) {
+                TextUi.printInvalidCanteenCriteriaCF();
                 continue;
             } catch (IllegalArgumentException e) {
-                TextUi.printNILWithOtherRestrictionsErrorCF();
+                TextUi.printNILWithOtherCriteriaErrorCF();
                 continue;
-            } catch (DuplicateDietRestrictions e) {
-                TextUi.printDuplicateDietRestrictionsCF();
+            } catch (DuplicateCanteenCriterion e) {
+                TextUi.printDuplicateCanteenCriteriaCF();
                 continue;
             }
 
@@ -49,7 +49,7 @@ public class CanteenFinder {
             }
             try {
                 NearestCanteenData nearestCanteenData =
-                        CanteenFinderParser.findNearestCanteen(command, dietRestrictions);
+                        CanteenFinderParser.findNearestCanteen(command, canteenCriterion);
                 TextUi.printNearestCanteenCF(nearestCanteenData);
             } catch (LocationNotFound e) {
                 TextUi.printLocationNotFoundCF();

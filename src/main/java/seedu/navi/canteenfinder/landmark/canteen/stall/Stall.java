@@ -32,7 +32,7 @@ public class Stall {
         return stallCharacteristic;
     }
 
-    public boolean isValidStall(String[] dietRestrictions) {
-        return stallCharacteristic.containsFields(dietRestrictions);
+    public boolean isValidStall(String[] canteenCriteria) {
+        return stallCharacteristic.containsFields(canteenCriteria);
     }
 }

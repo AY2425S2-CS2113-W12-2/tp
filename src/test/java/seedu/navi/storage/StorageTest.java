@@ -111,7 +111,7 @@ public class StorageTest {
         Stall chickenRice = stalls.filter(s -> s.getName().equals("Chicken Rice")).findFirst().orElse(null);
         assert chickenRice != null;
         StallCharacteristic chickenRiceChar = chickenRice.getStallCharacteristic();
-        assert !chickenRiceChar.gethalalCertified();
+        assert !chickenRiceChar.getHalalCertified();
         assert !chickenRiceChar.getMuslimOwned();
         assert !chickenRiceChar.getInAirconArea();
         assert !chickenRiceChar.getVegetarian();
@@ -121,7 +121,7 @@ public class StorageTest {
         Stall noodle = noodleStalls.filter(s -> s.getName().equals("Noodle")).findFirst().orElse(null);
         assert noodle != null;
         StallCharacteristic noodleChar = noodle.getStallCharacteristic();
-        assert !noodleChar.gethalalCertified();
+        assert !noodleChar.getHalalCertified();
         assert !noodleChar.getMuslimOwned();
         assert !noodleChar.getInAirconArea();
         assert !noodleChar.getVegetarian();
@@ -131,7 +131,7 @@ public class StorageTest {
         Stall western = westernStalls.filter(s -> s.getName().equals("Western Cuisine")).findFirst().orElse(null);
         assert western != null;
         StallCharacteristic westernChar = western.getStallCharacteristic();
-        assert westernChar.gethalalCertified();
+        assert westernChar.getHalalCertified();
         assert !westernChar.getMuslimOwned();
         assert westernChar.getInAirconArea();
         assert !westernChar.getVegetarian();
@@ -141,7 +141,7 @@ public class StorageTest {
         Stall mala = malaStalls.filter(s -> s.getName().equals("Mala Hotpot")).findFirst().orElse(null);
         assert mala != null;
         StallCharacteristic malaChar = mala.getStallCharacteristic();
-        assert !malaChar.gethalalCertified();
+        assert !malaChar.getHalalCertified();
         assert !malaChar.getMuslimOwned();
         assert !malaChar.getInAirconArea();
         assert !malaChar.getVegetarian();

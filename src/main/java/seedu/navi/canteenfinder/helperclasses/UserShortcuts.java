@@ -4,7 +4,7 @@ import java.util.HashMap;
 
 public class UserShortcuts {
     public static final HashMap<String, String> LANDMARK_MAP = new HashMap<>();
-    public static final HashMap<String, String> DIET_RESTRICTIONS_MAP = new HashMap<>();
+    public static final HashMap<String, String> CANTEEN_CRITERIA_MAP = new HashMap<>();
 
     static {
         LANDMARK_MAP.put("soc", "SOC");
@@ -70,14 +70,14 @@ public class UserShortcuts {
         LANDMARK_MAP.put("university health centre", "UHC");
         LANDMARK_MAP.put("uhc", "UHC");
 
-        DIET_RESTRICTIONS_MAP.put("halal certified", "halal certified");
-        DIET_RESTRICTIONS_MAP.put("hc", "halal certified");
-        DIET_RESTRICTIONS_MAP.put("muslim owned", "muslim owned");
-        DIET_RESTRICTIONS_MAP.put("mo", "muslim owned");
-        DIET_RESTRICTIONS_MAP.put("vegetarian", "vegetarian");
-        DIET_RESTRICTIONS_MAP.put("v", "vegetarian");
-        DIET_RESTRICTIONS_MAP.put("aircon", "aircon");
-        DIET_RESTRICTIONS_MAP.put("a", "aircon");
-        DIET_RESTRICTIONS_MAP.put("nil", "nil");
+        CANTEEN_CRITERIA_MAP.put("halal certified", "halal certified");
+        CANTEEN_CRITERIA_MAP.put("hc", "halal certified");
+        CANTEEN_CRITERIA_MAP.put("muslim owned", "muslim owned");
+        CANTEEN_CRITERIA_MAP.put("mo", "muslim owned");
+        CANTEEN_CRITERIA_MAP.put("vegetarian", "vegetarian");
+        CANTEEN_CRITERIA_MAP.put("v", "vegetarian");
+        CANTEEN_CRITERIA_MAP.put("aircon", "aircon");
+        CANTEEN_CRITERIA_MAP.put("a", "aircon");
+        CANTEEN_CRITERIA_MAP.put("nil", "nil");
     }
 }
