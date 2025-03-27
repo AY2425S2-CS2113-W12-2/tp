@@ -4,6 +4,7 @@ import java.util.HashMap;
 
 public class UserShortcuts {
     public static final HashMap<String, String> LANDMARK_MAP = new HashMap<>();
+    public static final HashMap<String, String> DIET_RESTRICTIONS_MAP = new HashMap<>();
 
     static {
         LANDMARK_MAP.put("soc", "SOC");
@@ -30,12 +31,53 @@ public class UserShortcuts {
         LANDMARK_MAP.put("sheares hall", "Sheares");
         LANDMARK_MAP.put("sheares", "Sheares");
         LANDMARK_MAP.put("kent ridge hall", "Kent Ridge");
+        LANDMARK_MAP.put("kr hall", "Kent Ridge");
         LANDMARK_MAP.put("king edward hall", "King Edward");
+        LANDMARK_MAP.put("ke hall", "King Edward");
+        LANDMARK_MAP.put("prince george's park residence", "PGP");
+        LANDMARK_MAP.put("pgp residence", "PGP");
+        LANDMARK_MAP.put("pgp", "PGP");
+        LANDMARK_MAP.put("utown residence", "UTR");
+        LANDMARK_MAP.put("utr", "UTR");
+        LANDMARK_MAP.put("residential college 4", "RC4");
+        LANDMARK_MAP.put("rc4", "RC4");
+        LANDMARK_MAP.put("college of alice and peter tan", "CAPT");
+        LANDMARK_MAP.put("college of alice & peter tan", "CAPT");
+        LANDMARK_MAP.put("capt", "CAPT");
+        LANDMARK_MAP.put("ridge view residential college", "RVRC");
+        LANDMARK_MAP.put("rvrc", "RVRC");
+        LANDMARK_MAP.put("tembusu", "Tembusu");
+        LANDMARK_MAP.put("cinnamon", "Cinnamon");
+        LANDMARK_MAP.put("centre for english language communication", "CELC");
         LANDMARK_MAP.put("celc", "CELC");
+        LANDMARK_MAP.put("hon sui sen memorial library", "HSSML");
         LANDMARK_MAP.put("hssml", "HSSML");
+        LANDMARK_MAP.put("central libray", "CLB");
         LANDMARK_MAP.put("clb", "CLB");
+        LANDMARK_MAP.put("medicine+science library", "MSL");
+        LANDMARK_MAP.put("medicine science library", "MSL");
         LANDMARK_MAP.put("msl", "MSL");
+        LANDMARK_MAP.put("stephen riady centre", "UTown SRC");
         LANDMARK_MAP.put("utown src", "UTown SRC");
+        LANDMARK_MAP.put("utsrc", "UTown SRC");
+        LANDMARK_MAP.put("utown education resource centre", "UTown ERC");
         LANDMARK_MAP.put("utown erc", "UTown ERC");
+        LANDMARK_MAP.put("uterc", "UTown ERC");
+        LANDMARK_MAP.put("university hall", "University Hall");
+        LANDMARK_MAP.put("u hall", "University Hall");
+        LANDMARK_MAP.put("multipurpose sports hall", "MPSH");
+        LANDMARK_MAP.put("mpsh", "MPSH");
+        LANDMARK_MAP.put("university health centre", "UHC");
+        LANDMARK_MAP.put("uhc", "UHC");
+
+        DIET_RESTRICTIONS_MAP.put("halal certified", "halal certified");
+        DIET_RESTRICTIONS_MAP.put("hc", "halal certified");
+        DIET_RESTRICTIONS_MAP.put("muslim owned", "muslim owned");
+        DIET_RESTRICTIONS_MAP.put("mo", "muslim owned");
+        DIET_RESTRICTIONS_MAP.put("vegetarian", "vegetarian");
+        DIET_RESTRICTIONS_MAP.put("v", "vegetarian");
+        DIET_RESTRICTIONS_MAP.put("aircon", "aircon");
+        DIET_RESTRICTIONS_MAP.put("a", "aircon");
+        DIET_RESTRICTIONS_MAP.put("nil", "nil");
     }
 }
