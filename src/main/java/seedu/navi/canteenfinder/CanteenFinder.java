@@ -18,8 +18,8 @@ public class CanteenFinder {
         String[] dietRestrictions;
         String command;
         while (true) {
-            command = in.nextLine();
-            if (command.trim().equalsIgnoreCase("exit")) {
+            command = in.nextLine().trim();
+            if (command.equalsIgnoreCase("exit")) {
                 TextUi.printExitCanteenFinderCF();
                 break;
             }
@@ -37,13 +37,13 @@ public class CanteenFinder {
             }
 
             TextUi.printWhereIsUserCF();
-            command = in.nextLine();
+            command = in.nextLine().trim();
 
             while (command.isEmpty()) {
                 TextUi.printEmptyLandmarkCF();
-                command = in.nextLine();
+                command = in.nextLine().trim();
             }
-            if (command.trim().equalsIgnoreCase("exit")) {
+            if (command.equalsIgnoreCase("exit")) {
                 TextUi.printExitCanteenFinderCF();
                 break;
             }
