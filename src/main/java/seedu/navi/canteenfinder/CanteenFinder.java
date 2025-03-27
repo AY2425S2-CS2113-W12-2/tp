@@ -2,10 +2,7 @@ package seedu.navi.canteenfinder;
 
 import seedu.navi.canteenfinder.helperclasses.DietRestrictionParser;
 import seedu.navi.canteenfinder.helperclasses.NearestCanteenData;
-import seedu.navi.exceptions.CanteenNotFound;
-import seedu.navi.exceptions.EmptyDietRestriction;
-import seedu.navi.exceptions.InvalidDietRestrictions;
-import seedu.navi.exceptions.LocationNotFound;
+import seedu.navi.exceptions.*;
 import seedu.navi.textui.TextUi;
 
 import java.util.Scanner;
@@ -33,6 +30,9 @@ public class CanteenFinder {
                 continue;
             } catch (IllegalArgumentException e) {
                 TextUi.printNILWithOtherRestrictionsErrorCF();
+                continue;
+            } catch (DuplicateDietRestrictions e) {
+                TextUi.printDuplicateDietRestrictionsCF();
                 continue;
             }
 

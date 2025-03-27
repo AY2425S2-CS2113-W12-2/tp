@@ -115,6 +115,12 @@ public class TextUi {
         printLineSeparator();
     }
 
+    public static void printDuplicateDietRestrictionsCF() {
+        printLineSeparator();
+        System.out.println("You've entered the same type of criteria more than once!");
+        printLineSeparator();
+    }
+
     public static void printExitCanteenFinderCF() {
         printLineSeparator();
         System.out.println("You have exited the Canteen Finder feature!");
