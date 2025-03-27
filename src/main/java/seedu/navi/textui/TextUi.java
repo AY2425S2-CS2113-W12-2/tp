@@ -1,6 +1,6 @@
 package seedu.navi.textui;
 
-import seedu.navi.canteenfinder.helperclasses.NearestCanteenData;
+import seedu.navi.canteenfinder.nearestcanteendata.NearestCanteenData;
 
 import java.util.ArrayList;
 
@@ -48,7 +48,7 @@ public class TextUi {
         printLineSeparator();
     }
 
-    public static void printEmptyDietRestrictionCF() {
+    public static void printEmptyCanteenCriteriaCF() {
         printLineSeparator();
         System.out.println("Oh no! You did not enter anything!");
         System.out.println("""
@@ -100,7 +100,7 @@ public class TextUi {
         printLineSeparator();
     }
 
-    public static void printInvalidDietRestrictionsCF() {
+    public static void printInvalidCanteenCriteriaCF() {
         printLineSeparator();
         System.out.println("Please enter a valid criteria that is,");
         System.out.println("""
@@ -109,9 +109,15 @@ public class TextUi {
         printLineSeparator();
     }
 
-    public static void printNILWithOtherRestrictionsErrorCF() {
+    public static void printNILWithOtherCriteriaErrorCF() {
         printLineSeparator();
         System.out.println("You can't include other criteria with \"NIL\"!");
+        printLineSeparator();
+    }
+
+    public static void printDuplicateCanteenCriteriaCF() {
+        printLineSeparator();
+        System.out.println("You've entered the same type of criteria more than once!");
         printLineSeparator();
     }
 
