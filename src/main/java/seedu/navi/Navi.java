@@ -91,7 +91,7 @@ class Parser {
                 System.exit(0);
                 break;
             case "canteen":
-                CanteenFinderParser.startCanteenFinder();
+                CanteenFinder.startCanteenFinder();
                 break;
             case "budget":
                 BudgetParser budgetParser = new BudgetParser(budget);
