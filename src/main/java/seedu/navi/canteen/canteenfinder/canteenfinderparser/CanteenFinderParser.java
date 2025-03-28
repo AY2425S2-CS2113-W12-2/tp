@@ -1,8 +1,8 @@
-package seedu.navi.canteenfinder.canteenfinderparser;
+package seedu.navi.canteen.canteenfinder.canteenfinderparser;
 
-import seedu.navi.canteenfinder.nearestcanteendata.NearestCanteenData;
-import seedu.navi.canteenfinder.usershortcuts.UserShortcuts;
-import seedu.navi.canteenfinder.landmark.Landmark;
+import seedu.navi.canteen.canteenfinder.nearestcanteendata.NearestCanteenData;
+import seedu.navi.canteen.canteenfinder.usershortcuts.UserShortcuts;
+import seedu.navi.canteen.canteenfinder.landmark.Landmark;
 import seedu.navi.exceptions.CanteenNotFound;
 import seedu.navi.exceptions.LocationNotFound;
 

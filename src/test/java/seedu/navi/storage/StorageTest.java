@@ -2,12 +2,13 @@ package seedu.navi.storage;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import seedu.navi.canteenfinder.canteenfinderparser.CanteenFinderParser;
-import seedu.navi.canteenfinder.landmark.Faculty;
-import seedu.navi.canteenfinder.landmark.Landmark;
-import seedu.navi.canteenfinder.canteen.Canteen;
-import seedu.navi.canteenfinder.canteen.stall.Stall;
-import seedu.navi.canteenfinder.canteen.stall.StallCharacteristic;
+import seedu.navi.canteen.storage.Storage;
+import seedu.navi.canteen.canteenfinder.canteenfinderparser.CanteenFinderParser;
+import seedu.navi.canteen.canteenfinder.landmark.Faculty;
+import seedu.navi.canteen.canteenfinder.landmark.Landmark;
+import seedu.navi.canteen.canteenfinder.landmark.canteen.Canteen;
+import seedu.navi.canteen.canteenfinder.landmark.canteen.stall.Stall;
+import seedu.navi.canteen.canteenfinder.landmark.canteen.stall.StallCharacteristic;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
@@ -17,7 +18,7 @@ import java.nio.file.Paths;
 import java.util.Map;
 import java.util.Optional;
 
-import static seedu.navi.canteenfinder.canteenfinderparser.CanteenFinderParser.LANDMARKS;
+import static seedu.navi.canteen.canteenfinder.canteenfinderparser.CanteenFinderParser.LANDMARKS;
 
 public class StorageTest {
 

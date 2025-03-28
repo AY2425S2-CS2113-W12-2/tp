@@ -1,6 +1,6 @@
-package seedu.navi.canteenfinder.canteen;
+package seedu.navi.canteen.canteenfinder.landmark.canteen;
 
-import seedu.navi.canteenfinder.canteen.stall.Stall;
+import seedu.navi.canteen.canteenfinder.landmark.canteen.stall.Stall;
 
 import java.util.ArrayList;
 

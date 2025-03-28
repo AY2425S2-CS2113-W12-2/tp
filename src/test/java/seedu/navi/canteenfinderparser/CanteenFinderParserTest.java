@@ -2,11 +2,11 @@ package seedu.navi.canteenfinderparser;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import seedu.navi.canteenfinder.canteenfinderparser.CanteenFinderParser;
-import seedu.navi.canteenfinder.nearestcanteendata.NearestCanteenData;
+import seedu.navi.canteen.canteenfinder.canteenfinderparser.CanteenFinderParser;
+import seedu.navi.canteen.canteenfinder.nearestcanteendata.NearestCanteenData;
 import seedu.navi.exceptions.CanteenNotFound;
 import seedu.navi.exceptions.LocationNotFound;
-import seedu.navi.storage.Storage;
+import seedu.navi.canteen.storage.Storage;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;

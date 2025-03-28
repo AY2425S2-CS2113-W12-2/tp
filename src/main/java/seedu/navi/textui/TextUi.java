@@ -1,6 +1,6 @@
 package seedu.navi.textui;
 
-import seedu.navi.canteenfinder.nearestcanteendata.NearestCanteenData;
+import seedu.navi.canteen.canteenfinder.nearestcanteendata.NearestCanteenData;
 
 import java.util.ArrayList;
 
@@ -41,7 +41,7 @@ public class TextUi {
     public static void printEnterFunctionCF() {
         printLineSeparator();
         System.out.println("So you wanna find where's the nearest canteen to ya?");
-        System.out.println("What kind of canteen you're looking for?");
+        System.out.println("What kind of canteen are you looking for?");
         System.out.println("""
                 You can list out: "Halal Certified, Muslim Owned, Vegetarian, Aircon"
                 or "NIL" if you're fine with anything!""");
@@ -94,7 +94,7 @@ public class TextUi {
 
     public static void printCanteenNotFoundCF() {
         printLineSeparator();
-        System.out.println("Sorry! I couldn't find any canteen that meets you're criteria. :(");
+        System.out.println("Sorry! I couldn't find any canteen that meets your criteria. :(");
         System.out.println("Please try another set of criteria!");
         printRepeatCanteenFinderCF();
         printLineSeparator();

@@ -1,7 +1,7 @@
 package seedu.navi;
 
-import seedu.navi.canteenfinder.CanteenFinder;
-import seedu.navi.storage.Storage;
+import seedu.navi.canteen.canteenfinder.CanteenFinder;
+import seedu.navi.canteen.storage.Storage;
 import seedu.navi.textui.TextUi;
 import seedu.navi.budget.Budget;
 import seedu.navi.budget.BudgetParser;

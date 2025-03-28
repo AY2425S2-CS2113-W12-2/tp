@@ -1,7 +1,7 @@
 package seedu.navi.canteencriterionparser;
 
 import org.junit.jupiter.api.Test;
-import seedu.navi.canteenfinder.canteencrtierionparser.CanteenCriterionParser;
+import seedu.navi.canteen.canteenfinder.canteencrtierionparser.CanteenCriterionParser;
 import seedu.navi.exceptions.DuplicateCanteenCriterion;
 import seedu.navi.exceptions.EmptyCanteenCriteria;
 import seedu.navi.exceptions.InvalidCanteenCriteria;

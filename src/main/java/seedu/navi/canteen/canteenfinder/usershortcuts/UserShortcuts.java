@@ -1,4 +1,4 @@
-package seedu.navi.canteenfinder.usershortcuts;
+package seedu.navi.canteen.canteenfinder.usershortcuts;
 
 import java.util.HashMap;
 

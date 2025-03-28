@@ -1,6 +1,5 @@
 package seedu.navi;
 
-import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.io.ByteArrayOutputStream;
@@ -26,10 +25,5 @@ class NaviTest {
         assertEquals(expectedOutput, actualOutput);
 
         System.setOut(System.out);
-    }
-
-    @Test
-    public void sampleTest() {
-        assertTrue(true);
     }
 }
