@@ -121,6 +121,12 @@ public class TextUi {
         printLineSeparator();
     }
 
+    public static void printHCAndMOCriteriaErrorCF() {
+        printLineSeparator();
+        System.out.println("Please enter either Halal Certified or Muslim Owned and not both!");
+        printLineSeparator();
+    }
+
     public static void printExitCanteenFinderCF() {
         printLineSeparator();
         System.out.println("You have exited the Canteen Finder feature!");
