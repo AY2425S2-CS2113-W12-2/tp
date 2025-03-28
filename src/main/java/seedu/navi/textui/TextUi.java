@@ -42,6 +42,29 @@ public class TextUi {
         printLineSeparator();
     }
 
+    /**
+     * @author kevinchangckc
+     */
+    public static void printExitMessage() {
+        printLineSeparator();
+        System.out.println("Ah, you’re heading off? No worries!");
+        System.out.println("We’ll catch you next time!");
+        printLineSeparator();
+    }
+
+    public static void printInvalidCommand() {
+        printLineSeparator();
+        System.out.print("""
+                You've entered an invalid command!
+                Remember that I can help you with:
+                - "canteen" to find canteens
+                - "budget" to set or check your budget
+                - "favorites" to manage your favorite spots
+                - "bye" to quit Navi
+                """);
+        printLineSeparator();
+    }
+
     public static void printCanteenFinderGreetingCF() {
         printLineSeparator();
         System.out.println("So you wanna find where's the nearest canteen to you?");
@@ -61,12 +84,22 @@ public class TextUi {
         printLineSeparator();
     }
 
-    public static void printWhereIsUserCF() {
+    public static void printAcknowledgeUserCriteriaCF(String[] canteenCriteria) {
         printLineSeparator();
-        System.out.println("Alright! Now I know what kind of Canteen you're looking for,");
+        System.out.println("So you're looking for a canteen has: ");
+        printUserCriteriaCF(canteenCriteria);
         System.out.println("I would need to know where are you now!");
         System.out.println("You can enter either faculties, hostels or other major landmarks in NUS!");
         printLineSeparator();
+    }
+
+    private static void printUserCriteriaCF(String[] canteenCriteria) {
+        if (canteenCriteria == null || canteenCriteria.length == 0) {
+            System.out.println("stalls.");
+            return;
+        }
+        String result = String.join(", ", canteenCriteria);
+        System.out.println(result + " stalls.");
     }
 
     public static void printEmptyLandmarkCF() {

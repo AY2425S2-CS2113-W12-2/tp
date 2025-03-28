@@ -43,7 +43,7 @@ public class CanteenFinder {
                 continue;
             }
 
-            TextUi.printWhereIsUserCF();
+            TextUi.printAcknowledgeUserCriteriaCF(canteenCriterion);
             command = TextUi.IN.nextLine().trim();
 
             while (command.isEmpty()) {
