@@ -198,7 +198,7 @@ public class TextUi {
     public static void printInvalidCommandC() {
         printLineSeparator();
         System.out.println("You've entered an invalid command!");
-        System.out.println("Please only enter \"finder\", \"lookup\" or \"exit\".");
+        System.out.println("Please only enter \"finder\", \"lookup\" or \"quit\".");
         printLineSeparator();
     }
 

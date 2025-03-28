@@ -11,13 +11,16 @@ public class Canteen {
         while (true) {
             command = TextUi.IN.nextLine().trim();
             switch (command.toLowerCase()) {
-            case "exit":
+            case "quit":
+            case "q":
                 TextUi.printExitCanteenC();
                 return;
             case "finder":
+            case "f":
                 CanteenFinder.startCanteenFinder();
                 break;
             case "lookup":
+            case "l":
                 CanteenLookup.startCanteenLookup();
                 break;
             default:

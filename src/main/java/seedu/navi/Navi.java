@@ -59,6 +59,7 @@ class Parser {
             System.exit(0);
             break;
         case "canteen":
+        case "c":
             Canteen.startCanteen();
             break;
         case "budget":
