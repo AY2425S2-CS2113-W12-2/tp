@@ -17,7 +17,7 @@ public class Stall {
     }
 
     public String toString() {
-        return "This stall's name is " + name + " and it is:\n" +
+        return name +
                 "  " + stallCharacteristic.getHalalCertifiedIcon() + "\n" +
                 "  " + stallCharacteristic.getMuslimOwnedIcon() + "\n" +
                 "  " + stallCharacteristic.getVegetarianIcon() + "\n" +

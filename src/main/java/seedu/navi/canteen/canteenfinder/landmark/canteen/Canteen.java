@@ -25,11 +25,11 @@ public class Canteen {
         return stalls;
     }
 
-    public ArrayList<String> findValidStalls(String[] canteenCriteria) {
-        ArrayList<String> validStalls = new ArrayList<>();
+    public ArrayList<Stall> findValidStalls(String[] canteenCriteria) {
+        ArrayList<Stall> validStalls = new ArrayList<>();
         for (Stall stall : stalls) {
             if (stall.isValidStall(canteenCriteria)) {
-                validStalls.add(stall.getName());
+                validStalls.add(stall);
             }
         }
         return validStalls;

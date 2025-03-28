@@ -1,5 +1,6 @@
 package seedu.navi.textui;
 
+import seedu.navi.canteen.canteenfinder.landmark.canteen.stall.Stall;
 import seedu.navi.canteen.canteenfinder.nearestcanteendata.NearestCanteenData;
 
 import java.util.ArrayList;
@@ -7,6 +8,8 @@ import java.util.Scanner;
 
 
 public class TextUi {
+    public static final Scanner IN = new Scanner(System.in);
+
     private static final String LOGO = """
                 
                  _   _             _
@@ -14,8 +17,6 @@ public class TextUi {
                 |  \\| |/ _` \\ \\ / / |
                 | |\\  | (_| |\\ V /| |
                 |_| \\_|\\__,_| \\_/ |_|""";
-
-    public static final Scanner IN = new Scanner(System.in);
 
     public static void printLineSeparator() {
         System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
@@ -26,8 +27,8 @@ public class TextUi {
      */
     public static void printGreeting() {
         printLineSeparator();
-        System.out.println("G'day mate! I'm:" + LOGO);
-        System.out.println("What’s your name, legend?");
+        System.out.println("Welcome! I'm:" + LOGO);
+        System.out.println("What’s your name?");
         printLineSeparator();
     }
 
@@ -36,8 +37,8 @@ public class TextUi {
      */
     public static void printGreetUser(String name) {
         printLineSeparator();
-        System.out.println("Aye, " + name + "! Stoked to have ya here!");
-        System.out.println("Alrighty, what can I do for ya?");
+        System.out.println("Hello, " + name + "! Nice to meet you!");
+        System.out.println("Alright, what can I do for you?");
         printLineSeparator();
     }
 
@@ -141,9 +142,9 @@ public class TextUi {
         System.out.println("or \"exit\" to exit canteen finder.");
     }
 
-    private static void printValidStallsCF(ArrayList<String> validStalls) {
-        for (String stall : validStalls) {
-            System.out.println(stall);
+    private static void printValidStallsCF(ArrayList<Stall> validStalls) {
+        for (Stall stall : validStalls) {
+            System.out.print(stall);
         }
     }
 
