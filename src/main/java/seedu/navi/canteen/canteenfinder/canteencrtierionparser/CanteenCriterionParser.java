@@ -58,7 +58,9 @@ public class CanteenCriterionParser {
         }
 
         String[] canteenCriteria = canteenCriterion.split(",");
-        assert canteenCriteria.length != 0 : "canteenCriteria should not be empty";
+        if (canteenCriteria.length == 0) {
+            throw new InvalidCanteenCriteria();
+        }
 
         verifyCanteenCriteria(canteenCriteria);
 
