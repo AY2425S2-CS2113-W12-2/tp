@@ -1,6 +1,6 @@
 package seedu.navi.canteen.canteenfinder.canteencrtierionparser;
 
-import seedu.navi.canteen.canteenfinder.usershortcuts.UserShortcuts;
+import seedu.navi.canteen.canteenfinder.usershortcuts.CanteenCriteriaShortcuts;
 import seedu.navi.exceptions.DuplicateCanteenCriterion;
 import seedu.navi.exceptions.EmptyCanteenCriteria;
 import seedu.navi.exceptions.HCAndMOCrtieriaError;
@@ -23,7 +23,7 @@ public class CanteenCriterionParser {
 
         for (int i = 0; i < canteenCriteria.length; i++) {
             String lowerCaseCriterion = canteenCriteria[i].toLowerCase().trim();
-            String validCanteenCriterion = UserShortcuts.CANTEEN_CRITERIA_MAP.get(lowerCaseCriterion);
+            String validCanteenCriterion = CanteenCriteriaShortcuts.CANTEEN_CRITERIA_MAP.get(lowerCaseCriterion);
             if (validCanteenCriterion == null) {
                 throw new InvalidCanteenCriteria();
             }

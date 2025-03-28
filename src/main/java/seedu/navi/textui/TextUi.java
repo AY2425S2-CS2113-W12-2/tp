@@ -3,16 +3,19 @@ package seedu.navi.textui;
 import seedu.navi.canteen.canteenfinder.nearestcanteendata.NearestCanteenData;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 
 public class TextUi {
-    private static final String logo = """
+    private static final String LOGO = """
                 
                  _   _             _
                 | \\ | | __ ___   _(_)
                 |  \\| |/ _` \\ \\ / / |
                 | |\\  | (_| |\\ V /| |
                 |_| \\_|\\__,_| \\_/ |_|""";
+
+    public static final Scanner IN = new Scanner(System.in);
 
     public static void printLineSeparator() {
         System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
@@ -23,7 +26,7 @@ public class TextUi {
      */
     public static void printGreeting() {
         printLineSeparator();
-        System.out.println("G'day mate! I'm:" + logo);
+        System.out.println("G'day mate! I'm:" + LOGO);
         System.out.println("What’s your name, legend?");
         printLineSeparator();
     }
@@ -38,9 +41,9 @@ public class TextUi {
         printLineSeparator();
     }
 
-    public static void printEnterFunctionCF() {
+    public static void printCanteenFinderGreetingCF() {
         printLineSeparator();
-        System.out.println("So you wanna find where's the nearest canteen to ya?");
+        System.out.println("So you wanna find where's the nearest canteen to you?");
         System.out.println("What kind of canteen are you looking for?");
         System.out.println("""
                 You can list out: "Halal Certified, Muslim Owned, Vegetarian, Aircon"
@@ -59,7 +62,7 @@ public class TextUi {
 
     public static void printWhereIsUserCF() {
         printLineSeparator();
-        System.out.println("Alrighty! Now I know what kind of Canteen you're looking for,");
+        System.out.println("Alright! Now I know what kind of Canteen you're looking for,");
         System.out.println("I would need to know where are you now!");
         System.out.println("You can enter either faculties, hostels or other major landmarks in NUS!");
         printLineSeparator();
@@ -74,7 +77,7 @@ public class TextUi {
 
     public static void printNearestCanteenCF(NearestCanteenData nearestCanteenData) {
         printLineSeparator();
-        System.out.println("Alrighty! The nearest canteen to you that fit your criteria is");
+        System.out.println("Alright! The nearest canteen to you that fit your criteria is");
         System.out.println(nearestCanteenData.nearestCanteen().getName());
         System.out.println("which has: ");
         printValidStallsCF(nearestCanteenData.validStalls());
@@ -137,9 +140,39 @@ public class TextUi {
         System.out.println("You can enter your canteen criteria again to start the search again,");
         System.out.println("or \"exit\" to exit canteen finder.");
     }
+
     private static void printValidStallsCF(ArrayList<String> validStalls) {
         for (String stall : validStalls) {
             System.out.println(stall);
         }
+    }
+
+    public static void printCanteenGreetingC() {
+        printLineSeparator();
+        System.out.println("You've entered the Canteen feature!");
+        System.out.println("You can enter \"finder\" to look for the nearest canteen to you,");
+        System.out.println("or you can enter \"lookup\" to see a canteen's stalls information.");
+        printLineSeparator();
+    }
+
+    public static void printExitCanteenC() {
+        printLineSeparator();
+        System.out.println("You have exited the Canteen feature!");
+        printLineSeparator();
+    }
+
+    public static void printInvalidCommandC() {
+        printLineSeparator();
+        System.out.println("You've entered an invalid command!");
+        System.out.println("Please only enter \"finder\", \"lookup\" or \"exit\".");
+        printLineSeparator();
+    }
+
+    public static void printCanteenLookupGreetingCL() {
+        printLineSeparator();
+        System.out.println("You've entered the Canteen Lookup feature!");
+        System.out.println("Enter any Canteen in NUS to check what kind of stalls it have!");
+        System.out.println("Eg. Techno Edge");
+        printLineSeparator();
     }
 }

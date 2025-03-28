@@ -1,7 +1,7 @@
 package seedu.navi.canteen.canteenfinder.canteenfinderparser;
 
 import seedu.navi.canteen.canteenfinder.nearestcanteendata.NearestCanteenData;
-import seedu.navi.canteen.canteenfinder.usershortcuts.UserShortcuts;
+import seedu.navi.canteen.canteenfinder.usershortcuts.LandmarkShortcuts;
 import seedu.navi.canteen.canteenfinder.landmark.Landmark;
 import seedu.navi.exceptions.CanteenNotFound;
 import seedu.navi.exceptions.LocationNotFound;
@@ -29,7 +29,7 @@ public class CanteenFinderParser {
 
     public static NearestCanteenData findNearestCanteen(String userLocation, String[] canteenCriteria)
             throws LocationNotFound, CanteenNotFound {
-        String landmarkName = UserShortcuts.LANDMARK_MAP.get(userLocation.toLowerCase());
+        String landmarkName = LandmarkShortcuts.LANDMARK_MAP.get(userLocation.toLowerCase());
         if (landmarkName == null) {
             throw new LocationNotFound();
         }

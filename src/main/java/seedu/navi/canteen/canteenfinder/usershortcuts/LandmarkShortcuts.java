@@ -2,9 +2,8 @@ package seedu.navi.canteen.canteenfinder.usershortcuts;
 
 import java.util.HashMap;
 
-public class UserShortcuts {
+public class LandmarkShortcuts {
     public static final HashMap<String, String> LANDMARK_MAP = new HashMap<>();
-    public static final HashMap<String, String> CANTEEN_CRITERIA_MAP = new HashMap<>();
 
     static {
         LANDMARK_MAP.put("soc", "SOC");
@@ -69,15 +68,5 @@ public class UserShortcuts {
         LANDMARK_MAP.put("mpsh", "MPSH");
         LANDMARK_MAP.put("university health centre", "UHC");
         LANDMARK_MAP.put("uhc", "UHC");
-
-        CANTEEN_CRITERIA_MAP.put("halal certified", "halal certified");
-        CANTEEN_CRITERIA_MAP.put("hc", "halal certified");
-        CANTEEN_CRITERIA_MAP.put("muslim owned", "muslim owned");
-        CANTEEN_CRITERIA_MAP.put("mo", "muslim owned");
-        CANTEEN_CRITERIA_MAP.put("vegetarian", "vegetarian");
-        CANTEEN_CRITERIA_MAP.put("v", "vegetarian");
-        CANTEEN_CRITERIA_MAP.put("aircon", "aircon");
-        CANTEEN_CRITERIA_MAP.put("a", "aircon");
-        CANTEEN_CRITERIA_MAP.put("nil", "nil");
     }
 }
