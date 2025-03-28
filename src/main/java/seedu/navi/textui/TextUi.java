@@ -157,7 +157,7 @@ public class TextUi {
 
     public static void printExitCanteenC() {
         printLineSeparator();
-        System.out.println("You have exited the Canteen feature!");
+        System.out.println("You've exited the Canteen feature!");
         printLineSeparator();
     }
 
@@ -173,6 +173,12 @@ public class TextUi {
         System.out.println("You've entered the Canteen Lookup feature!");
         System.out.println("Enter any Canteen in NUS to check what kind of stalls it have!");
         System.out.println("Eg. Techno Edge");
+        printLineSeparator();
+    }
+
+    public static void printExitCanteenLookupCL() {
+        printLineSeparator();
+        System.out.println("You've exited the Canteen Lookup feature");
         printLineSeparator();
     }
 }
