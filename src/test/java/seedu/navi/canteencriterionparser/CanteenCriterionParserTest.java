@@ -1,9 +1,10 @@
 package seedu.navi.canteencriterionparser;
 
 import org.junit.jupiter.api.Test;
-import seedu.navi.canteenfinder.canteencrtierionparser.CanteenCriterionParser;
+import seedu.navi.canteen.canteenfinder.canteencrtierionparser.CanteenCriterionParser;
 import seedu.navi.exceptions.DuplicateCanteenCriterion;
 import seedu.navi.exceptions.EmptyCanteenCriteria;
+import seedu.navi.exceptions.HCAndMOCrtieriaError;
 import seedu.navi.exceptions.InvalidCanteenCriteria;
 import seedu.navi.exceptions.NILWithOtherCriteria;
 
@@ -79,6 +80,16 @@ public class CanteenCriterionParserTest {
             String[] testCriteria = CanteenCriterionParser.handleCanteenCriterion("nil, hc");
             fail();
         } catch (NILWithOtherCriteria e) {
+            assertTrue(true);
+        }
+    }
+
+    @Test
+    public void testHandleCanteenCriterion_hCWithMOCriteria_exceptionThrown() {
+        try {
+            String[] testCriteria = CanteenCriterionParser.handleCanteenCriterion("mo, hc");
+            fail();
+        } catch (HCAndMOCrtieriaError e) {
             assertTrue(true);
         }
     }

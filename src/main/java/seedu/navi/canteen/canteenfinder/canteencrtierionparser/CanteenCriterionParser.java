@@ -1,8 +1,9 @@
-package seedu.navi.canteenfinder.canteencrtierionparser;
+package seedu.navi.canteen.canteenfinder.canteencrtierionparser;
 
-import seedu.navi.canteenfinder.usershortcuts.UserShortcuts;
+import seedu.navi.canteen.canteenfinder.usershortcuts.UserShortcuts;
 import seedu.navi.exceptions.DuplicateCanteenCriterion;
 import seedu.navi.exceptions.EmptyCanteenCriteria;
+import seedu.navi.exceptions.HCAndMOCrtieriaError;
 import seedu.navi.exceptions.InvalidCanteenCriteria;
 import seedu.navi.exceptions.NILWithOtherCriteria;
 
@@ -14,8 +15,11 @@ public class CanteenCriterionParser {
     private static void verifyCanteenCriteria(String[] canteenCriteria)
             throws NILWithOtherCriteria, DuplicateCanteenCriterion, InvalidCanteenCriteria {
         Set<String> uniqueCriteria = new HashSet<>();
-        boolean isNILPresent = false;
         String[] validCanteenCriteria = new String[canteenCriteria.length];
+
+        boolean isNILPresent = false;
+        boolean isHalalCertifiedPresent = false;
+        boolean isMuslimOwnedPresent = false;
 
         for (int i = 0; i < canteenCriteria.length; i++) {
             String lowerCaseCriterion = canteenCriteria[i].toLowerCase().trim();
@@ -30,7 +34,16 @@ public class CanteenCriterionParser {
             if ("nil".equals(validCanteenCriterion)) {
                 isNILPresent = true;
             }
+            if ("halal certified".equals(validCanteenCriterion)) {
+                isHalalCertifiedPresent = true;
+            }
+            if ("muslim owned".equals(validCanteenCriterion)) {
+                isMuslimOwnedPresent = true;
+            }
             validCanteenCriteria[i] = validCanteenCriterion;
+        }
+        if (isHalalCertifiedPresent && isMuslimOwnedPresent) {
+            throw new HCAndMOCrtieriaError();
         }
         if (isNILPresent && uniqueCriteria.size() > 1) {
             throw new NILWithOtherCriteria();
