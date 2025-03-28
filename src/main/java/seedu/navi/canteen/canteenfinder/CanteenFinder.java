@@ -12,23 +12,20 @@ import seedu.navi.exceptions.LocationNotFound;
 import seedu.navi.exceptions.NILWithOtherCriteria;
 import seedu.navi.textui.TextUi;
 
-import java.util.Scanner;
-
 public class CanteenFinder {
 
     public static void startCanteenFinder() {
-        Scanner in = new Scanner(System.in);
-        TextUi.printEnterFunctionCF();
-        String[] canteenCriterion;
+        TextUi.printCanteenFinderGreetingCF();
+        String[] canteenCriteria;
         String command;
         while (true) {
-            command = in.nextLine().trim();
+            command = TextUi.IN.nextLine().trim();
             if (command.equalsIgnoreCase("exit")) {
                 TextUi.printExitCanteenFinderCF();
                 break;
             }
             try {
-                canteenCriterion = CanteenCriterionParser.handleCanteenCriterion(command);
+                canteenCriteria = CanteenCriterionParser.handleCanteenCriterion(command);
             } catch (EmptyCanteenCriteria e) {
                 TextUi.printEmptyCanteenCriteriaCF();
                 continue;
@@ -46,12 +43,15 @@ public class CanteenFinder {
                 continue;
             }
 
-            TextUi.printWhereIsUserCF();
-            command = in.nextLine().trim();
+            assert canteenCriteria == null || canteenCriteria.length > 0 :
+                    "Output canteenCriteria should either be null or non-empty.";
+
+            TextUi.printAcknowledgeUserCriteriaCF(canteenCriteria);
+            command = TextUi.IN.nextLine().trim();
 
             while (command.isEmpty()) {
                 TextUi.printEmptyLandmarkCF();
-                command = in.nextLine().trim();
+                command = TextUi.IN.nextLine().trim();
             }
             if (command.equalsIgnoreCase("exit")) {
                 TextUi.printExitCanteenFinderCF();
@@ -59,7 +59,7 @@ public class CanteenFinder {
             }
             try {
                 NearestCanteenData nearestCanteenData =
-                        CanteenFinderParser.findNearestCanteen(command, canteenCriterion);
+                        CanteenFinderParser.findNearestCanteen(command, canteenCriteria);
                 TextUi.printNearestCanteenCF(nearestCanteenData);
             } catch (LocationNotFound e) {
                 TextUi.printLocationNotFoundCF();

@@ -1,6 +1,6 @@
 package seedu.navi.canteen.canteenfinder.canteencrtierionparser;
 
-import seedu.navi.canteen.canteenfinder.usershortcuts.UserShortcuts;
+import seedu.navi.canteen.canteenfinder.usershortcuts.CanteenCriteriaShortcuts;
 import seedu.navi.exceptions.DuplicateCanteenCriterion;
 import seedu.navi.exceptions.EmptyCanteenCriteria;
 import seedu.navi.exceptions.HCAndMOCrtieriaError;
@@ -21,9 +21,11 @@ public class CanteenCriterionParser {
         boolean isHalalCertifiedPresent = false;
         boolean isMuslimOwnedPresent = false;
 
+        assert canteenCriteria.length > 0 : "canteenCriteria array should not be empty.";
+
         for (int i = 0; i < canteenCriteria.length; i++) {
             String lowerCaseCriterion = canteenCriteria[i].toLowerCase().trim();
-            String validCanteenCriterion = UserShortcuts.CANTEEN_CRITERIA_MAP.get(lowerCaseCriterion);
+            String validCanteenCriterion = CanteenCriteriaShortcuts.CANTEEN_CRITERIA_MAP.get(lowerCaseCriterion);
             if (validCanteenCriterion == null) {
                 throw new InvalidCanteenCriteria();
             }
@@ -57,8 +59,10 @@ public class CanteenCriterionParser {
             throw new EmptyCanteenCriteria();
         }
 
-        String[] canteenCriteria = canteenCriterion.split(", ");
-        assert canteenCriteria.length != 0 : "canteenCriteria should not be empty";
+        String[] canteenCriteria = canteenCriterion.split(",");
+        if (canteenCriteria.length == 0) {
+            throw new InvalidCanteenCriteria();
+        }
 
         verifyCanteenCriteria(canteenCriteria);
 
