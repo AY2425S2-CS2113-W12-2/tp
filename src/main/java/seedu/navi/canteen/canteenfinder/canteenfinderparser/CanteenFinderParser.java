@@ -22,6 +22,10 @@ public class CanteenFinderParser {
             }
         }
         if (nearestCanteenData != null) {
+            assert nearestCanteenData.nearestCanteen() != null ||
+                    nearestCanteenData.landmarkToCanteenDist() != null ||
+                    nearestCanteenData.validStalls() != null :
+                    "all nearestCanteenData fields should not be null";
             return nearestCanteenData;
         }
         throw new CanteenNotFound();

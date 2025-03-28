@@ -21,6 +21,8 @@ public class CanteenCriterionParser {
         boolean isHalalCertifiedPresent = false;
         boolean isMuslimOwnedPresent = false;
 
+        assert canteenCriteria.length > 0 : "canteenCriteria array should not be empty.";
+
         for (int i = 0; i < canteenCriteria.length; i++) {
             String lowerCaseCriterion = canteenCriteria[i].toLowerCase().trim();
             String validCanteenCriterion = CanteenCriteriaShortcuts.CANTEEN_CRITERIA_MAP.get(lowerCaseCriterion);

@@ -16,7 +16,7 @@ public class CanteenFinder {
 
     public static void startCanteenFinder() {
         TextUi.printCanteenFinderGreetingCF();
-        String[] canteenCriterion;
+        String[] canteenCriteria;
         String command;
         while (true) {
             command = TextUi.IN.nextLine().trim();
@@ -25,7 +25,7 @@ public class CanteenFinder {
                 break;
             }
             try {
-                canteenCriterion = CanteenCriterionParser.handleCanteenCriterion(command);
+                canteenCriteria = CanteenCriterionParser.handleCanteenCriterion(command);
             } catch (EmptyCanteenCriteria e) {
                 TextUi.printEmptyCanteenCriteriaCF();
                 continue;
@@ -43,7 +43,10 @@ public class CanteenFinder {
                 continue;
             }
 
-            TextUi.printAcknowledgeUserCriteriaCF(canteenCriterion);
+            assert canteenCriteria == null || canteenCriteria.length > 0 :
+                    "Output canteenCriteria should either be null or non-empty.";
+
+            TextUi.printAcknowledgeUserCriteriaCF(canteenCriteria);
             command = TextUi.IN.nextLine().trim();
 
             while (command.isEmpty()) {
@@ -56,7 +59,7 @@ public class CanteenFinder {
             }
             try {
                 NearestCanteenData nearestCanteenData =
-                        CanteenFinderParser.findNearestCanteen(command, canteenCriterion);
+                        CanteenFinderParser.findNearestCanteen(command, canteenCriteria);
                 TextUi.printNearestCanteenCF(nearestCanteenData);
             } catch (LocationNotFound e) {
                 TextUi.printLocationNotFoundCF();
