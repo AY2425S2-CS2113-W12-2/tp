@@ -1,7 +1,11 @@
 package seedu.navi.canteen.canteenfinder.canteencrtierionparser;
 
 import seedu.navi.canteen.canteenfinder.usershortcuts.UserShortcuts;
-import seedu.navi.exceptions.*;
+import seedu.navi.exceptions.DuplicateCanteenCriterion;
+import seedu.navi.exceptions.EmptyCanteenCriteria;
+import seedu.navi.exceptions.HCAndMOCrtieriaError;
+import seedu.navi.exceptions.InvalidCanteenCriteria;
+import seedu.navi.exceptions.NILWithOtherCriteria;
 
 import java.util.HashSet;
 import java.util.Set;
