@@ -12,17 +12,14 @@ import seedu.navi.exceptions.LocationNotFound;
 import seedu.navi.exceptions.NILWithOtherCriteria;
 import seedu.navi.textui.TextUi;
 
-import java.util.Scanner;
-
 public class CanteenFinder {
 
     public static void startCanteenFinder() {
-        Scanner in = new Scanner(System.in);
-        TextUi.printEnterFunctionCF();
+        TextUi.printCanteenFinderGreetingCF();
         String[] canteenCriterion;
         String command;
         while (true) {
-            command = in.nextLine().trim();
+            command = TextUi.IN.nextLine().trim();
             if (command.equalsIgnoreCase("exit")) {
                 TextUi.printExitCanteenFinderCF();
                 break;
@@ -47,11 +44,11 @@ public class CanteenFinder {
             }
 
             TextUi.printWhereIsUserCF();
-            command = in.nextLine().trim();
+            command = TextUi.IN.nextLine().trim();
 
             while (command.isEmpty()) {
                 TextUi.printEmptyLandmarkCF();
-                command = in.nextLine().trim();
+                command = TextUi.IN.nextLine().trim();
             }
             if (command.equalsIgnoreCase("exit")) {
                 TextUi.printExitCanteenFinderCF();

@@ -1,6 +1,6 @@
 package seedu.navi;
 
-import seedu.navi.canteen.canteenfinder.CanteenFinder;
+import seedu.navi.canteen.Canteen;
 import seedu.navi.canteen.storage.Storage;
 import seedu.navi.textui.TextUi;
 import seedu.navi.budget.Budget;
@@ -91,7 +91,7 @@ class Parser {
                 System.exit(0);
                 break;
             case "canteen":
-                CanteenFinder.startCanteenFinder();
+                Canteen.startCanteen();
                 break;
             case "budget":
                 BudgetParser budgetParser = new BudgetParser(budget);
