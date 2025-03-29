@@ -15,7 +15,8 @@ public class FavoritesParser {
     public static void start() {
         scanner = new Scanner(System.in);
         TextUi.printLineSeparator();
-        System.out.println("🌟 Favorites Tracker: Enter a command (add description : rating : category, remove N, view, sort asc/desc, " +
+        System.out.println("🌟 Favorites Tracker: Enter a command (add description : rating : category, remove N," +
+                " view, sort asc/desc, " +
                 "search X, undo, exit)");
         TextUi.printLineSeparator();
 
