@@ -2,12 +2,13 @@ package seedu.navi.storage;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import seedu.navi.canteenfinder.CanteenFinderParser;
-import seedu.navi.canteenfinder.landmark.Faculty;
-import seedu.navi.canteenfinder.landmark.Landmark;
-import seedu.navi.canteenfinder.landmark.canteen.Canteen;
-import seedu.navi.canteenfinder.landmark.canteen.stall.Stall;
-import seedu.navi.canteenfinder.landmark.canteen.stall.StallCharacteristic;
+import seedu.navi.canteen.storage.Storage;
+import seedu.navi.canteen.canteenfinder.canteenfinderparser.CanteenFinderParser;
+import seedu.navi.canteen.canteenfinder.landmark.Faculty;
+import seedu.navi.canteen.canteenfinder.landmark.Landmark;
+import seedu.navi.canteen.canteenfinder.landmark.canteen.Canteen;
+import seedu.navi.canteen.canteenfinder.landmark.canteen.stall.Stall;
+import seedu.navi.canteen.canteenfinder.landmark.canteen.stall.StallCharacteristic;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
@@ -17,7 +18,7 @@ import java.nio.file.Paths;
 import java.util.Map;
 import java.util.Optional;
 
-import static seedu.navi.canteenfinder.CanteenFinderParser.LANDMARKS;
+import static seedu.navi.canteen.canteenfinder.canteenfinderparser.CanteenFinderParser.LANDMARKS;
 
 public class StorageTest {
 
@@ -111,7 +112,7 @@ public class StorageTest {
         Stall chickenRice = stalls.filter(s -> s.getName().equals("Chicken Rice")).findFirst().orElse(null);
         assert chickenRice != null;
         StallCharacteristic chickenRiceChar = chickenRice.getStallCharacteristic();
-        assert !chickenRiceChar.gethalalCertified();
+        assert !chickenRiceChar.getHalalCertified();
         assert !chickenRiceChar.getMuslimOwned();
         assert !chickenRiceChar.getInAirconArea();
         assert !chickenRiceChar.getVegetarian();
@@ -121,7 +122,7 @@ public class StorageTest {
         Stall noodle = noodleStalls.filter(s -> s.getName().equals("Noodle")).findFirst().orElse(null);
         assert noodle != null;
         StallCharacteristic noodleChar = noodle.getStallCharacteristic();
-        assert !noodleChar.gethalalCertified();
+        assert !noodleChar.getHalalCertified();
         assert !noodleChar.getMuslimOwned();
         assert !noodleChar.getInAirconArea();
         assert !noodleChar.getVegetarian();
@@ -131,7 +132,7 @@ public class StorageTest {
         Stall western = westernStalls.filter(s -> s.getName().equals("Western Cuisine")).findFirst().orElse(null);
         assert western != null;
         StallCharacteristic westernChar = western.getStallCharacteristic();
-        assert westernChar.gethalalCertified();
+        assert westernChar.getHalalCertified();
         assert !westernChar.getMuslimOwned();
         assert westernChar.getInAirconArea();
         assert !westernChar.getVegetarian();
@@ -141,7 +142,7 @@ public class StorageTest {
         Stall mala = malaStalls.filter(s -> s.getName().equals("Mala Hotpot")).findFirst().orElse(null);
         assert mala != null;
         StallCharacteristic malaChar = mala.getStallCharacteristic();
-        assert !malaChar.gethalalCertified();
+        assert !malaChar.getHalalCertified();
         assert !malaChar.getMuslimOwned();
         assert !malaChar.getInAirconArea();
         assert !malaChar.getVegetarian();

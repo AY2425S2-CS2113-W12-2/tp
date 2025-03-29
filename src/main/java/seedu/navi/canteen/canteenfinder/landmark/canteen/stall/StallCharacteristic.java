@@ -1,4 +1,4 @@
-package seedu.navi.canteenfinder.landmark.canteen.stall;
+package seedu.navi.canteen.canteenfinder.landmark.canteen.stall;
 
 public class StallCharacteristic {
     private final boolean halalCertified;
@@ -18,7 +18,7 @@ public class StallCharacteristic {
         this.inAirconArea = inAirconArea;
     }
 
-    public boolean gethalalCertified() {
+    public boolean getHalalCertified() {
         return halalCertified;
     }
 
@@ -66,17 +66,17 @@ public class StallCharacteristic {
         return "[N] " + type;
     }
 
-    public boolean containsFields(String[] dietRestrictions) {
-        if (dietRestrictions == null) {
+    public boolean containsFields(String[] canteenCriteria) {
+        if (canteenCriteria == null) {
             return true;
         }
-        for (String dietRestriction : dietRestrictions) {
-            assert dietRestriction.equalsIgnoreCase("halal certified") ||
-                    dietRestriction.equalsIgnoreCase("muslim owned") ||
-                    dietRestriction.equalsIgnoreCase("vegetarian") ||
-                    dietRestriction.equalsIgnoreCase("aircon") : "Invalid diet restriction";
+        for (String canteenCriterion : canteenCriteria) {
+            assert canteenCriterion.equalsIgnoreCase("halal certified") ||
+                    canteenCriterion.equalsIgnoreCase("muslim owned") ||
+                    canteenCriterion.equalsIgnoreCase("vegetarian") ||
+                    canteenCriterion.equalsIgnoreCase("aircon") : "Invalid canteen criterion";
 
-            switch (dietRestriction.toLowerCase()) {
+            switch (canteenCriterion.toLowerCase()) {
             case "halal certified":
                 if (!halalCertified) {
                     return false;

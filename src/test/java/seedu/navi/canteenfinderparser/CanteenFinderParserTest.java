@@ -1,11 +1,12 @@
-package seedu.navi.canteenfinder;
+package seedu.navi.canteenfinderparser;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import seedu.navi.canteenfinder.helperclasses.NearestCanteenData;
+import seedu.navi.canteen.canteenfinder.canteenfinderparser.CanteenFinderParser;
+import seedu.navi.canteen.canteenfinder.nearestcanteendata.NearestCanteenData;
 import seedu.navi.exceptions.CanteenNotFound;
 import seedu.navi.exceptions.LocationNotFound;
-import seedu.navi.storage.Storage;
+import seedu.navi.canteen.storage.Storage;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
@@ -34,10 +35,10 @@ class CanteenFinderParserTest {
     }
 
     @Test
-    public void testFindNearestCanteen_correctCanteenSOCWithDietRestrictions_success() {
-        String[] dietRestrictions = {"halal certified", "aircon"};
+    public void testFindNearestCanteen_correctCanteenSOCWithCanteenCriteria_success() {
+        String[] canteenCriteria = {"halal certified", "aircon"};
         NearestCanteenData nearestCanteenData = CanteenFinderParser.findNearestCanteen("soc",
-                dietRestrictions);
+                canteenCriteria);
         assertEquals("The Deck", nearestCanteenData.nearestCanteen().getName());
     }
 
@@ -70,18 +71,18 @@ class CanteenFinderParserTest {
     }
 
     @Test
-    public void testFindNearestCanteen_correctCanteenHSSMLWithDietRestrictions_success() {
-        String[] dietRestrictions = {"halal certified", "aircon"};
+    public void testFindNearestCanteen_correctCanteenHSSMLWithcanteenCriteria_success() {
+        String[] canteenCriteria = {"halal certified", "aircon"};
         NearestCanteenData nearestCanteenData = CanteenFinderParser.findNearestCanteen("hssml",
-                dietRestrictions);
+                canteenCriteria);
         assertEquals("The Deck", nearestCanteenData.nearestCanteen().getName());
     }
 
     @Test
-    public void testFindNearestCanteen_wrongCanteenHSSMLWithDietRestrictions_success() {
-        String[] dietRestrictions = {"halal certified", "aircon"};
+    public void testFindNearestCanteen_wrongCanteenHSSMLWithcanteenCriteria_success() {
+        String[] canteenCriteria = {"halal certified", "aircon"};
         NearestCanteenData nearestCanteenData = CanteenFinderParser.findNearestCanteen("hssml",
-                dietRestrictions);
+                canteenCriteria);
         assertNotEquals("Terrace", nearestCanteenData.nearestCanteen().getName());
     }
 
@@ -100,19 +101,19 @@ class CanteenFinderParserTest {
     }
 
     @Test
-    public void testFindNearestCanteen_correctCanteenEusoffWithDietRestrictions_success() {
-        String[] dietRestrictions = {"vegetarian"};
+    public void testFindNearestCanteen_correctCanteenEusoffWithcanteenCriteria_success() {
+        String[] canteenCriteria = {"vegetarian"};
         NearestCanteenData nearestCanteenData = CanteenFinderParser.findNearestCanteen("eusoff",
-                dietRestrictions);
+                canteenCriteria);
         assertEquals("The Deck", nearestCanteenData.nearestCanteen().getName());
     }
 
     @Test
-    public void testFindNearestCanteen_wrongCanteenEusoffWithDietRestrictions_exceptionThrown() {
-        String[] dietRestrictions = {"vegetarian", "aircon"};
+    public void testFindNearestCanteen_wrongCanteenEusoffWithcanteenCriteria_exceptionThrown() {
+        String[] canteenCriteria = {"vegetarian", "aircon"};
         try {
             NearestCanteenData nearestCanteenData = CanteenFinderParser.findNearestCanteen("eusoff",
-                    dietRestrictions);
+                    canteenCriteria);
             fail();
         } catch (CanteenNotFound e) {
             assertTrue(true);

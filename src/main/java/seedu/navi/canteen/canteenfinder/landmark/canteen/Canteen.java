@@ -1,6 +1,6 @@
-package seedu.navi.canteenfinder.landmark.canteen;
+package seedu.navi.canteen.canteenfinder.landmark.canteen;
 
-import seedu.navi.canteenfinder.landmark.canteen.stall.Stall;
+import seedu.navi.canteen.canteenfinder.landmark.canteen.stall.Stall;
 
 import java.util.ArrayList;
 
@@ -25,11 +25,11 @@ public class Canteen {
         return stalls;
     }
 
-    public ArrayList<String> findValidStalls(String[] dietRestrictions) {
-        ArrayList<String> validStalls = new ArrayList<>();
+    public ArrayList<Stall> findValidStalls(String[] canteenCriteria) {
+        ArrayList<Stall> validStalls = new ArrayList<>();
         for (Stall stall : stalls) {
-            if (stall.isValidStall(dietRestrictions)) {
-                validStalls.add(stall.getName());
+            if (stall.isValidStall(canteenCriteria)) {
+                validStalls.add(stall);
             }
         }
         return validStalls;

@@ -1,4 +1,4 @@
-package seedu.navi.canteenfinder.landmark.canteen.stall;
+package seedu.navi.canteen.canteenfinder.landmark.canteen.stall;
 
 public class Stall {
     private String name;
@@ -17,7 +17,7 @@ public class Stall {
     }
 
     public String toString() {
-        return "This stall's name is " + name + " and it is:\n" +
+        return name + "\n" +
                 "  " + stallCharacteristic.getHalalCertifiedIcon() + "\n" +
                 "  " + stallCharacteristic.getMuslimOwnedIcon() + "\n" +
                 "  " + stallCharacteristic.getVegetarianIcon() + "\n" +
@@ -32,7 +32,7 @@ public class Stall {
         return stallCharacteristic;
     }
 
-    public boolean isValidStall(String[] dietRestrictions) {
-        return stallCharacteristic.containsFields(dietRestrictions);
+    public boolean isValidStall(String[] canteenCriteria) {
+        return stallCharacteristic.containsFields(canteenCriteria);
     }
 }
