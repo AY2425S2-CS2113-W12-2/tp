@@ -6,7 +6,7 @@
 
 ## Design & implementation
 ___
-## Canteen
+## Canteen Feature
 The Canteen feature provides 2 sub-features: Canteen Finder and Canteen Lookup.
 
 This functionality is controlled by the `Canteen` class where `startCanteen()`, a class level method,
@@ -134,7 +134,7 @@ relationships such as nearest canteens and distances between entities.
 ## Product scope
 ### Target user profile
 
-NUS students who need guidance to find or lookup canteens, manage budgets, and track their favorite food stalls 
+NUS students, faculty or staff who need guidance to find or lookup canteens, manage budgets, and track their favorite food stalls 
 in the NUS Kent Ridge Campus.
 
 ### Value proposition
