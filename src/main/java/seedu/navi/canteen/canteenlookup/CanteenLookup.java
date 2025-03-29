@@ -15,7 +15,7 @@ public class CanteenLookup {
                 break;
             }
             String canteenName = CanteenShortcuts.CANTEEN_MAP.get(command);
-            //lookUpCanteen(canteenName)
+            CanteenSearch.searchCanteen(canteenName);
         }
     }
 }
