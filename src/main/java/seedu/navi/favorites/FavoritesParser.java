@@ -1,5 +1,7 @@
 package seedu.navi.favorites;
 
+import seedu.navi.textui.TextUi;
+
 import java.util.Scanner;
 
 public class FavoritesParser {
@@ -12,15 +14,19 @@ public class FavoritesParser {
 
     public static void start() {
         scanner = new Scanner(System.in);
-        System.out.println("🌟 Favorites Tracker: Enter a command (add X : Y : Z, remove N, view, sort asc/desc, " +
+        TextUi.printLineSeparator();
+        System.out.println("🌟 Favorites Tracker: Enter a command (add description : rating : category, remove N, view, sort asc/desc, " +
                 "search X, undo, exit)");
+        TextUi.printLineSeparator();
 
         while (true) {
             System.out.print("> ");
             String input = scanner.nextLine().trim();
 
             if (input.isEmpty()) {
+                TextUi.printLineSeparator();
                 System.out.println("⚠️ Please enter a command.");
+                TextUi.printLineSeparator();
                 continue;
             }
 
@@ -48,11 +54,15 @@ public class FavoritesParser {
                 favorites.undoRemove();
                 break;
             case "exit":
+                TextUi.printLineSeparator();
                 System.out.println("👋 Exiting Favorites Tracker.");
+                TextUi.printLineSeparator();
                 return;
             default:
-                System.out.println("⚠️ Unknown command. Try: add X : Y : Z, remove N, view, sort asc/desc, search X, "
-                        + "undo, exit.");
+                TextUi.printLineSeparator();
+                System.out.println("⚠️ Unknown command. Try: add description : rating : category, remove N, view, " +
+                        "sort asc/desc, search X, " + "undo, exit.");
+                TextUi.printLineSeparator();
             }
         }
     }
@@ -60,17 +70,23 @@ public class FavoritesParser {
     private static void handleAddCommand(String arguments) {
         String[] params = arguments.split(" : ");
         if (params.length != 3) {
+            TextUi.printLineSeparator();
             System.out.println("⚠️ Invalid format. Use: add <description> : <rating> : <category>");
+            TextUi.printLineSeparator();
             return;
         }
 
         try {
+            TextUi.printLineSeparator();
             String description = params[0].trim();
             int rating = Integer.parseInt(params[1].trim());
             String category = params[2].trim();
             favorites.addFavorite(description, rating, category);
+            TextUi.printLineSeparator();
         } catch (NumberFormatException e) {
+            TextUi.printLineSeparator();
             System.out.println("⚠️ Rating must be a number.");
+            TextUi.printLineSeparator();
         }
     }
 
@@ -79,7 +95,9 @@ public class FavoritesParser {
             int index = Integer.parseInt(arguments.trim()) - 1; // Convert to 0-based index
             favorites.removeFavorite(index);
         } catch (NumberFormatException e) {
+            TextUi.printLineSeparator();
             System.out.println("⚠️ Please enter a valid index number.");
+            TextUi.printLineSeparator();
         }
     }
 
