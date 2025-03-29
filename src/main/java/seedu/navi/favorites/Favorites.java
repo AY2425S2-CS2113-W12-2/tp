@@ -15,14 +15,17 @@ public class Favorites {
         this.undoStack = new Stack<>();
     }
 
-    // Adds an item with description, rating, and category
+    public void clearFavorites() {
+        favoriteItems.clear();
+        undoStack.clear();
+    }
+
     public void addFavorite(String description, int rating, String category) {
         String item = description + " | Rating: " + rating + " | Category: " + category;
         favoriteItems.add(item);
         System.out.println("✅ Added: " + item);
     }
 
-    // Removes an item by index
     public void removeFavorite(int index) {
         if (index < 0 || index >= favoriteItems.size()) {
             TextUi.printLineSeparator();
@@ -37,7 +40,6 @@ public class Favorites {
         TextUi.printLineSeparator();
     }
 
-    // Undo the last deletion
     public void undoRemove() {
         if (undoStack.isEmpty()) {
             TextUi.printLineSeparator();
@@ -52,12 +54,10 @@ public class Favorites {
         TextUi.printLineSeparator();
     }
 
-    // Retrieves all favorite items
     public List<String> getFavoriteItems() {
         return new ArrayList<>(favoriteItems);
     }
 
-    // Views all favorite items
     public void viewFavorites() {
         if (favoriteItems.isEmpty()) {
             TextUi.printLineSeparator();
@@ -73,7 +73,6 @@ public class Favorites {
         }
     }
 
-    // Sorts items based on rating in ascending or descending order
     public void sortFavorites(boolean descending) {
         favoriteItems.sort((a, b) -> {
             int ratingA = Integer.parseInt(a.split("\\| Rating: ")[1].split(" ")[0]);
@@ -85,8 +84,7 @@ public class Favorites {
         TextUi.printLineSeparator();
     }
 
-    // Searches for items containing a keyword
-    public void searchFavorites(String keyword) {
+    public boolean searchFavorites(String keyword) {
         TextUi.printLineSeparator();
         System.out.println("🔎 Search results for '" + keyword + "':");
         TextUi.printLineSeparator();
@@ -100,5 +98,8 @@ public class Favorites {
         if (!found) {
             System.out.println("❌ No matching favorites found.");
         }
+        return found;
+
     }
 }
+
