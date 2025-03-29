@@ -20,7 +20,8 @@ public class CanteenFinder {
         String command;
         while (true) {
             command = TextUi.IN.nextLine().trim();
-            if (command.equalsIgnoreCase("exit")) {
+            if (command.equalsIgnoreCase("e") ||
+                    command.equalsIgnoreCase("exit")) {
                 TextUi.printExitCanteenFinderCF();
                 break;
             }
@@ -53,7 +54,8 @@ public class CanteenFinder {
                 TextUi.printEmptyLandmarkCF();
                 command = TextUi.IN.nextLine().trim();
             }
-            if (command.equalsIgnoreCase("exit")) {
+            if (command.equalsIgnoreCase("e") ||
+                    command.equalsIgnoreCase("exit")) {
                 TextUi.printExitCanteenFinderCF();
                 break;
             }

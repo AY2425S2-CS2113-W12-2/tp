@@ -9,7 +9,8 @@ public class CanteenLookup {
         String command;
         while (true) {
             command = TextUi.IN.nextLine().trim();
-            if (command.equalsIgnoreCase("exit")) {
+            if (command.equalsIgnoreCase("e") ||
+                    command.equalsIgnoreCase("exit")) {
                 TextUi.printExitCanteenLookupCL();
                 break;
             }

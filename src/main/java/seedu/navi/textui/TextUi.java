@@ -70,7 +70,7 @@ public class TextUi {
         System.out.println("So you wanna find where's the nearest canteen to you?");
         System.out.println("What kind of canteen are you looking for?");
         System.out.println("""
-                You can list out: "Halal Certified, Muslim Owned, Vegetarian, Aircon"
+                You can list out: "Halal Certified", "Muslim Owned", "Vegetarian", "Aircon"
                 or "NIL" if you're fine with anything!""");
         printLineSeparator();
     }
@@ -79,7 +79,7 @@ public class TextUi {
         printLineSeparator();
         System.out.println("Oh no! You did not enter anything!");
         System.out.println("""
-                "Please enter either: "Halal Certified, Muslim Owned, Vegetarian, Aircon"
+                "Please enter either: "Halal Certified", "Muslim Owned", "Vegetarian", "Aircon"
                 or "NIL" if you're fine with anything!""");
         printLineSeparator();
     }
@@ -141,7 +141,7 @@ public class TextUi {
         printLineSeparator();
         System.out.println("Please enter a valid criteria that is,");
         System.out.println("""
-                "Halal Certified, Muslim Owned, Vegetarian, Aircon"
+                "Halal Certified", "Muslim Owned", "Vegetarian", "Aircon"
                 or "NIL" if you're fine with anything!""");
         printLineSeparator();
     }
