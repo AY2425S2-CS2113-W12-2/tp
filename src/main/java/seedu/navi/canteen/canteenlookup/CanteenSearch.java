@@ -10,7 +10,6 @@ import java.util.ArrayList;
 public class CanteenSearch {
     public static void searchCanteen(String canteenName, CanteenDataProcessor dataProcessor) {
         Map<String, Canteen> canteenMap = dataProcessor.getCanteenMap();
-        String lowercaseCanteenName = canteenName.toLowerCase(); // Convert to lowercase for search
         Canteen canteen = canteenMap.get(canteenName);
 
         if (canteen == null) {
