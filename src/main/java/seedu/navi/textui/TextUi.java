@@ -175,7 +175,7 @@ public class TextUi {
         System.out.println("or \"exit\" to exit canteen finder.");
     }
 
-    private static void printValidStallsCF(ArrayList<Stall> validStalls) {
+    public static void printValidStallsCF(ArrayList<Stall> validStalls) {
         for (Stall stall : validStalls) {
             System.out.print(stall);
         }
@@ -213,6 +213,12 @@ public class TextUi {
     public static void printExitCanteenLookupCL() {
         printLineSeparator();
         System.out.println("You've exited the Canteen Lookup feature");
+        printLineSeparator();
+    }
+
+    public static void printCanteenDataFileNotFound() {
+        printLineSeparator();
+        System.out.println("Canteen Data not found");
         printLineSeparator();
     }
 }

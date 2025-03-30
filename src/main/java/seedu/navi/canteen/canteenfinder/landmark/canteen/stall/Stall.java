@@ -35,4 +35,5 @@ public class Stall {
     public boolean isValidStall(String[] canteenCriteria) {
         return stallCharacteristic.containsFields(canteenCriteria);
     }
+
 }

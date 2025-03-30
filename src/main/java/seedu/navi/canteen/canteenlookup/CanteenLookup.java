@@ -1,10 +1,11 @@
 package seedu.navi.canteen.canteenlookup;
 
 import seedu.navi.canteen.canteenfinder.usershortcuts.CanteenShortcuts;
+import seedu.navi.canteen.storage.CanteenDataProcessor;
 import seedu.navi.textui.TextUi;
 
 public class CanteenLookup {
-    public static void startCanteenLookup() {
+    public static void startCanteenLookup(CanteenDataProcessor dataProcessor) {
         TextUi.printCanteenLookupGreetingCL();
         String command;
         while (true) {
@@ -15,7 +16,7 @@ public class CanteenLookup {
                 break;
             }
             String canteenName = CanteenShortcuts.CANTEEN_MAP.get(command);
-            CanteenSearch.searchCanteen(canteenName);
+            CanteenSearch.searchCanteen(canteenName, dataProcessor);
         }
     }
 }

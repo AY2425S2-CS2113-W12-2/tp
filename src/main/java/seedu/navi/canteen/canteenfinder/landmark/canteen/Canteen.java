@@ -9,7 +9,7 @@ public class Canteen {
     private ArrayList<Stall> stalls;
 
     public Canteen(String name) {
-        this.name = name;
+        this.name = name.toLowerCase();
         this.stalls = new ArrayList<>();
     }
 

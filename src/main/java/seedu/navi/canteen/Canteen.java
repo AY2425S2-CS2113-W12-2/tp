@@ -2,10 +2,13 @@ package seedu.navi.canteen;
 
 import seedu.navi.canteen.canteenfinder.CanteenFinder;
 import seedu.navi.canteen.canteenlookup.CanteenLookup;
+import seedu.navi.canteen.storage.CanteenDataProcessor;
 import seedu.navi.textui.TextUi;
 
+
+
 public class Canteen {
-    public static void startCanteen() {
+    public static void startCanteen(CanteenDataProcessor dataProcessor) {
         TextUi.printCanteenGreetingC();
         String command;
         while (true) {
@@ -21,7 +24,7 @@ public class Canteen {
                 break;
             case "lookup":
             case "l":
-                CanteenLookup.startCanteenLookup();
+                CanteenLookup.startCanteenLookup(dataProcessor);
                 break;
             default:
                 TextUi.printInvalidCommandC();
@@ -29,3 +32,5 @@ public class Canteen {
         }
     }
 }
+
+
