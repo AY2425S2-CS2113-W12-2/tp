@@ -99,10 +99,7 @@ undo/redo functionality while maintaining the current straightforward user inter
 The following UML Sequence diagram illustrates the core favorite management workflow. The starting arrow indicates the 
 main program initializing the Favorites feature through its constructor.
 
-
-
-
-
+___
 ### Storage feature
 The Storage class is responsible for managing the persistent storage of canteen, faculty, hostel, and other building data. 
 The data loading process is initiated by calling processDataFromFiles(), which sequentially processes different 
@@ -129,6 +126,60 @@ OtherBuildingDataProcessor. These processors create appropriate objects (Canteen
 relationships such as nearest canteens and distances between entities.
 
 ![](diagrams/StorageRefactored.png)
+
+___
+## Budget feature
+This feature allows users to track their daily, weekly and monthly expenses on food as well as the weekly budget.
+* Budget class: Handles core budget logic, including managing expenses, budget resets, and file persistence.
+* BudgetParser class: Handles user interaction and command parsing
+* Data storage: Budget data is stored persistently in a JSON-like format.
+
+#### Core Logic
+The feature is implemented as follows:
+
+Budget Class: This class is responsible for maintaining and updating the budget values, loading and saving data, 
+and handling user commands like adding or deducting money, viewing the budget, and resetting the budget.
+
+The Budget class maintains several data:
+* `weeklyBudget`: Current available budget
+* `dailyExpenses`, `weeklyExpenses`, `monthlyExpenses`: Tracked expenses
+* `lastUpdatedDate`: Ensures proper period resets
+
+Key operations include:
+1. `addWeeklyBudget()`: Adds to current weekly budget
+2. `deductExpense()`: Deducts the specified amount from the weekly budget and updates daily, weekly, and monthly 
+expenses.
+3. `viewExpenses()`: Displays the current state of the weekly budget, daily expenses, weekly expenses, and monthly 
+expenses.
+4. `resetWeeklyBudget(boolean carryOver)`: Resets the weekly budget, with an option to carry over any remaining budget 
+from the previous week.
+5. `resetIfNeeded()`: Periodic resets if needed
+* *Daily Reset*: Resets daily expenses at midnight.
+* *Weekly Reset*: Resets weekly expenses every Monday.
+* *Monthly Reset*: Resets total monthly expenses at the start of a new month.
+
+BudgetParser Class: The BudgetParser class interacts with the user to process commands. It allows the user to add to 
+the weekly budget, deduct from the budget, view expenses, and reset the budget. The BudgetParser class prompts the user 
+for input and invokes methods on the Budget class to perform actions based on the user's commands.
+
+### Sequence of operations
+1. Upon launching the application, the Navi.main() method initializes the system and prompts the user for input.
+If the user enters the command budget, the `BudgetParser.start()` method is invoked.
+2. If it is Monday, Budget asks the user if they want to carry over weekly budget from previous week and
+`resetWeeklyBudget(boolean carryOver)` is invoked. If it is midnight,monday or the date is 1st, `resetIfNeeded()` is 
+invoked to do periodic resets to the expenses.
+3. The BudgetParser class displays a prompt asking the user to enter a command: `add X, deduct X, view, reset, or exit.`
+4. The user can add a specified amount (X) to their weekly budget by entering `add X`. The `Budget.addWeeklyBudget()`
+method is invoked, which updates the weekly budget and saves the data.
+5. The user can deduct an amount (X) from the weekly budget by entering `deduct X`. The `Budget.deductExpense()` 
+method is called to handle this operation, and the daily, weekly and monthly expenses are updated accordingly. 
+The `Budget.addWeeklyBudget()` method is invoked, which updates the weekly budget and saves the data.
+6. The user can view the current budget and expenses for the day, week, and month by entering `view`. 
+The `Budget.viewExpenses()` method displays this information.
+7. The user can exit the budget feature by entering `exit`, which ends the BudgetParser session.
+
+The following sequence diagram illustrates the workflow when a user adds to their budget:
+![BudgetAddSequence](diagrams/BudgetAddSequence.png)
 
 
 ## Product scope
@@ -172,64 +223,3 @@ Hence, Navi saves time as well as promotes exploration all in one intuitive app.
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-## Budget feature
-This feature allows users to track their daily, weekly and monthly expenses on food as well as the weekly budget.
-* Budget class: Handles core budget logic, including managing expenses, budget resets, and file persistence.
-* BudgetParser class: Handles user interaction and command parsing
-* Data storage: Data Storage - Budget data is stored persistently in a JSON-like format.
-
-#### Core Logic
-The Budget class maintains several key pieces of data:
-* weeklyBudget: Current available budget
-* dailyExpenses, weeklyExpenses, monthlyExpenses: Tracked expenses
-* lastUpdatedDate: Ensures proper period resets
-
-
-Key operations include:
-
-1. addWeeklyBudget(): Adds to current weekly budget
-2. deductExpense(): Records and deducts expenses
-3. viewExpenses():  Displays the remaining weekly budget and total monthly spending.
-4. resetIfNeeded(): Checks and performs periodic resets
-* *Daily Reset*: Resets daily expenses at midnight.
-* *Weekly Reset*: Resets weekly expenses every Monday. 
-* *Monthly Reset*: Resets total monthly expenses at the start of a new month.
