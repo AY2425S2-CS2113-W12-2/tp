@@ -135,11 +135,6 @@ This feature allows users to track their daily, weekly and monthly expenses on f
 * Data storage: Budget data is stored persistently in a JSON-like format.
 
 #### Core Logic
-The feature is implemented as follows:
-
-Budget Class: This class is responsible for maintaining and updating the budget values, loading and saving data, 
-and handling user commands like adding or deducting money, viewing the budget, and resetting the budget.
-
 The Budget class maintains several data:
 * `weeklyBudget`: Current available budget
 * `dailyExpenses`, `weeklyExpenses`, `monthlyExpenses`: Tracked expenses
@@ -158,9 +153,6 @@ from the previous week.
 * *Weekly Reset*: Resets weekly expenses every Monday.
 * *Monthly Reset*: Resets total monthly expenses at the start of a new month.
 
-BudgetParser Class: The BudgetParser class interacts with the user to process commands. It allows the user to add to 
-the weekly budget, deduct from the budget, view expenses, and reset the budget. The BudgetParser class prompts the user 
-for input and invokes methods on the Budget class to perform actions based on the user's commands.
 
 ### Sequence of operations
 1. Upon launching the application, the Navi.main() method initializes the system and prompts the user for input.
@@ -179,7 +171,8 @@ The `Budget.viewExpenses()` method displays this information.
 7. The user can exit the budget feature by entering `exit`, which ends the BudgetParser session.
 
 The following sequence diagram illustrates the workflow when a user adds to their budget:
-![BudgetAddSequence](diagrams/BudgetAddSequence.png)
+![BudgetAdd](diagrams/BudgetAdd.png)
+
 
 
 ## Product scope
@@ -220,6 +213,12 @@ Hence, Navi saves time as well as promotes exploration all in one intuitive app.
 ## Instructions for manual testing
 
 {Give instructions on how to do a manual product testing e.g., how to load sample data to be used for testing}
+
+# Budget feature
+'add 100'
+'view'
+'deduct 20'
+'view'
 
 
 
