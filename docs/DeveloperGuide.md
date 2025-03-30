@@ -171,6 +171,46 @@ Hence, Navi saves time as well as promotes exploration all in one intuitive app.
 {Give instructions on how to do a manual product testing e.g., how to load sample data to be used for testing}
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ## Budget feature
 This feature allows users to track their daily, weekly and monthly expenses on food as well as the weekly budget.
 * Budget class: Handles core budget logic, including managing expenses, budget resets, and file persistence.
