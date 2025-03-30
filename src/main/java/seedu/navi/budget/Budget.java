@@ -36,7 +36,6 @@ public class Budget {
             if (lastUpdatedDate == null || !today.getMonth().equals(lastUpdatedDate.getMonth())) {
                 monthlyExpenses = 0; // Reset monthly spending
             }
-            // Don't reset weekly expenses here - let BudgetParser handle it
             dailyExpenses = 0; // Reset daily expenses
             lastUpdatedDate = today;
             saveBudgetData();
@@ -47,7 +46,7 @@ public class Budget {
         if (!carryOver) {
             weeklyBudget = 0;
         }
-        weeklyExpenses = 0;
+        weeklyExpenses = 0; // Reset weekly expenses
         saveBudgetData();
     }
 
@@ -59,7 +58,7 @@ public class Budget {
         saveBudgetData();
         TextUi.printLineSeparator();
         System.out.println("Added $" + df.format(amount) + " to this week's budget.");
-        System.out.println("📌 Remaining weekly budget: $" + df.format(weeklyBudget));
+        System.out.println("Remaining weekly budget: $" + df.format(weeklyBudget));
         TextUi.printLineSeparator();
     }
 
@@ -81,17 +80,17 @@ public class Budget {
 
         TextUi.printLineSeparator();
         System.out.println("Deducted $" + df.format(amount) + " from your weekly budget.");
-        System.out.println("📌 Remaining weekly budget: $" + df.format(weeklyBudget));
+        System.out.println("Remaining weekly budget: $" + df.format(weeklyBudget));
         TextUi.printLineSeparator();
     }
 
     // Views remaining daily budget & total spent this month
     public void viewExpenses() {
         TextUi.printLineSeparator();
-        System.out.println("📌 Remaining weekly budget: $" + df.format(weeklyBudget));
-        System.out.println("📆 Total spent today: $" + df.format(dailyExpenses));
-        System.out.println("📅 Total spent this week: $" + df.format(weeklyExpenses));
-        System.out.println("📅 Total spent this month: $" + df.format(monthlyExpenses));
+        System.out.println("Remaining weekly budget: $" + df.format(weeklyBudget));
+        System.out.println("Total spent today: $" + df.format(dailyExpenses));
+        System.out.println("Total spent this week: $" + df.format(weeklyExpenses));
+        System.out.println("Total spent this month: $" + df.format(monthlyExpenses));
         TextUi.printLineSeparator();
     }
 
