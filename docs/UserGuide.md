@@ -208,4 +208,56 @@ ___
 
 {Give a 'cheat sheet' of commands here}
 
-* Add todo `todo n/TODO_NAME d/DEADLINE`
+### Main Application
+
+| Feature                 | Command          |
+|-------------------------|------------------|
+| Enter Canteen feature   | `canteen` or `c` |
+| Enter budget tracker    | `budget`         |
+| Enter favorites manager | `favorites`      |
+| Exit chatbot            | `bye`            |
+___
+
+### Canteen feature (main)
+
+| Feature              | Command         |
+|----------------------|-----------------|
+| Enter Canteen finder | `finder` or `f` |
+| Enter Canteen lookup | `lookup` or `l` |
+| Exit Canteen         | `quit` or `q`   |
+
+#### Canteen finder
+
+| Feature                          | Command                                                                                     | Example |
+|----------------------------------|---------------------------------------------------------------------------------------------|---------|
+| Specify desired canteen criteria | `criteria 1, criteria 2`<br/> (halal certified/hc, muslim owned/mo, vegetarian/v, aircon/a) | `hc,a`  |
+| Enter location of user           | `FACULTY` or `HOSTEL` or  `KEY BUILDINGS`                                                   | `soc`   |
+| Exit Canteen Finder              | `exit` or `e`                                                                               | `e`     |
+
+#### Canteen lookup
+
+| Feature                | Command                                                                         | Example |
+|------------------------|---------------------------------------------------------------------------------|---------|
+| View stalls in canteen | `CANTEEN NAME`<br/> (techno, terrace, frontier, deck, fine food, flavours, pgp) | `deck`  |
+| Exit Canteen Lookup    | `exit` or `e`                                                                   | `e`     |
+
+___
+### Budget tracker
+
+| Feature                    | Command         |
+|----------------------------|-----------------|
+| Add funds to weekly budget | `add AMOUNT`    |
+| Record expenses            | `deduct AMOUNT` |
+| View expenses & budget     | `view`          |
+| Exit Budget                | `exit`          |
+
+___
+### Favorites management 
+
+| Feature         | Command                             |
+|-----------------|-------------------------------------|
+| Add favorite    | `add DESCRIPTION, RATING, CATEGORY` |
+| Remove favorite | `remove INDEX`                      |
+| View favorite   | `list`                              |
+| Exit Canteen    | `exit`                              |
+
