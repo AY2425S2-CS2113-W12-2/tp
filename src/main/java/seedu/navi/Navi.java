@@ -1,7 +1,7 @@
 package seedu.navi;
 
-import seedu.navi.canteenfinder.CanteenFinder;
-import seedu.navi.storage.Storage;
+import seedu.navi.canteen.Canteen;
+import seedu.navi.canteen.storage.Storage;
 import seedu.navi.textui.TextUi;
 import seedu.navi.budget.Budget;
 import seedu.navi.budget.BudgetParser;
@@ -29,39 +29,9 @@ public class Navi {
         Parser parser = new Parser(ui, favorites, budget);
 
         while (true) {
-            String input = in.nextLine();
+            String input = in.nextLine().trim();
             parser.handleCommand(input);
         }
-    }
-
-    /**
-     * @author kevinchangckc
-     */
-    public void showExitMessage() {
-        TextUi.printLineSeparator();
-        System.out.println("Ahh, you’re headin’ off? No worries!");
-        System.out.println("Keep on keepin’ on, and we’ll catch ya next time!");
-        TextUi.printLineSeparator();
-    }
-
-    /**
-     * @author kevinchangckc
-     */
-    public void showError(String message) {
-        TextUi.printLineSeparator();
-        System.out.println("⚠ Whoops! " + message);
-        System.out.println("Sorry! Please use one of these commands: canteen, budget, favourites, or guide.");
-        TextUi.printLineSeparator();
-    }
-}
-
-/**
- * Custom exception class for chatbot errors.
- */
-class NaviException extends Exception {
-    public NaviException(String message) {
-        super("⚠ Oi! " + message
-                + "\nLet's get this sorted, mate.");
     }
 }
 
@@ -83,34 +53,25 @@ class Parser {
      * @author kevinchangckc
      */
     public void handleCommand(String input) {
-        try {
-            switch (input.toLowerCase()) {
-
-            case "bye":
-                ui.showExitMessage(); // Use instance method via object
-                System.exit(0);
-                break;
-            case "canteen":
-                CanteenFinder.startCanteenFinder();
-                break;
-            case "budget":
-                BudgetParser budgetParser = new BudgetParser(budget);
-                budgetParser.start();
-                break;
-            case "favorites":
-                FavoritesParser favoritesParser = new FavoritesParser(favorites);
-                favoritesParser.start();
-                break;
-            default:
-                throw new NaviException("That’s not quite right, mate. Give it another shot!\n\n"
-                        + "Remember that I can help you with:\n"
-                        + "- 'canteen' to find canteens\n"
-                        + "- 'budget' to set or check your budget\n"
-                        + "- 'favorites' to manage your favorite spots\n"
-                        + " ");
-            }
-        } catch (NaviException e) {
-            ui.showError(e.getMessage());
+        switch (input.toLowerCase()) {
+        case "bye":
+            TextUi.printExitMessage();
+            System.exit(0);
+            break;
+        case "canteen":
+        case "c":
+            Canteen.startCanteen();
+            break;
+        case "budget":
+            BudgetParser budgetParser = new BudgetParser(budget);
+            budgetParser.start();
+            break;
+        case "favorites":
+            FavoritesParser favoritesParser = new FavoritesParser(favorites);
+            favoritesParser.start();
+            break;
+        default:
+            TextUi.printInvalidCommand();
         }
     }
 }

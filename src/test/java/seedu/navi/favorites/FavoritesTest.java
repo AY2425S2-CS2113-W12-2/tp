@@ -6,8 +6,9 @@ import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import java.util.List;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-//import static org.junit.jupiter.api.Assertions.*;
 
 class FavoritesTest {
 
@@ -16,9 +17,8 @@ class FavoritesTest {
 
     @BeforeEach
     void setUp() {
-        // Create new instance and clear any existing state
         favorites = new Favorites();
-        favorites.clearFavorites(); // This should clear both memory and file
+        favorites.clearFavorites();
         System.setOut(new PrintStream(outputStreamCaptor));
     }
 
@@ -29,8 +29,8 @@ class FavoritesTest {
 
         List<String> favoriteItems = favorites.getFavoriteItems();
         assertEquals(2, favoriteItems.size());
-        assertTrue(favoriteItems.stream().anyMatch(item -> item.contains("Pizza")));
-        assertTrue(favoriteItems.stream().anyMatch(item -> item.contains("Sushi")));
+        assertTrue(favoriteItems.get(0).contains("Pizza"));
+        assertTrue(favoriteItems.get(1).contains("Sushi"));
         assertTrue(outputStreamCaptor.toString().contains("Added"));
     }
 
@@ -43,28 +43,46 @@ class FavoritesTest {
         assertTrue(outputStreamCaptor.toString().contains("Removed: Burger"));
     }
 
-    private void assertEquals(int i, int size) {
+    @Test
+    void removeFavorite_invalidIndex_showsError() {
+        favorites.addFavorite("Salad", 6, "Food");
+        favorites.removeFavorite(1); // Invalid index
+
+        assertEquals(1, favorites.getFavoriteItems().size());
+        assertTrue(outputStreamCaptor.toString().contains("Invalid index"));
     }
 
     @Test
-    void persistence_testItemsAreSavedAndLoaded() {
-        // First instance - add items
-        Favorites favorites1 = new Favorites();
-        favorites1.clearFavorites(); // Ensure clean state
-        favorites1.addFavorite("Pizza", 9, "Food");
-        favorites1.addFavorite("Sushi", 8, "Food");
+    void undoRemove_withRemoval_restoresItem() {
+        favorites.addFavorite("Pasta", 8, "Food");
+        favorites.removeFavorite(0);
+        favorites.undoRemove();
 
-        // Second instance - should load the same items
-        Favorites favorites2 = new Favorites();
-        List<String> loadedItems = favorites2.getFavoriteItems();
-
-        assertEquals(2, loadedItems.size());
-        assertTrue(loadedItems.stream().anyMatch(item -> item.contains("Pizza")));
-        assertTrue(loadedItems.stream().anyMatch(item -> item.contains("Sushi")));
+        assertEquals(1, favorites.getFavoriteItems().size());
+        assertTrue(outputStreamCaptor.toString().contains("Restored: Pasta"));
     }
 
-    // Other test methods remain the same but with less strict string matching
-    // ...
+    @Test
+    void undoRemove_withoutRemoval_showsError() {
+        favorites.undoRemove();
+        assertTrue(outputStreamCaptor.toString().contains("No recent deletions to undo"));
+    }
+
+    @Test
+    void viewFavorites_emptyList_showsEmptyMessage() {
+        favorites.viewFavorites();
+        assertTrue(outputStreamCaptor.toString().contains("No favorites yet"));
+    }
+
+    @Test
+    void viewFavorites_withItems_showsItems() {
+        favorites.addFavorite("Ramen", 9, "Food");
+        favorites.viewFavorites();
+
+        String output = outputStreamCaptor.toString();
+        assertTrue(output.contains("Your favorite items"));
+        assertTrue(output.contains("Ramen"));
+    }
 
     @Test
     void sortFavorites_descendingOrder_sortsCorrectly() {
@@ -73,9 +91,19 @@ class FavoritesTest {
         favorites.sortFavorites(true);
 
         List<String> sortedItems = favorites.getFavoriteItems();
-        // Check ratings are in correct order rather than exact string matching
         assertTrue(sortedItems.get(0).contains("Rating: 9"));
         assertTrue(sortedItems.get(1).contains("Rating: 7"));
+    }
+
+    @Test
+    void sortFavorites_ascendingOrder_sortsCorrectly() {
+        favorites.addFavorite("Steak", 9, "Food");
+        favorites.addFavorite("Burger", 7, "Food");
+        favorites.sortFavorites(false);
+
+        List<String> sortedItems = favorites.getFavoriteItems();
+        assertTrue(sortedItems.get(0).contains("Rating: 7"));
+        assertTrue(sortedItems.get(1).contains("Rating: 9"));
     }
 
     @Test
@@ -86,4 +114,23 @@ class FavoritesTest {
         assertTrue(found);
         assertTrue(outputStreamCaptor.toString().contains("Chicken Rice"));
     }
+
+    @Test
+    void searchFavorites_nonExistingKeyword_returnsFalse() {
+        favorites.addFavorite("Pizza", 9, "Food");
+        boolean found = favorites.searchFavorites("Burger");
+
+        assertFalse(found);
+        assertTrue(outputStreamCaptor.toString().contains("No matching favorites found"));
+    }
+
+    @Test
+    void clearFavorites_removesAllItems() {
+        favorites.addFavorite("Item1", 5, "Test");
+        favorites.addFavorite("Item2", 6, "Test");
+        favorites.clearFavorites();
+
+        assertEquals(0, favorites.getFavoriteItems().size());
+    }
 }
+

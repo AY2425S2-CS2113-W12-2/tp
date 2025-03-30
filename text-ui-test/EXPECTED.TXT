@@ -1,17 +1,17 @@
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-G'day mate! I'm:
+Welcome! I'm:
  _   _             _
 | \ | | __ ___   _(_)
 |  \| |/ _` \ \ / / |
 | |\  | (_| |\ V /| |
 |_| \_|\__,_| \_/ |_|
-What’s your name, legend?
+What’s your name?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Aye, Jack! Stoked to have ya here!
-Alrighty, what can I do for ya?
+Hello, Jack! Nice to meet you!
+Alright, what can I do for you?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Ahh, you’re headin’ off? No worries!
-Keep on keepin’ on, and we’ll catch ya next time!
+Ah, you’re heading off? No worries!
+We’ll catch you next time!
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
