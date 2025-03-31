@@ -1,3 +1,4 @@
+
 package seedu.navi.canteen.storage;
 
 import seedu.navi.canteen.canteenfinder.landmark.canteen.Canteen;
@@ -18,18 +19,11 @@ public class CanteenDataProcessor {
     }
 
     public void processData() throws FileNotFoundException {
-        File file = new File(CANTEEN_FILE);
-        if (!file.exists()) {
-            throw new FileNotFoundException("Canteen data file not found: " + CANTEEN_FILE);
-        }
-
-        try (Scanner scanner = new Scanner(file)) { // Use try-with-resources
-            while (scanner.hasNextLine()) {
-                String canteenData = scanner.nextLine().trim();
-                if (!canteenData.isEmpty()) {
-                    insertCanteenFromData(canteenData);
-                }
-            }
+        File f = new File(CANTEEN_FILE);
+        Scanner s = new Scanner(f);
+        while (s.hasNext()) {
+            String canteenData = s.nextLine();
+            insertCanteenFromData(canteenData);
         }
     }
 
