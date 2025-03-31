@@ -1,0 +1,19 @@
+@startuml BudgetAdd
+'https://plantuml.com/sequence-diagram
+
+actor User
+participant Parser
+participant BudgetParser
+participant Budget
+
+User -> Parser: "budget"
+Parser -> BudgetParser: start()
+BudgetParser -> Budget: resetIfNeeded()
+BudgetParser -> Budget: resetWeeklyBudget(boolean carryOver)
+BudgetParser -> User: "Enter command (add X, deduct X, view, exit)"
+User -> BudgetParser: "add 100"
+BudgetParser -> Budget: addWeeklyBudget(100)
+Budget -> Budget: saveBudgetData()
+BudgetParser -> User: "Added $100.00 to this week's budget. Remaining weekly budget: $100"
+
+@enduml

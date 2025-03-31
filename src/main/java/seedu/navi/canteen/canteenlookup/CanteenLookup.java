@@ -9,12 +9,13 @@ public class CanteenLookup {
         String command;
         while (true) {
             command = TextUi.IN.nextLine().trim();
-            if (command.equalsIgnoreCase("exit")) {
+            if (command.equalsIgnoreCase("e") ||
+                    command.equalsIgnoreCase("exit")) {
                 TextUi.printExitCanteenLookupCL();
                 break;
             }
             String canteenName = CanteenShortcuts.CANTEEN_MAP.get(command);
-            //lookUpCanteen(canteenName)
+            CanteenSearch.searchCanteen(canteenName);
         }
     }
 }
