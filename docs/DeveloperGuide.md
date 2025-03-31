@@ -99,7 +99,13 @@ undo/redo functionality while maintaining the current straightforward user inter
 The following UML Sequence diagram illustrates the core favorite management workflow. The starting arrow indicates the 
 main program initializing the Favorites feature through its constructor.
 
-___
+
+![Favorites Sequence Diagram](../uml/fav.png)
+
+
+
+
+
 ### Storage feature
 The Storage class is responsible for managing the persistent storage of canteen, faculty, hostel, and other building data. 
 The data loading process is initiated by calling processDataFromFiles(), which sequentially processes different 
