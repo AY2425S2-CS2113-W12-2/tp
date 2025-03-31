@@ -7,7 +7,7 @@ Techno Edge | Mixed Rice | F | F | F | F
 Techno Edge | Drinks & Snacks | F | F | F | F
 Techno Edge | Fruit Juice | F | F | F | F
 Techno Edge | Taiwan | F | F | F | F
-Techno Edge | Ramen & Soup | F | F  |F | F
+Techno Edge | Ramen & Soup | F | F  | F | F
 Techno Edge | Noodles | F | F | F | F
 Techno Edge | Chicken Rice | F | F | F | F
 Techno Edge | Bistro Box | T | F | T | F
