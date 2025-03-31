@@ -6,7 +6,7 @@
 
 ## Design & implementation
 ___
-## Canteen
+## Canteen Feature
 The Canteen feature provides 2 sub-features: Canteen Finder and Canteen Lookup.
 
 This functionality is controlled by the `Canteen` class where `startCanteen()`, a class level method,
@@ -122,11 +122,55 @@ undo/redo functionality while maintaining the current straightforward user inter
 The following UML Sequence diagram illustrates the core favorite management workflow. The starting arrow indicates the 
 main program initializing the Favorites feature through its constructor.
 
+## Budget feature
+This feature allows users to track their daily, weekly and monthly expenses on food as well as the weekly budget.
+* Budget class: Handles core budget logic, including managing expenses, budget resets, and file persistence.
+* BudgetParser class: Handles user interaction and command parsing
+* Data storage: Budget data is stored persistently in a JSON-like format.
+
+#### Core Logic
+The Budget class maintains several data:
+* `weeklyBudget`: Current available budget
+* `dailyExpenses`, `weeklyExpenses`, `monthlyExpenses`: Tracked expenses
+* `lastUpdatedDate`: Ensures proper period resets
+
+Key operations include:
+1. `addWeeklyBudget()`: Adds to current weekly budget
+2. `deductExpense()`: Deducts the specified amount from the weekly budget and updates daily, weekly, and monthly 
+expenses.
+3. `viewExpenses()`: Displays the current state of the weekly budget, daily expenses, weekly expenses, and monthly 
+expenses.
+4. `resetWeeklyBudget(boolean carryOver)`: Resets the weekly budget, with an option to carry over any remaining budget 
+from the previous week.
+5. `resetIfNeeded()`: Periodic resets if needed
+* *Daily Reset*: Resets daily expenses at midnight.
+* *Weekly Reset*: Resets weekly expenses every Monday.
+* *Monthly Reset*: Resets total monthly expenses at the start of a new month.
+
+
+### Sequence of operations
+1. Upon launching the application, the Navi.main() method initializes the system and prompts the user for input.
+If the user enters the command budget, the `BudgetParser.start()` method is invoked.
+2. If it is Monday, Budget asks the user if they want to carry over weekly budget from previous week and
+`resetWeeklyBudget(boolean carryOver)` is invoked. If it is midnight,monday or the date is 1st, `resetIfNeeded()` is 
+invoked to do periodic resets to the expenses.
+3. The BudgetParser class displays a prompt asking the user to enter a command: `add X, deduct X, view, reset, or exit.`
+4. The user can add a specified amount (X) to their weekly budget by entering `add X`. The `Budget.addWeeklyBudget()`
+method is invoked, which updates the weekly budget and saves the data.
+5. The user can deduct an amount (X) from the weekly budget by entering `deduct X`. The `Budget.deductExpense()` 
+method is called to handle this operation, and the daily, weekly and monthly expenses are updated accordingly. 
+The `Budget.addWeeklyBudget()` method is invoked, which updates the weekly budget and saves the data.
+6. The user can view the current budget and expenses for the day, week, and month by entering `view`. 
+The `Budget.viewExpenses()` method displays this information.
+7. The user can exit the budget feature by entering `exit`, which ends the BudgetParser session.
+
+The following sequence diagram illustrates the workflow when a user adds to their budget:
+![BudgetAdd](diagrams/BudgetAdd.png)
 
 ## Product scope
 ### Target user profile
 
-NUS students who need guidance to find or lookup canteens, manage budgets, and track their favorite food stalls 
+NUS students, faculty or staff who need guidance to find or lookup canteens, manage budgets, and track their favorite food stalls 
 in the NUS Kent Ridge Campus.
 
 ### Value proposition
@@ -162,66 +206,11 @@ Hence, Navi saves time as well as promotes exploration all in one intuitive app.
 
 {Give instructions on how to do a manual product testing e.g., how to load sample data to be used for testing}
 
+# Budget feature
+'add 100'
+'view'
+'deduct 20'
+'view'
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-## Budget feature
-This feature allows users to track their daily, weekly and monthly expenses on food as well as the weekly budget.
-* Budget class: Handles core budget logic, including managing expenses, budget resets, and file persistence.
-* BudgetParser class: Handles user interaction and command parsing
-* Data storage: Data Storage - Budget data is stored persistently in a JSON-like format.
-
-#### Core Logic
-The Budget class maintains several key pieces of data:
-* weeklyBudget: Current available budget
-* dailyExpenses, weeklyExpenses, monthlyExpenses: Tracked expenses
-* lastUpdatedDate: Ensures proper period resets
-
-
-Key operations include:
-
-1. addWeeklyBudget(): Adds to current weekly budget
-2. deductExpense(): Records and deducts expenses
-3. viewExpenses():  Displays the remaining weekly budget and total monthly spending.
-4. resetIfNeeded(): Checks and performs periodic resets
-* *Daily Reset*: Resets daily expenses at midnight.
-* *Weekly Reset*: Resets weekly expenses every Monday. 
-* *Monthly Reset*: Resets total monthly expenses at the start of a new month.
