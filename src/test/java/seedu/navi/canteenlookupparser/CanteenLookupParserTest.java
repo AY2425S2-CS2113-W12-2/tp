@@ -1,4 +1,5 @@
 package seedu.navi.canteenlookupparser;
 
-public class CanteenLookupParser {
+public class CanteenLookupParserTest {
+    // ... your test code ...
 }
