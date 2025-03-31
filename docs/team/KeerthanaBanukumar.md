@@ -7,7 +7,8 @@ find nearby canteens, manage food expenses, and track their favorite dining expe
 ### Summary of Contributions
 ___
 ### Code Contributed
-Code contribution to project: [RepoSense Page](https://nus-cs2113-ay2425s2.github.io/tp-dashboard/?search=KeerthanaBanukumar&sort=groupTitle&sortWithin=title&timeframe=commit&mergegroup=&groupSelect=groupByRepos&breakdown=true&checkedFileTypes=docs~functional-code~test-code~other&since=2025-02-21&tabOpen=true&tabType=authorship&tabAuthor=KeerthanaBanukumar&tabRepo=AY2425S2-CS2113-W12-2%2Ftp%5Bmaster%5D&authorshipIsMergeGroup=false&authorshipFileTypes=docs~functional-code~test-code~other&authorshipIsBinaryFileTypeChecked=false&authorshipIsIgnoredFilesChecked=false&authorshipSortBy=linesOfCode)
+Code contribution to project:
+[RepoSense Page](https://nus-cs2113-ay2425s2.github.io/tp-dashboard/?search=KeerthanaBanukumar&sort=groupTitle&sortWithin=title&timeframe=commit&mergegroup=&groupSelect=groupByRepos&breakdown=true&checkedFileTypes=docs~functional-code~test-code~other&since=2025-02-21&tabOpen=true&tabType=authorship&tabAuthor=KeerthanaBanukumar&tabRepo=AY2425S2-CS2113-W12-2%2Ftp%5Bmaster%5D&authorshipIsMergeGroup=false&authorshipFileTypes=docs~functional-code~test-code~other&authorshipIsBinaryFileTypeChecked=false&authorshipIsIgnoredFilesChecked=false&authorshipSortBy=linesOfCode)
 
 ### Enhancements Implemented
 #### 1. Favorites Feature
