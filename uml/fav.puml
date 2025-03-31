@@ -1,0 +1,37 @@
+@startuml
+actor User
+participant Favorites
+participant TextUi
+
+User -> Favorites: addFavorite(description, rating, category)
+Favorites -> Favorites: Add item to favoriteItems
+Favorites -> TextUi: print "✅ Added"
+Favorites -> User: return
+
+User -> Favorites: removeFavorite(index)
+Favorites -> Favorites: Remove item from favoriteItems
+Favorites -> Favorites: Push to undoStack
+Favorites -> TextUi: print "❌ Removed"
+Favorites -> User: return
+
+User -> Favorites: undoRemove()
+Favorites -> Favorites: Pop item from undoStack
+Favorites -> Favorites: Add item back to favoriteItems
+Favorites -> TextUi: print "🔄 Restored"
+Favorites -> User: return
+
+User -> Favorites: viewFavorites()
+Favorites -> TextUi: print "🌟 Favorite items"
+Favorites -> User: return
+
+User -> Favorites: sortFavorites(descending)
+Favorites -> Favorites: Sort favoriteItems
+Favorites -> TextUi: print "📊 Sorted"
+Favorites -> User: return
+
+User -> Favorites: searchFavorites(keyword)
+Favorites -> Favorites: Search for keyword
+Favorites -> TextUi: print "🔎 Search results"
+Favorites -> User: return
+
+@enduml
