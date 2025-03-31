@@ -33,6 +33,7 @@ Hello, Alfred! Nice to meet you!
 Alright, what can I do for you?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ```
+Then, user may enter `canteen`, `budget` or `favorites` to use these features.
 ___
 ## Features
 1. Canteen Feature
@@ -197,6 +198,96 @@ You've exited the Canteen feature!
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ```
 ___
+## Budget: `budget`
+
+```
+💰 Budget Tracker: Enter a command (add X, deduct X, view, exit)
+```
+### Weekly budget resets
+Every mondays, system will prompt the following question
+
+```
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Do you want to carry over last week's remaining budget? (yes/no)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+> no
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+```
+### View status of budget and expenses
+Format: `view`
+
+Example:
+```
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+view
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Remaining weekly budget: $0.00
+Total spent today: $0.00
+Total spent this week: $0.00
+Total spent this month: $100.00
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+```
+
+### Add to weekly budget
+Format: `add AMOUNT`
+
+Example:
+```
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+>add 100
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Added $100.00 to this week's budget.
+Remaining weekly budget: $100.00
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+```
+
+### Deduct from weekly budget and add to expenses
+Format: `deduct AMOUNT`
+
+Example:
+```
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+deduct 20
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Deducted $20.00 from your weekly budget.
+Remaining weekly budget: $80.00
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+```
+
+### View remaining budget and expenses
+Format: `view`
+
+Example:
+```
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+view
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Remaining weekly budget: $80.00
+Total spent today: $20.00
+Total spent this week: $20.00
+Total spent this month: $120.00
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+```
+### Exit budget feature
+Format: `exit`
+```
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+> exit
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+👋 Exiting Budget Tracker.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+```
+
+### Automatic expenses resets
+* Daily Reset: Expenses clear at midnight
+* Weekly Reset: Expenses clear on Monday
+* Monthly Reset: Expenses clear on 1st of month
+
 
 ## FAQ
 
@@ -208,4 +299,56 @@ ___
 
 {Give a 'cheat sheet' of commands here}
 
-* Add todo `todo n/TODO_NAME d/DEADLINE`
+### Main Application
+
+| Feature                 | Command          |
+|-------------------------|------------------|
+| Enter Canteen feature   | `canteen` or `c` |
+| Enter budget tracker    | `budget`         |
+| Enter favorites manager | `favorites`      |
+| Exit chatbot            | `bye`            |
+___
+
+### Canteen feature (main)
+
+| Feature              | Command         |
+|----------------------|-----------------|
+| Enter Canteen finder | `finder` or `f` |
+| Enter Canteen lookup | `lookup` or `l` |
+| Exit Canteen         | `quit` or `q`   |
+
+#### Canteen finder
+
+| Feature                          | Command                                                                                     | Example |
+|----------------------------------|---------------------------------------------------------------------------------------------|---------|
+| Specify desired canteen criteria | `criteria 1, criteria 2`<br/> (halal certified/hc, muslim owned/mo, vegetarian/v, aircon/a) | `hc,a`  |
+| Enter location of user           | `FACULTY` or `HOSTEL` or  `KEY BUILDINGS`                                                   | `soc`   |
+| Exit Canteen Finder              | `exit` or `e`                                                                               | `e`     |
+
+#### Canteen lookup
+
+| Feature                | Command                                                                         | Example |
+|------------------------|---------------------------------------------------------------------------------|---------|
+| View stalls in canteen | `CANTEEN NAME`<br/> (techno, terrace, frontier, deck, fine food, flavours, pgp) | `deck`  |
+| Exit Canteen Lookup    | `exit` or `e`                                                                   | `e`     |
+
+___
+### Budget tracker
+
+| Feature                    | Command         |
+|----------------------------|-----------------|
+| Add funds to weekly budget | `add AMOUNT`    |
+| Record expenses            | `deduct AMOUNT` |
+| View expenses & budget     | `view`          |
+| Exit Budget                | `exit`          |
+
+___
+### Favorites management 
+
+| Feature         | Command                             |
+|-----------------|-------------------------------------|
+| Add favorite    | `add DESCRIPTION, RATING, CATEGORY` |
+| Remove favorite | `remove INDEX`                      |
+| View favorite   | `list`                              |
+| Exit Canteen    | `exit`                              |
+
