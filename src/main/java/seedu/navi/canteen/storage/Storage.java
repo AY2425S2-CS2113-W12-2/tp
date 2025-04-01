@@ -5,7 +5,6 @@ import seedu.navi.canteen.canteenfinder.landmark.Faculty;
 import seedu.navi.canteen.canteenfinder.landmark.Landmark;
 import seedu.navi.canteen.canteenfinder.landmark.canteen.Canteen;
 
-import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -21,37 +20,22 @@ public class Storage {
     public static void processDataFromFiles() {
         canteenMap.clear();
 
-        try {
-            CanteenDataProcessor canteenProcessor = new CanteenDataProcessor(canteenMap);
-            canteenProcessor.processData();
-            assert !canteenMap.isEmpty() : "Canteen map is empty after processing.";
-        } catch (FileNotFoundException e) {
-            System.err.println("File not found: " + e.getMessage());
-        }
+        // No need for try-catch here for CanteenDataProcessor
+        CanteenDataProcessor canteenProcessor = new CanteenDataProcessor(canteenMap);
+        canteenProcessor.processData();
+        assert !canteenMap.isEmpty() : "Canteen map is empty after processing.";
 
         ArrayList<Faculty> faculties = new ArrayList<>();
-        try {
-            FacultyDataProcessor facultyProcessor = new FacultyDataProcessor(canteenMap);
-            facultyProcessor.processData(faculties);
-        } catch (FileNotFoundException e) {
-            System.err.println("File not found: " + e.getMessage());
-        }
+        FacultyDataProcessor facultyProcessor = new FacultyDataProcessor(canteenMap);
+        facultyProcessor.processData(faculties);
 
         ArrayList<Landmark> hostels = new ArrayList<>();
-        try {
-            HostelDataProcessor hostelProcessor = new HostelDataProcessor(canteenMap);
-            hostelProcessor.processData(hostels);
-        } catch (FileNotFoundException e) {
-            System.err.println("File not found: " + e.getMessage());
-        }
+        HostelDataProcessor hostelProcessor = new HostelDataProcessor(canteenMap);
+        hostelProcessor.processData(hostels);
 
         ArrayList<Landmark> otherBuildings = new ArrayList<>();
-        try {
-            OtherBuildingDataProcessor otherBuildingProcessor = new OtherBuildingDataProcessor(canteenMap);
-            otherBuildingProcessor.processData(otherBuildings);
-        } catch (FileNotFoundException e) {
-            System.err.println("File not found: " + e.getMessage());
-        }
+        OtherBuildingDataProcessor otherBuildingProcessor = new OtherBuildingDataProcessor(canteenMap);
+        otherBuildingProcessor.processData(otherBuildings);
 
         CanteenFinderParser.LANDMARKS.addAll(faculties);
         CanteenFinderParser.LANDMARKS.addAll(hostels);

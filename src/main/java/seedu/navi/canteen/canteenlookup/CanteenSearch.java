@@ -2,10 +2,9 @@ package seedu.navi.canteen.canteenlookup;
 
 import seedu.navi.canteen.canteenfinder.landmark.canteen.Canteen;
 import seedu.navi.canteen.canteenfinder.landmark.canteen.stall.Stall;
-import seedu.navi.canteen.storage.CanteenDataProcessor;
+import seedu.navi.canteen.storage.CanteenDataProcessor; // Import the modified CanteenDataProcessor
 import seedu.navi.textui.TextUi;
 
-import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -17,12 +16,8 @@ public class CanteenSearch {
         Map<String, Canteen> canteenMap = new HashMap<>();
         CanteenDataProcessor dataProcessor = new CanteenDataProcessor(canteenMap);
 
-        try {
-            dataProcessor.processData();
-        } catch (FileNotFoundException e) {
-            TextUi.printCanteenDataFileNotFound();
-            return; // Exit if file is not found
-        }
+        // No need for try-catch here, as CanteenInfo loads data from memory
+        dataProcessor.processData();
 
         Canteen canteen = canteenMap.get(canteenName);
 
