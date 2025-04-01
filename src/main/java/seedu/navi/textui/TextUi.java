@@ -113,7 +113,7 @@ public class TextUi {
         printLineSeparator();
         System.out.println("Alright! The nearest canteen to you that fit your criteria is");
         System.out.println(nearestCanteenData.nearestCanteen().getName());
-        System.out.println("which has: ");
+        System.out.println("which is: ");
         printValidStallsCF(nearestCanteenData.validStalls());
         System.out.println("and it is approximately at most " + nearestCanteenData.landmarkToCanteenDist()
                 + "m from where you are.");
