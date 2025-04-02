@@ -101,7 +101,6 @@ sorting criteria.
 ![favorites](diagrams/favorites.png)
 
 
-
 ### Storage feature
 The Storage class is responsible for managing the persistent storage of canteen, faculty, hostel, and other building data.
 The data loading process is initiated by calling processDataFromFiles(), which sequentially processes different
