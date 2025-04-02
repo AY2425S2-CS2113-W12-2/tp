@@ -12,9 +12,10 @@ import java.util.List;
 import java.util.Stack;
 
 public class Favorites {
+    private static final String FILE_PATH = "favorites.txt"; // Path to save the favorites data
     private List<String> favoriteItems;
     private Stack<String> undoStack;
-    private static final String FILE_PATH = "favorites.txt"; // Path to save the favorites data
+
 
     public Favorites() {
         this.favoriteItems = new ArrayList<>();
