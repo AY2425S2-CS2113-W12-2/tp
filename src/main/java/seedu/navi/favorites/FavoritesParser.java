@@ -15,9 +15,15 @@ public class FavoritesParser {
     public static void start() {
         scanner = new Scanner(System.in);
         TextUi.printLineSeparator();
-        System.out.println("🌟 Favorites Tracker: Enter a command (add description : rating : category, remove N," +
-                " view, sort asc/desc, " +
-                "search X, undo, exit)");
+        System.out.println("🌟 Favorites Tracker: Enter a command:");
+        System.out.println("  - add <description> : <rating> : <location>");
+        System.out.println("  - remove N");
+        System.out.println("  - view");
+        System.out.println("  - sort asc");
+        System.out.println("  - sort desc");
+        System.out.println("  - search X");
+        System.out.println("  - undo");
+        System.out.println("  - exit");
         TextUi.printLineSeparator();
 
         while (true) {
@@ -61,7 +67,7 @@ public class FavoritesParser {
                 return;
             default:
                 TextUi.printLineSeparator();
-                System.out.println("⚠️ Unknown command. Try: add description : rating : category, remove N, view, " +
+                System.out.println("⚠️ Unknown command. Try: add description : rating : location, remove N, view, " +
                         "sort asc/desc, search X, " + "undo, exit.");
                 TextUi.printLineSeparator();
             }
@@ -69,20 +75,28 @@ public class FavoritesParser {
     }
 
     private static void handleAddCommand(String arguments) {
-        String[] params = arguments.split(" : ");
+        // Split the input using a regular expression that allows optional spaces around the colon
+        String[] params = arguments.split("\\s*:\\s*");
+
+        // Ensure there are exactly 3 parts after splitting
         if (params.length != 3) {
             TextUi.printLineSeparator();
-            System.out.println("⚠️ Invalid format. Use: add <description> : <rating> : <category>");
+            System.out.println("⚠️ Invalid format. Use: add <description> : <rating> : <location>");
             TextUi.printLineSeparator();
             return;
         }
 
         try {
             TextUi.printLineSeparator();
+
+            // Trim any leading/trailing spaces from description and category
             String description = params[0].trim();
             int rating = Integer.parseInt(params[1].trim());
             String category = params[2].trim();
+
+            // Add to favorites list
             favorites.addFavorite(description, rating, category);
+
             TextUi.printLineSeparator();
         } catch (NumberFormatException e) {
             TextUi.printLineSeparator();
@@ -90,6 +104,8 @@ public class FavoritesParser {
             TextUi.printLineSeparator();
         }
     }
+
+
 
     private static void handleRemoveCommand(String arguments) {
         try {
