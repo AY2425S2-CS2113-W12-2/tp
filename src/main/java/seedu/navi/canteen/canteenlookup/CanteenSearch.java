@@ -16,15 +16,9 @@ public class CanteenSearch {
         Map<String, Canteen> canteenMap = new HashMap<>();
         CanteenDataProcessor dataProcessor = new CanteenDataProcessor(canteenMap);
 
-        // No need for try-catch here, as CanteenInfo loads data from memory
         dataProcessor.processData();
 
         Canteen canteen = canteenMap.get(canteenName);
-
-        if (canteen == null) {
-            System.out.println("Canteen not found: " + canteenName);
-            return;
-        }
 
         System.out.println("Canteen Name: " + canteen.getName());
         System.out.println("Stalls:");
