@@ -35,6 +35,17 @@ class FavoritesTest {
     }
 
     @Test
+    void addFavorite_specialCharacters_addsSuccessfully() {
+        favorites.addFavorite("Spicy & Sour", 8, "Food");
+        favorites.addFavorite("Discounted Pizza$", 9, "Food");
+
+        List<String> favoriteItems = favorites.getFavoriteItems();
+        assertEquals(2, favoriteItems.size());
+        assertTrue(favoriteItems.get(0).contains("Spicy & Sour"));
+        assertTrue(favoriteItems.get(1).contains("Discounted Pizza$"));
+    }
+
+    @Test
     void removeFavorite_validIndex_removesSuccessfully() {
         favorites.addFavorite("Burger", 7, "Food");
         favorites.removeFavorite(0);
@@ -53,6 +64,23 @@ class FavoritesTest {
     }
 
     @Test
+    void removeFavorite_negativeIndex_showsError() {
+        favorites.addFavorite("Salad", 6, "Food");
+        favorites.removeFavorite(-1); // Negative index should show error
+
+        assertTrue(outputStreamCaptor.toString().contains("Invalid index"));
+    }
+
+
+    @Test
+    void removeFavorite_indexGreaterThanSize_showsError() {
+        favorites.addFavorite("Burger", 7, "Food");
+        favorites.removeFavorite(2); // Index greater than list size should show error
+
+        assertTrue(outputStreamCaptor.toString().contains("Invalid index"));
+    }
+
+    @Test
     void undoRemove_withRemoval_restoresItem() {
         favorites.addFavorite("Pasta", 8, "Food");
         favorites.removeFavorite(0);
@@ -67,6 +95,7 @@ class FavoritesTest {
         favorites.undoRemove();
         assertTrue(outputStreamCaptor.toString().contains("No recent deletions to undo"));
     }
+
 
     @Test
     void viewFavorites_emptyList_showsEmptyMessage() {
@@ -105,6 +134,8 @@ class FavoritesTest {
         assertTrue(sortedItems.get(0).contains("Rating: 7"));
         assertTrue(sortedItems.get(1).contains("Rating: 9"));
     }
+
+
 
     @Test
     void searchFavorites_existingKeyword_findsItems() {
