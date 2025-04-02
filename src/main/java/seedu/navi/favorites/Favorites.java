@@ -82,12 +82,12 @@ public class Favorites {
             return;
         }
         String restoredItem = undoStack.pop();
-        favoriteItems.add(restoredItem);
-        saveFavorites();
+        favoriteItems.add(restoredItem); // <-- This just adds it at the end, not its original position
         TextUi.printLineSeparator();
         System.out.println("🔄 Restored: " + restoredItem);
         TextUi.printLineSeparator();
     }
+
 
     public List<String> getFavoriteItems() {
         return new ArrayList<>(favoriteItems);
