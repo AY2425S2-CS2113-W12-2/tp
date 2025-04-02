@@ -60,46 +60,39 @@ a class level method, of the CanteenSearch class.
 ...
 
 ___
-### Favorites feature 
-Favorites Feature
-The favorites feature provides users with a system to manage their preferred items through a centralized `Favorites` 
-class. This class maintains two core data structures - an ArrayList called `favoriteItems` that stores all favorite 
-entries in a formatted string representation, and a Stack called `undoStack` that tracks recently deleted items to 
-support undo functionality.
+### Favorites feature
+This feature allows users to manage a list of favorite items, supporting adding, removing, viewing, sorting, and 
+searching. It also includes an undo function for deletions.
 
-When adding new favorites, the `addFavorite` method accepts three parameters - description, rating, and category. 
-These components are combined into a standardized string format "Description | Rating: X | Category: Y" which 
-gets added to the `favoriteItems` collection. The method provides immediate visual feedback through console output to
-confirm the successful addition.
+### Core Components
+Favorites class: Manages favorite items and undo functionality.
 
-For removal operations, the `removeFavorite` method first validates the provided index against the current list 
-bounds. If valid, it extracts the target item from `favoriteItems`, pushes it onto the undoStack for potential recovery, 
-and displays a removal confirmation message. Invalid indices trigger an appropriate warning message.
+### Data structures:
+favoriteItems (ArrayList) - Stores favorite entries as formatted strings.
 
-The `undoRemove` functionality checks the undoStack for available operations. When items exist in the stack, it pops the 
-most recent deletion and restores it to `favoriteItems` while providing visual confirmation. If the stack is empty, it 
-informs the user that no undo operations are available.
+undoStack (Stack) - Tracks deleted items for undo operations.
 
-The `viewFavorites` method handles display operations by first checking if `favoriteItems` is empty. When populated, it 
-presents all items in a clean numbered list format, while empty states trigger a "No favorites yet" message. This 
-ensures users always receive appropriate feedback.
+### Key Operations
+`addFavorite(description, rating, category)`: Adds a new favorite in the format "Description | Rating: X | Category: Y".
 
-Advanced operations include the `sortFavorites` method which implements rating-based sorting through a custom 
-Comparator. The method parses the rating values from the stored strings, performs the sort in either ascending
-or descending order based on the boolean parameter, and confirms completion to the user. The `searchFavorites` method 
-provides case-insensitive keyword matching across all favorite entries, displaying matches or notifying the user 
-when no results are found.
+`removeFavorite(index)`: Removes an item by index, storing it in undoStack for possible recovery.
 
-The system architecture emphasizes simplicity through in-memory storage using formatted strings, though this 
-requires parsing operations for certain features. The undo functionality currently supports single-level undo
-for deletions only. All operations provide immediate visual feedback through the console interface. Future extensions
-could introduce persistent storage, enhanced search capabilities, additional sorting criteria, and more comprehensive 
-undo/redo functionality while maintaining the current straightforward user interaction model.
+`undoRemove()`: Restores the most recently deleted favorite if available.
 
-The following UML Sequence diagram illustrates the core favorite management workflow. The starting arrow indicates the 
-main program initializing the Favorites feature through its constructor.
+`viewFavorites()`: Displays all favorites in a numbered list or a message if empty.
 
+`sortFavorites(boolean ascending)`: Sorts favorites by rating using a custom comparator.
 
+`searchFavorites(keyword)`: Finds and displays entries matching the keyword (case-insensitive).
+
+### System Behavior
+Operates entirely in-memory using formatted strings.
+Undo only supports single-level restoration of deletions.
+Immediate feedback is provided through console messages.
+
+### Future Enhancements
+Potential improvements include persistent storage, expanded search/filter options, multi-step undo/redo, and additional 
+sorting criteria.
 ![Favorites Sequence Diagram](../uml/fav.png)
 
 
