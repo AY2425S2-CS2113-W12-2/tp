@@ -25,34 +25,39 @@ of `Canteen` to begin the Canteen feature.
 ![CanteenSequenceDiagram](diagrams/CanteenSequenceDiagram.drawio.png)
 ___
 ### Canteen Finder Feature 
-The Canteen Finder sub-feature allows the user to find the nearest canteen relative to where the user is in NUS Kent Ridge Campus. 
+The Canteen Finder sub-feature allows the user to find the nearest canteen relative to where the user is in NUS Kent 
+Ridge Campus. 
 
 This functionality is controlled by the `CanteenFinder` class where `startCanteenFinder()` would call 
 `findNearestCanteen(userLocation, canteenCriteria)`, a class level method, of the `CanteenFinderParser` class. 
 
-`findNearestCanteen()` would then call a helper method to search the collection of landmark objects to find the landmark that corresponds to `userLocation`. 
-Once the landmark is found, `findNearestCanteen()` will then call `getNearestCanteen(canteenCriteria)` of landmark to get the nearest canteen that fits the 
+`findNearestCanteen()` would then call a helper method to search the collection of landmark objects to find the landmark
+that corresponds to `userLocation`. 
+Once the landmark is found, `findNearestCanteen()` will then call `getNearestCanteen(canteenCriteria)` of landmark to 
+get the nearest canteen that fits the 
 criteria stated by the user listed in `canteenCriteria`. 
 
 Once retrieved, `getNearestCanteen()` would also call a helper method 
 `getCanteenDistance(nearestCanteen)` to retrieve the distance of the canteen to the landmark where the user is located.
 
-`getNearestCanteen()` would then return the object `nearestCanteenData` of the Record `NearestCanteenData` which stores the three attributes: 
+`getNearestCanteen()` would then return the object `nearestCanteenData` of the Record `NearestCanteenData` which stores 
+the three attributes: 
 `nearestCanteen`, `landmarkToCanteenDist` and `validStalls`. 
 
 `nearestCanteenData` is then return back to `CanteenFinder` which will print
 the attributes to the user.
 
-The following UML Sequence diagram shows the Canteen Finder feature. The starting arrow indicates `Canteen` calling `startCanteenFinder()` 
-of `CanteenFinder` to begin the Canteen Finder sub-feature.
+The following UML Sequence diagram shows the Canteen Finder feature. The starting arrow indicates `Canteen` calling 
+`startCanteenFinder()` of `CanteenFinder` to begin the Canteen Finder sub-feature.
 
 ![CanteenFinderSequenceDiagram](diagrams/CanteenFinderSequenceDiagram.drawio.png)
 
 ### Canteen Lookup Feature
-The Canteen Lookup sub-feature allows the user to look up the different stalls and its characteristics of the specified canteen.
+The Canteen Lookup sub-feature allows the user to look up the different stalls and its characteristics of the specified
+canteen.
 
-This functionality is controlled by the `CanteenLookup` class where `startCanteenLookup` would call `searchCanteen(canteenName)`,
-a class level method, of the CanteenSearch class.
+This functionality is controlled by the `CanteenLookup` class where `startCanteenLookup` would call 
+`searchCanteen(canteenName)`, a class level method, of the CanteenSearch class.
 
 `searchCanteen()` would then...
 
