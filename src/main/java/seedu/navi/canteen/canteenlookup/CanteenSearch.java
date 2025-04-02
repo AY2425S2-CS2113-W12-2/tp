@@ -29,8 +29,7 @@ public class CanteenSearch {
         System.out.println("Canteen Name: " + canteen.getName());
         System.out.println("Stalls:");
 
-        ArrayList<Stall> stallList = new ArrayList<>(canteen.getStalls());
-
-        TextUi.printValidStallsCF(stallList);
+        ArrayList<Stall> stalls = new ArrayList<>(canteen.getStalls());
+        TextUi.printCanteenStallsCL(canteenName, stalls);
     }
 }

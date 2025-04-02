@@ -216,9 +216,10 @@ public class TextUi {
         printLineSeparator();
     }
 
-    public static void printCanteenDataFileNotFound() {
+    public static void printCanteenStallsCL(String canteenName, ArrayList<Stall> stalls) {
         printLineSeparator();
-        System.out.println("File is not found.");
+        System.out.println("Here are all the stalls in " + canteenName + ":");
+        printValidStallsCF(stalls);
         printLineSeparator();
     }
 }
