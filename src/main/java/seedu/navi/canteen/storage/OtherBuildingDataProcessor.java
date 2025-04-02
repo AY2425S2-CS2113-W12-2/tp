@@ -27,28 +27,48 @@ public class OtherBuildingDataProcessor {
         String otherBuildingName = parts[0].trim();
         Landmark otherBuilding = new Landmark(otherBuildingName);
         otherBuildings.add(otherBuilding);
-        if (parts.length > 1) { // Check if canteen data exists
-            String[] canteenData = parts[1].split("\\|");
-            for (String canteenInfo : canteenData) {
-                String[] canteenParts = canteenInfo.trim().split("\\(");
-                String canteenName = canteenParts[0].trim();
-                int distance = 0;
-                if (canteenParts.length > 1) {
-                    String distancePart = canteenParts[1].replaceAll("[^\\d]", "").trim();
-                    if (!distancePart.isEmpty()) {
-                        distance = Integer.parseInt(distancePart);
-                    }
-                }
-                Canteen canteen = canteenMap.get(canteenName);
-                if (canteen != null) { // Check if canteen exists in map
-                    otherBuilding.setNearestCanteens(canteen);
-                    otherBuilding.setCanteenDistance(canteen, distance);
-                } else {
-                    System.err.println("Warning: Canteen '" + canteenName +
-                            "' not found for other building '" + otherBuildingName + "'.");
-                }
-            }
+
+        if (parts.length <= 1) {
+            return; // No canteen data, exit early
         }
+
+        processCanteenData(parts[1], otherBuilding, otherBuildingName);
+    }
+
+    private void processCanteenData(String canteenDataString, Landmark otherBuilding, String otherBuildingName) {
+        String[] canteenData = canteenDataString.split("\\|");
+        for (String canteenInfo : canteenData) {
+            processCanteenInfo(canteenInfo, otherBuilding, otherBuildingName);
+        }
+    }
+
+    private void processCanteenInfo(String canteenInfo, Landmark otherBuilding, String otherBuildingName) {
+        String[] canteenParts = canteenInfo.trim().split("\\(");
+        String canteenName = canteenParts[0].trim();
+        int distance = extractDistance(canteenParts);
+        Canteen canteen = canteenMap.get(canteenName);
+
+        if (canteen == null) {
+            System.err.println("Warning: Canteen '" + canteenName +
+                    "' not found for other building '" + otherBuildingName + "'.");
+            return; // Skip processing this canteen info
+        }
+
+        otherBuilding.setNearestCanteens(canteen);
+        otherBuilding.setCanteenDistance(canteen, distance);
+    }
+
+    private int extractDistance(String[] canteenParts) {
+        if (canteenParts.length <= 1) {
+            return 0; // Default distance if not found
+        }
+
+        String distancePart = canteenParts[1].replaceAll("[^\\d]", "").trim();
+        if (distancePart.isEmpty()) {
+            return 0; // Default distance if not found
+        }
+
+        return Integer.parseInt(distancePart);
     }
 
     private static List<String> getOtherBuildingData() {
