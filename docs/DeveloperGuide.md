@@ -104,34 +104,31 @@ main program initializing the Favorites feature through its constructor.
 
 
 
-
-
 ### Storage feature
-The Storage class is responsible for managing the persistent storage of canteen, faculty, hostel, and other building data. 
-The data loading process is initiated by calling processDataFromFiles(), which sequentially processes different 
-categories of data from files into appropriate data structures.
+The Storage class is responsible for managing the persistent storage of canteen, faculty, hostel, and other building data.
+The data loading process is initiated by calling processDataFromFiles(), which sequentially processes different
+categories of data from hardcoded strings into appropriate data structures.
 
 The method follows these key steps:
-It first clears CANTEEN_MAP, a static Map<String, Canteen>, to ensure that previously loaded data does not persist.
-It then sequentially calls:
-processCanteenFromFile() to read and parse canteen data, creating Canteen objects and storing them in CANTEEN_MAP.
-processFacultyFromFile() to process faculty data, creating Faculty objects and updating CanteenFinderParser.LANDMARKS.
-processHostelFromFile() to handle hostel data, creating Landmark objects for hostels.
-processOtherBuildingFromFile() to process other buildings, creating Landmark objects accordingly.
 
-Once all data is processed, CanteenFinderParser.LANDMARKS is populated with the loaded objects. This enables the 
-CanteenFinder feature to determine the nearest canteens relative to various landmarks.
+1.  It first clears CANTEEN_MAP, a static Map<String, Canteen>, to ensure that previously loaded data does not persist.
+2.  It then sequentially calls:
+    * `processCanteenFromFile()` using `CanteenDataProcessor` to read and parse canteen data, creating `Canteen` objects and storing them in `CANTEEN_MAP`.
+    * `processFacultyFromFile()` using `FacultyDataProcessor` to process faculty data, creating `Faculty` objects and updating `CanteenFinderParser.LANDMARKS`.
+    * `processHostelFromFile()` using `HostelDataProcessor` to handle hostel data, creating `Landmark` objects for hostels.
+    * `processOtherBuildingFromFile()` using `OtherBuildingDataProcessor` to process other buildings, creating `Landmark` objects accordingly.
 
-In case of missing or inaccessible files, processDataFromFiles() throws a FileNotFoundException and logs errors to 
-System.err.
+Once all data is processed, `CanteenFinderParser.LANDMARKS` is populated with the loaded objects. This enables the
+`CanteenFinder` feature to determine the nearest canteens relative to various landmarks.
 
-The following UML Sequence Diagram illustrates the interaction between different components during data loading. 
-It shows Navi, the main program, invoking processDataFromFiles() in the Storage class, which in turn delegates the 
-processing of specific data types to CanteenDataProcessor, FacultyDataProcessor, HostelDataProcessor, and 
-OtherBuildingDataProcessor. These processors create appropriate objects (Canteen, Faculty, Landmark) and establish 
+If a canteen is not found in the `canteenMap` during the processing of faculty, hostel, or other building data, a warning message is printed to `System.err`.
+
+The following UML Sequence Diagram illustrates the interaction between different components during data loading.
+It shows Navi, the main program, invoking `processDataFromFiles()` in the `Storage` class, which in turn delegates the
+processing of specific data types to `CanteenDataProcessor`, `FacultyDataProcessor`, `HostelDataProcessor`, and
+`OtherBuildingDataProcessor`. These processors create appropriate objects (`Canteen`, `Faculty`, `Landmark`) and establish
 relationships such as nearest canteens and distances between entities.
-
-![](diagrams/StorageRefactored.png)
+![](diagrams/Storage.png)
 
 ___
 ## Budget feature

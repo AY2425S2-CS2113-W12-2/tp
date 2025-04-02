@@ -1,56 +1,3 @@
-/* package seedu.navi.canteen.storage;
-
-import seedu.navi.canteen.canteenfinder.landmark.Faculty;
-import seedu.navi.canteen.canteenfinder.landmark.canteen.Canteen;
-
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.util.ArrayList;
-import java.util.Map;
-import java.util.Scanner;
-
-public class FacultyDataProcessor {
-
-    private static final String FACULTY_FILE = "data/faculty.txt";
-    private final Map<String, Canteen> canteenMap;
-
-    public FacultyDataProcessor(Map<String, Canteen> canteenMap) {
-        this.canteenMap = canteenMap;
-    }
-
-    public void processData(ArrayList<Faculty> faculties) throws FileNotFoundException {
-        File f = new File(FACULTY_FILE);
-        Scanner s = new Scanner(f);
-        while (s.hasNext()) {
-            String facultyData = s.nextLine();
-            insertFacultyFromData(facultyData, faculties);
-        }
-    }
-
-    private void insertFacultyFromData(String facultyData, ArrayList<Faculty> faculties) {
-        String[] parts = facultyData.split(": ");
-        String facultyName = parts[0];
-        Faculty faculty = new Faculty(facultyName);
-        faculties.add(faculty);
-        String[] canteenData = parts[1].split("\\|");
-        for (String canteenInfo : canteenData) {
-            String[] canteenParts = canteenInfo.trim().split("\\(");
-            String canteenName = canteenParts[0].trim();
-            int distance = 0;
-            if (canteenParts.length > 1) {
-                String distancePart = canteenParts[1].replaceAll("[^\\d]", "").trim();
-                if (!distancePart.isEmpty()) {
-                    distance = Integer.parseInt(distancePart);
-                }
-            }
-            Canteen canteen = canteenMap.get(canteenName.trim());
-            faculty.setNearestCanteens(canteen);
-            faculty.setCanteenDistance(canteen, distance);
-        }
-    }
-} */
-
-
 package seedu.navi.canteen.storage;
 
 import seedu.navi.canteen.canteenfinder.landmark.Faculty;
@@ -80,28 +27,48 @@ public class FacultyDataProcessor {
         String facultyName = parts[0].trim();
         Faculty faculty = new Faculty(facultyName);
         faculties.add(faculty);
-        if (parts.length > 1) { // Check if canteen data exists
-            String[] canteenData = parts[1].split("\\|");
-            for (String canteenInfo : canteenData) {
-                String[] canteenParts = canteenInfo.trim().split("\\(");
-                String canteenName = canteenParts[0].trim();
-                int distance = 0;
-                if (canteenParts.length > 1) {
-                    String distancePart = canteenParts[1].replaceAll("[^\\d]", "").trim();
-                    if (!distancePart.isEmpty()) {
-                        distance = Integer.parseInt(distancePart);
-                    }
-                }
-                Canteen canteen = canteenMap.get(canteenName);
-                if (canteen != null) { // Check if canteen exists in map
-                    faculty.setNearestCanteens(canteen);
-                    faculty.setCanteenDistance(canteen, distance);
-                } else {
-                    System.err.println("Warning: Canteen '" + canteenName + "' not found for faculty '" +
-                            facultyName + "'.");
-                }
-            }
+
+        if (parts.length <= 1) {
+            return; // No canteen data, exit early
         }
+
+        processCanteenData(parts[1], faculty, facultyName);
+    }
+
+    private void processCanteenData(String canteenDataString, Faculty faculty, String facultyName) {
+        String[] canteenData = canteenDataString.split("\\|");
+        for (String canteenInfo : canteenData) {
+            processCanteenInfo(canteenInfo, faculty, facultyName);
+        }
+    }
+
+    private void processCanteenInfo(String canteenInfo, Faculty faculty, String facultyName) {
+        String[] canteenParts = canteenInfo.trim().split("\\(");
+        String canteenName = canteenParts[0].trim();
+        int distance = extractDistance(canteenParts);
+        Canteen canteen = canteenMap.get(canteenName);
+
+        if (canteen == null) {
+            System.err.println("Warning: Canteen '" + canteenName + "' not found for faculty '" +
+                    facultyName + "'.");
+            return; // Skip processing this canteen info
+        }
+
+        faculty.setNearestCanteens(canteen);
+        faculty.setCanteenDistance(canteen, distance);
+    }
+
+    private int extractDistance(String[] canteenParts) {
+        if (canteenParts.length <= 1) {
+            return 0; // Default distance if not found
+        }
+
+        String distancePart = canteenParts[1].replaceAll("[^\\d]", "").trim();
+        if (distancePart.isEmpty()) {
+            return 0; // Default distance if not found
+        }
+
+        return Integer.parseInt(distancePart);
     }
 
     private static List<String> getFacultyData() {
