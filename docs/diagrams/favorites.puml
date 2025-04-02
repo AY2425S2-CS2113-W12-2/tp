@@ -1,37 +1,52 @@
-@startuml
+@startuml FavoritesTracker
 actor User
+participant FavoritesParser
 participant Favorites
 participant TextUi
 
-User -> Favorites: addFavorite(description, rating, category)
-Favorites -> Favorites: Add item to favoriteItems
-Favorites -> TextUi: print "✅ Added"
-Favorites -> User: return
+User -> FavoritesParser: "view"
+FavoritesParser -> Favorites: viewFavorites()
+alt Favorites list empty
+    Favorites -> Favorites: loadFavorites()
+    Favorites -> TextUi: print "No favorites yet."
+else Favorites list not empty
+    Favorites -> TextUi: print "Your favorite items:"
+    Favorites -> Favorites: display list of favorites
+    FavoritesParser -> User: show favorites
+end
 
-User -> Favorites: removeFavorite(index)
-Favorites -> Favorites: Remove item from favoriteItems
-Favorites -> Favorites: Push to undoStack
-Favorites -> TextUi: print "❌ Removed"
-Favorites -> User: return
+User -> FavoritesParser: "add Pizza : 9 : Food"
+FavoritesParser -> Favorites: handleAddCommand("Pizza : 9 : Food")
+Favorites -> Favorites: addFavorite("Pizza", 9, "Food")
+Favorites -> Favorites: saveFavorites()
+Favorites -> TextUi: print "Added: Pizza | Rating: 9 | Category: Food"
+FavoritesParser -> User: "Added Pizza to favorites"
 
-User -> Favorites: undoRemove()
-Favorites -> Favorites: Pop item from undoStack
-Favorites -> Favorites: Add item back to favoriteItems
-Favorites -> TextUi: print "🔄 Restored"
-Favorites -> User: return
+User -> FavoritesParser: "remove 1"
+FavoritesParser -> Favorites: handleRemoveCommand("1")
+Favorites -> Favorites: removeFavorite(0)
+Favorites -> Favorites: saveFavorites()
+Favorites -> TextUi: print "Removed: Pizza"
+FavoritesParser -> User: "Removed Pizza from favorites"
 
-User -> Favorites: viewFavorites()
-Favorites -> TextUi: print "🌟 Favorite items"
-Favorites -> User: return
+User -> FavoritesParser: "undo"
+FavoritesParser -> Favorites: undoRemove()
+Favorites -> Favorites: restore last removed item
+Favorites -> Favorites: saveFavorites()
+Favorites -> TextUi: print "Restored: Pizza"
+FavoritesParser -> User: "Restored Pizza to favorites"
 
-User -> Favorites: sortFavorites(descending)
-Favorites -> Favorites: Sort favoriteItems
-Favorites -> TextUi: print "📊 Sorted"
-Favorites -> User: return
+User -> FavoritesParser: "sort asc"
+FavoritesParser -> Favorites: handleSortCommand("asc")
+Favorites -> Favorites: sortFavorites(false)
+Favorites -> Favorites: saveFavorites()
+Favorites -> TextUi: print "Favorites sorted in ascending order"
+FavoritesParser -> User: "Sorted favorites in ascending order"
 
-User -> Favorites: searchFavorites(keyword)
-Favorites -> Favorites: Search for keyword
-Favorites -> TextUi: print "🔎 Search results"
-Favorites -> User: return
+User -> FavoritesParser: "search Pizza"
+FavoritesParser -> Favorites: searchFavorites("Pizza")
+Favorites -> Favorites: search for keyword "Pizza"
+Favorites -> TextUi: print "Search results for 'Pizza'"
+FavoritesParser -> User: show search results
 
 @enduml
