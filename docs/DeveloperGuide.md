@@ -93,7 +93,7 @@ Immediate feedback is provided through console messages.
 ### Future Enhancements
 Potential improvements include persistent storage, expanded search/filter options, multi-step undo/redo, and additional 
 sorting criteria.
-![Favorites Sequence Diagram](../uml/fav.png)
+![Favorites Sequence Diagram](diagrams/favorites.png)
 
 
 
