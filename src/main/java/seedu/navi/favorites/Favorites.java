@@ -2,6 +2,11 @@ package seedu.navi.favorites;
 
 import seedu.navi.textui.TextUi;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
@@ -9,20 +14,47 @@ import java.util.Stack;
 public class Favorites {
     private List<String> favoriteItems;
     private Stack<String> undoStack;
+    private static final String FILE_PATH = "favorites.txt"; // Path to save the favorites data
 
     public Favorites() {
         this.favoriteItems = new ArrayList<>();
         this.undoStack = new Stack<>();
     }
 
+    // Loads the favorites from the file into the favoriteItems list
+    private void loadFavorites() {
+        try (BufferedReader reader = new BufferedReader(new FileReader(FILE_PATH))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                favoriteItems.add(line);
+            }
+        } catch (IOException e) {
+            // If file doesn't exist or can't be read, we initialize with an empty list
+        }
+    }
+
+    // Saves the current favoriteItems list to a file
+    private void saveFavorites() {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(FILE_PATH))) {
+            for (String item : favoriteItems) {
+                writer.write(item);
+                writer.newLine();
+            }
+        } catch (IOException e) {
+            System.out.println("Error saving favorites to file.");
+        }
+    }
     public void clearFavorites() {
         favoriteItems.clear();
         undoStack.clear();
+        saveFavorites();
     }
+
 
     public void addFavorite(String description, int rating, String category) {
         String item = description + " | Rating: " + rating + " | Category: " + category;
         favoriteItems.add(item);
+        saveFavorites();
         System.out.println("✅ Added: " + item);
     }
 
@@ -35,6 +67,7 @@ public class Favorites {
         }
         String removedItem = favoriteItems.remove(index);
         undoStack.push(removedItem);
+        saveFavorites();
         TextUi.printLineSeparator();
         System.out.println("❌ Removed: " + removedItem);
         TextUi.printLineSeparator();
@@ -49,6 +82,7 @@ public class Favorites {
         }
         String restoredItem = undoStack.pop();
         favoriteItems.add(restoredItem);
+        saveFavorites();
         TextUi.printLineSeparator();
         System.out.println("🔄 Restored: " + restoredItem);
         TextUi.printLineSeparator();
@@ -59,6 +93,10 @@ public class Favorites {
     }
 
     public void viewFavorites() {
+        // Load the favorites when viewing them, if the list is empty
+        if (favoriteItems.isEmpty()) {
+            loadFavorites(); // Only load favorites if the list is empty
+        }
         if (favoriteItems.isEmpty()) {
             TextUi.printLineSeparator();
             System.out.println("No favorites yet.");
@@ -79,6 +117,7 @@ public class Favorites {
             int ratingB = Integer.parseInt(b.split("\\| Rating: ")[1].split(" ")[0]);
             return descending ? Integer.compare(ratingB, ratingA) : Integer.compare(ratingA, ratingB);
         });
+        saveFavorites();
         TextUi.printLineSeparator();
         System.out.println("📊 Favorites sorted in " + (descending ? "descending" : "ascending") + " order.");
         TextUi.printLineSeparator();
