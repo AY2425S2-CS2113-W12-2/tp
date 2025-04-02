@@ -222,4 +222,10 @@ public class TextUi {
         printValidStallsCF(stalls);
         printLineSeparator();
     }
+
+    public static void printCanteenNotFoundCL() {
+        printLineSeparator();
+        System.out.println("Sorry, we could not find the canteen you're looking for!");
+        printLineSeparator();
+    }
 }

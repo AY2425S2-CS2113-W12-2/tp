@@ -3,6 +3,7 @@ package seedu.navi.canteen.canteenlookup;
 import seedu.navi.canteen.canteenfinder.landmark.canteen.Canteen;
 import seedu.navi.canteen.canteenfinder.landmark.canteen.stall.Stall;
 import seedu.navi.canteen.storage.CanteenDataProcessor; // Import the modified CanteenDataProcessor
+import seedu.navi.exceptions.CanteenNotFound;
 import seedu.navi.textui.TextUi;
 
 import java.util.ArrayList;
@@ -16,14 +17,16 @@ public class CanteenSearch {
         Map<String, Canteen> canteenMap = new HashMap<>();
         CanteenDataProcessor dataProcessor = new CanteenDataProcessor(canteenMap);
 
+        // No need for try-catch here, as CanteenInfo loads data from memory
         dataProcessor.processData();
 
         Canteen canteen = canteenMap.get(canteenName);
 
-        System.out.println("Canteen Name: " + canteen.getName());
-        System.out.println("Stalls:");
+        if (canteen == null) {
+            throw new CanteenNotFound();
+        }
 
-        ArrayList<Stall> stalls = new ArrayList<>(canteen.getStalls());
+        ArrayList<Stall> stalls = canteen.getStalls();
         TextUi.printCanteenStallsCL(canteenName, stalls);
     }
 }
