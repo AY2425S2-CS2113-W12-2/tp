@@ -289,6 +289,117 @@ Format: `exit`
 * Monthly Reset: Expenses clear on 1st of month
 
 
+___
+## Favorites: `favorites`
+
+```
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+🌟 Favorites Tracker: Enter a command:
+  - add <description> : <rating> : <location>
+  - remove N
+  - view
+  - sort asc
+  - sort desc
+  - search X
+  - undo
+  - exit
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+```
+### Add to favorites list
+Format: `add <description> : <rating> : <location>`
+
+```
+
+> add milo:3:com
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+✅ Added: milo | Rating: 3 | Category: com
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+```
+### Remove from favorites list
+Format: `remove N`
+
+```
+> remove 1
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+❌ Removed: milo | Rating: 3 | Category: com
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+```
+### View favorites list
+Format:`view`
+
+```
+> view
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+🌟 Your favorite items:
+1. milo | Rating: 3 | Category: com
+2. cheese prata | Rating: 10 | Category: utown
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+```
+### Sort favorites list in ascending order
+Format: `sort asc`
+
+```
+> sort asc
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+📊 Favorites sorted in ascending order.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+> view
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+🌟 Your favorite items:
+1. milo | Rating: 3 | Category: com
+2. cheese prata | Rating: 10 | Category: utown
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+```
+## Sort favorites list in descending order
+Format: `sort desc`
+
+```
+> sort desc
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+📊 Favorites sorted in descending order.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+> view
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+🌟 Your favorite items:
+1. cheese prata | Rating: 10 | Category: utown
+2. milo | Rating: 3 | Category: com
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+```
+### Search for your favorite item
+Format: `search X`
+
+```
+> search milo
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+🔎 Search results for 'milo':
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+milo | Rating: 3 | Category: com
+milo | Rating: 8 | Category: deck
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+```
+### Undo any accidental remove commands
+Format: `Undo`
+
+```
+> undo 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+🔄 Restored: milo | Rating: 8 | Category: deck
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+```
+### Exit favorites tracker
+Format: `exit`
+
+```
+> exit
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+👋 Exiting Favorites Tracker.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+```
+
+
+
+
+
 ## FAQ
 
 **Q**: How do I transfer my data to another computer? 
@@ -343,12 +454,15 @@ ___
 | Exit Budget                | `exit`          |
 
 ___
-### Favorites management 
+### Favorites tracker 
 
-| Feature         | Command                             |
-|-----------------|-------------------------------------|
-| Add favorite    | `add DESCRIPTION, RATING, CATEGORY` |
-| Remove favorite | `remove INDEX`                      |
-| View favorite   | `list`                              |
-| Exit Canteen    | `exit`                              |
-
+| Feature          | Command                                     |
+|------------------|---------------------------------------------|
+| Add favorites    | `add <description> : <rating> : <location>` |
+| Remove favorites | `remove N`                                  |
+| View favorites   | `view`                                      |
+| Sort ascending   | `sort asc`                                  |
+| Sort descending  | `sort desc`                                 |
+| Search favorites | `search X`                                  |
+| Undo Remove      | `undo`                                      |
+| Exit favorites   | `exit`                                      |
