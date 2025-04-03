@@ -108,7 +108,6 @@ Persistent Storage ensures data is not lost between sessions by saving the favor
 ### Future Enhancements
 Potential improvements include Expanded search/filter options, multi-step undo/redo, and additional 
 sorting criteria.
-
 ![favorites](diagrams/favorites.png)
 
 
