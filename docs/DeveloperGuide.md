@@ -1,8 +1,8 @@
 # Developer Guide
 
 ## Acknowledgements
-
-{list here sources of all reused/adapted ideas, code, documentation, and third-party libraries -- include links to the original source as well}
+___
+Some UML diagrams within the Developer Guide have been created on [Draw.io](https://draw.io/)
 
 ## Design & implementation
 ___
@@ -51,7 +51,7 @@ The following UML Sequence diagram shows the Canteen Finder feature. The startin
 `startCanteenFinder()` of `CanteenFinder` to begin the Canteen Finder sub-feature.
 
 ![CanteenFinderSequenceDiagram](diagrams/CanteenFinderSequenceDiagram.drawio.png)
-
+___
 ### Canteen Lookup Feature
 The Canteen Lookup sub-feature allows the user to look up the different stalls and its characteristics of the specified
 canteen.
@@ -60,9 +60,32 @@ This functionality is controlled by the `CanteenLookup` class where `startCantee
 `searchCanteen(canteenName)`, a class level method, of the CanteenSearch class.
 
 `searchCanteen()` would then...
-
+___
 ### Storage
-...
+The Storage class is responsible for managing the persistent storage of canteen, faculty, hostel, and other building data.
+The data loading process is initiated by calling processDataFromFiles(), which sequentially processes different
+categories of data from hardcoded strings into appropriate data structures.
+
+The method follows these key steps:
+
+1.  It first clears CANTEEN_MAP, a static Map<String, Canteen>, to ensure that previously loaded data does not persist.
+2.  It then sequentially calls:
+    * `processCanteenFromFile()` using `CanteenDataProcessor` to read and parse canteen data, creating `Canteen` objects and storing them in `CANTEEN_MAP`.
+    * `processFacultyFromFile()` using `FacultyDataProcessor` to process faculty data, creating `Faculty` objects and updating `CanteenFinderParser.LANDMARKS`.
+    * `processHostelFromFile()` using `HostelDataProcessor` to handle hostel data, creating `Landmark` objects for hostels.
+    * `processOtherBuildingFromFile()` using `OtherBuildingDataProcessor` to process other buildings, creating `Landmark` objects accordingly.
+
+Once all data is processed, `CanteenFinderParser.LANDMARKS` is populated with the loaded objects. This enables the
+`CanteenFinder` feature to determine the nearest canteens relative to various landmarks.
+
+If a canteen is not found in the `canteenMap` during the processing of faculty, hostel, or other building data, a warning message is printed to `System.err`.
+
+The following UML Sequence Diagram illustrates the interaction between different components during data loading.
+It shows Navi, the main program, invoking `processDataFromFiles()` in the `Storage` class, which in turn delegates the
+processing of specific data types to `CanteenDataProcessor`, `FacultyDataProcessor`, `HostelDataProcessor`, and
+`OtherBuildingDataProcessor`. These processors create appropriate objects (`Canteen`, `Faculty`, `Landmark`) and establish
+relationships such as nearest canteens and distances between entities.
+![](diagrams/Storage.png)
 
 ___
 ### Favorites feature
@@ -109,33 +132,6 @@ Persistent Storage ensures data is not lost between sessions by saving the favor
 Potential improvements include Expanded search/filter options, multi-step undo/redo, and additional 
 sorting criteria.
 ![favorites](diagrams/favorites.png)
-
-
-### Storage feature
-The Storage class is responsible for managing the persistent storage of canteen, faculty, hostel, and other building data.
-The data loading process is initiated by calling processDataFromFiles(), which sequentially processes different
-categories of data from hardcoded strings into appropriate data structures.
-
-The method follows these key steps:
-
-1.  It first clears CANTEEN_MAP, a static Map<String, Canteen>, to ensure that previously loaded data does not persist.
-2.  It then sequentially calls:
-    * `processCanteenFromFile()` using `CanteenDataProcessor` to read and parse canteen data, creating `Canteen` objects and storing them in `CANTEEN_MAP`.
-    * `processFacultyFromFile()` using `FacultyDataProcessor` to process faculty data, creating `Faculty` objects and updating `CanteenFinderParser.LANDMARKS`.
-    * `processHostelFromFile()` using `HostelDataProcessor` to handle hostel data, creating `Landmark` objects for hostels.
-    * `processOtherBuildingFromFile()` using `OtherBuildingDataProcessor` to process other buildings, creating `Landmark` objects accordingly.
-
-Once all data is processed, `CanteenFinderParser.LANDMARKS` is populated with the loaded objects. This enables the
-`CanteenFinder` feature to determine the nearest canteens relative to various landmarks.
-
-If a canteen is not found in the `canteenMap` during the processing of faculty, hostel, or other building data, a warning message is printed to `System.err`.
-
-The following UML Sequence Diagram illustrates the interaction between different components during data loading.
-It shows Navi, the main program, invoking `processDataFromFiles()` in the `Storage` class, which in turn delegates the
-processing of specific data types to `CanteenDataProcessor`, `FacultyDataProcessor`, `HostelDataProcessor`, and
-`OtherBuildingDataProcessor`. These processors create appropriate objects (`Canteen`, `Faculty`, `Landmark`) and establish
-relationships such as nearest canteens and distances between entities.
-![](diagrams/Storage.png)
 
 ___
 ## Budget feature
@@ -187,6 +183,7 @@ The following sequence diagram illustrates the workflow when a user `add 100` to
 ![BudgetSequenceDiagram](diagrams/BudgetSequenceDiagram.png)
 
 ## Product scope
+___
 ### Target user profile
 
 NUS students, faculty or staff who need guidance to find or lookup canteens, manage budgets, and track their favorite food stalls 
@@ -201,7 +198,7 @@ A favorites list that lets users save, rate, and comment on stalls, making it ea
 Hence, Navi saves time as well as promotes exploration all in one intuitive app.
 
 ## User Stories
-
+___
 | Version | As a ...                      | I want to ...                                                               | So that I can ...                                                               |
 |---------|-------------------------------|-----------------------------------------------------------------------------|---------------------------------------------------------------------------------|
 | v1.0    | new user                      | see usage instructions                                                      | refer to them when I forget how to use the application                          |
@@ -214,25 +211,58 @@ Hence, Navi saves time as well as promotes exploration all in one intuitive app.
 | v2.0    | adventurous user              | check what stalls does other canteens have aside from the one nearest to me | try new food and explore new cuisines                                           |
 
 ## Non-Functional Requirements
-
+___
 1. The app should work on any mainstream OS as long as it has java17 or above installed.
 
 ## Glossary
-
-* *glossary item* - Definition
+___
+* `command 1` -> `command 2`
+    * referring to typing `command 1` and pressing enter then `command 2` and pressing enter
 
 ## Instructions for manual testing
+___
+### Launching Navi
+* Download the jar file and copy it to an empty folder.
+* Navigate to the jar file via a Terminal window.
+* Start the jar file with the command `java -jar Navi.jar`
+* Users should see a greeting message, prompting user to enter their name.
 
-{Give instructions on how to do a manual product testing e.g., how to load sample data to be used for testing}
-
-#### Budget feature
-`add 100`
-
-`view`
-
-`deduct 20`
-
-`view`
-
-
-
+### Test cases
+#### Navi
+Prerequisites: Entered a `username`
+* Test case: `canteen`
+  * Expected: Navi enters the canteen feature
+* Test case: `favorites`
+  * Expected: Navi enters the favorites feature
+* Test case: `budget`
+  * Expected: Navi enters the budget feature
+* Test case: `bye`
+  * Expected: Exits Navi, program ends
+* Test case: `CS2113` or ` `
+  * Expected: Nothing happens and error message is shown with details on valid inputs
+#### 1. Canteen
+Prerequisites: After entering username, entered `canteen`
+* Test case: `finder`
+  * Expected: Navi enters canteen finder feature
+* Test case: `lookup`
+  * Expected: Navi enters canteen lookup feature
+* Test case: `quit`
+  * Expected: Navi exits Canteen feature
+#### 1.1 Canteen Finder
+Prerequisites: Entered `username` -> `canteen` -> `finder`
+* Test case: `Halal Certified` -> `CDE`
+  * Expected: Navi lists all the halal certified stalls in Techno Edge
+* Test case: `NIL` -> `SOC`
+  * Expected: Navi lists all the stalls in Terrace
+* Test case: `exit`
+  * Expected: Navi exits Canteen Finder feature
+* Test case: `CS2113` or ` `
+    * Expected: Nothing happens and error message is shown with details on valid inputs
+#### 1.2 Canteen Lookup
+Prerequisites: Entered `username` -> `canteen` -> `lookup`
+* Test case: `Techno Edge`
+  * Expected: Navi lists all the stalls in Techno Edge
+* Test case: `exit`
+  * Expected: Navi exits Canteen Lookup feature
+* Test case: `CS2113` or ` `
+    * Expected: Nothing happens and error message is shown with details on valid inputs
