@@ -1,6 +1,7 @@
 package seedu.navi.canteen.canteenlookup;
 
 import seedu.navi.canteen.canteenfinder.usershortcuts.CanteenShortcuts;
+import seedu.navi.exceptions.CanteenNotFound;
 import seedu.navi.textui.TextUi;
 
 public class CanteenLookup {
@@ -16,8 +17,7 @@ public class CanteenLookup {
             }
             String canteenName = CanteenShortcuts.CANTEEN_MAP.get(command);
             if (canteenName == null) {
-                System.out.println("Canteen \"" + command + "\" not found."); // Updated error message
-                System.out.println("Valid shortcuts: " + CanteenShortcuts.CANTEEN_MAP.keySet()); // Show valid shortcuts
+                throw new CanteenNotFound();
             } else {
                 CanteenSearch.searchCanteen(canteenName);
             }
