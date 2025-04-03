@@ -74,7 +74,6 @@ Favorites class: Manages favorite items and undo functionality.
 
 ### Data structures:
 favoriteItems (ArrayList) - Stores favorite entries as formatted strings.
-
 undoStack (Stack) - Tracks deleted items for undo operations.
 
 ### Key Operations
@@ -95,9 +94,21 @@ Operates entirely in-memory using formatted strings.
 Undo only supports single-level restoration of deletions.
 Immediate feedback is provided through console messages.
 
+### Design Considerations
+ArrayList<String> is used for favoriteItems because:
+* Fast indexed access (O(1))
+* Efficient for sorting and iterating
+
+Stack<String> is used for undoStack because:
+* LIFO (Last-In-First-Out) is ideal for undo operations.
+* Constant time (O(1)) push and pop operations.
+
+Persistent Storage ensures data is not lost between sessions by saving the favorites list to a file.
+
 ### Future Enhancements
-Potential improvements include persistent storage, expanded search/filter options, multi-step undo/redo, and additional 
+Potential improvements include Expanded search/filter options, multi-step undo/redo, and additional 
 sorting criteria.
+
 ![favorites](diagrams/favorites.png)
 
 
