@@ -1,8 +1,8 @@
 # Developer Guide
 
 ## Acknowledgements
-___
-Some UML diagrams within the Developer Guide have been created on [Draw.io](https://draw.io/)
+
+{list here sources of all reused/adapted ideas, code, documentation, and third-party libraries -- include links to the original source as well}
 
 ## Design & implementation
 ___
@@ -51,7 +51,7 @@ The following UML Sequence diagram shows the Canteen Finder feature. The startin
 `startCanteenFinder()` of `CanteenFinder` to begin the Canteen Finder sub-feature.
 
 ![CanteenFinderSequenceDiagram](diagrams/CanteenFinderSequenceDiagram.drawio.png)
-___
+
 ### Canteen Lookup Feature
 The Canteen Lookup sub-feature allows the user to look up the different stalls and its characteristics of the specified
 canteen.
@@ -60,8 +60,48 @@ This functionality is controlled by the `CanteenLookup` class where `startCantee
 `searchCanteen(canteenName)`, a class level method, of the CanteenSearch class.
 
 `searchCanteen()` would then...
-___
+
 ### Storage
+...
+
+___
+### Favorites feature
+This feature allows users to manage a list of favorite items, supporting adding, removing, viewing, sorting, and 
+searching. It also includes an undo function for deletions.
+
+### Core Components
+Favorites class: Manages favorite items and undo functionality.
+
+### Data structures:
+favoriteItems (ArrayList) - Stores favorite entries as formatted strings.
+
+undoStack (Stack) - Tracks deleted items for undo operations.
+
+### Key Operations
+`addFavorite(description, rating, category)`: Adds a new favorite in the format "Description | Rating: X | Category: Y".
+
+`removeFavorite(index)`: Removes an item by index, storing it in undoStack for possible recovery.
+
+`undoRemove()`: Restores the most recently deleted favorite if available.
+
+`viewFavorites()`: Displays all favorites in a numbered list or a message if empty.
+
+`sortFavorites(boolean ascending)`: Sorts favorites by rating using a custom comparator.
+
+`searchFavorites(keyword)`: Finds and displays entries matching the keyword (case-insensitive).
+
+### System Behavior
+Operates entirely in-memory using formatted strings.
+Undo only supports single-level restoration of deletions.
+Immediate feedback is provided through console messages.
+
+### Future Enhancements
+Potential improvements include persistent storage, expanded search/filter options, multi-step undo/redo, and additional 
+sorting criteria.
+![favorites](diagrams/favorites.png)
+
+
+### Storage feature
 The Storage class is responsible for managing the persistent storage of canteen, faculty, hostel, and other building data.
 The data loading process is initiated by calling processDataFromFiles(), which sequentially processes different
 categories of data from hardcoded strings into appropriate data structures.
@@ -86,52 +126,6 @@ processing of specific data types to `CanteenDataProcessor`, `FacultyDataProcess
 `OtherBuildingDataProcessor`. These processors create appropriate objects (`Canteen`, `Faculty`, `Landmark`) and establish
 relationships such as nearest canteens and distances between entities.
 ![](diagrams/Storage.png)
-
-___
-### Favorites feature
-This feature allows users to manage a list of favorite items, supporting adding, removing, viewing, sorting, and 
-searching. It also includes an undo function for deletions.
-
-### Core Components
-Favorites class: Manages favorite items and undo functionality.
-
-### Data structures:
-favoriteItems (ArrayList) - Stores favorite entries as formatted strings.
-undoStack (Stack) - Tracks deleted items for undo operations.
-
-### Key Operations
-`addFavorite(description, rating, category)`: Adds a new favorite in the format "Description | Rating: X | Category: Y".
-
-`removeFavorite(index)`: Removes an item by index, storing it in undoStack for possible recovery.
-
-`undoRemove()`: Restores the most recently deleted favorite if available.
-
-`viewFavorites()`: Displays all favorites in a numbered list or a message if empty.
-
-`sortFavorites(boolean ascending)`: Sorts favorites by rating using a custom comparator.
-
-`searchFavorites(keyword)`: Finds and displays entries matching the keyword (case-insensitive).
-
-### System Behavior
-Operates entirely in-memory using formatted strings.
-Undo only supports single-level restoration of deletions.
-Immediate feedback is provided through console messages.
-
-### Design Considerations
-ArrayList<String> is used for favoriteItems because:
-* Fast indexed access (O(1))
-* Efficient for sorting and iterating
-
-Stack<String> is used for undoStack because:
-* LIFO (Last-In-First-Out) is ideal for undo operations.
-* Constant time (O(1)) push and pop operations.
-
-Persistent Storage ensures data is not lost between sessions by saving the favorites list to a file.
-
-### Future Enhancements
-Potential improvements include Expanded search/filter options, multi-step undo/redo, and additional 
-sorting criteria.
-![favorites](diagrams/favorites.png)
 
 ___
 ## Budget feature
@@ -159,9 +153,6 @@ from the previous week.
 * *Weekly Reset*: Resets weekly expenses every Monday.
 * *Monthly Reset*: Resets total monthly expenses at the start of a new month.
 
-The following class diagram shows in detail all the methods and atributes in Budget class and shows its relationship
-with BudgetParser and Parser class.
-![BudgetClassDiagram](diagrams/BudgetClassDiagram.png)
 
 ### Sequence of operations
 1. Upon launching the application, the Navi.main() method initializes the system and prompts the user for input.
@@ -179,11 +170,12 @@ The `Budget.addWeeklyBudget()` method is invoked, which updates the weekly budge
 The `Budget.viewExpenses()` method displays this information.
 7. The user can exit the budget feature by entering `exit`, which ends the BudgetParser session.
 
-The following sequence diagram illustrates the workflow when a user `add 100` to their budget and `view`:
-![BudgetSequenceDiagram](diagrams/BudgetSequenceDiagram.png)
+The following sequence diagram illustrates the workflow when a user adds to their budget:
+![BudgetAdd](diagrams/BudgetAdd.png)
+
+
 
 ## Product scope
-___
 ### Target user profile
 
 NUS students, faculty or staff who need guidance to find or lookup canteens, manage budgets, and track their favorite food stalls 
@@ -198,7 +190,7 @@ A favorites list that lets users save, rate, and comment on stalls, making it ea
 Hence, Navi saves time as well as promotes exploration all in one intuitive app.
 
 ## User Stories
-___
+
 | Version | As a ...                      | I want to ...                                                               | So that I can ...                                                               |
 |---------|-------------------------------|-----------------------------------------------------------------------------|---------------------------------------------------------------------------------|
 | v1.0    | new user                      | see usage instructions                                                      | refer to them when I forget how to use the application                          |
@@ -211,58 +203,22 @@ ___
 | v2.0    | adventurous user              | check what stalls does other canteens have aside from the one nearest to me | try new food and explore new cuisines                                           |
 
 ## Non-Functional Requirements
-___
+
 1. The app should work on any mainstream OS as long as it has java17 or above installed.
 
 ## Glossary
-___
-* `command 1` -> `command 2`
-    * referring to typing `command 1` and pressing enter then `command 2` and pressing enter
+
+* *glossary item* - Definition
 
 ## Instructions for manual testing
-___
-### Launching Navi
-* Download the jar file and copy it to an empty folder.
-* Navigate to the jar file via a Terminal window.
-* Start the jar file with the command `java -jar Navi.jar`
-* Users should see a greeting message, prompting user to enter their name.
 
-### Test cases
-#### Navi
-Prerequisites: Entered a `username`
-* Test case: `canteen`
-  * Expected: Navi enters the canteen feature
-* Test case: `favorites`
-  * Expected: Navi enters the favorites feature
-* Test case: `budget`
-  * Expected: Navi enters the budget feature
-* Test case: `bye`
-  * Expected: Exits Navi, program ends
-* Test case: `CS2113` or ` `
-  * Expected: Nothing happens and error message is shown with details on valid inputs
-#### 1. Canteen
-Prerequisites: After entering username, entered `canteen`
-* Test case: `finder`
-  * Expected: Navi enters canteen finder feature
-* Test case: `lookup`
-  * Expected: Navi enters canteen lookup feature
-* Test case: `quit`
-  * Expected: Navi exits Canteen feature
-#### 1.1 Canteen Finder
-Prerequisites: Entered `username` -> `canteen` -> `finder`
-* Test case: `Halal Certified` -> `CDE`
-  * Expected: Navi lists all the halal certified stalls in Techno Edge
-* Test case: `NIL` -> `SOC`
-  * Expected: Navi lists all the stalls in Terrace
-* Test case: `exit`
-  * Expected: Navi exits Canteen Finder feature
-* Test case: `CS2113` or ` `
-    * Expected: Nothing happens and error message is shown with details on valid inputs
-#### 1.2 Canteen Lookup
-Prerequisites: Entered `username` -> `canteen` -> `lookup`
-* Test case: `Techno Edge`
-  * Expected: Navi lists all the stalls in Techno Edge
-* Test case: `exit`
-  * Expected: Navi exits Canteen Lookup feature
-* Test case: `CS2113` or ` `
-    * Expected: Nothing happens and error message is shown with details on valid inputs
+{Give instructions on how to do a manual product testing e.g., how to load sample data to be used for testing}
+
+# Budget feature
+'add 100'
+'view'
+'deduct 20'
+'view'
+
+
+

@@ -16,7 +16,8 @@ public class CanteenLookup {
             }
             String canteenName = CanteenShortcuts.CANTEEN_MAP.get(command);
             if (canteenName == null) {
-                TextUi.printCanteenNotFoundCL();
+                System.out.println("Canteen \"" + command + "\" not found."); // Updated error message
+                System.out.println("Valid shortcuts: " + CanteenShortcuts.CANTEEN_MAP.keySet()); // Show valid shortcuts
             } else {
                 CanteenSearch.searchCanteen(canteenName);
             }

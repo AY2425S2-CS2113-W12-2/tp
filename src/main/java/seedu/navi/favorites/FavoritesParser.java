@@ -56,7 +56,6 @@ public class FavoritesParser {
                 break;
             case "search":
                 favorites.searchFavorites(arguments);
-                TextUi.printLineSeparator();
                 break;
             case "undo":
                 favorites.undoRemove();

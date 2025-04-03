@@ -8,9 +8,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.text.DecimalFormat;
 import java.time.LocalDate;
-import java.time.temporal.WeekFields;
 import java.util.HashMap;
-import java.util.Locale;
 
 public class Budget {
     private static final DecimalFormat df = new DecimalFormat("0.00");
@@ -176,9 +174,8 @@ public class Budget {
         if (lastUpdatedDate == null) {
             return true;
         }
-        int currentWeek = today.get(WeekFields.of(Locale.getDefault()).weekOfYear());
-        int lastUpdatedWeek = lastUpdatedDate.get(WeekFields.of(Locale.getDefault()).weekOfYear());
-        return currentWeek != lastUpdatedWeek;
+        return today.getDayOfWeek().getValue() == 1 &&
+                lastUpdatedDate.isBefore(today.minusDays(today.getDayOfWeek().getValue() - 1));
     }
 
 
