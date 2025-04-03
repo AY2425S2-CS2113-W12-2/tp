@@ -12,43 +12,41 @@ Code contribution to project:
 
 ### Enhancements Implemented
 #### 1. Favorites Feature
-This feature allows users to track and manage their favorite dining items. It includes the ability to:
-Add a new favorite item with a description, rating, and category.
-Remove a favorite item from the list.
-View all favorite items.
-Sort favorite items by rating in either ascending or descending order.
-Search for specific items within the favorites list.
-Undo the removal of a favorite item.
+Designed and implemented the Favorites feature, enabling users to:
+* Add a favorite item with a description, rating, and category
+* Remove an item from the favorites list
+* View all favorite items
+* Sort favorites by rating in ascending or descending order
+* Search for specific favorite items
+* Undo accidental deletions
+
+Persistent Storage: Ensured favorites are saved and loaded across sessions.
 
 #### 2. Undo and Restore Functionality
-Implemented an undo system that allows users to restore items they accidentally removed from their list of favorites. 
+Developed an undo system that allows users to restore the last removed favorite, enhancing usability and minimizing 
+accidental deletions.
 
 #### 3. Command Line Parser for Favorites
-Developed a command-line parser that allows users to interact with the Favorites feature through text commands, such as
-adding, removing, sorting, and searching favorites.
+Implemented a command-line parser to process user commands for adding, removing, sorting, and searching favorites.
 ___
 ### User Guide Contributions
 Contributed to all information relating to:
-Features
-Favorites Tracker
-Adding, removing, sorting, and searching favorites
+* Documenting the Favorites Tracker feature.
+* Writing clear instructions for adding, removing, sorting, and searching favorites.
+* Providing usage examples and expected output.
 ___
 ### Developer Guide Contributions
 Contributed to all information relating to:
-Design and Implementation
-Favorites feature
-Undo functionality
-Product Scope
-Target user profile
-Value proposition
-User Stories related to Favorites feature
-Non-Functional Requirements
+* Design and Implementation details for the Favorites feature.
+* Undo functionality explanation and implementation rationale.
+* Persistent storage design and integration.
+* Product Scope, including defining the target user profile and value proposition.
+* Non-Functional Requirements ensuring robustness and efficiency.
 ___
 ### Contributions to Team-based Tasks
-General code enhancements
-Maintaining the issue tracker
-Release management
-Managing workflow
+* General code enhancements and refactoring.
+* Maintaining the issue tracker and managing bugs.
+* Overseeing release management, ensuring timely feature delivery.
 
 ___
 
