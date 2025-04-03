@@ -17,3 +17,4 @@ bin/
 text-ui-test/EXPECTED-UNIX.TXT
 favorites.dat
 budget_data.json
+favorites.txt
