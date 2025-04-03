@@ -3,7 +3,6 @@ package seedu.navi.textui;
 import seedu.navi.canteen.canteenfinder.landmark.canteen.stall.Stall;
 import seedu.navi.canteen.canteenfinder.nearestcanteendata.NearestCanteenData;
 
-import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.Scanner;
 
