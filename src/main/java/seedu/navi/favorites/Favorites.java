@@ -10,11 +10,14 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
+import javafx.util.Pair;
+
 
 public class Favorites {
     private static final String FILE_PATH = "favorites.txt"; // Path to save the favorites data
     private List<String> favoriteItems;
-    private Stack<String> undoStack;
+    private Stack<Pair<Integer, String>> undoStack;  // Stores (index, item)
+
 
 
     public Favorites() {
@@ -53,7 +56,7 @@ public class Favorites {
 
 
     public void addFavorite(String description, int rating, String category) {
-        String item = description + " | Rating: " + rating + " | Category: " + category;
+        String item = description + " | Rating: " + rating + " | Location: " + category;
         favoriteItems.add(item);
         saveFavorites();
         System.out.println("✅ Added: " + item);
@@ -67,12 +70,13 @@ public class Favorites {
             return;
         }
         String removedItem = favoriteItems.remove(index);
-        undoStack.push(removedItem);
+        undoStack.push(new Pair<>(index, removedItem));  // Store index + item
         saveFavorites();
         TextUi.printLineSeparator();
         System.out.println("❌ Removed: " + removedItem);
         TextUi.printLineSeparator();
     }
+
 
     public void undoRemove() {
         if (undoStack.isEmpty()) {
@@ -81,12 +85,17 @@ public class Favorites {
             TextUi.printLineSeparator();
             return;
         }
-        String restoredItem = undoStack.pop();
-        favoriteItems.add(restoredItem); // <-- This just adds it at the end, not its original position
+        Pair<Integer, String> lastRemoved = undoStack.pop();
+        int originalIndex = lastRemoved.getKey();
+        String restoredItem = lastRemoved.getValue();
+
+        favoriteItems.add(originalIndex, restoredItem);  // Restore at correct position
+        saveFavorites();
         TextUi.printLineSeparator();
         System.out.println("🔄 Restored: " + restoredItem);
         TextUi.printLineSeparator();
     }
+
 
 
     public List<String> getFavoriteItems() {
