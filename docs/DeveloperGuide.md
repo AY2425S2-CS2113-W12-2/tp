@@ -163,6 +163,9 @@ from the previous week.
 * *Weekly Reset*: Resets weekly expenses every Monday.
 * *Monthly Reset*: Resets total monthly expenses at the start of a new month.
 
+The following class diagram shows in detail all the methods and atributes in Budget class and shows its relationship
+with BudgetParser and Parser class.
+![BudgetClassDiagram](diagrams/BudgetClassDiagram.png)
 
 ### Sequence of operations
 1. Upon launching the application, the Navi.main() method initializes the system and prompts the user for input.
@@ -180,10 +183,8 @@ The `Budget.addWeeklyBudget()` method is invoked, which updates the weekly budge
 The `Budget.viewExpenses()` method displays this information.
 7. The user can exit the budget feature by entering `exit`, which ends the BudgetParser session.
 
-The following sequence diagram illustrates the workflow when a user adds to their budget:
-![BudgetAdd](diagrams/BudgetAdd.png)
-
-
+The following sequence diagram illustrates the workflow when a user `add 100` to their budget and `view`:
+![BudgetSequenceDiagram](diagrams/BudgetSequenceDiagram.png)
 
 ## Product scope
 ### Target user profile
@@ -224,11 +225,14 @@ Hence, Navi saves time as well as promotes exploration all in one intuitive app.
 
 {Give instructions on how to do a manual product testing e.g., how to load sample data to be used for testing}
 
-# Budget feature
-'add 100'
-'view'
-'deduct 20'
-'view'
+#### Budget feature
+`add 100`
+
+`view`
+
+`deduct 20`
+
+`view`
 
 
 

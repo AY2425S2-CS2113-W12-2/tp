@@ -36,7 +36,7 @@ public class BudgetParser {
 
             if (input.isEmpty()) {
                 TextUi.printLineSeparator();
-                System.out.println("⚠️ Please enter a command.");
+                System.out.println("⚠️ Please enter a command (add X, deduct X, view, exit)");
                 TextUi.printLineSeparator();
                 continue;
             }
