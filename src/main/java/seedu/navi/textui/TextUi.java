@@ -3,6 +3,7 @@ package seedu.navi.textui;
 import seedu.navi.canteen.canteenfinder.landmark.canteen.stall.Stall;
 import seedu.navi.canteen.canteenfinder.nearestcanteendata.NearestCanteenData;
 
+import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -86,8 +87,12 @@ public class TextUi {
 
     public static void printAcknowledgeUserCriteriaCF(String[] canteenCriteria) {
         printLineSeparator();
-        System.out.println("So you're looking for a canteen has: ");
-        printUserCriteriaCF(canteenCriteria);
+        if (canteenCriteria != null) {
+            System.out.println("So you're looking for a canteen has: ");
+            printUserCriteriaCF(canteenCriteria);
+        } else {
+            System.out.println("I see you have no specific criteria,");
+        }
         System.out.println("I would need to know where are you now!");
         System.out.println("You can enter either faculties, hostels or other major landmarks in NUS!");
         printLineSeparator();
