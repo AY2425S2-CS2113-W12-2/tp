@@ -16,7 +16,7 @@ public class FacultyDataProcessor {
     }
 
     public void processData(ArrayList<Faculty> faculties) {
-        List<String> facultyDataList = getFacultyData(); // Get data from method.
+        List<String> facultyDataList = DataRetriever.getFacultyData(); // Get data from method.
         for (String facultyData : facultyDataList) {
             insertFacultyFromData(facultyData, faculties);
         }
@@ -69,30 +69,5 @@ public class FacultyDataProcessor {
         }
 
         return Integer.parseInt(distancePart);
-    }
-
-    private static List<String> getFacultyData() {
-        List<String> data = new ArrayList<>();
-        data.add("CDE: Techno Edge (400m) | Fine Food (850m) | " +
-                "Flavours (1000m) | The Deck (1100m) | " +
-                "Frontier (1300m) | Terrace (1700m) | " +
-                "PGP Canteen (2300m)");
-        data.add("FASS: The Deck (300m) | Terrace (450m) | " +
-                "Techno Edge (550m) | PGP Canteen (1400m) | " +
-                "Fine Food (1400m) | Frontier (1500m) | " +
-                "Flavours (1600m)");
-        data.add("SOC: Terrace (100m) | The Deck (220m) | " +
-                "PGP Canteen (1000m) | Techno Edge (1000m) | " +
-                "Fine Food (1900m) | Frontier (2000m) | " +
-                "Flavours (2000m)");
-        data.add("NBS: The Deck (400m) | Terrace (450m) | " +
-                "PGP Canteen (1000m) | Techno Edge (1000m) | " +
-                "Frontier (1800m) | Fine Food (1900m) | " +
-                "Flavours (2000m)");
-        data.add("Science: Frontier (220m) | Techno Edge (1100m) | " +
-                "Fine Food (1300m) | PGP Canteen (1400m) | " +
-                "Flavours (1500m) | Terrace (1700m) | " +
-                "The Deck (1800m)");
-        return data;
     }
 }
