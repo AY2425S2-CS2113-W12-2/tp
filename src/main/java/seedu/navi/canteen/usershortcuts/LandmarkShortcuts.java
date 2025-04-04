@@ -1,4 +1,4 @@
-package seedu.navi.canteen.canteenfinder.usershortcuts;
+package seedu.navi.canteen.usershortcuts;
 
 import java.util.HashMap;
 
@@ -96,7 +96,7 @@ public class LandmarkShortcuts {
         LANDMARK_MAP.put("utown src", "UTown SRC");
         LANDMARK_MAP.put("utsrc", "UTown SRC");
 
-        LANDMARK_MAP.put("utown education resource centre", "UTown ERC");
+        LANDMARK_MAP.put("education resource centre", "UTown ERC");
         LANDMARK_MAP.put("utown erc", "UTown ERC");
         LANDMARK_MAP.put("uterc", "UTown ERC");
 

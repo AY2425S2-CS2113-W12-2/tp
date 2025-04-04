@@ -1,6 +1,6 @@
 package seedu.navi.canteen.canteenfinder.canteencrtierionparser;
 
-import seedu.navi.canteen.canteenfinder.usershortcuts.CanteenCriteriaShortcuts;
+import seedu.navi.canteen.usershortcuts.CanteenCriteriaShortcuts;
 import seedu.navi.exceptions.DuplicateCanteenCriterion;
 import seedu.navi.exceptions.EmptyCanteenCriteria;
 import seedu.navi.exceptions.HCAndMOCrtieriaError;
