@@ -1,6 +1,6 @@
 package seedu.navi.canteen.canteenlookup;
 
-import seedu.navi.canteen.canteenfinder.usershortcuts.CanteenShortcuts;
+import seedu.navi.canteen.usershortcuts.CanteenShortcuts;
 import seedu.navi.textui.TextUi;
 
 public class CanteenLookup {
