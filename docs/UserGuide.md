@@ -407,9 +407,100 @@ Format: `exit`
 **A**: {your answer here}
 
 ## Command Summary
+### Canteen Feature related shortcuts
+#### Shortcuts for canteen criteria
+* `Halal Certified`
+    * `hc`
+* `Muslim Owned`
+    * `mo`
+* `vegetarian`
+    * `v`
+* `aircon`
+    * `a`
+* `nil`
 
-{Give a 'cheat sheet' of commands here}
+#### Shortcuts for location of user
 
+<u>Faculties</u>
+* `College of Design and Engineering`
+    * `cde` / `eng`
+* `School of Computing`
+    * `soc` / `computing` / `comp`
+* `Faculty of Arts and Social Sciences`
+    * `fass`
+* `NUS Business School`
+    * `nbs` / `biz` / `business`
+* `Faculty of Science`
+    * `science` / `fos`
+* `School of Public Health`
+    * `soph`
+* `School of Medicine`
+    * `som`
+
+<u>Hostels</u>
+* `Raffles Hall`
+    * `raffles` / `rh`
+* `Eusoff Hall`
+    * `eusoff` / `eh`
+* `Temasek Hall`
+    * `temasek` / `th`
+* `Sheares Hall`
+    * `sheares` / `sh`
+* `Kent Ridge Hall`
+    * `krh`
+* `King Edward Hall`
+    * `king edward` / `keh`
+* `Prince George's Park Residence`
+    * `pgp residence` / `pgpr`
+* `UTown Residence`
+    * `utr`
+* `Residential College 4`
+    * `rc4`
+* `College of Alice and Peter Tan`
+    * `college of alice & peter tan` / `capt`
+* `Ridge View Residential College`
+    * `ridge view` / `rvrc`
+* `Tembusu`
+    * `t`
+* `Cinnamon`
+    * `c`
+
+<u>Key Buildings</u>
+* `Centre for English Language Communication`
+    * `celc`
+* `Hon Sui Sen Memorial Library`
+    * `hssml`
+* `Central Library`
+    * `clb`
+* `Medicine+Science Library`
+    * `medicine science library` / `med sci lib` / `msl`
+* `Stephen Riady Centre`
+    * `utown src` / `utsrc`
+* `Education Resource Centre`
+    * `utown erc` / `uterc`
+* `University Hall`
+    * `u hall` / `uh`
+* `Multipurpose Sports Hall`
+    * `mpsh`
+* `University Health Centre`
+    * `uhc`
+
+#### Shortcuts for canteen
+* `Techno Edge`
+    * `techno` / `te`
+* `Frontier`
+    * `fr`
+* `The Deck`
+    * `deck` / `d`
+* `Terrace`
+    * `t`
+* `Prince George's Park Canteen`
+    * `pgp canteen` / `pgp`
+* `Fine Food`
+    * `ff`
+* `Flavours`
+    * `fl`
+___
 ### Main Application
 
 | Feature                 | Command          |
@@ -430,19 +521,18 @@ ___
 
 #### Canteen finder
 
-| Feature                          | Command                                                                                     | Example |
-|----------------------------------|---------------------------------------------------------------------------------------------|---------|
-| Specify desired canteen criteria | `criteria 1, criteria 2`<br/> (halal certified/hc, muslim owned/mo, vegetarian/v, aircon/a) | `hc,a`  |
-| Enter location of user           | `FACULTY` or `HOSTEL` or  `KEY BUILDINGS`                                                   | `soc`   |
-| Exit Canteen Finder              | `exit` or `e`                                                                               | `e`     |
+| Feature                          | Command                                                                                        | Example |
+|----------------------------------|------------------------------------------------------------------------------------------------|---------|
+| Specify desired canteen criteria | `CRITERIA 1, CRITERIA 2`<br/> ( halal certified, muslim owned, <br/> vegetarian, aircon, nil ) | `hc,a`  |
+| Enter location of user           | `FACULTY` or `HOSTEL` or `KEY BUILDINGS`                                                       | `soc`   |
+| Exit Canteen Finder              | `exit` or `e`                                                                                  | `e`     |
 
 #### Canteen lookup
 
-| Feature                | Command                                                                         | Example |
-|------------------------|---------------------------------------------------------------------------------|---------|
-| View stalls in canteen | `CANTEEN NAME`<br/> (techno, terrace, frontier, deck, fine food, flavours, pgp) | `deck`  |
-| Exit Canteen Lookup    | `exit` or `e`                                                                   | `e`     |
-
+| Feature                | Command       | Example |
+|------------------------|---------------|---------|
+| View stalls in canteen | `CANTEEN`     | `deck`  |
+| Exit Canteen Lookup    | `exit` or `e` | `e`     |
 ___
 ### Budget tracker
 
