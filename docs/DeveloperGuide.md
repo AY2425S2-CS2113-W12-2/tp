@@ -70,10 +70,10 @@ The method follows these key steps:
 
 1.  It first clears CANTEEN_MAP, a static Map<String, Canteen>, to ensure that previously loaded data does not persist.
 2.  It then sequentially calls:
-    * `processCanteenFromFile()` using `CanteenDataProcessor` to read and parse canteen data, creating `Canteen` objects and storing them in `CANTEEN_MAP`.
-    * `processFacultyFromFile()` using `FacultyDataProcessor` to process faculty data, creating `Faculty` objects and updating `CanteenFinderParser.LANDMARKS`.
-    * `processHostelFromFile()` using `HostelDataProcessor` to handle hostel data, creating `Landmark` objects for hostels.
-    * `processOtherBuildingFromFile()` using `OtherBuildingDataProcessor` to process other buildings, creating `Landmark` objects accordingly.
+    * `processCanteenFromFile()` using `CanteenDataProcessor` to retrieve and parse canteen data via `DataRetriever`, creating `Canteen` objects and storing them in CANTEEN_MAP.
+    * `processFacultyFromFile()` using `FacultyDataProcessor` to retrieve and process faculty data via `DataRetriever`, creating `Faculty` objects and updating CanteenFinderParser.LANDMARKS.
+    * `processHostelFromFile()` using `HostelDataProcessor`  to retrieve and process hostel data via `DataRetriever`, creating `Landmark` objects for hostels.
+    * `processOtherBuildingFromFile()` using `OtherBuildingDataProcessor` to retrieve and process other building data via `DataRetriever`, creating `Landmark` objects accordingly.
 
 Once all data is processed, `CanteenFinderParser.LANDMARKS` is populated with the loaded objects. This enables the
 `CanteenFinder` feature to determine the nearest canteens relative to various landmarks.
