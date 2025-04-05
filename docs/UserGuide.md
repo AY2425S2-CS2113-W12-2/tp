@@ -25,10 +25,9 @@
 
 ___
 ## Starting Navi
-Whenever users start Navi, they will first be greeted and then prompted to first enter their name.
+Whenever users start Navi, they will first be greeted by Navi.
 
 Example:
-`Alfred`
 ```
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Welcome! I'm:
@@ -37,31 +36,15 @@ Welcome! I'm:
 |  \| |/ _` \ \ / / |
 | |\  | (_| |\ V /| |
 |_| \_|\__,_| \_/ |_|
-What’s your name?
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Alfred
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Hello, Alfred! Nice to meet you!
 Alright, what can I do for you?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ```
 ___
 ## Features
-User may use the following features by entering `canteen`, `budget` or `favorites`.
-1. Canteen Feature
-2. Budget Feature
-3. Favorites Feature
-
-User can only use one feature at a time. To switch from one feature to another, user need to exit the current feature they are in.
-___
-## Canteen: `canteen`
-The Canteen feature provides 2 sub-features which includes:
-1. Canteen Finder 
-2. Canteen Lookup
-
-Format: `Canteen` or `c`
-
-Example: `c`
+After the greeting message, Navi provides 3 main features which users can access. 
+We will refer to this state as the **main menu**.
+1. To enter [Canteen Feature](#canteen-canteen), user can enter `Canteen` or `c` in the main menu. <br/>
+Example: `c` <br>
 ```
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 c
@@ -69,6 +52,56 @@ c
 You've entered the Canteen feature!
 You can enter "finder" to look for the nearest canteen to you,
 or you can enter "lookup" to see a canteen's stalls information.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+```
+2. To enter [Budget Feature](#budget-budget), users can enter `Budget` in the main menu. <br>
+Example: `Budget` <br>
+```
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Budget
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Budget Tracker: Enter a command (add X, deduct X, view, exit)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+```
+3. To enter [Favorites Feature](#favorites-favorites), users can enter `Favorites` in the main menu. <br>
+Example: `Favorites` <br>
+```
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+favorites
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+🌟 Favorites Tracker: Enter a command:
+  - add <description> : <rating> : <location>
+  - remove N
+  - view
+  - sort asc
+  - sort desc
+  - search X
+  - undo
+  - exit
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+```
+___
+## Canteen: `canteen`
+After entering `canteen` in the main menu, users will be prompted to pick which
+canteen-related sub-feature to use in the **canteen menu**. <br>
+The Canteen feature provides 2 sub-features which includes:
+1. [Canteen Finder](#to-enter-canteen-finder-finder) 
+2. [Canteen Lookup](#to-enter-canteen-lookup-lookup)
+
+
+### To exit Canteen: `exit`
+If users wish to exit the canteen feature, they can enter `exit` in the canteen menu
+to return to the main menu. <br> Users need to have exited `Canteen Finder`
+or `Canteen Lookup` to exit `Canteen`.
+
+Format: `exit` or `e`
+
+Example: `e`
+```
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+e
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+You've exited the Canteen feature!
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ```
 ___
@@ -91,13 +124,11 @@ or "NIL" if you're fine with anything!
 ```
 ### Canteen Finder
 
-#### 1. Enter desired canteen criteria: `criteria`
+#### 1. Enter desired canteen criteria: `CRITERIA`
 Users can enter certain criteria to filter the search for the nearest canteen. 
 
-User can refer [here](#shortcuts-for-canteen-criteria) for all criteria available.
-
-These criteria include `halal certified`/`hc`, `muslim owned`/`mo`, `vegetarian`/`v` 
-and `aircon`/`a`. User can enter multiple criteria at once by separating each criterion
+These criteria include `halal certified`, `muslim owned`, `vegetarian` 
+and `aircon`. User can enter multiple criteria at once by separating each criterion
 with a `,`. 
 
 User can also enter `nil` if they do not wish to specify any criteria.
@@ -107,29 +138,33 @@ User can also enter `nil` if they do not wish to specify any criteria.
 **Tip 2:** It is redundant to include both `halal certified` and `muslim owned` as 
 if a stall is already halal, there is no nid to check if its muslim owned.
 
-Format: `criterion 1, criterion 2`
+The full list of supported commands are listed in
+[shortcuts for canteen criteria](#shortcuts-for-canteen-criteria) under Command Summary.
 
-Example: `hc, a`
+Format: `CRITERION 1, CRITERION 2`
+
+Example: `halal certified, aircon`
 ```
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-hc, a
+halal certified, aircon
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-So you're looking for a canteen has:
+So you're looking for a canteen has: 
 halal certified, aircon stalls.
 I would need to know where are you now!
 You can enter either faculties, hostels or other major landmarks in NUS!
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ```
-#### 2. Enter location name: `location`
+#### 2. Enter location name: `LOCATION`
 After specifying the canteen criteria, users can then enter the general location
 of where they are at.
 
-We only support locations at the `faculty` and `hostel` level as well as 
-other `key buildings` that don't belong to the two categories above.
+We only support locations at the `FACULTY` and `HOSTEL` level as well as 
+other `KEY BUILDINGS` that don't belong to the two categories above.
 
-User can refer [here](#shortcuts-for-location-of-user) for all locations available.
+The full list of supported commands are listed in 
+[shortcuts for location of user](#shortcuts-for-location-of-user) under Command Summary.
 
-Format: `location`
+Format: `LOCATION`
 
 Example: `soc`
 ```
@@ -150,7 +185,7 @@ or "exit" to exit canteen finder.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ```
 #### 3. Exit Canteen Finder `exit`
-Users can exit Canteen Finder whenever they feel like it.
+Users can exit Canteen Finder whenever they feel like it to exit to the canteen menu.
 
 Format: `exit` or `e`
 
@@ -166,6 +201,8 @@ ___
 ### To enter Canteen Lookup: `lookup`
 This sub-feature allows user to check what kind of stalls are present in their desired canteen.
 
+Users can enter `lookup` or `l` from the canteen menu to use this sub-feature.
+
 Format: `lookup` or `l`
 
 Example: `l`
@@ -179,15 +216,86 @@ Eg. Techno Edge
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ```
 ### Canteen Lookup
-#### 1. Enter canteen name `canteen`
+#### 1. Enter canteen name `CANTEEN`
 Users can enter a specific canteen name in NUS Kent Ridge Campus.
 
-User can refer [here](#shortcuts-for-canteen) for all canteen available.
+The full list of supported commands are listed in
+[shortcuts for canteen](#shortcuts-for-canteen) under Command Summary.
 
-Format: `canteen`
+Format: `CANTEEN`
 
 Example: `techno`
 ```
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+techno
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Here are all the stalls in Techno Edge:
+Western Food
+  [N] Halal Certified
+  [N] Muslim Owned
+  [N] Vegetarian
+  [N] In Aircon Area
+Nasi Padang
+  [N] Halal Certified
+  [Y] Muslim Owned
+  [N] Vegetarian
+  [N] In Aircon Area
+Vegetarian
+  [N] Halal Certified
+  [N] Muslim Owned
+  [Y] Vegetarian
+  [N] In Aircon Area
+Mala Hotpot
+  [Y] Halal Certified
+  [N] Muslim Owned
+  [N] Vegetarian
+  [N] In Aircon Area
+Indian
+  [N] Halal Certified
+  [N] Muslim Owned
+  [N] Vegetarian
+  [N] In Aircon Area
+Mixed Rice
+  [N] Halal Certified
+  [N] Muslim Owned
+  [N] Vegetarian
+  [N] In Aircon Area
+Drinks & Snacks
+  [N] Halal Certified
+  [N] Muslim Owned
+  [N] Vegetarian
+  [N] In Aircon Area
+Fruit Juice
+  [N] Halal Certified
+  [N] Muslim Owned
+  [N] Vegetarian
+  [N] In Aircon Area
+Taiwan
+  [N] Halal Certified
+  [N] Muslim Owned
+  [N] Vegetarian
+  [N] In Aircon Area
+Ramen & Soup
+  [N] Halal Certified
+  [N] Muslim Owned
+  [N] Vegetarian
+  [N] In Aircon Area
+Noodles
+  [N] Halal Certified
+  [N] Muslim Owned
+  [N] Vegetarian
+  [N] In Aircon Area
+Chicken Rice
+  [N] Halal Certified
+  [N] Muslim Owned
+  [N] Vegetarian
+  [N] In Aircon Area
+Bistro Box
+  [Y] Halal Certified
+  [N] Muslim Owned
+  [N] Vegetarian
+  [Y] In Aircon Area
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ```
 #### 2. Exit Canteen Lookup `exit`
 Users can exit Canteen Finder whenever they feel like it.
@@ -200,21 +308,6 @@ Example: `e`
 e
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 You've exited the Canteen Lookup feature
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-```
-___
-### To quit Canteen: `quit`
-This is to quit the canteen feature. Users need to have exited `Canteen Finder`
-or `Canteen Lookup` to quit `Canteen`.
-
-Format: `quit` or `q`
-
-Example: `q`
-```
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-q
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-You've exited the Canteen feature!
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ```
 ___
@@ -416,6 +509,43 @@ Format: `exit`
 👋 Exiting Favorites Tracker.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ```
+
+
+
+
+
+## FAQ
+
+**Q**: How do I transfer my data to another computer? 
+
+**A**: {your answer here}
+
+**Q**: For Canteen Finder feature, what is the difference between Halal Certified and 
+Muslim Owned?
+
+**A**: Halal Certified strictly refers to stalls that has been provided the Halal Certification
+by Majlis Ugama Islam Singapura (MUIS) in Singapore. This certification is not free and is costly.
+Muslim owned refers to stalls that aren't halal certified but are owned by muslims who would 
+prepare food to the halal standard and are not willing or able to afford the certification by MUIS. 
+
+**Q**: Why can't I enter both Halal Certified and Muslim Owned into the canteen criteria?
+
+**A**: If a stall is already Halal Certified, there is no need to worry about whether the stall is
+muslim owned. Hence, there is no point in putting both Halal Certified and Muslim Owned into the
+canteen criteria field.
+
+**Q**: What does [Y] and [N] mean regarding canteen stalls?
+
+**A**: [Y] indicates that the canteens stall has that characteristic whereas [N]
+means it doesn't. <br/> For example: <br/>
+```
+Bistro Box
+  [Y] Halal Certified
+  [N] Muslim Owned
+  [N] Vegetarian
+  [Y] In Aircon Area
+```
+This means that Bistro Box is both Halal Certified and in an aircon area.
 
 ## Command Summary
 ___
