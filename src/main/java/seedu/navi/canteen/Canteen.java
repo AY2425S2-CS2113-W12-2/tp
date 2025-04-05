@@ -11,8 +11,8 @@ public class Canteen {
         while (true) {
             command = TextUi.IN.nextLine().trim();
             switch (command.toLowerCase()) {
-            case "quit":
-            case "q":
+            case "exit":
+            case "e":
                 TextUi.printExitCanteenC();
                 return;
             case "finder":

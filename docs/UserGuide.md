@@ -29,20 +29,10 @@ Alright, what can I do for you?
 ```
 ___
 ## Features
-After the greeting message, users may enter `canteen`, `budget` or `favorites` to 
-access the 3 main features that Navi provides.
-1. Canteen Feature
-2. Budget Feature
-3. Favorites Feature
-___
-## Canteen: `canteen`
-The Canteen feature provides 2 sub-features which includes:
-1. Canteen Finder 
-2. Canteen Lookup
-
-Format: `Canteen` or `c`
-
-Example: `c`
+After the greeting message, Navi provides 3 main features which users can access. 
+We will refer to this state as the **main menu**.
+1. To enter [Canteen Feature](#canteen-canteen), user can enter `Canteen` or `c` in the main menu. <br/>
+Example: `c` <br>
 ```
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 c
@@ -52,10 +42,62 @@ You can enter "finder" to look for the nearest canteen to you,
 or you can enter "lookup" to see a canteen's stalls information.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ```
+2. To enter [Budget Feature](#budget-budget), users can enter `Budget` in the main menu. <br>
+Example: `Budget` <br>
+```
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Budget
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Budget Tracker: Enter a command (add X, deduct X, view, exit)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+```
+3. To enter [Favorites Feature](#favorites-favorites), users can enter `Favorites` in the main menu. <br>
+Example: `Favorites` <br>
+```
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+favorites
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+🌟 Favorites Tracker: Enter a command:
+  - add <description> : <rating> : <location>
+  - remove N
+  - view
+  - sort asc
+  - sort desc
+  - search X
+  - undo
+  - exit
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+```
+___
+## Canteen: `canteen`
+After entering `canteen` in the main menu, users will be prompted to pick which
+canteen-related sub-feature to use in the **canteen menu**. <br>
+The Canteen feature provides 2 sub-features which includes:
+1. [Canteen Finder](#to-enter-canteen-finder-finder) 
+2. [Canteen Lookup](#to-enter-canteen-lookup-lookup)
+
+
+### To exit Canteen: `exit`
+If users wish to exit the canteen feature, they can enter `exit` in the canteen menu
+to return to the main menu. <br> Users need to have exited `Canteen Finder`
+or `Canteen Lookup` to exit `Canteen`.
+
+Format: `exit` or `e`
+
+Example: `e`
+```
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+e
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+You've exited the Canteen feature!
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+```
 ___
 ### To enter Canteen Finder: `finder`
 This sub-feature allows users to search for the nearest canteen in NUS Kent Ridge Campus 
 based on user specified canteen criteria and location.
+
+Users can enter `finder` or `f` from the canteen menu to use this sub-feature. 
 
 Format: `finder` or `f`
 
@@ -72,11 +114,11 @@ or "NIL" if you're fine with anything!
 ```
 ### Canteen Finder
 
-#### 1. Enter desired canteen criteria: `criteria`
+#### 1. Enter desired canteen criteria: `CRITERIA`
 Users can enter certain criteria to filter the search for the nearest canteen. 
 
-These criteria include `halal certified`/`hc`, `muslim owned`/`mo`, `vegetarian`/`v` 
-and `aircon`/`a`. User can enter multiple criteria at once by separating each criterion
+These criteria include `halal certified`, `muslim owned`, `vegetarian` 
+and `aircon`. User can enter multiple criteria at once by separating each criterion
 with a `,`. 
 
 User can also enter `nil` if they do not wish to specify any criteria.
@@ -86,27 +128,33 @@ User can also enter `nil` if they do not wish to specify any criteria.
 **Tip 2:** It is redundant to include both `halal certified` and `muslim owned` as 
 if a stall is already halal, there is no nid to check if its muslim owned.
 
-Format: `criterion 1, criterion 2`
+The full list of supported commands are listed in
+[shortcuts for canteen criteria](#shortcuts-for-canteen-criteria) under Command Summary.
 
-Example: `hc, a`
+Format: `CRITERION 1, CRITERION 2`
+
+Example: `halal certified, aircon`
 ```
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-hc, a
+halal certified, aircon
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-So you're looking for a canteen has:
+So you're looking for a canteen has: 
 halal certified, aircon stalls.
 I would need to know where are you now!
 You can enter either faculties, hostels or other major landmarks in NUS!
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ```
-#### 2. Enter location name: `location`
+#### 2. Enter location name: `LOCATION`
 After specifying the canteen criteria, users can then enter the general location
 of where they are at.
 
-We only support locations at the `faculty` and `hostel` level as well as 
-other `key buildings` that don't belong to the two categories above.
+We only support locations at the `FACULTY` and `HOSTEL` level as well as 
+other `KEY BUILDINGS` that don't belong to the two categories above.
 
-Format: `location`
+The full list of supported commands are listed in 
+[shortcuts for location of user](#shortcuts-for-location-of-user) under Command Summary.
+
+Format: `LOCATION`
 
 Example: `soc`
 ```
@@ -127,7 +175,7 @@ or "exit" to exit canteen finder.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ```
 #### 3. Exit Canteen Finder `exit`
-Users can exit Canteen Finder whenever they feel like it.
+Users can exit Canteen Finder whenever they feel like it to exit to the canteen menu.
 
 Format: `exit` or `e`
 
@@ -143,6 +191,8 @@ ___
 ### To enter Canteen Lookup: `lookup`
 This sub-feature allows user to check what kind of stalls are present in their desired canteen.
 
+Users can enter `lookup` or `l` from the canteen menu to use this sub-feature.
+
 Format: `lookup` or `l`
 
 Example: `l`
@@ -156,10 +206,13 @@ Eg. Techno Edge
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ```
 ### Canteen Lookup
-#### 1. Enter canteen name `canteen`
+#### 1. Enter canteen name `CANTEEN`
 Users can enter a specific canteen name in NUS Kent Ridge Campus.
 
-Format: `canteen`
+The full list of supported commands are listed in
+[shortcuts for canteen](#shortcuts-for-canteen) under Command Summary.
+
+Format: `CANTEEN`
 
 Example: `techno`
 ```
@@ -235,7 +288,7 @@ Bistro Box
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ```
 #### 2. Exit Canteen Lookup `exit`
-Users can exit Canteen Finder whenever they feel like it.
+Users can exit Canteen Finder whenever they feel like it to exit to the canteen menu.
 
 Format: `exit` or `e`
 
@@ -245,21 +298,6 @@ Example: `e`
 e
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 You've exited the Canteen Lookup feature
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-```
-___
-### To quit Canteen: `quit`
-This is to quit the canteen feature. Users need to have exited `Canteen Finder`
-or `Canteen Lookup` to quit `Canteen`.
-
-Format: `quit` or `q`
-
-Example: `q`
-```
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-q
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-You've exited the Canteen feature!
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ```
 ___
