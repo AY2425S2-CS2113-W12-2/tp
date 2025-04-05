@@ -168,6 +168,76 @@ Format: `canteen`
 
 Example: `techno`
 ```
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+techno
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Here are all the stalls in Techno Edge:
+Western Food
+  [N] Halal Certified
+  [N] Muslim Owned
+  [N] Vegetarian
+  [N] In Aircon Area
+Nasi Padang
+  [N] Halal Certified
+  [Y] Muslim Owned
+  [N] Vegetarian
+  [N] In Aircon Area
+Vegetarian
+  [N] Halal Certified
+  [N] Muslim Owned
+  [Y] Vegetarian
+  [N] In Aircon Area
+Mala Hotpot
+  [Y] Halal Certified
+  [N] Muslim Owned
+  [N] Vegetarian
+  [N] In Aircon Area
+Indian
+  [N] Halal Certified
+  [N] Muslim Owned
+  [N] Vegetarian
+  [N] In Aircon Area
+Mixed Rice
+  [N] Halal Certified
+  [N] Muslim Owned
+  [N] Vegetarian
+  [N] In Aircon Area
+Drinks & Snacks
+  [N] Halal Certified
+  [N] Muslim Owned
+  [N] Vegetarian
+  [N] In Aircon Area
+Fruit Juice
+  [N] Halal Certified
+  [N] Muslim Owned
+  [N] Vegetarian
+  [N] In Aircon Area
+Taiwan
+  [N] Halal Certified
+  [N] Muslim Owned
+  [N] Vegetarian
+  [N] In Aircon Area
+Ramen & Soup
+  [N] Halal Certified
+  [N] Muslim Owned
+  [N] Vegetarian
+  [N] In Aircon Area
+Noodles
+  [N] Halal Certified
+  [N] Muslim Owned
+  [N] Vegetarian
+  [N] In Aircon Area
+Chicken Rice
+  [N] Halal Certified
+  [N] Muslim Owned
+  [N] Vegetarian
+  [N] In Aircon Area
+Bistro Box
+  [Y] Halal Certified
+  [N] Muslim Owned
+  [N] Vegetarian
+  [Y] In Aircon Area
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ```
 #### 2. Exit Canteen Lookup `exit`
 Users can exit Canteen Finder whenever they feel like it.
@@ -405,6 +475,33 @@ Format: `exit`
 **Q**: How do I transfer my data to another computer? 
 
 **A**: {your answer here}
+
+**Q**: For Canteen Finder feature, what is the difference between Halal Certified and 
+Muslim Owned?
+
+**A**: Halal Certified strictly refers to stalls that has been provided the Halal Certification
+by Majlis Ugama Islam Singapura (MUIS) in Singapore. This certification is not free and is costly.
+Muslim owned refers to stalls that aren't halal certified but are owned by muslims who would 
+prepare food to the halal standard and are not willing or able to afford the certification by MUIS. 
+
+**Q**: Why can't I enter both Halal Certified and Muslim Owned into the canteen criteria?
+
+**A**: If a stall is already Halal Certified, there is no need to worry about whether the stall is
+muslim owned. Hence, there is no point in putting both Halal Certified and Muslim Owned into the
+canteen criteria field.
+
+**Q**: What does [Y] and [N] mean regarding canteen stalls?
+
+**A**: [Y] indicates that the canteens stall has that characteristic whereas [N]
+means it doesn't. <br/> For example: <br/>
+```
+Bistro Box
+  [Y] Halal Certified
+  [N] Muslim Owned
+  [N] Vegetarian
+  [Y] In Aircon Area
+```
+This means that Bistro Box is both Halal Certified and in an aircon area.
 
 ## Command Summary
 ### Canteen Feature related shortcuts
