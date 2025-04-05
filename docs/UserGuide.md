@@ -100,63 +100,42 @@ Example: `f`
 f
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 So you wanna find where's the nearest canteen to you?
-What kind of canteen are you looking for?
-You can list out: "Halal Certified", "Muslim Owned", "Vegetarian", "Aircon"
-or "NIL" if you're fine with anything!
+You can state your location first then enter your canteen
+criteria after "c/"
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ```
-Once in Canteen Finder, users can then enter their canteen criteria and location.
+Once in Canteen Finder, users can then enter their location and canteen criteria
+to begin the search for the nearest canteen.
 
-#### 1. Enter desired canteen criteria: `CRITERIA`
-Users can enter certain criteria to filter the search for the nearest canteen. 
+#### Searching for nearest canteen: `LOCATION C/CRITERIA`
+For `LOCATION`, Navi only support locations at the `FACULTY` and `HOSTEL` level as well as
+other `KEY BUILDINGS` that don't belong to the two categories above.
 
-These criteria include `halal certified`, `muslim owned`, `vegetarian` 
-and `aircon`. User can enter multiple criteria at once by separating each criterion
-with a `,`. 
+The full list of supported locations are listed in
+[shortcuts for location of user](#shortcuts-for-location-of-user) under Command Summary.
 
-User can also enter `nil` if they do not wish to specify any criteria.
-
-**Tip 1:** There are very limited stalls that satisfies multiple criteria.
-
-**Tip 2:** It is redundant to include both `halal certified` and `muslim owned` as 
-if a stall is already halal, there is no nid to check if its muslim owned.
+For `CRITERIA`, supported criteria include `halal certified`, `muslim owned`, `vegetarian` 
+and `aircon`. Users can enter multiple criteria at once by separating each criterion
+with a `,`. Users can also enter `nil` if they do not wish to specify any criteria.
 
 The full list of supported commands are listed in
 [shortcuts for canteen criteria](#shortcuts-for-canteen-criteria) under Command Summary.
 
-Format: `CRITERION 1, CRITERION 2`
+**Tip 1:** There are very limited stalls that satisfies multiple criteria.
 
-Example: `halal certified, aircon`
+**Tip 2:** Navi does not support users to enter both `halal certified` and `muslim owned`.
+Reasoning is answered in the [FAQ section](#faq).
+
+Format: `LOACTION c/CRITERION 1, CRITERION 2`
+
+Example: `School of Computing c/halal certified, aircon`
 ```
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-halal certified, aircon
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-So you're looking for a canteen has: 
-halal certified, aircon stalls.
-I would need to know where are you now!
-You can enter either faculties, hostels or other major landmarks in NUS!
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-```
-#### 2. Enter location name: `LOCATION`
-After specifying the canteen criteria, users can then enter the general location
-of where they are at.
-
-We only support locations at the `FACULTY` and `HOSTEL` level as well as 
-other `KEY BUILDINGS` that don't belong to the two categories above.
-
-The full list of supported commands are listed in 
-[shortcuts for location of user](#shortcuts-for-location-of-user) under Command Summary.
-
-Format: `LOCATION`
-
-Example: `soc`
-```
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-soc
+School of Computing c/halal certified, aircon
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Alright! The nearest canteen to you that fit your criteria is
 The Deck
-which has:
+which is:
 Mrs Hen
   [Y] Halal Certified
   [N] Muslim Owned
@@ -167,7 +146,8 @@ You can enter your canteen criteria again to start the search again,
 or "exit" to exit canteen finder.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ```
-#### 3. Exit Canteen Finder `exit`
+
+#### Exit Canteen Finder `exit`
 Users can exit Canteen Finder whenever they feel like it to exit to the canteen menu.
 
 Format: `exit` or `e`
@@ -183,7 +163,7 @@ You have exited the Canteen Finder feature!
 ___
 ### Canteen Lookup
 
-This sub-feature allows user to check what kind of stalls are present in their desired canteen.
+This sub-feature allows user to check what kind of stalls are present in a specific canteen.
 
 #### To enter Canteen Lookup: `lookup`
 
