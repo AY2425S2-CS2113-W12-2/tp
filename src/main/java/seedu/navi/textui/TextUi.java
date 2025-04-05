@@ -61,7 +61,7 @@ public class TextUi {
                 - "canteen" to find canteens
                 - "budget" to set or check your budget
                 - "favorites" to manage your favorite spots
-                - "bye" to quit Navi
+                - "exit" to quit Navi
                 """);
         printLineSeparator();
     }

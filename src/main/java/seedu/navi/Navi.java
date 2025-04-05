@@ -54,7 +54,8 @@ class Parser {
      */
     public void handleCommand(String input) {
         switch (input.toLowerCase()) {
-        case "bye":
+        case "exit":
+        case "e":
             TextUi.printExitMessage();
             System.exit(0);
             break;
