@@ -1,99 +1,78 @@
 @startuml
+' Hide the footbox (X marks at the end of lifelines)
+hide footbox
 
 actor Navi
+
 participant Storage
 participant CanteenDataProcessor
 participant FacultyDataProcessor
 participant HostelDataProcessor
 participant OtherBuildingDataProcessor
-participant Faculty
-participant Landmark
-participant Canteen
-participant Stall
+participant DataRetriever
+participant CanteenFinderParser
 
-activate Navi
-    Navi -> Storage : processDataFromFiles()
-    activate Storage
-        Storage -> CanteenDataProcessor : processData()
-        activate CanteenDataProcessor
-            CanteenDataProcessor -> CanteenDataProcessor : insertCanteenFromData(canteenData)
-            activate CanteenDataProcessor
-            CanteenDataProcessor -> Canteen : new Canteen(canteenName)
-            activate Canteen
-                Canteen -> Stall : addStall(stallData)
-                activate Stall
-                Stall -->> Canteen : return
-                deactivate Stall
-            Canteen -->> CanteenDataProcessor : return
-            deactivate Canteen
-            CanteenDataProcessor -->> Storage : return (canteenMap populated)
-            deactivate CanteenDataProcessor
-        deactivate CanteenDataProcessor
+Navi -> Storage : processDataFromFiles()
+activate Storage
 
-        Storage -> FacultyDataProcessor : processData(faculties)
-        activate FacultyDataProcessor
-            FacultyDataProcessor -> FacultyDataProcessor : insertFacultyFromData(facultyData, faculties)
-            activate FacultyDataProcessor
-            FacultyDataProcessor -> Faculty : new Faculty(facultyName)
-            activate Faculty
-                Faculty -> Canteen : setNearestCanteens(canteen)
-                activate Canteen
-                Canteen -->> Faculty : return
-                deactivate Canteen
+Storage -> Storage : clear CANTEEN_MAP
 
-                Faculty -> Canteen : setCanteenDistance(canteen, distance)
-                activate Canteen
-                Canteen -->> Faculty : return
-                deactivate Canteen
-            Faculty -->> FacultyDataProcessor : return
-            deactivate Faculty
-            FacultyDataProcessor -->> Storage : return (faculties populated)
-            deactivate FacultyDataProcessor
-        deactivate FacultyDataProcessor
+' --- Canteen Data Processing ---
 
-        Storage -> HostelDataProcessor : processData(hostels)
-        activate HostelDataProcessor
-            HostelDataProcessor -> HostelDataProcessor : insertHostelFromData(hostelData, hostels)
-            activate HostelDataProcessor
-            HostelDataProcessor -> Landmark : new Landmark(hostelName)
-            activate Landmark
-                Landmark -> Canteen : setNearestCanteens(canteen)
-                activate Canteen
-                Canteen -->> Landmark : return
-                deactivate Canteen
 
-                Landmark -> Canteen : setCanteenDistance(canteen, distance)
-                activate Canteen
-                Canteen -->> Landmark : return
-                deactivate Canteen
-            Landmark -->> HostelDataProcessor : return
-            deactivate Landmark
-            HostelDataProcessor -->> Storage : return (hostels populated)
-            deactivate HostelDataProcessor
-        deactivate HostelDataProcessor
+Storage -> CanteenDataProcessor : new CanteenDataProcessor(canteenMap)
+activate CanteenDataProcessor
+CanteenDataProcessor -> DataRetriever : getCanteenData()
+activate DataRetriever
+DataRetriever --> CanteenDataProcessor : List<String> canteenData
+deactivate DataRetriever
+deactivate CanteenDataProcessor
 
-        Storage -> OtherBuildingDataProcessor : processData(otherBuildings)
-        activate OtherBuildingDataProcessor
-            OtherBuildingDataProcessor -> OtherBuildingDataProcessor : insertOtherBuildingFromData(otherBuildingData, otherBuildings)
-            activate OtherBuildingDataProcessor
-            OtherBuildingDataProcessor -> Landmark : new Landmark(otherBuildingName)
-            activate Landmark
-                Landmark -> Canteen : setNearestCanteens(canteen)
-                activate Canteen
-                Canteen -->> Landmark : return
-                deactivate Canteen
 
-                Landmark -> Canteen : setCanteenDistance(canteen, distance)
-                activate Canteen
-                Canteen -->> Landmark : return
-                deactivate Canteen
-            Landmark -->> OtherBuildingDataProcessor : return
-            deactivate Landmark
-            OtherBuildingDataProcessor -->> Storage : return (otherBuildings populated)
-            deactivate OtherBuildingDataProcessor
-        deactivate OtherBuildingDataProcessor
-    Storage -->> Navi : return (LANDMARKS populated)
-    deactivate Storage
-deactivate Navi
+' --- Faculty Data Processing ---
+Storage -> FacultyDataProcessor : new FacultyDataProcessor(canteenMap)
+activate FacultyDataProcessor
+FacultyDataProcessor -> DataRetriever : getFacultyData()
+activate DataRetriever
+DataRetriever --> FacultyDataProcessor : List<String> facultyData
+deactivate DataRetriever
+deactivate FacultyDataProcessor
 
+Storage -> FacultyDataProcessor : processData()
+activate FacultyDataProcessor
+FacultyDataProcessor --> Storage : add Faculty objects to LANDMARKS
+deactivate FacultyDataProcessor
+
+' --- Hostel Data Processing ---
+Storage -> HostelDataProcessor : new HostelDataProcessor(canteenMap)
+activate HostelDataProcessor
+HostelDataProcessor -> DataRetriever : getHostelData()
+activate DataRetriever
+DataRetriever --> HostelDataProcessor : List<String> hostelData
+deactivate DataRetriever
+deactivate HostelDataProcessor
+
+Storage -> HostelDataProcessor : processData()
+activate HostelDataProcessor
+HostelDataProcessor --> Storage : add Hostel Landmarks to LANDMARKS
+deactivate HostelDataProcessor
+
+' --- Other Building Data Processing ---
+Storage -> OtherBuildingDataProcessor : new OtherBuildingDataProcessor(canteenMap)
+activate OtherBuildingDataProcessor
+OtherBuildingDataProcessor -> DataRetriever : getOtherBuildingData()
+activate DataRetriever
+DataRetriever --> OtherBuildingDataProcessor : List<String> buildingData
+deactivate DataRetriever
+deactivate OtherBuildingDataProcessor
+
+Storage -> OtherBuildingDataProcessor : processData()
+activate OtherBuildingDataProcessor
+OtherBuildingDataProcessor --> Storage : add Other Landmarks to LANDMARKS
+deactivate OtherBuildingDataProcessor
+
+
+' --- Final Aggregation ---
+Storage -> CanteenFinderParser : LANDMARKS.addAll(faculties, hostels, otherBuildings)
+deactivate Storage
 @enduml

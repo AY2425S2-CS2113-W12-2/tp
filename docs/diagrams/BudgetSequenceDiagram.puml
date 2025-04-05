@@ -36,7 +36,7 @@ activate BudgetParser
 BudgetParser -> Budget: viewExpenses()
 deactivate BudgetParser
 activate Budget
-Budget -> User: "Remaining weekly budget: $X\nTotal spent today: $Y\nTotal spent this week: $Z\nTotal spent this month: $W"
+Budget -->> User: "Remaining weekly budget: $X\nTotal spent today: $Y\nTotal spent this week: $Z\nTotal spent this month: $W"
 deactivate Budget
 
 @enduml

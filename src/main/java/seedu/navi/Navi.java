@@ -20,7 +20,7 @@ public class Navi {
 
         TextUi.printGreeting();
         Scanner in = new Scanner(System.in);
-        TextUi.printGreetUser(in.nextLine());
+        // TextUi.printGreetUser(in.nextLine());
 
         // Start command processing
         Navi ui = new Navi();
