@@ -23,7 +23,7 @@ public class BudgetParser {
             System.out.print("> ");
             String response = scanner.nextLine().trim().toLowerCase();
             while (!response.equals("yes") && !response.equals("no")) {
-                System.out.println("⚠️ Please enter 'yes' or 'no'.");
+                System.out.println("Please enter 'yes' or 'no'.");
                 System.out.print("> ");
                 response = scanner.nextLine().trim().toLowerCase();
             }
@@ -31,7 +31,7 @@ public class BudgetParser {
         }
 
         TextUi.printLineSeparator();
-        System.out.println("💰 Budget Tracker: Enter a command (add X, deduct X, view, exit)");
+        System.out.println("Budget Tracker: Enter a command (add X, deduct X, view, exit)");
         TextUi.printLineSeparator();
 
         while (true) {
@@ -40,7 +40,7 @@ public class BudgetParser {
 
             if (input.isEmpty()) {
                 TextUi.printLineSeparator();
-                System.out.println("⚠️ Please enter a command (add X, deduct X, view, exit)");
+                System.out.println("Please enter a command (add X, deduct X, view, exit)");
                 TextUi.printLineSeparator();
                 continue;
             }
@@ -48,17 +48,42 @@ public class BudgetParser {
             String[] parts = input.split(" ", 2);
             String command = parts[0].toLowerCase();
             double amount = 0;
+            boolean isAddOrDeduct = command.equals("add") || command.equals("deduct");
 
-            if (parts.length > 1) {
+            if (isAddOrDeduct) {
+                if (parts.length < 2 || parts[1].trim().isEmpty()) {
+                    TextUi.printLineSeparator();
+                    System.out.println("Please enter an amount after the command.");
+                    TextUi.printLineSeparator();
+                    continue;
+                }
+
+                String amountStr = parts[1].trim();
+
                 try {
-                    amount = Double.parseDouble(parts[1]);
+                    amount = Double.parseDouble(amountStr);
+                    if (Double.isInfinite(amount) || Double.isNaN(amount)) {
+                        throw new ArithmeticException("Amount is too large or invalid.");
+                    }
+                    if (amount < 0) {
+                        TextUi.printLineSeparator();
+                        System.out.println("Please enter a positive number.");
+                        TextUi.printLineSeparator();
+                        continue;
+                    }
                 } catch (NumberFormatException e) {
                     TextUi.printLineSeparator();
-                    System.out.println("⚠️ Invalid number format. Please enter a valid amount.");
+                    System.out.println("Please enter a valid number.");
+                    TextUi.printLineSeparator();
+                    continue;
+                } catch (ArithmeticException e) {
+                    TextUi.printLineSeparator();
+                    System.out.println("Amount is too large to be processed.");
                     TextUi.printLineSeparator();
                     continue;
                 }
             }
+
 
             switch (command) {
             case "add":
@@ -66,7 +91,7 @@ public class BudgetParser {
                     budget.addWeeklyBudget(amount);
                 } catch (IllegalArgumentException e) {
                     TextUi.printLineSeparator();
-                    System.out.println("⚠ Error: " + e.getMessage());
+                    System.out.println("Error: " + e.getMessage());
                     TextUi.printLineSeparator();
                 }
                 break;
@@ -75,7 +100,7 @@ public class BudgetParser {
                     budget.deductExpense(amount);
                 } catch (IllegalArgumentException | IllegalStateException e) {
                     TextUi.printLineSeparator();
-                    System.out.println("⚠ Error: " + e.getMessage());
+                    System.out.println("Error: " + e.getMessage());
                     TextUi.printLineSeparator();
                 }
                 break;
@@ -87,12 +112,12 @@ public class BudgetParser {
                 break;
             case "exit":
                 TextUi.printLineSeparator();
-                System.out.println("👋 Exiting Budget Tracker.");
+                System.out.println("Exiting Budget Tracker.");
                 TextUi.printLineSeparator();
                 return;
             default:
                 TextUi.printLineSeparator();
-                System.out.println("⚠️ Unknown command. Try: add X, deduct X, view, exit.");
+                System.out.println("Unknown command. Try: add X, deduct X, view, exit.");
                 TextUi.printLineSeparator();
             }
         }
