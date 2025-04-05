@@ -1,5 +1,3 @@
-
-
 package seedu.navi.canteen.storage;
 
 import seedu.navi.canteen.canteenfinder.landmark.Landmark;
