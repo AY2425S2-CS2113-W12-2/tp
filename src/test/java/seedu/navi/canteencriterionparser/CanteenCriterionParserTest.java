@@ -3,7 +3,6 @@ package seedu.navi.canteencriterionparser;
 import org.junit.jupiter.api.Test;
 import seedu.navi.canteen.canteenfinder.canteencrtierionparser.CanteenCriterionParser;
 import seedu.navi.exceptions.DuplicateCanteenCriterion;
-import seedu.navi.exceptions.EmptyCanteenCriteria;
 import seedu.navi.exceptions.HCAndMOCrtieriaError;
 import seedu.navi.exceptions.InvalidCanteenCriteria;
 import seedu.navi.exceptions.NILWithOtherCriteria;
@@ -40,16 +39,6 @@ public class CanteenCriterionParserTest {
             String[] testCriteria = CanteenCriterionParser.handleCanteenCriterion("hc, halal certified");
             fail();
         } catch (DuplicateCanteenCriterion e) {
-            assertTrue(true);
-        }
-    }
-
-    @Test
-    public void testHandleCanteenCriterion_noInput_exceptionThrown() {
-        try {
-            String[] testCriteria = CanteenCriterionParser.handleCanteenCriterion("");
-            fail();
-        } catch (EmptyCanteenCriteria e) {
             assertTrue(true);
         }
     }

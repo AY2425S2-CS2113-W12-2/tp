@@ -1,6 +1,6 @@
 package seedu.navi.canteen.storage;
 
-import seedu.navi.canteen.canteenfinder.canteenfinderparser.CanteenFinderParser;
+import seedu.navi.canteen.canteenfinder.canteenfinder.CanteenFinder;
 import seedu.navi.canteen.canteenfinder.landmark.Faculty;
 import seedu.navi.canteen.canteenfinder.landmark.Landmark;
 import seedu.navi.canteen.canteenfinder.landmark.canteen.Canteen;
@@ -37,8 +37,8 @@ public class Storage {
         OtherBuildingDataProcessor otherBuildingProcessor = new OtherBuildingDataProcessor(canteenMap);
         otherBuildingProcessor.processData(otherBuildings);
 
-        CanteenFinderParser.LANDMARKS.addAll(faculties);
-        CanteenFinderParser.LANDMARKS.addAll(hostels);
-        CanteenFinderParser.LANDMARKS.addAll(otherBuildings);
+        CanteenFinder.LANDMARKS.addAll(faculties);
+        CanteenFinder.LANDMARKS.addAll(hostels);
+        CanteenFinder.LANDMARKS.addAll(otherBuildings);
     }
 }

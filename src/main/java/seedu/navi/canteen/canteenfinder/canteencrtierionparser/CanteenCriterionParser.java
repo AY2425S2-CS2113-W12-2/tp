@@ -2,7 +2,6 @@ package seedu.navi.canteen.canteenfinder.canteencrtierionparser;
 
 import seedu.navi.canteen.usershortcuts.CanteenCriteriaShortcuts;
 import seedu.navi.exceptions.DuplicateCanteenCriterion;
-import seedu.navi.exceptions.EmptyCanteenCriteria;
 import seedu.navi.exceptions.HCAndMOCrtieriaError;
 import seedu.navi.exceptions.InvalidCanteenCriteria;
 import seedu.navi.exceptions.NILWithOtherCriteria;
@@ -12,7 +11,7 @@ import java.util.Set;
 
 public class CanteenCriterionParser {
 
-    private static void verifyCanteenCriteria(String[] canteenCriteria)
+    private static String[] verifyCanteenCriteria(String[] canteenCriteria)
             throws NILWithOtherCriteria, DuplicateCanteenCriterion, InvalidCanteenCriteria {
         Set<String> uniqueCriteria = new HashSet<>();
         String[] validCanteenCriteria = new String[canteenCriteria.length];
@@ -23,9 +22,15 @@ public class CanteenCriterionParser {
 
         assert canteenCriteria.length > 0 : "canteenCriteria array should not be empty.";
 
-        for (int i = 0; i < canteenCriteria.length; i++) {
-            String lowerCaseCriterion = canteenCriteria[i].toLowerCase().trim();
+        int validIndex = 0;
+        for (String canteenCriterion : canteenCriteria) {
+            String lowerCaseCriterion = canteenCriterion.toLowerCase().trim();
+
+            if (lowerCaseCriterion.isEmpty()) {
+                continue;
+            }
             String validCanteenCriterion = CanteenCriteriaShortcuts.CANTEEN_CRITERIA_MAP.get(lowerCaseCriterion);
+
             if (validCanteenCriterion == null) {
                 throw new InvalidCanteenCriteria();
             }
@@ -42,33 +47,33 @@ public class CanteenCriterionParser {
             if ("muslim owned".equals(validCanteenCriterion)) {
                 isMuslimOwnedPresent = true;
             }
-            validCanteenCriteria[i] = validCanteenCriterion;
+            validCanteenCriteria[validIndex++] = validCanteenCriterion;
         }
+        String[] trimmedValidCanteenCriteria = new String[validIndex];
+        System.arraycopy(validCanteenCriteria, 0, trimmedValidCanteenCriteria, 0, validIndex);
+
         if (isHalalCertifiedPresent && isMuslimOwnedPresent) {
             throw new HCAndMOCrtieriaError();
         }
         if (isNILPresent && uniqueCriteria.size() > 1) {
             throw new NILWithOtherCriteria();
         }
-        System.arraycopy(validCanteenCriteria, 0, canteenCriteria, 0, validCanteenCriteria.length);
+        return trimmedValidCanteenCriteria;
     }
 
-    public static String[] handleCanteenCriterion(String canteenCriterion) throws EmptyCanteenCriteria,
+    public static String[] handleCanteenCriterion(String canteenCriterion) throws
             InvalidCanteenCriteria, NILWithOtherCriteria, DuplicateCanteenCriterion {
-        if (canteenCriterion.isEmpty()) {
-            throw new EmptyCanteenCriteria();
-        }
-
+        assert canteenCriterion != null : "canteenCriterion should not be null";
         String[] canteenCriteria = canteenCriterion.split(",");
+
         if (canteenCriteria.length == 0) {
             throw new InvalidCanteenCriteria();
         }
+        String[] validCanteenCriteria = verifyCanteenCriteria(canteenCriteria);
 
-        verifyCanteenCriteria(canteenCriteria);
-
-        if (canteenCriteria[0].trim().equalsIgnoreCase("nil")) {
-            canteenCriteria = null;
+        if (validCanteenCriteria.length == 1 && validCanteenCriteria[0].equalsIgnoreCase("nil")) {
+            return null;
         }
-        return canteenCriteria;
+        return validCanteenCriteria;
     }
 }

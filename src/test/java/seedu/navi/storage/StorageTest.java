@@ -3,7 +3,6 @@ package seedu.navi.storage;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import seedu.navi.canteen.storage.Storage;
-import seedu.navi.canteen.canteenfinder.canteenfinderparser.CanteenFinderParser;
 import seedu.navi.canteen.canteenfinder.landmark.Faculty;
 import seedu.navi.canteen.canteenfinder.landmark.Landmark;
 import seedu.navi.canteen.canteenfinder.landmark.canteen.Canteen;
@@ -18,7 +17,7 @@ import java.nio.file.Paths;
 import java.util.Map;
 import java.util.Optional;
 
-import static seedu.navi.canteen.canteenfinder.canteenfinderparser.CanteenFinderParser.LANDMARKS;
+import static seedu.navi.canteen.canteenfinder.canteenfinder.CanteenFinder.LANDMARKS;
 
 public class StorageTest {
 
@@ -30,7 +29,7 @@ public class StorageTest {
 
     @BeforeEach
     public void setUp() throws IOException {
-        CanteenFinderParser.LANDMARKS.clear();
+        LANDMARKS.clear();
         createTestDataFiles();
     }
 
@@ -200,10 +199,6 @@ public class StorageTest {
         } else {
             return null;
         }
-    }
-
-    public static Map<String, Canteen> getCanteenMap() {
-        return Storage.getCanteenMap();
     }
 }
 

@@ -1,43 +1,40 @@
 package seedu.navi.canteen.canteenfinder.canteenfinderparser;
 
-import seedu.navi.canteen.canteenfinder.nearestcanteendata.NearestCanteenData;
-import seedu.navi.canteen.usershortcuts.LandmarkShortcuts;
-import seedu.navi.canteen.canteenfinder.landmark.Landmark;
-import seedu.navi.exceptions.CanteenNotFound;
-import seedu.navi.exceptions.LocationNotFound;
+import seedu.navi.canteen.canteenfinder.canteencrtierionparser.CanteenCriterionParser;
+import seedu.navi.canteen.canteenfinder.userfields.UserFields;
+import seedu.navi.exceptions.EmptyCanteenCriteria;
+import seedu.navi.exceptions.EmptyCanteenFinderCommand;
+import seedu.navi.exceptions.EmptyUserLocation;
 
-import java.util.ArrayList;
 
 // main class for canteen finder feature
 public class CanteenFinderParser {
-    public static final ArrayList<Landmark> LANDMARKS = new ArrayList<>();
 
-    private static NearestCanteenData searchLandmark(String landmarkName, String[] canteenCriteria)
-            throws CanteenNotFound {
-        assert !landmarkName.isEmpty() : "landmarkName should not be empty";
-        NearestCanteenData nearestCanteenData = null;
-        for (Landmark landmark : LANDMARKS) {
-            if (landmark.getName().equals(landmarkName)) {
-                nearestCanteenData = landmark.getNearestCanteen(canteenCriteria);
-            }
+    public static UserFields parseCanteenFinderCommand(String command)
+            throws EmptyCanteenFinderCommand, EmptyUserLocation {
+        if (command.isEmpty()) {
+            throw new EmptyCanteenFinderCommand();
         }
-        if (nearestCanteenData != null) {
-            assert nearestCanteenData.nearestCanteen() != null ||
-                    nearestCanteenData.landmarkToCanteenDist() != null ||
-                    nearestCanteenData.validStalls() != null :
-                    "all nearestCanteenData fields should not be null";
-            return nearestCanteenData;
-        }
-        throw new CanteenNotFound();
-    }
 
-    public static NearestCanteenData findNearestCanteen(String userLocation, String[] canteenCriteria)
-            throws LocationNotFound, CanteenNotFound {
-        String landmarkName = LandmarkShortcuts.LANDMARK_MAP.get(userLocation.toLowerCase());
-        if (landmarkName == null) {
-            throw new LocationNotFound();
+        String[] commands = command.split("c/");
+        if (commands.length == 0) {
+            throw new EmptyCanteenFinderCommand();
         }
-        return searchLandmark(landmarkName, canteenCriteria);
+        if (commands[0].isEmpty()) {
+            throw new EmptyUserLocation();
+        }
+        if (commands.length == 1) {
+            throw new EmptyCanteenCriteria();
+        }
+
+        String userLocation = commands[0].trim();
+        String[] canteenCriteria;
+        canteenCriteria = CanteenCriterionParser.handleCanteenCriterion(commands[1]);
+
+        assert canteenCriteria == null || canteenCriteria.length > 0 :
+                "Output canteenCriteria should either be null or non-empty.";
+
+        return new UserFields(userLocation, canteenCriteria);
     }
 }
 
