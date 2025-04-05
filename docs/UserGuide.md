@@ -1,5 +1,17 @@
 # User Guide
 
+* ### [Introduction](#introduction)
+* ### [Quick start](#quick-start)
+* ### [Features](#features)
+  * [Canteen: `canteen`](#canteen-canteen)
+    * [Canteen finder: `finder`](#to-enter-canteen-finder-finder)
+    * [Canteen lookup: `lookup`](#to-enter-canteen-lookup-lookup)
+  * [Budget: `budget`](#budget-budget)
+  * [Favorites: `favorites`](#favorites-favorites)
+* ### [Command Summary](#command-summary)
+* ### [Canteen feature related shortcuts](#canteen-feature-related-shortcuts)
+
+
 ## Introduction
 
 {Give a product intro}
@@ -96,8 +108,6 @@ ___
 ### To enter Canteen Finder: `finder`
 This sub-feature allows users to search for the nearest canteen in NUS Kent Ridge Campus 
 based on user specified canteen criteria and location.
-
-Users can enter `finder` or `f` from the canteen menu to use this sub-feature. 
 
 Format: `finder` or `f`
 
@@ -288,7 +298,7 @@ Bistro Box
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ```
 #### 2. Exit Canteen Lookup `exit`
-Users can exit Canteen Finder whenever they feel like it to exit to the canteen menu.
+Users can exit Canteen Finder whenever they feel like it.
 
 Format: `exit` or `e`
 
@@ -302,12 +312,19 @@ You've exited the Canteen Lookup feature
 ```
 ___
 ## Budget: `budget`
+To enter budget tracker feature:
+
+Format: `budget`
 
 ```
-💰 Budget Tracker: Enter a command (add X, deduct X, view, exit)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+budget
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Budget Tracker: Enter a command (add X, deduct X, view, exit)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ```
 ### Weekly budget resets
-Every mondays, system will prompt the following question
+Every mondays only, system will prompt the following question, before showing the above prompt (`Budget Tracker: Enter a command (add X, deduct X, view, exit`)) 
 
 ```
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -317,23 +334,13 @@ Do you want to carry over last week's remaining budget? (yes/no)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 ```
-### View status of budget and expenses
-Format: `view`
-
-Example:
-```
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-view
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Remaining weekly budget: $0.00
-Total spent today: $0.00
-Total spent this week: $0.00
-Total spent this month: $100.00
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-```
 
 ### Add to weekly budget
+
+Tip 1: Add valid numbers (letters, negative numbers, special characters and blanks are not allowed )
+
+Tip 2: Add amounts that are not too large (amounts greater than 1 million is discouraged while amounts greater than 1.7976931348623157E308 is not allowed) 
+
 Format: `add AMOUNT`
 
 Example:
@@ -344,10 +351,14 @@ Example:
 Added $100.00 to this week's budget.
 Remaining weekly budget: $100.00
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
 ```
 
 ### Deduct from weekly budget and add to expenses
+
+Tip 1: Deduct valid numbers (letters, negative numbers, special characters and blanks are not allowed )
+
+Tip 2: Deduct amounts that are not too large (amounts greater than 1 million is discouraged while amounts greater than 1.7976931348623157E308 is not allowed)
+
 Format: `deduct AMOUNT`
 
 Example:
@@ -358,10 +369,12 @@ deduct 20
 Deducted $20.00 from your weekly budget.
 Remaining weekly budget: $80.00
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
 ```
 
 ### View remaining budget and expenses
+
+Tip 1: Navi ignores any extra parameters after 'view' and works as expected.
+
 Format: `view`
 
 Example:
@@ -374,7 +387,6 @@ Total spent today: $20.00
 Total spent this week: $20.00
 Total spent this month: $120.00
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
 ```
 ### Exit budget feature
 Format: `exit`
@@ -382,16 +394,15 @@ Format: `exit`
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 > exit
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-👋 Exiting Budget Tracker.
+ Exiting Budget Tracker.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ```
 
 ### Automatic expenses resets
-* Daily Reset: Expenses clear at midnight
-* Weekly Reset: Expenses clear on Monday
-* Monthly Reset: Expenses clear on 1st of month
-
-
+Navi automatically resets the following attributes at appropriate times.
+* Daily Reset: Daily expenses clear at midnight
+* Weekly Reset: Weekly expenses clear on Monday
+* Monthly Reset: Monthly expenses clear on 1st of month
 ___
 ## Favorites: `favorites`
 
@@ -537,8 +548,67 @@ Bistro Box
 This means that Bistro Box is both Halal Certified and in an aircon area.
 
 ## Command Summary
-### Canteen Feature related shortcuts
-#### Shortcuts for canteen criteria
+___
+### Main Application
+
+| Feature                 | Command          |
+|-------------------------|------------------|
+| Enter Canteen feature   | `canteen` or `c` |
+| Enter budget tracker    | `budget`         |
+| Enter favorites manager | `favorites`      |
+| Exit chatbot            | `bye`            |
+___
+
+### Canteen feature (main)
+
+| Feature              | Command         |
+|----------------------|-----------------|
+| Enter Canteen finder | `finder` or `f` |
+| Enter Canteen lookup | `lookup` or `l` |
+| Exit Canteen         | `quit` or `q`   |
+
+#### Canteen finder
+
+| Feature                          | Command                                                                                        | Example |
+|----------------------------------|------------------------------------------------------------------------------------------------|---------|
+| Specify desired canteen criteria | `CRITERIA 1, CRITERIA 2`<br/> ( halal certified, muslim owned, <br/> vegetarian, aircon, nil ) | `hc,a`  |
+| Enter location of user           | `FACULTY` or `HOSTEL` or `KEY BUILDINGS`                                                       | `soc`   |
+| Exit Canteen Finder              | `exit` or `e`                                                                                  | `e`     |
+
+#### Canteen lookup
+
+| Feature                | Command       | Example |
+|------------------------|---------------|---------|
+| View stalls in canteen | `CANTEEN`     | `deck`  |
+| Exit Canteen Lookup    | `exit` or `e` | `e`     |
+___
+### Budget tracker
+
+| Feature                              | Command         | Prompt                                                           |
+|--------------------------------------|-----------------|------------------------------------------------------------------|
+| Enter Budget                         | `budget`        |                                                                  |
+| Carry over budget from previous week | `yes` or `no`   | Do you want to carry over last week's remaining budget? (yes/no) |
+| Add funds to weekly budget           | `add AMOUNT`    | -                                                                |
+| Record expenses                      | `deduct AMOUNT` | -                                                                |
+| View expenses & budget               | `view`          | -                                                                |
+| Exit Budget                          | `exit`          | -                                                                |
+
+___
+### Favorites manager
+
+| Feature          | Command                                     |
+|------------------|---------------------------------------------|
+| Add favorites    | `add <description> : <rating> : <location>` |
+| Remove favorites | `remove N`                                  |
+| View favorites   | `view`                                      |
+| Sort ascending   | `sort asc`                                  |
+| Sort descending  | `sort desc`                                 |
+| Search favorites | `search X`                                  |
+| Undo Remove      | `undo`                                      |
+| Exit favorites   | `exit`                                      |
+
+## Canteen Feature related shortcuts
+### Shortcuts for canteen criteria
 * `Halal Certified`
     * `hc`
 * `Muslim Owned`
@@ -549,7 +619,7 @@ This means that Bistro Box is both Halal Certified and in an aircon area.
     * `a`
 * `nil`
 
-#### Shortcuts for location of user
+### Shortcuts for location of user
 
 <u>Faculties</u>
 * `College of Design and Engineering`
@@ -615,7 +685,7 @@ This means that Bistro Box is both Halal Certified and in an aircon area.
 * `University Health Centre`
     * `uhc`
 
-#### Shortcuts for canteen
+### Shortcuts for canteen
 * `Techno Edge`
     * `techno` / `te`
 * `Frontier`
@@ -630,59 +700,3 @@ This means that Bistro Box is both Halal Certified and in an aircon area.
     * `ff`
 * `Flavours`
     * `fl`
-___
-### Main Application
-
-| Feature                 | Command          |
-|-------------------------|------------------|
-| Enter Canteen feature   | `canteen` or `c` |
-| Enter budget tracker    | `budget`         |
-| Enter favorites manager | `favorites`      |
-| Exit chatbot            | `bye`            |
-___
-
-### Canteen feature (main)
-
-| Feature              | Command         |
-|----------------------|-----------------|
-| Enter Canteen finder | `finder` or `f` |
-| Enter Canteen lookup | `lookup` or `l` |
-| Exit Canteen         | `quit` or `q`   |
-
-#### Canteen finder
-
-| Feature                          | Command                                                                                        | Example |
-|----------------------------------|------------------------------------------------------------------------------------------------|---------|
-| Specify desired canteen criteria | `CRITERIA 1, CRITERIA 2`<br/> ( halal certified, muslim owned, <br/> vegetarian, aircon, nil ) | `hc,a`  |
-| Enter location of user           | `FACULTY` or `HOSTEL` or `KEY BUILDINGS`                                                       | `soc`   |
-| Exit Canteen Finder              | `exit` or `e`                                                                                  | `e`     |
-
-#### Canteen lookup
-
-| Feature                | Command       | Example |
-|------------------------|---------------|---------|
-| View stalls in canteen | `CANTEEN`     | `deck`  |
-| Exit Canteen Lookup    | `exit` or `e` | `e`     |
-___
-### Budget tracker
-
-| Feature                    | Command         |
-|----------------------------|-----------------|
-| Add funds to weekly budget | `add AMOUNT`    |
-| Record expenses            | `deduct AMOUNT` |
-| View expenses & budget     | `view`          |
-| Exit Budget                | `exit`          |
-
-___
-### Favorites tracker 
-
-| Feature          | Command                                     |
-|------------------|---------------------------------------------|
-| Add favorites    | `add <description> : <rating> : <location>` |
-| Remove favorites | `remove N`                                  |
-| View favorites   | `view`                                      |
-| Sort ascending   | `sort asc`                                  |
-| Sort descending  | `sort desc`                                 |
-| Search favorites | `search X`                                  |
-| Undo Remove      | `undo`                                      |
-| Exit favorites   | `exit`                                      |
