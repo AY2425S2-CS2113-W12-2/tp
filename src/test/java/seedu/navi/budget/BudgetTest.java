@@ -19,12 +19,12 @@ class BudgetTest {
         deleteSavedData();  // Ensure a fresh start
         Budget.setFilePath(TEST_FILE_PATH);
         budget = new Budget();
+        budget.setLastUpdatedDate(LocalDate.of(2025, 4, 5));
     }
-
 
     @AfterEach
     void tearDown() {
-        budget.clearTestDate();  // Add this
+        budget.clearTestDate();
         deleteSavedData();
     }
 
@@ -56,16 +56,16 @@ class BudgetTest {
     void testAddWeeklyBudgetMultipleTimes() {
         budget.addWeeklyBudget(50);
         budget.addWeeklyBudget(20);
-        assertEquals(70, budget.getWeeklyBudget(), "Weekly budget should be cumulative (50+20=70).");
+        assertEquals(70, budget.getWeeklyBudget(), 0.001);
     }
 
     @Test
     void testDeductExpense() {
         budget.addWeeklyBudget(100);
         budget.deductExpense(30);
-        assertEquals(70, budget.getWeeklyBudget(), 0.001, "Remaining budget should be 100-30=70.");
-        assertEquals(30, budget.getDailyExpenses(), 0.001, "Daily expenses should reflect deducted amount.");
-        assertEquals(30, budget.getMonthlyExpenses(), 0.001, "Monthly expenses should be updated.");
+        assertEquals(70, budget.getWeeklyBudget(), 0.001);
+        assertEquals(30, budget.getDailyExpenses(), 0.001);
+        assertEquals(30, budget.getMonthlyExpenses(), 0.001);
     }
 
     @Test
@@ -81,35 +81,34 @@ class BudgetTest {
     void testResetWeeklyBudget() {
         budget.addWeeklyBudget(100);
         budget.deductExpense(50);
-        budget.resetWeeklyBudget(false);
-        assertEquals(0, budget.getWeeklyBudget(), 0.001, "Weekly budget should reset to 0.");
-        assertEquals(0, budget.getWeeklyExpenses(), 0.001, "Weekly expenses should reset to 0.");
+        budget.resetWeeklyBudget(false);  // Don't carry over
+        assertEquals(0, budget.getWeeklyBudget(), 0.001);
+        assertEquals(50, budget.getWeeklyExpenses(), 0.001, "Weekly expenses should remain before resetIfNeeded()");
+        budget.setCurrentDateForTesting(LocalDate.now().plusDays(1));
+        budget.resetIfNeeded();
+        assertEquals(0, budget.getWeeklyExpenses(), 0.001, "Weekly expenses should reset after resetIfNeeded()");
     }
 
     @Test
     void testResetWeeklyBudgetWithCarryOver() {
         budget.addWeeklyBudget(100);
         budget.deductExpense(40);
-        budget.resetWeeklyBudget(true);
-        assertEquals(60, budget.getWeeklyBudget(), 0.001, "Remaining budget should carry over.");
-        assertEquals(0, budget.getWeeklyExpenses(), 0.001, "Weekly expenses should reset.");
+        budget.resetWeeklyBudget(true);  // Carry over
+        assertEquals(60, budget.getWeeklyBudget(), 0.001);
+        budget.setCurrentDateForTesting(LocalDate.now().plusDays(1));
+        budget.resetIfNeeded();
+        assertEquals(0, budget.getWeeklyExpenses(), 0.001);
     }
-
 
     @Test
-    void testMonthlyReset() {
+    void testWeeklyReset() {
         budget.addWeeklyBudget(200);
         budget.deductExpense(50);
-
-        LocalDate firstDayOfNextMonth = LocalDate.now().plusMonths(1).withDayOfMonth(1);
         budget.setLastUpdatedDate(LocalDate.now().minusMonths(1));
-        budget.setCurrentDateForTesting(firstDayOfNextMonth);
-
+        budget.setCurrentDateForTesting(LocalDate.now().withDayOfMonth(1));
         budget.resetIfNeeded();
-
         assertEquals(0, budget.getMonthlyExpenses());
     }
-
 
     @Test
     void testInvalidAmountThrowsException() {
@@ -121,11 +120,10 @@ class BudgetTest {
 
     @Test
     void testSaveAndLoadBudgetData() {
-        // Add some data
         budget.addWeeklyBudget(150);
         budget.deductExpense(25);
 
-        // Create new instance to test loading
+        // Simulate new session (reloading data)
         Budget newBudget = new Budget();
 
         assertEquals(125, newBudget.getWeeklyBudget(), 0.001);
