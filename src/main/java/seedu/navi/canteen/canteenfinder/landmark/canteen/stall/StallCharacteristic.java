@@ -105,7 +105,7 @@ public class StallCharacteristic {
 
     public boolean containsAnyField(String[] canteenCriteria) {
         if (canteenCriteria == null) {
-            return false;
+            return true;
         }
         for (String canteenCriterion : canteenCriteria) {
             assert canteenCriterion.equalsIgnoreCase("halal certified") ||
