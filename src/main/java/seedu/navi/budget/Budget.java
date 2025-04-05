@@ -64,14 +64,14 @@ public class Budget {
         TextUi.printLineSeparator();
     }
 
-    // Deducts money from daily budget, records daily expenses, and adds to monthly spending
+    // Deducts money from weekly budget, records daily expenses, and adds to monthly spending
     public void deductExpense(double amount) {
 
         if (amount < 0) {
             throw new IllegalArgumentException("Invalid amount. Please enter a positive value.");
         }
         if (weeklyBudget < amount) {
-            throw new IllegalStateException("You cannot deduct more than your current daily budget.");
+            throw new IllegalStateException("You cannot deduct more than your current weekly budget.");
         }
 
         weeklyBudget -= amount;
@@ -86,7 +86,7 @@ public class Budget {
         TextUi.printLineSeparator();
     }
 
-    // Views remaining daily budget & total spent this month
+    // Views remaining weekly budget & total spent this month
     public void viewExpenses() {
         TextUi.printLineSeparator();
         System.out.println("Remaining weekly budget: $" + df.format(weeklyBudget));
@@ -145,7 +145,7 @@ public class Budget {
 
     // Getter methods to allow access to private fields
     public double getWeeklyBudget() {
-        assert weeklyBudget >= 0 : "Daily budget should never be negative";
+        assert weeklyBudget >= 0 : "Weekly budget should never be negative";
         return weeklyBudget;
     }
 
