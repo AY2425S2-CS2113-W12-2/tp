@@ -20,7 +20,6 @@ public class Navi {
 
         TextUi.printGreeting();
         Scanner in = new Scanner(System.in);
-        // TextUi.printGreetUser(in.nextLine());
 
         // Start command processing
         Navi ui = new Navi();
@@ -39,12 +38,10 @@ public class Navi {
  * @author kevinchangckc
  */
 class Parser {
-    private final Navi ui;
     private final Favorites favorites;
     private final Budget budget;
 
     public Parser(Navi ui, Favorites favorites, Budget budget) {
-        this.ui = ui;
         this.favorites = favorites;
         this.budget = budget;
     }

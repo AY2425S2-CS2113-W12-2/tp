@@ -7,7 +7,6 @@ import seedu.navi.exceptions.EmptyCanteenFinderCommand;
 import seedu.navi.exceptions.EmptyUserLocation;
 
 
-// main class for canteen finder feature
 public class CanteenFinderParser {
 
     public static UserFields parseCanteenFinderCommand(String command)
