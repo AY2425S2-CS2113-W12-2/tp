@@ -107,7 +107,12 @@ criteria after "c/"
 Once in Canteen Finder, users can then enter their location and canteen criteria
 to begin the search for the nearest canteen.
 
-#### Searching for nearest canteen: `LOCATION C/CRITERIA`
+#### Searching for nearest canteen: `SEARCH TYPE | LOCATION | CRITERIA`
+For `SEARCH TYPE`, Navi allows users to choose between a "match any criteria" or 
+"match all criteria" search types. 
+
+User can enter `1` for "match any criteria" search type and `2` for "match all criteria" search type.
+
 For `LOCATION`, Navi only support locations at the `FACULTY` and `HOSTEL` level as well as
 other `KEY BUILDINGS` that don't belong to the two categories above.
 
@@ -126,12 +131,40 @@ The full list of supported commands are listed in
 **Tip 2:** Navi does not support users to enter both `halal certified` and `muslim owned`.
 Reasoning is answered in the [FAQ section](#faq).
 
-Format: `LOACTION c/CRITERION 1, CRITERION 2`
+Format: `SEARCH | LOACTION | CRITERION 1, CRITERION 2`
 
-Example: `School of Computing c/halal certified, aircon`
+Example 1: `1 | School of Computing | halal certified, aircon`
 ```
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-School of Computing c/halal certified, aircon
+1 | School of Computing | halal certified, aircon
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Alright! The nearest canteen to you that fit your criteria is
+The Deck
+which is:
+Liang Ban Gong Fu
+  [N] Halal Certified
+  [N] Muslim Owned
+  [N] Vegetarian
+  [Y] In Aircon Area
+Pasta Express
+  [N] Halal Certified
+  [N] Muslim Owned
+  [N] Vegetarian
+  [Y] In Aircon Area
+Mrs Hen
+  [Y] Halal Certified
+  [N] Muslim Owned
+  [N] Vegetarian
+  [Y] In Aircon Area
+and it is approximately at most 220m from where you are.
+You can enter your canteen criteria again to start the search again,
+or "exit" to exit canteen finder.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+```
+Example 2: `2 | School of Computing | halal certified, aircon`
+```
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+2 | School of Computing | halal certified, aircon
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Alright! The nearest canteen to you that fit your criteria is
 The Deck
@@ -183,7 +216,7 @@ Eg. Techno Edge
 ```
 Once in Canteen Lookup, users can enter a specific canteen name in NUS Kent Ridge Campus.
 
-#### 1. Enter canteen name `CANTEEN`
+#### Enter canteen name `CANTEEN`
 
 The full list of supported commands are listed in
 [shortcuts for canteen](#shortcuts-for-canteen) under Command Summary.
@@ -263,7 +296,7 @@ Bistro Box
   [Y] In Aircon Area
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ```
-#### 2. Exit Canteen Lookup `exit`
+#### Exit Canteen Lookup `exit`
 Users can exit Canteen Finder whenever they feel like it.
 
 Format: `exit` or `e`
@@ -525,7 +558,7 @@ ___
 | Enter Canteen feature   | `canteen` or `c` |
 | Enter budget tracker    | `budget`         |
 | Enter favorites manager | `favorites`      |
-| Exit chatbot            | `bye`            |
+| Exit Navi               | `exit`           |
 ___
 
 ### Canteen feature (main)
@@ -534,15 +567,14 @@ ___
 |----------------------|-----------------|
 | Enter Canteen finder | `finder` or `f` |
 | Enter Canteen lookup | `lookup` or `l` |
-| Exit Canteen         | `quit` or `q`   |
+| Exit Canteen         | `exit` or `e`   |
 
 #### Canteen finder
 
-| Feature                          | Command                                                                                        | Example |
-|----------------------------------|------------------------------------------------------------------------------------------------|---------|
-| Specify desired canteen criteria | `CRITERIA 1, CRITERIA 2`<br/> ( halal certified, muslim owned, <br/> vegetarian, aircon, nil ) | `hc,a`  |
-| Enter location of user           | `FACULTY` or `HOSTEL` or `KEY BUILDINGS`                                                       | `soc`   |
-| Exit Canteen Finder              | `exit` or `e`                                                                                  | `e`     |
+| Feature              | Command                                | Example                                               |
+|----------------------|----------------------------------------|-------------------------------------------------------|
+| Find nearest canteen | `SEARCH TYPE  \| LOCATION \| CRITERIA` | `1 \| School of Computing \| halal certified, aircon` |
+| Exit Canteen Finder  | `exit` or `e`                          | `e`                                                   |
 
 #### Canteen lookup
 
