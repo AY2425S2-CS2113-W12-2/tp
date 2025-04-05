@@ -1,8 +1,8 @@
 @startuml
-' Hide the bottom lifeline boxes (those vertical dashed lines with the "X" at the bottom)
+' Hide the footbox (X marks at the end of lifelines)
 hide footbox
 
-Actor Navi
+actor Navi
 
 participant Storage
 participant CanteenDataProcessor
@@ -15,60 +15,64 @@ participant CanteenFinderParser
 Navi -> Storage : processDataFromFiles()
 activate Storage
 
-Storage -> Storage : clear canteenMap
+Storage -> Storage : clear CANTEEN_MAP
+
+' --- Canteen Data Processing ---
+
 
 Storage -> CanteenDataProcessor : new CanteenDataProcessor(canteenMap)
-activate CanteenDataProcessor
-deactivate CanteenDataProcessor
-
-Storage -> CanteenDataProcessor : processData()
 activate CanteenDataProcessor
 CanteenDataProcessor -> DataRetriever : getCanteenData()
 activate DataRetriever
 DataRetriever --> CanteenDataProcessor : List<String> canteenData
 deactivate DataRetriever
-CanteenDataProcessor -->> Storage : update canteenMap with Canteens and Stalls
 deactivate CanteenDataProcessor
 
-Storage -> FacultyDataProcessor : new FacultyDataProcessor(canteenMap)
-activate FacultyDataProcessor
-deactivate FacultyDataProcessor
 
-Storage -> FacultyDataProcessor : processData(faculties)
+' --- Faculty Data Processing ---
+Storage -> FacultyDataProcessor : new FacultyDataProcessor(canteenMap)
 activate FacultyDataProcessor
 FacultyDataProcessor -> DataRetriever : getFacultyData()
 activate DataRetriever
 DataRetriever --> FacultyDataProcessor : List<String> facultyData
 deactivate DataRetriever
-FacultyDataProcessor -->> Storage : update faculties list with Faculty objects
 deactivate FacultyDataProcessor
 
-Storage -> HostelDataProcessor : new HostelDataProcessor(canteenMap)
-activate HostelDataProcessor
-deactivate HostelDataProcessor
+Storage -> FacultyDataProcessor : processData()
+activate FacultyDataProcessor
+FacultyDataProcessor --> Storage : add Faculty objects to LANDMARKS
+deactivate FacultyDataProcessor
 
-Storage -> HostelDataProcessor : processData(hostels)
+' --- Hostel Data Processing ---
+Storage -> HostelDataProcessor : new HostelDataProcessor(canteenMap)
 activate HostelDataProcessor
 HostelDataProcessor -> DataRetriever : getHostelData()
 activate DataRetriever
 DataRetriever --> HostelDataProcessor : List<String> hostelData
 deactivate DataRetriever
-HostelDataProcessor -->> Storage : update hostels list with Landmark objects
 deactivate HostelDataProcessor
 
-Storage -> OtherBuildingDataProcessor : new OtherBuildingDataProcessor(canteenMap)
-activate OtherBuildingDataProcessor
-deactivate OtherBuildingDataProcessor
+Storage -> HostelDataProcessor : processData()
+activate HostelDataProcessor
+HostelDataProcessor --> Storage : add Hostel Landmarks to LANDMARKS
+deactivate HostelDataProcessor
 
-Storage -> OtherBuildingDataProcessor : processData(otherBuildings)
+' --- Other Building Data Processing ---
+Storage -> OtherBuildingDataProcessor : new OtherBuildingDataProcessor(canteenMap)
 activate OtherBuildingDataProcessor
 OtherBuildingDataProcessor -> DataRetriever : getOtherBuildingData()
 activate DataRetriever
 DataRetriever --> OtherBuildingDataProcessor : List<String> buildingData
 deactivate DataRetriever
-OtherBuildingDataProcessor -->> Storage : update otherBuildings list with Landmark objects
 deactivate OtherBuildingDataProcessor
 
+Storage -> OtherBuildingDataProcessor : processData()
+activate OtherBuildingDataProcessor
+OtherBuildingDataProcessor --> Storage : add Other Landmarks to LANDMARKS
+deactivate OtherBuildingDataProcessor
+
+
+' --- Final Aggregation ---
 Storage -> CanteenFinderParser : LANDMARKS.addAll(faculties, hostels, otherBuildings)
 deactivate Storage
 @enduml
