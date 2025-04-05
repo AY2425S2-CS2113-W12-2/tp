@@ -11,15 +11,15 @@ activate Parser
 Parser -> BudgetParser: start()
 deactivate Parser
 activate BudgetParser
-BudgetParser -> Budget: resetIfNeeded()
-activate Budget
-Budget -> Budget: saveBudgetData()
-deactivate Budget
 BudgetParser -> Budget: resetWeeklyBudget(boolean carryOver)
 activate Budget
 Budget -> Budget: saveBudgetData()
 deactivate Budget
-BudgetParser --> User: "Enter command (add X, deduct X, view, exit)"
+BudgetParser -> Budget: resetIfNeeded()
+activate Budget
+Budget -> Budget: saveBudgetData()
+deactivate Budget
+BudgetParser -->> User: "Enter command (add X, deduct X, view, exit)"
 deactivate BudgetParser
 
 User -> BudgetParser: "add 100"
@@ -36,7 +36,7 @@ activate BudgetParser
 BudgetParser -> Budget: viewExpenses()
 deactivate BudgetParser
 activate Budget
-Budget -> User: "Remaining weekly budget: $X\nTotal spent today: $Y\nTotal spent this week: $Z\nTotal spent this month: $W"
+Budget -->> User: "Remaining weekly budget: $100\nTotal spent today: $0\nTotal spent this week: $15\nTotal spent this month: $40"
 deactivate Budget
 
 @enduml

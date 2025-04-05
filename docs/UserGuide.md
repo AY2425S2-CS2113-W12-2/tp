@@ -383,7 +383,7 @@ Format: `exit`
 ### Automatic expenses resets
 Navi automatically resets the following attributes at appropriate times.
 * Daily Reset: Daily expenses clear at midnight
-* Weekly Reset: Weekly expenses clear on Monday
+* Weekly Reset: Weekly expenses clear on Sundays
 * Monthly Reset: Monthly expenses clear on 1st of month
 ___
 ## Favorites: `favorites`
@@ -569,14 +569,14 @@ ___
 ___
 ### Budget tracker
 
-| Feature                              | Command         | Prompt                                                           |
-|--------------------------------------|-----------------|------------------------------------------------------------------|
-| Enter Budget                         | `budget`        |                                                                  |
-| Carry over budget from previous week | `yes` or `no`   | Do you want to carry over last week's remaining budget? (yes/no) |
-| Add funds to weekly budget           | `add AMOUNT`    | -                                                                |
-| Record expenses                      | `deduct AMOUNT` | -                                                                |
-| View expenses & budget               | `view`          | -                                                                |
-| Exit Budget                          | `exit`          | -                                                                |
+| Feature                              | Command         | Prompt                                                             |
+|--------------------------------------|-----------------|--------------------------------------------------------------------|
+| Enter Budget                         | `budget`        |                                                                    |
+| Carry over budget from previous week | `yes` or `no`   | `Do you want to carry over last week's remaining budget? (yes/no)` |
+| Add funds to weekly budget           | `add AMOUNT`    | -                                                                  |
+| Record expenses                      | `deduct AMOUNT` | -                                                                  |
+| View expenses & budget               | `view`          | -                                                                  |
+| Exit Budget                          | `exit`          | -                                                                  |
 
 ___
 ### Favorites manager

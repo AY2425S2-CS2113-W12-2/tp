@@ -156,12 +156,8 @@ expenses.
 from the previous week.
 5. `resetIfNeeded()`: Periodic resets if needed
 * *Daily Reset*: Resets daily expenses at midnight.
-* *Weekly Reset*: Resets weekly expenses every Monday.
+* *Weekly Reset*: Resets weekly expenses every Sunday.
 * *Monthly Reset*: Resets total monthly expenses at the start of a new month.
-
-The following class diagram shows in detail all the methods and atributes in Budget class and shows its relationship
-with BudgetParser and Parser class.
-![BudgetClassDiagram](diagrams/BudgetClassDiagram.png)
 
 ### Sequence of operations
 1. Upon launching the application, the Navi.main() method initializes the system and prompts the user for input.
@@ -206,9 +202,14 @@ ___
 | v1.0    | hungry user                   | know which canteen is nearest to me                                         | go and eat as soon as possible                                                  |
 | v1.0    | hot user                      | know which canteen has air conditioning                                     | go and eat in a cooling environment                                             |
 | v1.0    | user                          | know how far the nearest canteen is away from me                            | roughly know how long it'll take to get there                                   |
+| v1.0    | student                       | set a weekly budget                                                         | manage my spending on meals effectively                                         |
+| v1.0    | budget-conscious user         | track my daily/weekly food expenses                                         | stay within my weekly budget                                                    |
+| v1.0    | organised user                | see my remaining weekly budget                                              | make informed decisions about where/what to eat                                 |
 | v2.0    | user with dietary restriction | know which exact stalls in the canteen that matches my dietary restrictions | conveniently find stalls to buy from that falls within my dietary restrictions  |
 | v2.0    | lazy user                     | have command shortcuts                                                      | save time typing and manoeuvre around the app quickly                           |
 | v2.0    | adventurous user              | check what stalls does other canteens have aside from the one nearest to me | try new food and explore new cuisines                                           |
+| v2.0    | reflective user               | view my monthly spendings                                                   | understand my long-term eating habits and adjust accordingly                    |
+| v2.0    | user with habit of saving     | carry over unused budget to the next week                                   | have flexibility in my spending across weeks                                    |
 
 ## Non-Functional Requirements
 ___
@@ -228,8 +229,7 @@ ___
 * Users should see a greeting message, prompting user to enter their name.
 
 ### Test cases
-#### Navi
-Prerequisites: Entered a `username`
+#### <u> Navi main menu </u>
 * Test case: `canteen`
   * Expected: Navi enters the canteen feature
 * Test case: `favorites`
@@ -240,16 +240,16 @@ Prerequisites: Entered a `username`
   * Expected: Exits Navi, program ends
 * Test case: `CS2113` or ` `
   * Expected: Nothing happens and error message is shown with details on valid inputs
-#### 1. Canteen
-Prerequisites: After entering username, entered `canteen`
+#### <u> 1. Canteen </u>
+Prerequisites: Entered `canteen`
 * Test case: `finder`
   * Expected: Navi enters canteen finder feature
 * Test case: `lookup`
   * Expected: Navi enters canteen lookup feature
 * Test case: `quit`
   * Expected: Navi exits Canteen feature
-#### 1.1 Canteen Finder
-Prerequisites: Entered `username` -> `canteen` -> `finder`
+#### <u> 1.1 Canteen Finder </u>
+Prerequisites: Entered `canteen` -> `finder`
 * Test case: `Halal Certified` -> `CDE`
   * Expected: Navi lists all the halal certified stalls in Techno Edge
 * Test case: `NIL` -> `SOC`
@@ -258,11 +258,40 @@ Prerequisites: Entered `username` -> `canteen` -> `finder`
   * Expected: Navi exits Canteen Finder feature
 * Test case: `CS2113` or ` `
     * Expected: Nothing happens and error message is shown with details on valid inputs
-#### 1.2 Canteen Lookup
-Prerequisites: Entered `username` -> `canteen` -> `lookup`
+#### <u> 1.2 Canteen Lookup </u>
+Prerequisites: Entered `canteen` -> `lookup`
 * Test case: `Techno Edge`
   * Expected: Navi lists all the stalls in Techno Edge
 * Test case: `exit`
   * Expected: Navi exits Canteen Lookup feature
 * Test case: `CS2113` or ` `
     * Expected: Nothing happens and error message is shown with details on valid inputs
+#### <u> 2. Budget tracker </u>
+Prerequisites: Entered `budget`
+* Test case: `add 100`
+    * Expected: Navi adds $100 to weekly budget and shows remaining weekly budget.
+* Test case: `deduct 20`
+    * Expected: Navi deducts $20 from weekly budget and adds it to daily expenses, weekly expenses and monthly expenses. 
+Navi shows remaining weekly budget.
+* Test case: `view`
+    * Expected: Navi shows remaining weekly budget, total spent today, total spent this week and total spent this month.
+* Test case: `exit`
+    * Expected: Navi exits from budget tracker feature and returns to main menu.
+* Test case: `cs2113`
+    * Expected: Navi shows an error message with details on valid inputs
+* Test case: `add abc` or `add -50`
+    * Expected: Navi shows a message to enter a positive number or a valid number
+
+To test automatic reset of daily/weekly/monthly expenses and manual reset of weekly budget:
+1. Add budget and deduct some expenses as per normal
+2. Quit Navi jar file and change the date on your computer settings
+   1. To test all 4 resets at the same time, change the date to 2 May 2025 
+   2. To test daily expenses reset only, change the date to 12 April.
+   3. To test reset of weekly expenses and weekly budget (where you will be prompted with the question of `Do you want to carry over last week's remaining budget? (yes/no)`),
+change the date to 14 April 
+   4. To test monthly expenses reset only, change the date to 2 May
+3. Enter Navi jar file again and enter budget feature (`budget`)
+4. Check remaining budget and expenses by entering `view`
+#### <u> 3. Favorites manager </u>
+
+
