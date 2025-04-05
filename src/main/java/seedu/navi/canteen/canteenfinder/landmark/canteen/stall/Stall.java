@@ -32,7 +32,10 @@ public class Stall {
         return stallCharacteristic;
     }
 
-    public boolean isValidStall(String[] canteenCriteria) {
-        return stallCharacteristic.containsFields(canteenCriteria);
+    public boolean isValidStall(boolean isOrSearchType, String[] canteenCriteria) {
+        if (isOrSearchType) {
+            return stallCharacteristic.containsAnyField(canteenCriteria);
+        }
+        return stallCharacteristic.containsAllFields(canteenCriteria);
     }
 }

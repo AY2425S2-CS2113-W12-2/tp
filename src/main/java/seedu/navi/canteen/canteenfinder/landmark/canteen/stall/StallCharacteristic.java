@@ -66,7 +66,7 @@ public class StallCharacteristic {
         return "[N] " + type;
     }
 
-    public boolean containsFields(String[] canteenCriteria) {
+    public boolean containsAllFields(String[] canteenCriteria) {
         if (canteenCriteria == null) {
             return true;
         }
@@ -101,5 +101,43 @@ public class StallCharacteristic {
             }
         }
         return true;
+    }
+
+    public boolean containsAnyField(String[] canteenCriteria) {
+        if (canteenCriteria == null) {
+            return false;
+        }
+        for (String canteenCriterion : canteenCriteria) {
+            assert canteenCriterion.equalsIgnoreCase("halal certified") ||
+                    canteenCriterion.equalsIgnoreCase("muslim owned") ||
+                    canteenCriterion.equalsIgnoreCase("vegetarian") ||
+                    canteenCriterion.equalsIgnoreCase("aircon") : "Invalid canteen criterion";
+
+            switch (canteenCriterion.toLowerCase()) {
+            case "halal certified":
+                if (halalCertified) {
+                    return true;
+                }
+                break;
+            case "muslim owned":
+                if (muslimOwned) {
+                    return true;
+                }
+                break;
+            case "vegetarian":
+                if (vegetarian) {
+                    return true;
+                }
+                break;
+            case "aircon":
+                if (inAirconArea) {
+                    return true;
+                }
+                break;
+            default:
+                break;
+            }
+        }
+        return false;
     }
 }

@@ -6,12 +6,12 @@ import seedu.navi.canteen.canteenfinder.nearestcanteendata.NearestCanteenData;
 import seedu.navi.canteen.canteenfinder.userfields.UserFields;
 import seedu.navi.exceptions.CanteenNotFound;
 import seedu.navi.exceptions.DuplicateCanteenCriterion;
-import seedu.navi.exceptions.EmptyCanteenCriteria;
 import seedu.navi.exceptions.EmptyCanteenFinderCommand;
-import seedu.navi.exceptions.EmptyUserLocation;
 import seedu.navi.exceptions.HCAndMOCrtieriaError;
 import seedu.navi.exceptions.InvalidCanteenCriteria;
+import seedu.navi.exceptions.InvalidSearchType;
 import seedu.navi.exceptions.LocationNotFound;
+import seedu.navi.exceptions.MissingCanteenFinderFields;
 import seedu.navi.exceptions.NILWithOtherCriteria;
 import seedu.navi.textui.TextUi;
 
@@ -32,14 +32,14 @@ public class CanteenFinderStartup {
             UserFields userFields;
             try {
                 userFields = CanteenFinderParser.parseCanteenFinderCommand(command);
-            } catch (EmptyUserLocation e) {
-                TextUi.printEmptyUserLocationCF();
+            } catch (InvalidSearchType e) {
+                TextUi.printInvalidSearchTypeCF();
                 continue;
             } catch (EmptyCanteenFinderCommand e) {
                 TextUi.printEmptyCanteenFinderCommandCF();
                 continue;
-            } catch (EmptyCanteenCriteria e) {
-                TextUi.printEmptyCanteenCriteriaCF();
+            } catch (MissingCanteenFinderFields e) {
+                TextUi.printMissingCanteenFinderFieldsCF();
                 continue;
             } catch (InvalidCanteenCriteria e) {
                 TextUi.printInvalidCanteenCriteriaCF();
@@ -59,7 +59,7 @@ public class CanteenFinderStartup {
 
             try {
                 NearestCanteenData nearestCanteenData = CanteenFinder.findNearestCanteen(
-                        userFields.userLocation(), userFields.canteenCriteria());
+                        userFields.isOrSearchType(), userFields.userLocation(), userFields.canteenCriteria());
                 TextUi.printNearestCanteenCF(nearestCanteenData);
             } catch (LocationNotFound e) {
                 TextUi.printLocationNotFoundCF();
