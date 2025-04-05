@@ -16,13 +16,14 @@ import java.util.ArrayList;
 public class CanteenFinder {
     public static final ArrayList<Landmark> LANDMARKS = new ArrayList<>();
 
-    private static NearestCanteenData searchLandmark(String landmarkName, String[] canteenCriteria)
+    private static NearestCanteenData searchLandmark(boolean isOrSearchType, String landmarkName,
+                                                     String[] canteenCriteria)
             throws CanteenNotFound {
         assert !landmarkName.isEmpty() : "landmarkName should not be empty";
         NearestCanteenData nearestCanteenData = null;
         for (Landmark landmark : LANDMARKS) {
             if (landmark.getName().equals(landmarkName)) {
-                nearestCanteenData = landmark.getNearestCanteen(canteenCriteria);
+                nearestCanteenData = landmark.getNearestCanteen(isOrSearchType, canteenCriteria);
             }
         }
         if (nearestCanteenData != null) {
@@ -35,13 +36,14 @@ public class CanteenFinder {
         throw new CanteenNotFound();
     }
 
-    public static NearestCanteenData findNearestCanteen(String userLocation, String[] canteenCriteria)
+    public static NearestCanteenData findNearestCanteen(boolean isOrSearchType, String userLocation,
+                                                        String[] canteenCriteria)
             throws LocationNotFound, CanteenNotFound, InvalidCanteenCriteria, NILWithOtherCriteria,
             DuplicateCanteenCriterion, HCAndMOCrtieriaError, EmptyUserLocation {
         String landmarkName = LandmarkShortcuts.LANDMARK_MAP.get(userLocation.toLowerCase());
         if (landmarkName == null) {
             throw new LocationNotFound();
         }
-        return searchLandmark(landmarkName, canteenCriteria);
+        return searchLandmark(isOrSearchType, landmarkName, canteenCriteria);
     }
 }

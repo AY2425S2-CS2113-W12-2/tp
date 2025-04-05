@@ -70,15 +70,29 @@ public class TextUi {
         printLineSeparator();
         System.out.print("""
                 So you wanna find where's the nearest canteen to you?
-                You can state your location first then enter your canteen
-                criteria after "c/"
+                You can enter the command as follows:
+                "search type | your location | canteen criteria 1, canteen criteria 2"
                 """);
         printLineSeparator();
     }
 
     public static void printEmptyCanteenFinderCommandCF() {
         printLineSeparator();
-        System.out.println("Oh no! You did not enter anything!");
+        System.out.print("""
+                Oh no! You did not enter anything!
+                Please enter the command as follows:
+                "search type | your location | canteen criteria 1, canteen criteria 2"
+                """);
+        printLineSeparator();
+    }
+
+    public static void printMissingCanteenFinderFieldsCF() {
+        printLineSeparator();
+        System.out.print("""
+                Oh no! You did not fill in all the required fields!
+                Please enter the command as follows:
+                "search type | your location | canteen criteria 1, canteen criteria 2"
+                """);
         printLineSeparator();
     }
 
@@ -88,6 +102,20 @@ public class TextUi {
         System.out.println("""
                 "Please enter either: "Halal Certified", "Muslim Owned", "Vegetarian", "Aircon"
                 or "NIL" if you're fine with anything!""");
+        printLineSeparator();
+    }
+
+    public static void printEmptySearchTypeCF() {
+        printLineSeparator();
+        System.out.println("Oh no! You did not enter any search type!");
+        System.out.println("Please enter either 1 (match any criteria) or 2 (match all criteria).");
+        printLineSeparator();
+    }
+
+    public static void printInvalidSearchTypeCF() {
+        printLineSeparator();
+        System.out.println("Oh no! You did not enter a valid search type!");
+        System.out.println("Please enter either 1 (match any criteria) or 2 (match all criteria).");
         printLineSeparator();
     }
 
