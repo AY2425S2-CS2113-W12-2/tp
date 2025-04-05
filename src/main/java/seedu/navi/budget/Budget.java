@@ -25,7 +25,6 @@ public class Budget {
 
     public Budget() {
         loadBudgetData();
-        resetIfNeeded();
     }
 
     public static void setFilePath(String path) {
@@ -34,6 +33,9 @@ public class Budget {
 
     public void resetIfNeeded() {
         LocalDate today = getCurrentDate();
+        if (lastUpdatedDate == null || isNewWeek(lastUpdatedDate, today)) {
+            weeklyExpenses = 0; // Reset weekly expenses
+        }
         if (lastUpdatedDate == null || !today.equals(lastUpdatedDate)) {
             if (lastUpdatedDate == null || !today.getMonth().equals(lastUpdatedDate.getMonth())) {
                 monthlyExpenses = 0; // Reset monthly spending
@@ -48,7 +50,6 @@ public class Budget {
         if (!carryOver) {
             weeklyBudget = 0;
         }
-        weeklyExpenses = 0; // Reset weekly expenses
         saveBudgetData();
     }
 
@@ -172,13 +173,14 @@ public class Budget {
         this.lastUpdatedDate = lastUpdatedDate;
     }
 
-    public boolean isNewWeek(LocalDate today) {
+
+    public boolean isNewWeek(LocalDate lastUpdatedDate, LocalDate today) {
         if (lastUpdatedDate == null) {
             return true;
         }
         int currentWeek = today.get(WeekFields.of(Locale.getDefault()).weekOfYear());
-        int lastUpdatedWeek = lastUpdatedDate.get(WeekFields.of(Locale.getDefault()).weekOfYear());
-        return currentWeek != lastUpdatedWeek;
+        int lastWeek = lastUpdatedDate.get(WeekFields.of(Locale.getDefault()).weekOfYear());
+        return currentWeek != lastWeek || today.getYear() != lastUpdatedDate.getYear();
     }
 
 

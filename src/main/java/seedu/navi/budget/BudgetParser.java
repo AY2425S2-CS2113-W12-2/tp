@@ -14,21 +14,28 @@ public class BudgetParser {
 
     public static void start() {
         scanner = new Scanner(System.in);
-        budget.resetIfNeeded(); // Check if a reset is needed (daily, weekly, monthly)
 
         LocalDate today = LocalDate.now();
         LocalDate lastUpdated = budget.getLastUpdatedDate();
-        if (today.getDayOfWeek().getValue() == 1 &&budget.isNewWeek(today)) {
-            System.out.println("Do you want to carry over last week's remaining budget? (yes/no)");
+
+        if ((lastUpdated!=null) && (budget.isNewWeek(lastUpdated, today))) {
+            TextUi.printLineSeparator();
+            System.out.println("Do you want to carry over last week's remaining budget of $" + String.format("%.2f",
+                    budget.getWeeklyBudget()) + "? (yes/no)");
+            TextUi.printLineSeparator();
             System.out.print("> ");
             String response = scanner.nextLine().trim().toLowerCase();
             while (!response.equals("yes") && !response.equals("no")) {
+                TextUi.printLineSeparator();
                 System.out.println("Please enter 'yes' or 'no'.");
+                TextUi.printLineSeparator();
                 System.out.print("> ");
                 response = scanner.nextLine().trim().toLowerCase();
             }
-            budget.resetWeeklyBudget(response.equals("no"));
+            budget.resetWeeklyBudget(response.equals("yes"));
         }
+
+        budget.resetIfNeeded(); // Check if a reset is needed (daily, weekly, monthly)
 
         TextUi.printLineSeparator();
         System.out.println("Budget Tracker: Enter a command (add X, deduct X, view, exit)");
