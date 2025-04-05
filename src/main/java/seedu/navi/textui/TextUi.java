@@ -61,56 +61,40 @@ public class TextUi {
                 - "canteen" to find canteens
                 - "budget" to set or check your budget
                 - "favorites" to manage your favorite spots
-                - "bye" to quit Navi
+                - "exit" to quit Navi
                 """);
         printLineSeparator();
     }
 
     public static void printCanteenFinderGreetingCF() {
         printLineSeparator();
-        System.out.println("So you wanna find where's the nearest canteen to you?");
-        System.out.println("What kind of canteen are you looking for?");
-        System.out.println("""
-                You can list out: "Halal Certified", "Muslim Owned", "Vegetarian", "Aircon"
-                or "NIL" if you're fine with anything!""");
+        System.out.print("""
+                So you wanna find where's the nearest canteen to you?
+                You can state your location first then enter your canteen
+                criteria after "c/"
+                """);
+        printLineSeparator();
+    }
+
+    public static void printEmptyCanteenFinderCommandCF() {
+        printLineSeparator();
+        System.out.println("Oh no! You did not enter anything!");
         printLineSeparator();
     }
 
     public static void printEmptyCanteenCriteriaCF() {
         printLineSeparator();
-        System.out.println("Oh no! You did not enter anything!");
+        System.out.println("Oh no! You did not enter any canteen criteria!");
         System.out.println("""
                 "Please enter either: "Halal Certified", "Muslim Owned", "Vegetarian", "Aircon"
                 or "NIL" if you're fine with anything!""");
         printLineSeparator();
     }
 
-    public static void printAcknowledgeUserCriteriaCF(String[] canteenCriteria) {
+    public static void printEmptyUserLocationCF() {
         printLineSeparator();
-        if (canteenCriteria != null) {
-            System.out.println("So you're looking for a canteen has: ");
-            printUserCriteriaCF(canteenCriteria);
-        } else {
-            System.out.println("I see you have no specific criteria,");
-        }
-        System.out.println("I would need to know where are you now!");
-        System.out.println("You can enter either faculties, hostels or other major landmarks in NUS!");
-        printLineSeparator();
-    }
-
-    private static void printUserCriteriaCF(String[] canteenCriteria) {
-        if (canteenCriteria == null || canteenCriteria.length == 0) {
-            System.out.println("stalls.");
-            return;
-        }
-        String result = String.join(", ", canteenCriteria);
-        System.out.println(result + " stalls.");
-    }
-
-    public static void printEmptyLandmarkCF() {
-        printLineSeparator();
-        System.out.println("Oh no! You did not enter anything!");
-        System.out.println("Please enter either faculties, hostels or other major landmarks in NUS!");
+        System.out.println("Oh no! You did not enter any location!");
+        System.out.println("Please enter either faculties, hostels or other key buildings in NUS!");
         printLineSeparator();
     }
 
@@ -203,7 +187,7 @@ public class TextUi {
     public static void printInvalidCommandC() {
         printLineSeparator();
         System.out.println("You've entered an invalid command!");
-        System.out.println("Please only enter \"finder\", \"lookup\" or \"quit\".");
+        System.out.println("Please only enter \"finder\", \"lookup\" or \"exit\".");
         printLineSeparator();
     }
 

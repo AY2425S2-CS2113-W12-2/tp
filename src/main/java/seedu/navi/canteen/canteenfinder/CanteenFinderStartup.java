@@ -1,32 +1,43 @@
 package seedu.navi.canteen.canteenfinder;
 
-import seedu.navi.canteen.canteenfinder.canteencrtierionparser.CanteenCriterionParser;
+import seedu.navi.canteen.canteenfinder.canteenfinder.CanteenFinder;
 import seedu.navi.canteen.canteenfinder.canteenfinderparser.CanteenFinderParser;
 import seedu.navi.canteen.canteenfinder.nearestcanteendata.NearestCanteenData;
+import seedu.navi.canteen.canteenfinder.userfields.UserFields;
 import seedu.navi.exceptions.CanteenNotFound;
 import seedu.navi.exceptions.DuplicateCanteenCriterion;
 import seedu.navi.exceptions.EmptyCanteenCriteria;
+import seedu.navi.exceptions.EmptyCanteenFinderCommand;
+import seedu.navi.exceptions.EmptyUserLocation;
 import seedu.navi.exceptions.HCAndMOCrtieriaError;
 import seedu.navi.exceptions.InvalidCanteenCriteria;
 import seedu.navi.exceptions.LocationNotFound;
 import seedu.navi.exceptions.NILWithOtherCriteria;
 import seedu.navi.textui.TextUi;
 
-public class CanteenFinder {
+public class CanteenFinderStartup {
 
     public static void startCanteenFinder() {
         TextUi.printCanteenFinderGreetingCF();
-        String[] canteenCriteria;
         String command;
         while (true) {
             command = TextUi.IN.nextLine().trim();
+
             if (command.equalsIgnoreCase("e") ||
                     command.equalsIgnoreCase("exit")) {
                 TextUi.printExitCanteenFinderCF();
                 break;
             }
+
+            UserFields userFields;
             try {
-                canteenCriteria = CanteenCriterionParser.handleCanteenCriterion(command);
+                userFields = CanteenFinderParser.parseCanteenFinderCommand(command);
+            } catch (EmptyUserLocation e) {
+                TextUi.printEmptyUserLocationCF();
+                continue;
+            } catch (EmptyCanteenFinderCommand e) {
+                TextUi.printEmptyCanteenFinderCommandCF();
+                continue;
             } catch (EmptyCanteenCriteria e) {
                 TextUi.printEmptyCanteenCriteriaCF();
                 continue;
@@ -44,24 +55,11 @@ public class CanteenFinder {
                 continue;
             }
 
-            assert canteenCriteria == null || canteenCriteria.length > 0 :
-                    "Output canteenCriteria should either be null or non-empty.";
+            assert userFields != null : "userFields should never be null";
 
-            TextUi.printAcknowledgeUserCriteriaCF(canteenCriteria);
-            command = TextUi.IN.nextLine().trim();
-
-            while (command.isEmpty()) {
-                TextUi.printEmptyLandmarkCF();
-                command = TextUi.IN.nextLine().trim();
-            }
-            if (command.equalsIgnoreCase("e") ||
-                    command.equalsIgnoreCase("exit")) {
-                TextUi.printExitCanteenFinderCF();
-                break;
-            }
             try {
-                NearestCanteenData nearestCanteenData =
-                        CanteenFinderParser.findNearestCanteen(command, canteenCriteria);
+                NearestCanteenData nearestCanteenData = CanteenFinder.findNearestCanteen(
+                        userFields.userLocation(), userFields.canteenCriteria());
                 TextUi.printNearestCanteenCF(nearestCanteenData);
             } catch (LocationNotFound e) {
                 TextUi.printLocationNotFoundCF();

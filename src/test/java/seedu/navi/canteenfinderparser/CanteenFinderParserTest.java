@@ -3,130 +3,91 @@ package seedu.navi.canteenfinderparser;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import seedu.navi.canteen.canteenfinder.canteenfinderparser.CanteenFinderParser;
-import seedu.navi.canteen.canteenfinder.nearestcanteendata.NearestCanteenData;
-import seedu.navi.exceptions.CanteenNotFound;
-import seedu.navi.exceptions.LocationNotFound;
+import seedu.navi.canteen.canteenfinder.userfields.UserFields;
 import seedu.navi.canteen.storage.Storage;
+import seedu.navi.exceptions.EmptyCanteenCriteria;
+import seedu.navi.exceptions.EmptyCanteenFinderCommand;
+import seedu.navi.exceptions.EmptyUserLocation;
 
-import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.fail;
 
-
-class CanteenFinderParserTest {
+public class CanteenFinderParserTest {
     @BeforeEach
     public void setUp() {
         Storage.processDataFromFiles();
     }
 
     @Test
-    public void testFindNearestCanteen_correctCanteenSOC_success() {
-        NearestCanteenData nearestCanteenData = CanteenFinderParser.findNearestCanteen("soc",
-                null);
-        assertEquals("Terrace", nearestCanteenData.nearestCanteen().getName());
+    public void testParseCanteenFinderCommand_sOCWithHC_success() {
+        String command = "soc c/hc";
+        UserFields userFields = CanteenFinderParser.parseCanteenFinderCommand(command);
+        String[] actualCanteenCriteria = new String[]{"halal certified"};
+
+        assertEquals("soc", userFields.userLocation());
+        assertArrayEquals(actualCanteenCriteria, userFields.canteenCriteria());
     }
 
     @Test
-    public void testFindNearestCanteen_wrongCanteenSOC_success() {
-        NearestCanteenData nearestCanteenData = CanteenFinderParser.findNearestCanteen("soc",
-                null);
-        assertNotEquals("Flavours", nearestCanteenData.nearestCanteen().getName());
+    public void testParseCanteenFinderCommand_sOCWithTabCommaHC_success() {
+        String command = "soc c/    ,hc";
+        UserFields userFields = CanteenFinderParser.parseCanteenFinderCommand(command);
+        String[] actualCanteenCriteria = new String[]{"halal certified"};
+
+        assertEquals("soc", userFields.userLocation());
+        assertArrayEquals(actualCanteenCriteria, userFields.canteenCriteria());
     }
 
     @Test
-    public void testFindNearestCanteen_correctCanteenSOCWithCanteenCriteria_success() {
-        String[] canteenCriteria = {"halal certified", "aircon"};
-        NearestCanteenData nearestCanteenData = CanteenFinderParser.findNearestCanteen("soc",
-                canteenCriteria);
-        assertEquals("The Deck", nearestCanteenData.nearestCanteen().getName());
+    public void testParseCanteenFinderCommand_sOCWithHCCommaTab_success() {
+        String command = "soc c/hc,     ";
+        UserFields userFields = CanteenFinderParser.parseCanteenFinderCommand(command);
+        String[] actualCanteenCriteria = new String[]{"halal certified"};
+
+        assertEquals("soc", userFields.userLocation());
+        assertArrayEquals(actualCanteenCriteria, userFields.canteenCriteria());
     }
 
     @Test
-    public void testFindNearestCanteen_correctCanteenScience_success() {
-        NearestCanteenData nearestCanteenData = CanteenFinderParser.findNearestCanteen("faculty of science",
-                null);
-        assertEquals("Frontier", nearestCanteenData.nearestCanteen().getName());
+    public void testParseCanteenFinderCommand_sOCWithTabCommaTabCommaHC_success() {
+        String command = "soc c/    ,   ,hc";
+        UserFields userFields = CanteenFinderParser.parseCanteenFinderCommand(command);
+        String[] actualCanteenCriteria = new String[]{"halal certified"};
+
+        assertEquals("soc", userFields.userLocation());
+        assertArrayEquals(actualCanteenCriteria, userFields.canteenCriteria());
     }
 
     @Test
-    public void testFindNearestCanteen_wrongCanteenScience_success() {
-        NearestCanteenData nearestCanteenData = CanteenFinderParser.findNearestCanteen("faculty of science",
-                null);
-        assertNotEquals("Deck", nearestCanteenData.nearestCanteen().getName());
-    }
-
-    @Test
-    public void testFindNearestCanteen_correctCanteenHSSML_success() {
-        NearestCanteenData nearestCanteenData = CanteenFinderParser.findNearestCanteen("hssml",
-                null);
-        assertEquals("Terrace", nearestCanteenData.nearestCanteen().getName());
-    }
-
-    @Test
-    public void testFindNearestCanteen_wrongCanteenHSSML_success() {
-        NearestCanteenData nearestCanteenData = CanteenFinderParser.findNearestCanteen("hssml",
-                null);
-        assertNotEquals("Deck", nearestCanteenData.nearestCanteen().getName());
-    }
-
-    @Test
-    public void testFindNearestCanteen_correctCanteenHSSMLWithcanteenCriteria_success() {
-        String[] canteenCriteria = {"halal certified", "aircon"};
-        NearestCanteenData nearestCanteenData = CanteenFinderParser.findNearestCanteen("hssml",
-                canteenCriteria);
-        assertEquals("The Deck", nearestCanteenData.nearestCanteen().getName());
-    }
-
-    @Test
-    public void testFindNearestCanteen_wrongCanteenHSSMLWithcanteenCriteria_success() {
-        String[] canteenCriteria = {"halal certified", "aircon"};
-        NearestCanteenData nearestCanteenData = CanteenFinderParser.findNearestCanteen("hssml",
-                canteenCriteria);
-        assertNotEquals("Terrace", nearestCanteenData.nearestCanteen().getName());
-    }
-
-    @Test
-    public void testFindNearestCanteen_correctCanteenEusoff_success() {
-        NearestCanteenData nearestCanteenData = CanteenFinderParser.findNearestCanteen("eusoff",
-                null);
-        assertEquals("The Deck", nearestCanteenData.nearestCanteen().getName());
-    }
-
-    @Test
-    public void testFindNearestCanteen_wrongCanteenEusoff_success() {
-        NearestCanteenData nearestCanteenData = CanteenFinderParser.findNearestCanteen("eusoff",
-                null);
-        assertNotEquals("Flavours", nearestCanteenData.nearestCanteen().getName());
-    }
-
-    @Test
-    public void testFindNearestCanteen_correctCanteenEusoffWithcanteenCriteria_success() {
-        String[] canteenCriteria = {"vegetarian"};
-        NearestCanteenData nearestCanteenData = CanteenFinderParser.findNearestCanteen("eusoff",
-                canteenCriteria);
-        assertEquals("The Deck", nearestCanteenData.nearestCanteen().getName());
-    }
-
-    @Test
-    public void testFindNearestCanteen_wrongCanteenEusoffWithcanteenCriteria_exceptionThrown() {
-        String[] canteenCriteria = {"vegetarian", "aircon"};
+    public void testParseCanteenFinderCommand_blankWithHC_exceptionThrown() {
+        String command = "c/hc";
         try {
-            NearestCanteenData nearestCanteenData = CanteenFinderParser.findNearestCanteen("eusoff",
-                    canteenCriteria);
+            UserFields userFields = CanteenFinderParser.parseCanteenFinderCommand(command);
             fail();
-        } catch (CanteenNotFound e) {
+        } catch (EmptyUserLocation e) {
             assertTrue(true);
         }
     }
 
     @Test
-    public void testFindNearestCanteen_invalidLandmark_exceptionThrown() {
+    public void testParseCanteenFinderCommand_sOCWithBlank_exceptionThrown() {
+        String command = "soc c/";
         try {
-            NearestCanteenData nearestCanteenData = CanteenFinderParser.findNearestCanteen("hss",
-                    null);
+            UserFields userFields = CanteenFinderParser.parseCanteenFinderCommand(command);
             fail();
-        } catch (LocationNotFound e) {
+        } catch (EmptyCanteenCriteria e) {
+            assertTrue(true);
+        }
+    }
+    @Test
+    public void testParseCanteenFinderCommand_blankWithBlank_exceptionThrown() {
+        String command = "c/";
+        try {
+            UserFields userFields = CanteenFinderParser.parseCanteenFinderCommand(command);
+            fail();
+        } catch (EmptyCanteenFinderCommand e) {
             assertTrue(true);
         }
     }
