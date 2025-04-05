@@ -13,10 +13,9 @@
 
 ___
 ## Starting Navi
-Whenever users start Navi, they will first be greeted and then prompted to first enter their name.
+Whenever users start Navi, they will first be greeted by Navi.
 
 Example:
-`Alfred`
 ```
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Welcome! I'm:
@@ -25,17 +24,13 @@ Welcome! I'm:
 |  \| |/ _` \ \ / / |
 | |\  | (_| |\ V /| |
 |_| \_|\__,_| \_/ |_|
-What’s your name?
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Alfred
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Hello, Alfred! Nice to meet you!
 Alright, what can I do for you?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ```
-Then, user may enter `canteen`, `budget` or `favorites` to use these features.
 ___
 ## Features
+After the greeting message, users may enter `canteen`, `budget` or `favorites` to 
+access the 3 main features that Navi provides.
 1. Canteen Feature
 2. Budget Feature
 3. Favorites Feature
