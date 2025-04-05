@@ -43,7 +43,12 @@ ___
 ## Features
 After the greeting message, Navi provides 3 main features which users can access. 
 We will refer to this state as the **main menu**.
-1. To enter [Canteen Feature](#canteen-canteen), user can enter `Canteen` or `c` in the main menu. <br/>
+1. [Canteen Feature](#canteen-canteen),
+2. [Budget Feature](#budget-budget)
+3. [Favorites Feature](#favorites-favorites)
+___
+## Canteen: `canteen`
+To enter the canteen feature, user can enter `Canteen` or `c` in the main menu. <br/>
 Example: `c` <br>
 ```
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -54,34 +59,7 @@ You can enter "finder" to look for the nearest canteen to you,
 or you can enter "lookup" to see a canteen's stalls information.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ```
-2. To enter [Budget Feature](#budget-budget), users can enter `Budget` in the main menu. <br>
-Example: `Budget` <br>
-```
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Budget
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Budget Tracker: Enter a command (add X, deduct X, view, exit)
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-```
-3. To enter [Favorites Feature](#favorites-favorites), users can enter `Favorites` in the main menu. <br>
-Example: `Favorites` <br>
-```
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-favorites
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-🌟 Favorites Tracker: Enter a command:
-  - add <description> : <rating> : <location>
-  - remove N
-  - view
-  - sort asc
-  - sort desc
-  - search X
-  - undo
-  - exit
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-```
-___
-## Canteen: `canteen`
+
 After entering `canteen` in the main menu, users will be prompted to pick which
 canteen-related sub-feature to use in the **canteen menu**. <br>
 The Canteen feature provides 2 sub-features which includes:
@@ -105,9 +83,10 @@ You've exited the Canteen feature!
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ```
 ___
-### To enter Canteen Finder: `finder`
-This sub-feature allows users to search for the nearest canteen in NUS Kent Ridge Campus 
+### Canteen Finder
+This sub-feature allows users to search for the nearest canteen in NUS Kent Ridge Campus
 based on user specified canteen criteria and location.
+#### To enter Canteen Finder: `finder`
 
 Format: `finder` or `f`
 
@@ -122,7 +101,7 @@ You can list out: "Halal Certified", "Muslim Owned", "Vegetarian", "Aircon"
 or "NIL" if you're fine with anything!
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ```
-### Canteen Finder
+Once in Canteen Finder, users can then enter their canteen criteria and location.
 
 #### 1. Enter desired canteen criteria: `CRITERIA`
 Users can enter certain criteria to filter the search for the nearest canteen. 
@@ -198,8 +177,11 @@ You have exited the Canteen Finder feature!
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ```
 ___
-### To enter Canteen Lookup: `lookup`
+### Canteen Lookup
+
 This sub-feature allows user to check what kind of stalls are present in their desired canteen.
+
+#### To enter Canteen Lookup: `lookup`
 
 Users can enter `lookup` or `l` from the canteen menu to use this sub-feature.
 
@@ -215,9 +197,9 @@ Enter any Canteen in NUS to check what kind of stalls it have!
 Eg. Techno Edge
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ```
-### Canteen Lookup
+Once in Canteen Lookup, users can enter a specific canteen name in NUS Kent Ridge Campus.
+
 #### 1. Enter canteen name `CANTEEN`
-Users can enter a specific canteen name in NUS Kent Ridge Campus.
 
 The full list of supported commands are listed in
 [shortcuts for canteen](#shortcuts-for-canteen) under Command Summary.
@@ -312,7 +294,7 @@ You've exited the Canteen Lookup feature
 ```
 ___
 ## Budget: `budget`
-To enter budget tracker feature:
+To enter budget tracker feature, users can enter `budget` in the main menu.
 
 Format: `budget`
 
@@ -405,18 +387,21 @@ Navi automatically resets the following attributes at appropriate times.
 * Monthly Reset: Monthly expenses clear on 1st of month
 ___
 ## Favorites: `favorites`
+To enter the favorites feature, users can enter `favorites` in the main menu.
 
 ```
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+favorites
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 🌟 Favorites Tracker: Enter a command:
-  - add <description> : <rating> : <location>
-  - remove N
-  - view
-  - sort asc
-  - sort desc
-  - search X
-  - undo
-  - exit
+- add <description> : <rating> : <location>
+- remove N
+- view
+- sort asc
+- sort desc
+- search X
+- undo
+- exit
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ```
 ### Add to favorites list
