@@ -105,9 +105,9 @@ the appropriate method in `TextUi` to display each stall’s relevant details su
 If the canteen name is not found, a `CanteenNotFound` exception is thrown and a corresponding error message is shown to 
 inform the user.
 
-This sub-feature enhances usability by providing a fast and user-friendly way to access canteen and stall information based on 
-shortcut keywords, reducing the effort needed to navigate through the full dataset.
-![CanteenLookupSequenceDiagram](diagrams/CanteenLookupSequenceDiagram.png)
+This sub-feature enhances usability by providing a fast and user-friendly way to access canteen and stall information based on shortcut keywords, reducing the effort needed to navigate through the full dataset.
+
+![CanteenLookupSequenceDiagram](diagrams/CanteenLookupSequenceDiagram.drawio.png)
 ___
 ### Storage
 The Storage class is responsible for managing the persistent storage of canteen, faculty, hostel, and other building data.
