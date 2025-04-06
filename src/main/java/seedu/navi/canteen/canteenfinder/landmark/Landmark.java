@@ -1,8 +1,8 @@
 package seedu.navi.canteen.canteenfinder.landmark;
 
+import seedu.navi.canteen.canteenfinder.landmark.canteen.Canteen;
 import seedu.navi.canteen.canteenfinder.landmark.canteen.stall.Stall;
 import seedu.navi.canteen.canteenfinder.nearestcanteendata.NearestCanteenData;
-import seedu.navi.canteen.canteenfinder.landmark.canteen.Canteen;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -32,7 +32,7 @@ public class Landmark {
         for (Canteen nearestCanteen : nearestCanteens) {
             ArrayList<Stall> validStalls = nearestCanteen.findValidStalls(isOrSearchType, canteenCriteria);
             if (!validStalls.isEmpty()) {
-                return new NearestCanteenData(nearestCanteen, getCanteenDistance(nearestCanteen), validStalls);
+                return new NearestCanteenData(nearestCanteen, canteenDistances.get(nearestCanteen), validStalls);
             }
         }
         return null;
