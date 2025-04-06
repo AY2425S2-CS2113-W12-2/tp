@@ -36,16 +36,6 @@ public class TextUi {
     /**
      * @author kevinchangckc
      */
-    public static void printGreetUser(String name) {
-        printLineSeparator();
-        System.out.println("Hello, " + name + "! Nice to meet you!");
-        // System.out.println("Alright, what can I do for you?");
-        printLineSeparator();
-    }
-
-    /**
-     * @author kevinchangckc
-     */
     public static void printExitMessage() {
         printLineSeparator();
         System.out.println("Ah, you’re heading off? No worries!");
@@ -96,33 +86,10 @@ public class TextUi {
         printLineSeparator();
     }
 
-    public static void printEmptyCanteenCriteriaCF() {
-        printLineSeparator();
-        System.out.println("Oh no! You did not enter any canteen criteria!");
-        System.out.println("""
-                "Please enter either: "Halal Certified", "Muslim Owned", "Vegetarian", "Aircon"
-                or "NIL" if you're fine with anything!""");
-        printLineSeparator();
-    }
-
-    public static void printEmptySearchTypeCF() {
-        printLineSeparator();
-        System.out.println("Oh no! You did not enter any search type!");
-        System.out.println("Please enter either 1 (match any criteria) or 2 (match all criteria).");
-        printLineSeparator();
-    }
-
     public static void printInvalidSearchTypeCF() {
         printLineSeparator();
         System.out.println("Oh no! You did not enter a valid search type!");
         System.out.println("Please enter either 1 (match any criteria) or 2 (match all criteria).");
-        printLineSeparator();
-    }
-
-    public static void printEmptyUserLocationCF() {
-        printLineSeparator();
-        System.out.println("Oh no! You did not enter any location!");
-        System.out.println("Please enter either faculties, hostels or other key buildings in NUS!");
         printLineSeparator();
     }
 
