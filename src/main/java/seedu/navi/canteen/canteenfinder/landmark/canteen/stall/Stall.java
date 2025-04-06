@@ -4,11 +4,6 @@ public class Stall {
     private String name;
     private StallCharacteristic stallCharacteristic;
 
-    public Stall(String name) {
-        this.name = name;
-        stallCharacteristic = new StallCharacteristic();
-    }
-
     public Stall(String name, boolean halalCertified, boolean muslimOwned,
                  boolean vegetarian, boolean inAirconArea) {
         this.name = name;
