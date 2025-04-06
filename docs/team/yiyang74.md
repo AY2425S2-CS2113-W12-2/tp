@@ -29,21 +29,33 @@ Contributed to all information relating to:
 - Starting Navi
 - Features
 - Canteen
-- Canteen Finder
-- Canteen Lookup
+  - Canteen Finder
+  - Canteen Lookup
+- FAQ
+  - related to Canteen features
+- Command Summary
+  - related to Canteen features
+- Canteen Feature Related Shortcuts
 ___
 ### Developer Guide Contributions
 Contributed to all information relating to:
+- Acknowledgements
 - Design and Implementation
-  - Canteen Feature
-  - Canteen Finder Feature
-  - Canteen Lookup Feature
+  - Navi
+    - Canteen Feature
+      - Canteen Finder Feature
+      - Canteen Lookup Feature
 - Product Scope
   - Target user profile
   - Value proposition
 - User Stories 
   - related to Canteen features
 - Non-Functional Requirements
+- Glossary
+- Instruction for Manual Testing
+  - Launching Navi
+  - Test cases
+    - related to Canteen features
 ___
 ### Contributions to Team-based Tasks
 - Necessary general code enhancements

@@ -11,7 +11,7 @@
   * #### [Favorites: `favorites`](#favorites-favorites)
 * ### [FAQ](#faq)
 * ### [Command Summary](#command-summary)
-* ### [Canteen feature related shortcuts](#canteen-feature-related-shortcuts)
+* ### [Canteen Feature Related Shortcuts](#canteen-feature-related-shortcuts)
 
 
 ## Introduction
@@ -605,7 +605,7 @@ ___
 | Undo Remove      | `undo`                                      |
 | Exit favorites   | `exit`                                      |
 
-## Canteen Feature related shortcuts
+## Canteen Feature Related Shortcuts
 ### Shortcuts for canteen criteria
 * `Halal Certified`
     * `hc`
