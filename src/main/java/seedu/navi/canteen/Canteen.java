@@ -1,7 +1,7 @@
 package seedu.navi.canteen;
 
 import seedu.navi.canteen.canteenfinder.CanteenFinderStartup;
-import seedu.navi.canteen.canteenlookup.CanteenLookup;
+import seedu.navi.canteen.canteenlookup.CanteenLookupStartup;
 import seedu.navi.textui.TextUi;
 
 public class Canteen {
@@ -21,7 +21,7 @@ public class Canteen {
                 break;
             case "lookup":
             case "l":
-                CanteenLookup.startCanteenLookup();
+                CanteenLookupStartup.startCanteenLookup();
                 break;
             default:
                 TextUi.printInvalidCommandC();
