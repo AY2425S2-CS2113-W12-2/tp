@@ -23,6 +23,7 @@ The following UML Sequence diagram shows the Canteen feature. The starting arrow
 of `CanteenMain` to begin the Canteen feature.
 
 ![CanteenSequenceDiagram](diagrams/CanteenSequenceDiagram.drawio.png)
+
 ___
 ### Canteen Finder Feature 
 The Canteen Finder sub-feature allows the user to find the nearest canteen relative to where the user is in NUS Kent 
@@ -31,9 +32,9 @@ Ridge Campus.
 This functionality is controlled by the `CanteenFinderStartup` class where `startCanteenFinder()` would call 
 `parseCanteenFinderCommand()`, a class level method, of the `CanteenFinderParser` class. 
 
-`parseCanteenFinderCommand()` would then parse the command by the user and store them in an instance of the `UserFields` record
+`parseCanteenFinderCommand()` would then parse the command by the user and store them in an instance of the `UserFields` class
 which contains the attributes `isOrSearchType`, `userLocation` and `canteenCriteria`.
-This instance is then return back to `CanteenFinderStartup` in which its elements will be passed on to `CanteenFinder` class
+This instance is then returned back to `CanteenFinderStartup` in which is passed on to `CanteenFinder` class
 through `findNearestCanteen()` to begin the search.
 
 At the end, an instance of the record `NearestCanteenData` is returned to `CanteenFinderStartup` in which its contents would
@@ -48,17 +49,17 @@ The searching functionality of the Canteen Finder feature is controlled by the `
 `findNearestCanteen()` would be called by `CanteenFinderStartup` as mentioned above.
 
 `findNearestCanteen()` would then call a helper method `searchLandmarks()` to search the collection of landmark objects in `CanteenFinder`
-to find the landmark that corresponds to `userLocation`. 
+to find the landmark that corresponds to `userLocation` attribute of the `userFields` object. 
 Once the landmark is found, `findNearestCanteen()` will then call `getNearestCanteen()` of landmark to 
 get the nearest canteen that fits the search type and canteen criteria stated by the user in `isOrSearchType`
-and `canteenCriteria`. 
+and `canteenCriteria` of `userFields`. 
 
 Once retrieved, `getNearestCanteen()` would then retrieve the distance of the canteen to the landmark where the user is located
 stored in a collection of canteen distances in landmark.
 
 `getNearestCanteen()` would then return the object `nearestCanteenData` which is an instance of the Record `NearestCanteenData` which stores 
 the three attributes: 
-`nearestCanteen`, `landmarkToCanteenDist` and `validStalls`. 
+`nearestCanteen`, `canteenDistance` and `validStalls`. 
 
 `nearestCanteenData` is then return back to `CanteenFinder` which is then returned to 
 `CanteenFinderStartup`.
@@ -67,6 +68,7 @@ The following UML Sequence diagram shows the searching functionality of the Cant
 The starting arrow indicates `CanteenFinderStartup` calling `findNearestCanteen()` of `CanteenFinder` to begin the search.
 
 ![CanteenFinderSequenceDiagram](diagrams/CanteenFinderSequenceDiagram.drawio.png)
+
 ___
 ### Canteen Lookup Feature
 The Canteen Lookup sub-feature allows the user to look up the different stalls and its characteristics of the specified

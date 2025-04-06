@@ -27,8 +27,8 @@ public class CanteenMainFinderParserTest {
         String[] actualCanteenCriteria = new String[]{"halal certified"};
 
         assertTrue(userFields.isOrSearchType());
-        assertEquals("soc", userFields.userLocation());
-        assertArrayEquals(actualCanteenCriteria, userFields.canteenCriteria());
+        assertEquals("soc", userFields.getUserLocation());
+        assertArrayEquals(actualCanteenCriteria, userFields.getCanteenCriteria());
     }
 
     @Test
@@ -38,8 +38,8 @@ public class CanteenMainFinderParserTest {
         String[] actualCanteenCriteria = new String[]{"halal certified"};
 
         assertFalse(userFields.isOrSearchType());
-        assertEquals("soc", userFields.userLocation());
-        assertArrayEquals(actualCanteenCriteria, userFields.canteenCriteria());
+        assertEquals("soc", userFields.getUserLocation());
+        assertArrayEquals(actualCanteenCriteria, userFields.getCanteenCriteria());
     }
 
     @Test
@@ -49,8 +49,8 @@ public class CanteenMainFinderParserTest {
         String[] actualCanteenCriteria = new String[]{"halal certified"};
 
         assertTrue(userFields.isOrSearchType());
-        assertEquals("soc", userFields.userLocation());
-        assertArrayEquals(actualCanteenCriteria, userFields.canteenCriteria());
+        assertEquals("soc", userFields.getUserLocation());
+        assertArrayEquals(actualCanteenCriteria, userFields.getCanteenCriteria());
     }
 
     @Test
@@ -60,8 +60,8 @@ public class CanteenMainFinderParserTest {
         String[] actualCanteenCriteria = new String[]{"halal certified"};
 
         assertFalse(userFields.isOrSearchType());
-        assertEquals("soc", userFields.userLocation());
-        assertArrayEquals(actualCanteenCriteria, userFields.canteenCriteria());
+        assertEquals("soc", userFields.getUserLocation());
+        assertArrayEquals(actualCanteenCriteria, userFields.getCanteenCriteria());
     }
 
     @Test

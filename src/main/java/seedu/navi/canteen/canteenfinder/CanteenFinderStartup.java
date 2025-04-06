@@ -58,8 +58,7 @@ public class CanteenFinderStartup {
             assert userFields != null : "userFields should never be null";
 
             try {
-                NearestCanteenData nearestCanteenData = CanteenFinder.findNearestCanteen(
-                        userFields.isOrSearchType(), userFields.userLocation(), userFields.canteenCriteria());
+                NearestCanteenData nearestCanteenData = CanteenFinder.findNearestCanteen(userFields);
                 TextUi.printNearestCanteenCF(nearestCanteenData);
             } catch (LocationNotFound e) {
                 TextUi.printLocationNotFoundCF();
