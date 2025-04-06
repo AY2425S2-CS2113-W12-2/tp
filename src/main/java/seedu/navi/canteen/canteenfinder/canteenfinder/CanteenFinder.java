@@ -30,7 +30,7 @@ public class CanteenFinder {
         }
         if (nearestCanteenData != null) {
             assert nearestCanteenData.nearestCanteen() != null ||
-                    nearestCanteenData.landmarkToCanteenDist() != null ||
+                    nearestCanteenData.canteenDistance() != null ||
                     nearestCanteenData.validStalls() != null :
                     "all nearestCanteenData fields should not be null";
             return nearestCanteenData;

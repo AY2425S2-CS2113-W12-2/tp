@@ -16,10 +16,6 @@ public class CanteenDataProcessor {
         this.canteenDataList = DataRetriever.getCanteenData(); // Get data from CanteenInfo
     }
 
-    public Map<String, Canteen> getCanteenMap() {
-        return canteenMap;
-    }
-
     public void processData() {
         for (String canteenData : canteenDataList) {
             insertCanteenFromData(canteenData);

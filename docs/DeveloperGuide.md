@@ -49,10 +49,11 @@ The searching functionality of the Canteen Finder feature is controlled by the `
 `findNearestCanteen()` would be called by `CanteenFinderStartup` as mentioned above.
 
 `findNearestCanteen()` would then call a helper method `searchLandmarks()` to search the collection of landmark objects in `CanteenFinder`
-to find the landmark that corresponds to `userLocation` attribute of the `userFields` object. 
-Once the landmark is found, `findNearestCanteen()` will then call `getNearestCanteen()` of landmark to 
+to find the `landmark` that corresponds to `userLocation` attribute of the `userFields` object. 
+
+Once `landmark` is found, `findNearestCanteen()` will then call `getNearestCanteen()` of `landmark` to 
 get the nearest canteen that fits the search type and canteen criteria stated by the user in `isOrSearchType`
-and `canteenCriteria` of `userFields`. 
+and `canteenCriteria` of `userFields`. [More details below.](#process-overview-of-how-the-nearest-canteen-that-meets-the-criteria-is-determined)
 
 Once retrieved, `getNearestCanteen()` would then retrieve the distance of the canteen to the landmark where the user is located
 stored in a collection of canteen distances in landmark.
@@ -68,6 +69,22 @@ The following UML Sequence diagram shows the searching functionality of the Cant
 The starting arrow indicates `CanteenFinderStartup` calling `findNearestCanteen()` of `CanteenFinder` to begin the search.
 
 ![CanteenFinderSequenceDiagram](diagrams/CanteenFinderSequenceDiagram.drawio.png)
+
+#### Process overview of how the nearest canteen that meets the criteria is determined:
+1. A `Landmark` holds a collection of `Canteen` objects. 
+2. `findValidStalls()` of each `Canteen` object is called to check 
+if the canteen has valid stalls. If there is, `findValidStalls()` would return an array of valid stalls. 
+3. A `Canteen` object holds a collection of `Stall` objects. 
+4. `findValidStalls()` calls `isValidStall()` of each `Stall` object to check 
+if there is a valid stall in the canteen. `isValidStall()` returns true if the stall is valid.
+5. A `Stall` object contains a `StallCharacteristic` class which holds all the information of that stall's characteristics. 
+6. `isValidStall()` calls either `containsAllFields()` or `containsAnyFields()` depending on whether `isOrSearchType` is true. 
+If true, `containsAnyFields()` is called else `containsAllFields()` is called.
+7. `containsAnyFields()` return true as long as one of the stall characteristic matches any of the canteen criteria while
+`containsAllFields()` return true only if all the stall characteristics matches every canteen criteria.
+
+The following UML Class diagram depicts the overview explained above.
+![CanteenFinderClassDiagram](diagrams/CanteenFinderClassDiagram.drawio.png)
 
 ___
 ### Canteen Lookup Feature
@@ -266,6 +283,8 @@ Prerequisites: Entered `canteen`
   * Expected: Navi enters canteen lookup feature
 * Test case: `exit`
   * Expected: Navi exits Canteen feature
+* Test case: `CS2113` or ` `
+    * Expected: Nothing happens and error message is shown with details on valid inputs
 #### <u> 1.1 Canteen Finder </u>
 Prerequisites: Entered `canteen` -> `finder`
 * Test case: `Halal Certified` -> `CDE`

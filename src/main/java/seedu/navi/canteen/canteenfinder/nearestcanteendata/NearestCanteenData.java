@@ -5,6 +5,6 @@ import seedu.navi.canteen.canteenfinder.landmark.canteen.stall.Stall;
 
 import java.util.ArrayList;
 
-public record NearestCanteenData(Canteen nearestCanteen, Integer landmarkToCanteenDist,
+public record NearestCanteenData(Canteen nearestCanteen, Integer canteenDistance,
                                  ArrayList<Stall> validStalls) {
 }
