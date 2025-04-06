@@ -1,13 +1,8 @@
 package seedu.navi.canteen.canteenfinder.landmark.canteen.stall;
 
 public class Stall {
-    private String name;
-    private StallCharacteristic stallCharacteristic;
-
-    public Stall(String name) {
-        this.name = name;
-        stallCharacteristic = new StallCharacteristic();
-    }
+    private final String name;
+    private final StallCharacteristic stallCharacteristic;
 
     public Stall(String name, boolean halalCertified, boolean muslimOwned,
                  boolean vegetarian, boolean inAirconArea) {
@@ -33,6 +28,7 @@ public class Stall {
     }
 
     public boolean isValidStall(boolean isOrSearchType, String[] canteenCriteria) {
+        assert stallCharacteristic != null : "stallCharacteristic should not be null";
         if (isOrSearchType) {
             return stallCharacteristic.containsAnyField(canteenCriteria);
         }

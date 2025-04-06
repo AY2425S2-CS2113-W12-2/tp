@@ -1,42 +1,38 @@
 package seedu.navi.canteen.canteenfinder.landmark.canteen.stall;
 
 public class StallCharacteristic {
-    private final boolean halalCertified;
-    private final boolean muslimOwned;
-    private final boolean vegetarian;
-    private final boolean inAirconArea;
+    private final boolean isHalalCertified;
+    private final boolean isMuslimOwned;
+    private final boolean isVegetarian;
+    private final boolean isInAirconArea;
 
-    public StallCharacteristic() {
-        this(false, false, false, false);
-    }
-
-    public StallCharacteristic(boolean halalCertified, boolean muslimOwned,
-                               boolean vegetarian, boolean inAirconArea) {
-        this.halalCertified = halalCertified;
-        this.muslimOwned = muslimOwned;
-        this.vegetarian = vegetarian;
-        this.inAirconArea = inAirconArea;
+    public StallCharacteristic(boolean isHalalCertified, boolean isMuslimOwned,
+                               boolean isVegetarian, boolean isInAirconArea) {
+        this.isHalalCertified = isHalalCertified;
+        this.isMuslimOwned = isMuslimOwned;
+        this.isVegetarian = isVegetarian;
+        this.isInAirconArea = isInAirconArea;
     }
 
     public boolean getHalalCertified() {
-        return halalCertified;
+        return isHalalCertified;
     }
 
     public boolean getMuslimOwned() {
-        return muslimOwned;
+        return isMuslimOwned;
     }
 
     public boolean getVegetarian() {
-        return vegetarian;
+        return isVegetarian;
     }
 
     public boolean getInAirconArea() {
-        return inAirconArea;
+        return isInAirconArea;
     }
 
     public String getHalalCertifiedIcon() {
         String type = "Halal Certified";
-        if (halalCertified) {
+        if (isHalalCertified) {
             return "[Y] " + type;
         }
         return "[N] " + type;
@@ -44,7 +40,7 @@ public class StallCharacteristic {
 
     public String getMuslimOwnedIcon() {
         String type = "Muslim Owned";
-        if (muslimOwned) {
+        if (isMuslimOwned) {
             return "[Y] " + type;
         }
         return "[N] " + type;
@@ -52,7 +48,7 @@ public class StallCharacteristic {
 
     public String getVegetarianIcon() {
         String type = "Vegetarian";
-        if (vegetarian) {
+        if (isVegetarian) {
             return "[Y] " + type;
         }
         return "[N] " + type;
@@ -60,7 +56,7 @@ public class StallCharacteristic {
 
     public String getInAirconAreaIcon() {
         String type = "In Aircon Area";
-        if (inAirconArea) {
+        if (isInAirconArea) {
             return "[Y] " + type;
         }
         return "[N] " + type;
@@ -78,22 +74,22 @@ public class StallCharacteristic {
 
             switch (canteenCriterion.toLowerCase()) {
             case "halal certified":
-                if (!halalCertified) {
+                if (!isHalalCertified) {
                     return false;
                 }
                 break;
             case "muslim owned":
-                if (!muslimOwned) {
+                if (!isMuslimOwned) {
                     return false;
                 }
                 break;
             case "vegetarian":
-                if (!vegetarian) {
+                if (!isVegetarian) {
                     return false;
                 }
                 break;
             case "aircon":
-                if (!inAirconArea) {
+                if (!isInAirconArea) {
                     return false;
                 }
                 break;
@@ -115,22 +111,22 @@ public class StallCharacteristic {
 
             switch (canteenCriterion.toLowerCase()) {
             case "halal certified":
-                if (halalCertified) {
+                if (isHalalCertified) {
                     return true;
                 }
                 break;
             case "muslim owned":
-                if (muslimOwned) {
+                if (isMuslimOwned) {
                     return true;
                 }
                 break;
             case "vegetarian":
-                if (vegetarian) {
+                if (isVegetarian) {
                     return true;
                 }
                 break;
             case "aircon":
-                if (inAirconArea) {
+                if (isInAirconArea) {
                     return true;
                 }
                 break;

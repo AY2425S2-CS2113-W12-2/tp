@@ -99,7 +99,7 @@ public class TextUi {
         System.out.println(nearestCanteenData.nearestCanteen().getName());
         System.out.println("which is: ");
         printValidStallsCF(nearestCanteenData.validStalls());
-        System.out.println("and it is approximately at most " + nearestCanteenData.landmarkToCanteenDist()
+        System.out.println("and it is approximately at most " + nearestCanteenData.canteenDistance()
                 + "m from where you are.");
         printRepeatCanteenFinderCF();
         printLineSeparator();

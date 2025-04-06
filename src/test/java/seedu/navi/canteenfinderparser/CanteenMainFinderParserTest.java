@@ -14,7 +14,7 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.fail;
 
-public class CanteenFinderParserTest {
+public class CanteenMainFinderParserTest {
     @BeforeEach
     public void setUp() {
         Storage.processDataFromFiles();
@@ -27,8 +27,8 @@ public class CanteenFinderParserTest {
         String[] actualCanteenCriteria = new String[]{"halal certified"};
 
         assertTrue(userFields.isOrSearchType());
-        assertEquals("soc", userFields.userLocation());
-        assertArrayEquals(actualCanteenCriteria, userFields.canteenCriteria());
+        assertEquals("soc", userFields.getUserLocation());
+        assertArrayEquals(actualCanteenCriteria, userFields.getCanteenCriteria());
     }
 
     @Test
@@ -38,8 +38,8 @@ public class CanteenFinderParserTest {
         String[] actualCanteenCriteria = new String[]{"halal certified"};
 
         assertFalse(userFields.isOrSearchType());
-        assertEquals("soc", userFields.userLocation());
-        assertArrayEquals(actualCanteenCriteria, userFields.canteenCriteria());
+        assertEquals("soc", userFields.getUserLocation());
+        assertArrayEquals(actualCanteenCriteria, userFields.getCanteenCriteria());
     }
 
     @Test
@@ -49,8 +49,8 @@ public class CanteenFinderParserTest {
         String[] actualCanteenCriteria = new String[]{"halal certified"};
 
         assertTrue(userFields.isOrSearchType());
-        assertEquals("soc", userFields.userLocation());
-        assertArrayEquals(actualCanteenCriteria, userFields.canteenCriteria());
+        assertEquals("soc", userFields.getUserLocation());
+        assertArrayEquals(actualCanteenCriteria, userFields.getCanteenCriteria());
     }
 
     @Test
@@ -60,8 +60,8 @@ public class CanteenFinderParserTest {
         String[] actualCanteenCriteria = new String[]{"halal certified"};
 
         assertFalse(userFields.isOrSearchType());
-        assertEquals("soc", userFields.userLocation());
-        assertArrayEquals(actualCanteenCriteria, userFields.canteenCriteria());
+        assertEquals("soc", userFields.getUserLocation());
+        assertArrayEquals(actualCanteenCriteria, userFields.getCanteenCriteria());
     }
 
     @Test

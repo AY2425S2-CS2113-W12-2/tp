@@ -4,7 +4,7 @@ import seedu.navi.canteen.canteenfinder.CanteenFinderStartup;
 import seedu.navi.canteen.canteenlookup.CanteenLookupStartup;
 import seedu.navi.textui.TextUi;
 
-public class Canteen {
+public class CanteenMain {
     public static void startCanteen() {
         TextUi.printCanteenGreetingC();
         String command;

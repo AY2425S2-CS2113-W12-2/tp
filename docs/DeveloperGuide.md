@@ -66,7 +66,24 @@ the three attributes:
 The following UML Sequence diagram shows the searching functionality of the Canteen Finder feature. 
 The starting arrow indicates `CanteenFinderStartup` calling `findNearestCanteen()` of `CanteenFinder` to begin the search.
 
-![CanteenLookupSequence](diagrams/CanteenLookupSequence.png)
+![CanteenFinderSequenceDiagram](diagrams/CanteenFinderSequenceDiagram.drawio.png)
+
+#### Process overview of how the nearest canteen that meets the criteria is determined:
+1. A `Landmark` holds a collection of `Canteen` objects. 
+2. `findValidStalls()` of each `Canteen` object is called to check 
+if the canteen has valid stalls. If there is, `findValidStalls()` would return an array of valid stalls. 
+3. A `Canteen` object holds a collection of `Stall` objects. 
+4. `findValidStalls()` calls `isValidStall()` of each `Stall` object to check 
+if there is a valid stall in the canteen. `isValidStall()` returns true if the stall is valid.
+5. A `Stall` object contains a `StallCharacteristic` class which holds all the information of that stall's characteristics. 
+6. `isValidStall()` calls either `containsAllFields()` or `containsAnyFields()` depending on whether `isOrSearchType` is true. 
+If true, `containsAnyFields()` is called else `containsAllFields()` is called.
+7. `containsAnyFields()` return true as long as one of the stall characteristic matches any of the canteen criteria while
+`containsAllFields()` return true only if all the stall characteristics matches every canteen criteria.
+
+The following UML Class diagram depicts the overview explained above.
+![CanteenFinderClassDiagram](diagrams/CanteenFinderClassDiagram.drawio.png)
+
 ___
 ### Canteen Lookup Feature
 The Canteen Lookup sub-feature allows the user to look up the different stalls and its characteristics of the specified
@@ -81,9 +98,9 @@ the appropriate method in `TextUi` to display each stall’s relevant details su
 If the canteen name is not found, a `CanteenNotFound` exception is thrown and a corresponding error message is shown to 
 inform the user.
 
-This sub-feature enhances usability by providing a fast and user-friendly way to access canteen and stall information based on shortcut keywords, reducing the effort needed to navigate through the full dataset.
-
-![CanteenLookupSequenceDiagram](diagrams/CanteenLookupSequenceDiagram.drawio.png)
+This sub-feature enhances usability by providing a fast and user-friendly way to access canteen and stall information based on 
+shortcut keywords, reducing the effort needed to navigate through the full dataset.
+![CanteenLookupSequenceDiagram](diagrams/CanteenLookupSequenceDiagram.png)
 ___
 ### Storage
 The Storage class is responsible for managing the persistent storage of canteen, faculty, hostel, and other building data.
