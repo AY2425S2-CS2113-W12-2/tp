@@ -9,7 +9,7 @@ ___
 ## Canteen Feature
 The Canteen feature provides 2 sub-features: Canteen Finder and Canteen Lookup.
 
-This functionality is controlled by the `CanteenMain` class where `startCanteen()`, a class level method,
+This functionality is controlled by the `Canteen` class where `startCanteen()`, a class level method,
 would immediately enter an infinite loop which can only be exited when the user enters the `quit` command.
 In this loop, users can enter either `finder` or `lookup` to access the 2 sub-features.
 
@@ -20,10 +20,9 @@ If the user enters `lookup` instead, `startCanteenLookup()`, a class level metho
 called to start the Canteen Lookup sub-feature.
 
 The following UML Sequence diagram shows the Canteen feature. The starting arrow indicates `Navi` calling `startCanteen()`
-of `CanteenMain` to begin the Canteen feature.
+of `Canteen` to begin the Canteen feature.
 
 ![CanteenSequenceDiagram](diagrams/CanteenSequenceDiagram.drawio.png)
-
 ___
 ### Canteen Finder Feature 
 The Canteen Finder sub-feature allows the user to find the nearest canteen relative to where the user is in NUS Kent 
@@ -32,16 +31,16 @@ Ridge Campus.
 This functionality is controlled by the `CanteenFinderStartup` class where `startCanteenFinder()` would call 
 `parseCanteenFinderCommand()`, a class level method, of the `CanteenFinderParser` class. 
 
-`parseCanteenFinderCommand()` would then parse the command by the user and store them in an instance of the `UserFields` class
+`parseCanteenFinderCommand()` would then parse the command by the user and store them in an instance of the `UserFields` record
 which contains the attributes `isOrSearchType`, `userLocation` and `canteenCriteria`.
-This instance is then returned back to `CanteenFinderStartup` in which is passed on to `CanteenFinder` class
+This instance is then return back to `CanteenFinderStartup` in which its elements will be passed on to `CanteenFinder` class
 through `findNearestCanteen()` to begin the search.
 
 At the end, an instance of the record `NearestCanteenData` is returned to `CanteenFinderStartup` in which its contents would
 be printed to the user.
 
 The following UML Sequence diagram shows the overall and parsing aspect of the Canteen Finder feature. 
-The starting arrow indicates `CanteenMain` calling `startCanteenFinder()` of `CanteenFinderStartup` to begin the Canteen Finder feature.
+The starting arrow indicates `Canteen` calling `startCanteenFinder()` of `CanteenFinderStartup` to begin the Canteen Finder feature.
 
 ![CanteenFinderStartupSequenceDiagram](diagrams/CanteenFinderStartupSequenceDiagram.drawio.png)
 
@@ -49,18 +48,17 @@ The searching functionality of the Canteen Finder feature is controlled by the `
 `findNearestCanteen()` would be called by `CanteenFinderStartup` as mentioned above.
 
 `findNearestCanteen()` would then call a helper method `searchLandmarks()` to search the collection of landmark objects in `CanteenFinder`
-to find the `landmark` that corresponds to `userLocation` attribute of the `userFields` object. 
-
-Once `landmark` is found, `findNearestCanteen()` will then call `getNearestCanteen()` of `landmark` to 
+to find the landmark that corresponds to `userLocation`. 
+Once the landmark is found, `findNearestCanteen()` will then call `getNearestCanteen()` of landmark to 
 get the nearest canteen that fits the search type and canteen criteria stated by the user in `isOrSearchType`
-and `canteenCriteria` of `userFields`. [More details below.](#process-overview-of-how-the-nearest-canteen-that-meets-the-criteria-is-determined)
+and `canteenCriteria`. 
 
 Once retrieved, `getNearestCanteen()` would then retrieve the distance of the canteen to the landmark where the user is located
 stored in a collection of canteen distances in landmark.
 
 `getNearestCanteen()` would then return the object `nearestCanteenData` which is an instance of the Record `NearestCanteenData` which stores 
 the three attributes: 
-`nearestCanteen`, `canteenDistance` and `validStalls`. 
+`nearestCanteen`, `landmarkToCanteenDist` and `validStalls`. 
 
 `nearestCanteenData` is then return back to `CanteenFinder` which is then returned to 
 `CanteenFinderStartup`.
@@ -94,7 +92,15 @@ canteen.
 This functionality is controlled by the `CanteenLookup` class where `startCanteenLookup()` would call 
 `searchCanteen(canteenName)`, a class level method, of the CanteenSearch class.
 
-`searchCanteen()` would then...
+`searchCanteen()` would then retrieve the `Canteen` object that matches the given canteen name by reading the canteen data 
+into memory via the `CanteenDataProcessor`. If the canteen exists, the method obtains its list of `Stall` objects and calls 
+the appropriate method in `TextUi` to display each stall’s relevant details such as name, cuisine type, and other characteristics. 
+If the canteen name is not found, a `CanteenNotFound` exception is thrown and a corresponding error message is shown to 
+inform the user.
+
+This sub-feature enhances usability by providing a fast and user-friendly way to access canteen and stall information based on shortcut keywords, reducing the effort needed to navigate through the full dataset.
+
+![CanteenLookupSequenceDiagram](diagrams/CanteenLookupSequenceDiagram.drawio.png)
 ___
 ### Storage
 The Storage class is responsible for managing the persistent storage of canteen, faculty, hostel, and other building data.
@@ -283,8 +289,6 @@ Prerequisites: Entered `canteen`
   * Expected: Navi enters canteen lookup feature
 * Test case: `exit`
   * Expected: Navi exits Canteen feature
-* Test case: `CS2113` or ` `
-    * Expected: Nothing happens and error message is shown with details on valid inputs
 #### <u> 1.1 Canteen Finder </u>
 Prerequisites: Entered `canteen` -> `finder`
 * Test case: `Halal Certified` -> `CDE`
