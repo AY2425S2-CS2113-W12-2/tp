@@ -1,11 +1,27 @@
 # Developer Guide
+* ### [Acknowledgements](#acknowledgements)
+* ### [Design & Implementation](#design--implementation)
+  * #### [Navi](#navi)
+  * #### [Canteen Feature](#canteen-feature)
+    * [Canteen Finder Feature](#canteen-finder-feature)
+    * [Canteen Lookup Feature](#canteen-lookup-feature)
+    * [Storage](#storage)
+  * #### [Favorites Feature](#favorites-feature)
+  * #### [Budget Feature](#budget-feature)
+* ### [Product Scope](#product-scope)
+  * #### [Target User Profile](#target-user-profile)
+  * #### [Value Proposition](#value-proposition)
+* ### [User Stories](#user-stories)
+* ### [Non-Functional Requirements](#non-functional-requirements)
+* ### [Glossary](#glossary)
+* ### [Instructions for Manual Testing](#instructions-for-manual-testing)
+  * #### [Launching Navi](#launching-navi)
+  * #### [Test Cases](#test-cases)
 
 ## Acknowledgements
-___
 Some UML diagrams within the Developer Guide have been created on [Draw.io](https://draw.io/)
 
-## Design & implementation
-___
+## Design & Implementation
 ## Navi
 Navi is the main class of the application which controls the 3 core features that Navi provides: Canteen, 
 Budget and Favorites.
@@ -20,8 +36,8 @@ If the user enters `exit`, Navi will exit the application and the program ends.
 
 The following UML Sequence diagram shows the interactions within `Navi` as users enters the Navi application.
 ![NaviSequenceDiagram](diagrams/NaviSequenceDiagram.drawio.png)
-___
 
+___
 ## Canteen Feature
 The Canteen feature provides 2 sub-features: Canteen Finder and Canteen Lookup.
 
@@ -41,7 +57,7 @@ of `Canteen` to begin the Canteen feature.
 ![CanteenSequenceDiagram](diagrams/CanteenSequenceDiagram.drawio.png)
 
 ___
-### Canteen Finder Feature 
+### Canteen Finder Feature
 The Canteen Finder sub-feature allows the user to find the nearest canteen relative to where the user is in NUS Kent 
 Ridge Campus. 
 
@@ -152,19 +168,18 @@ processing of specific data types to `CanteenDataProcessor`, `FacultyDataProcess
 relationships such as nearest canteens and distances between entities.
 ![](diagrams/Storage.png)
 
-___
-### Favorites feature
+## Favorites Feature
 This feature allows users to manage a list of favorite items, supporting adding, removing, viewing, sorting, and 
 searching. It also includes an undo function for deletions.
 
-### Core Components
+#### Core Components
 Favorites class: Manages favorite items and undo functionality.
 
-### Data structures:
+#### Data Structures:
 favoriteItems (ArrayList) - Stores favorite entries as formatted strings.
 undoStack (Stack) - Tracks deleted items for undo operations.
 
-### Key Operations
+#### Key Operations
 `addFavorite(description, rating, category)`: Adds a new favorite in the format "Description | Rating: X | Category: Y".
 
 `removeFavorite(index)`: Removes an item by index, storing it in undoStack for possible recovery.
@@ -177,12 +192,12 @@ undoStack (Stack) - Tracks deleted items for undo operations.
 
 `searchFavorites(keyword)`: Finds and displays entries matching the keyword (case-insensitive).
 
-### System Behavior
+#### System Behavior
 Operates entirely in-memory using formatted strings.
 Undo only supports single-level restoration of deletions.
 Immediate feedback is provided through console messages.
 
-### Design Considerations
+#### Design Considerations
 ArrayList<String> is used for favoriteItems because:
 * Fast indexed access (O(1))
 * Efficient for sorting and iterating
@@ -193,19 +208,18 @@ Stack<String> is used for undoStack because:
 
 Persistent Storage ensures data is not lost between sessions by saving the favorites list to a file.
 
-### Future Enhancements
+#### Future Enhancements
 Potential improvements include Expanded search/filter options, multi-step undo/redo, and additional 
 sorting criteria.
 ![favorites](diagrams/favorites.png)
 
-___
-## Budget feature
+## Budget Feature
 This feature allows users to track their daily, weekly and monthly expenses on food as well as the weekly budget.
 * Budget class: Handles core budget logic, including managing expenses, budget resets, and file persistence.
 * BudgetParser class: Handles user interaction and command parsing
 * Data storage: Budget data is stored persistently in a JSON-like format.
 
-#### Core Logic
+##### Core Logic
 The Budget class maintains several data:
 * `weeklyBudget`: Current available budget
 * `dailyExpenses`, `weeklyExpenses`, `monthlyExpenses`: Tracked expenses
@@ -224,7 +238,7 @@ from the previous week.
 * *Weekly Reset*: Resets weekly expenses every Sunday.
 * *Monthly Reset*: Resets total monthly expenses at the start of a new month.
 
-### Sequence of operations
+#### Sequence of Operations
 1. Upon launching the application, the Navi.main() method initializes the system and prompts the user for input.
 If the user enters the command budget, the `BudgetParser.start()` method is invoked.
 2. If it is Monday, Budget asks the user if they want to carry over weekly budget from previous week and
@@ -243,14 +257,13 @@ The `Budget.viewExpenses()` method displays this information.
 The following sequence diagram illustrates the workflow when a user `add 100` to their budget and `view`:
 ![BudgetSequenceDiagram](diagrams/BudgetSequenceDiagram.png)
 
-## Product scope
-___
-### Target user profile
+## Product Scope
+### Target User Profile
 
 NUS students, faculty or staff who need guidance to find or lookup canteens, manage budgets, and track their favorite food stalls 
 in the NUS Kent Ridge Campus.
 
-### Value proposition
+### Value Proposition
 
 Navi simplifies campus dining at NUS by solving key challenges: finding nearby canteens, managing food expenses,
 and tracking favorite meals. It helps users locate canteens based on their location and dietary preferences, 
@@ -259,7 +272,6 @@ A favorites list that lets users save, rate, and comment on stalls, making it ea
 Hence, Navi saves time as well as promotes exploration all in one intuitive app.
 
 ## User Stories
-___
 | Version | As a ...                      | I want to ...                                                               | So that I can ...                                                               |
 |---------|-------------------------------|-----------------------------------------------------------------------------|---------------------------------------------------------------------------------|
 | v1.0    | new user                      | see usage instructions                                                      | refer to them when I forget how to use the application                          |
@@ -277,23 +289,20 @@ ___
 | v2.0    | user with habit of saving     | carry over unused budget to the next week                                   | have flexibility in my spending across weeks                                    |
 
 ## Non-Functional Requirements
-___
 1. The app should work on any mainstream OS as long as it has java17 or above installed.
 
 ## Glossary
-___
 * `command 1` -> `command 2`
     * referring to typing `command 1` and pressing enter then `command 2` and pressing enter
 
-## Instructions for manual testing
-___
+## Instructions for Manual Testing
 ### Launching Navi
 * Download the jar file and copy it to an empty folder.
 * Navigate to the jar file via a Terminal window.
 * Start the jar file with the command `java -jar Navi.jar`
 * Users should see a greeting message, prompting user to enter their name.
 
-### Test cases
+### Test Cases
 #### <u> Navi main menu </u>
 * Test case: `canteen`
   * Expected: Navi enters the canteen feature

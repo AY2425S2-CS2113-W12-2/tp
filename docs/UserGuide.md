@@ -2,14 +2,16 @@
 
 * ### [Introduction](#introduction)
 * ### [Quick start](#quick-start)
+* ### [Starting Navi](#starting-navi)
 * ### [Features](#features)
-  * [Canteen: `canteen`](#canteen-canteen)
+  * #### [Canteen: `canteen`](#canteen-canteen)
     * [Canteen finder: `finder`](#to-enter-canteen-finder-finder)
     * [Canteen lookup: `lookup`](#to-enter-canteen-lookup-lookup)
-  * [Budget: `budget`](#budget-budget)
-  * [Favorites: `favorites`](#favorites-favorites)
+  * #### [Budget: `budget`](#budget-budget)
+  * #### [Favorites: `favorites`](#favorites-favorites)
+* ### [FAQ](#faq)
 * ### [Command Summary](#command-summary)
-* ### [Canteen feature related shortcuts](#canteen-feature-related-shortcuts)
+* ### [Canteen Feature Related Shortcuts](#canteen-feature-related-shortcuts)
 
 
 ## Introduction
@@ -27,7 +29,6 @@ you can easily navigate and make the most of everything Navi offers. Get ready t
 3. Unzip the file and cd into that directory on your terminal.
 4. Enter `java -jar Navi.jar` and enjoy the app!
 
-___
 ## Starting Navi
 Whenever users start Navi, they will first be greeted by Navi.
 
@@ -43,14 +44,14 @@ Welcome! I'm:
 Alright, what can I do for you?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ```
-___
+
 ## Features
 After the greeting message, Navi provides 3 main features which users can access. 
 We will refer to this state as the **main menu**.
-1. [Canteen Feature](#canteen-canteen),
+1. [Canteen Feature](#canteen-canteen)
 2. [Budget Feature](#budget-budget)
 3. [Favorites Feature](#favorites-favorites)
-___
+
 ## Canteen: `canteen`
 To enter the canteen feature, user can enter `Canteen` or `c` in the main menu. <br/>
 Example: `c` <br>
@@ -309,7 +310,7 @@ e
 You've exited the Canteen Lookup feature
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ```
-___
+
 ## Budget: `budget`
 To enter budget tracker feature, users can enter `budget` in the main menu.
 
@@ -322,7 +323,7 @@ budget
 Budget Tracker: Enter a command (add X, deduct X, view, exit)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ```
-### Weekly budget resets
+#### Weekly budget resets
 Every mondays only, system will prompt the following question, before showing the above prompt (`Budget Tracker: Enter a command (add X, deduct X, view, exit`)) 
 
 ```
@@ -334,7 +335,7 @@ Do you want to carry over last week's remaining budget? (yes/no)
 
 ```
 
-### Add to weekly budget
+#### Add to weekly budget
 
 Tip 1: Add valid numbers (letters, negative numbers, special characters and blanks are not allowed )
 
@@ -352,7 +353,7 @@ Remaining weekly budget: $100.00
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ```
 
-### Deduct from weekly budget and add to expenses
+#### Deduct from weekly budget and add to expenses
 
 Tip 1: Deduct valid numbers (letters, negative numbers, special characters and blanks are not allowed )
 
@@ -370,7 +371,7 @@ Remaining weekly budget: $80.00
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ```
 
-### View remaining budget and expenses
+#### View remaining budget and expenses
 
 Tip 1: Navi ignores any extra parameters after 'view' and works as expected.
 
@@ -387,7 +388,7 @@ Total spent this week: $20.00
 Total spent this month: $120.00
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ```
-### Exit budget feature
+#### Exit budget feature
 Format: `exit`
 ```
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -397,12 +398,12 @@ Format: `exit`
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ```
 
-### Automatic expenses resets
+#### Automatic expenses resets
 Navi automatically resets the following attributes at appropriate times.
 * Daily Reset: Daily expenses clear at midnight
 * Weekly Reset: Weekly expenses clear on Sundays
 * Monthly Reset: Monthly expenses clear on 1st of month
-___
+
 ## Favorites: `favorites`
 To enter the favorites feature, users can enter `favorites` in the main menu.
 
@@ -421,7 +422,7 @@ favorites
 - exit
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ```
-### Add to favorites list
+#### Add to favorites list
 Format: `add <description> : <rating> : <location>`
 
 ```
@@ -431,7 +432,7 @@ Format: `add <description> : <rating> : <location>`
 ✅ Added: milo | Rating: 3 | Category: com
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ```
-### Remove from favorites list
+#### Remove from favorites list
 Format: `remove N`
 
 ```
@@ -440,7 +441,7 @@ Format: `remove N`
 ❌ Removed: milo | Rating: 3 | Category: com
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ```
-### View favorites list
+#### View favorites list
 Format:`view`
 
 ```
@@ -451,7 +452,7 @@ Format:`view`
 2. cheese prata | Rating: 10 | Category: utown
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ```
-### Sort favorites list in ascending order
+#### Sort favorites list in ascending order
 Format: `sort asc`
 
 ```
@@ -466,7 +467,7 @@ Format: `sort asc`
 2. cheese prata | Rating: 10 | Category: utown
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ```
-## Sort favorites list in descending order
+#### Sort favorites list in descending order
 Format: `sort desc`
 
 ```
@@ -481,7 +482,7 @@ Format: `sort desc`
 2. milo | Rating: 3 | Category: com
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ```
-### Search for your favorite item
+#### Search for your favorite item
 Format: `search X`
 
 ```
@@ -493,7 +494,7 @@ milo | Rating: 3 | Category: com
 milo | Rating: 8 | Category: deck
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ```
-### Undo any accidental remove commands
+#### Undo any accidental remove commands
 Format: `Undo`
 
 ```
@@ -502,7 +503,7 @@ Format: `Undo`
 🔄 Restored: milo | Rating: 8 | Category: deck
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ```
-### Exit favorites tracker
+#### Exit favorites tracker
 Format: `exit`
 
 ```
@@ -511,10 +512,6 @@ Format: `exit`
 👋 Exiting Favorites Tracker.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ```
-
-
-
-
 
 ## FAQ
 
@@ -608,7 +605,7 @@ ___
 | Undo Remove      | `undo`                                      |
 | Exit favorites   | `exit`                                      |
 
-## Canteen Feature related shortcuts
+## Canteen Feature Related Shortcuts
 ### Shortcuts for canteen criteria
 * `Halal Certified`
     * `hc`
