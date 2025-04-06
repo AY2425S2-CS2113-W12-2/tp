@@ -52,6 +52,19 @@ We will refer to this state as the **main menu**.
 2. [Budget Feature](#budget-budget)
 3. [Favorites Feature](#favorites-favorites)
 
+### To exit Navi: `exit`
+Users can enter `exit` or `e` to exit Navi which will end the program.
+
+Example: `e`
+```
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+e
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Ah, you’re heading off? No worries!
+We’ll catch you next time!
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+```
+
 ## Canteen: `canteen`
 To enter the canteen feature, user can enter `Canteen` or `c` in the main menu. <br/>
 Example: `c` <br>
@@ -101,8 +114,8 @@ Example: `f`
 f
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 So you wanna find where's the nearest canteen to you?
-You can state your location first then enter your canteen
-criteria after "c/"
+You can enter the command as follows:
+"search type | your location | canteen criteria 1, canteen criteria 2"
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ```
 Once in Canteen Finder, users can then enter their location and canteen criteria
