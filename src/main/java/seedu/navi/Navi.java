@@ -1,10 +1,8 @@
 package seedu.navi;
 
-import seedu.navi.budget.Budget;
 import seedu.navi.budget.BudgetParser;
 import seedu.navi.canteen.CanteenMain;
 import seedu.navi.canteen.storage.Storage;
-import seedu.navi.favorites.Favorites;
 import seedu.navi.favorites.FavoritesParser;
 import seedu.navi.textui.TextUi;
 
@@ -20,56 +18,27 @@ public class Navi {
 
         TextUi.printGreeting();
         Scanner in = new Scanner(System.in);
-
-        // Start command processing
-        Navi ui = new Navi();
-        Favorites favorites = new Favorites();
-        Budget budget = new Budget();
-        Parser parser = new Parser(ui, favorites, budget);
-
         while (true) {
-            String input = in.nextLine().trim();
-            parser.handleCommand(input);
-        }
-    }
-}
-
-/**
- * @author kevinchangckc
- */
-class Parser {
-    private final Favorites favorites;
-    private final Budget budget;
-
-    public Parser(Navi ui, Favorites favorites, Budget budget) {
-        this.favorites = favorites;
-        this.budget = budget;
-    }
-
-    /**
-     * @author kevinchangckc
-     */
-    public void handleCommand(String input) {
-        switch (input.toLowerCase()) {
-        case "exit":
-        case "e":
-            TextUi.printExitMessage();
-            System.exit(0);
-            break;
-        case "canteen":
-        case "c":
-            CanteenMain.startCanteen();
-            break;
-        case "budget":
-            BudgetParser budgetParser = new BudgetParser(budget);
-            budgetParser.start();
-            break;
-        case "favorites":
-            FavoritesParser favoritesParser = new FavoritesParser(favorites);
-            favoritesParser.start();
-            break;
-        default:
-            TextUi.printInvalidCommand();
+            String input = in.nextLine().toLowerCase().trim();
+            switch (input) {
+            case "exit":
+            case "e":
+                TextUi.printExitMessage();
+                System.exit(0);
+                break;
+            case "canteen":
+            case "c":
+                CanteenMain.startCanteen();
+                break;
+            case "budget":
+                BudgetParser.start();
+                break;
+            case "favorites":
+                FavoritesParser.start();
+                break;
+            default:
+                TextUi.printInvalidCommand();
+            }
         }
     }
 }
