@@ -28,7 +28,6 @@ public class TextUi {
     public static void printGreeting() {
         printLineSeparator();
         System.out.println("Welcome! I'm:" + LOGO);
-        // System.out.println("What’s your name?");
         System.out.println("Alright, what can I do for you?");
         printLineSeparator();
     }
