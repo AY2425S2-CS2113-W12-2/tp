@@ -23,6 +23,7 @@ The following UML Sequence diagram shows the Canteen feature. The starting arrow
 of `Canteen` to begin the Canteen feature.
 
 ![CanteenSequenceDiagram](diagrams/CanteenSequenceDiagram.drawio.png)
+
 ___
 ### Canteen Finder Feature 
 The Canteen Finder sub-feature allows the user to find the nearest canteen relative to where the user is in NUS Kent 
@@ -84,6 +85,12 @@ If true, `containsAnyFields()` is called else `containsAllFields()` is called.
 The following UML Class diagram depicts the overview explained above.
 ![CanteenFinderClassDiagram](diagrams/CanteenFinderClassDiagram.drawio.png)
 
+#### Proposed implementations of future features
+One future feature we propose to implement is the ability for users to enter a specific building in a faculty as their location.
+Due to time constraints, we did not manage to implement this feature. However, we have already created a child class `Faculty` which
+inherits `Landmark`. The `Faculty` class will additionally store an array of buildings which belong to the NUS faculty.
+For example, the SOC Faculty will contain buildings such as COM1, COM2 etc.
+
 ___
 ### Canteen Lookup Feature
 The Canteen Lookup sub-feature allows the user to look up the different stalls and its characteristics of the specified
@@ -98,9 +105,10 @@ the appropriate method in `TextUi` to display each stall’s relevant details su
 If the canteen name is not found, a `CanteenNotFound` exception is thrown and a corresponding error message is shown to 
 inform the user.
 
-This sub-feature enhances usability by providing a fast and user-friendly way to access canteen and stall information based on 
-shortcut keywords, reducing the effort needed to navigate through the full dataset.
+This sub-feature enhances usability by providing a fast and user-friendly way to access canteen and stall information based on shortcut keywords, 
+reducing the effort needed to navigate through the full dataset.
 ![CanteenLookupSequenceDiagram](diagrams/CanteenLookupSequenceDiagram.png)
+
 ___
 ### Storage
 The Storage class is responsible for managing the persistent storage of canteen, faculty, hostel, and other building data.
