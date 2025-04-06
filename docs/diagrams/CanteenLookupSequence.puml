@@ -1,0 +1,40 @@
+@startuml
+actor User
+participant "CanteenLookupStartup" as CLS
+participant "CanteenShortcuts" as CS
+participant "CanteenLookup" as CL
+participant "CanteenDataProcessor" as CDP
+participant "Canteen" as C
+participant "TextUi" as UI
+
+User -> CLS : startCanteenLookup()
+CLS -> UI : printCanteenLookupGreetingCL()
+
+loop until command == "exit"
+    User -> CLS : enter command
+    CLS -> CS : get(command)
+    alt Invalid Shortcut
+        CLS -> UI : printCanteenNotFoundCL()
+    else Valid Shortcut
+        CLS -> CL : lookupCanteen(canteenName)
+        CL -> CDP : new CanteenDataProcessor(canteenMap)
+        CL -> CDP : processData()
+        CDP -> CDP : load data into canteenMap
+        destroy CDP
+
+        CL -> CL : canteenMap.get(canteenName)
+        alt Canteen not found
+            CL -> CL : throw CanteenNotFound
+        else
+            CL -> C : getStalls()
+            destroy C
+            CL -> UI : printCanteenStallsCL(canteenName, stalls)
+        end
+        destroy CL
+    end
+end
+
+CLS -> UI : printExitCanteenLookupCL()
+destroy CLS
+destroy UI
+@enduml

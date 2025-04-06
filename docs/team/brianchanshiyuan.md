@@ -34,6 +34,7 @@ ___
 Contributed to all information relating to:
 - Design and Implementation
     - Storage
+    - CanteenFinder function
 ___
 ### Contributions to Team-based Tasks
 - General code enhancements and refactoring
