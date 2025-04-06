@@ -66,7 +66,7 @@ the three attributes:
 The following UML Sequence diagram shows the searching functionality of the Canteen Finder feature. 
 The starting arrow indicates `CanteenFinderStartup` calling `findNearestCanteen()` of `CanteenFinder` to begin the search.
 
-![CanteenFinderSequenceDiagram](diagrams/CanteenFinderSequenceDiagram.drawio.png)
+![CanteenLookupSequence](diagrams/CanteenLookupSequence.png)
 ___
 ### Canteen Lookup Feature
 The Canteen Lookup sub-feature allows the user to look up the different stalls and its characteristics of the specified
@@ -75,7 +75,15 @@ canteen.
 This functionality is controlled by the `CanteenLookup` class where `startCanteenLookup()` would call 
 `searchCanteen(canteenName)`, a class level method, of the CanteenSearch class.
 
-`searchCanteen()` would then...
+`searchCanteen()` would then retrieve the `Canteen` object that matches the given canteen name by reading the canteen data 
+into memory via the `CanteenDataProcessor`. If the canteen exists, the method obtains its list of `Stall` objects and calls 
+the appropriate method in `TextUi` to display each stall’s relevant details such as name, cuisine type, and other characteristics. 
+If the canteen name is not found, a `CanteenNotFound` exception is thrown and a corresponding error message is shown to 
+inform the user.
+
+This sub-feature enhances usability by providing a fast and user-friendly way to access canteen and stall information based on shortcut keywords, reducing the effort needed to navigate through the full dataset.
+
+![CanteenLookupSequenceDiagram](diagrams/CanteenLookupSequenceDiagram.drawio.png)
 ___
 ### Storage
 The Storage class is responsible for managing the persistent storage of canteen, faculty, hostel, and other building data.
