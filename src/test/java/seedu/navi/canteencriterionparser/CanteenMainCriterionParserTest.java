@@ -11,7 +11,7 @@ import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.fail;
 
-public class CanteenCriterionParserTest {
+public class CanteenMainCriterionParserTest {
     @Test
     public void testHandleCanteenCriterion_halalCertified_success() {
         String[] testCriteria = CanteenCriterionParser.handleCanteenCriterion("halal certified");

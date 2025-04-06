@@ -14,7 +14,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.fail;
 
 
-class CanteenFinderTest {
+class CanteenMainFinderTest {
     @BeforeEach
     public void setUp() {
         Storage.processDataFromFiles();

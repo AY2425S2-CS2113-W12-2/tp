@@ -1,12 +1,12 @@
 package seedu.navi;
 
-import seedu.navi.canteen.Canteen;
-import seedu.navi.canteen.storage.Storage;
-import seedu.navi.textui.TextUi;
 import seedu.navi.budget.Budget;
 import seedu.navi.budget.BudgetParser;
+import seedu.navi.canteen.CanteenMain;
+import seedu.navi.canteen.storage.Storage;
 import seedu.navi.favorites.Favorites;
 import seedu.navi.favorites.FavoritesParser;
+import seedu.navi.textui.TextUi;
 
 import java.util.Scanner;
 
@@ -58,7 +58,7 @@ class Parser {
             break;
         case "canteen":
         case "c":
-            Canteen.startCanteen();
+            CanteenMain.startCanteen();
             break;
         case "budget":
             BudgetParser budgetParser = new BudgetParser(budget);

@@ -9,7 +9,7 @@ ___
 ## Canteen Feature
 The Canteen feature provides 2 sub-features: Canteen Finder and Canteen Lookup.
 
-This functionality is controlled by the `Canteen` class where `startCanteen()`, a class level method,
+This functionality is controlled by the `CanteenMain` class where `startCanteen()`, a class level method,
 would immediately enter an infinite loop which can only be exited when the user enters the `quit` command.
 In this loop, users can enter either `finder` or `lookup` to access the 2 sub-features.
 
@@ -20,7 +20,7 @@ If the user enters `lookup` instead, `startCanteenLookup()`, a class level metho
 called to start the Canteen Lookup sub-feature.
 
 The following UML Sequence diagram shows the Canteen feature. The starting arrow indicates `Navi` calling `startCanteen()`
-of `Canteen` to begin the Canteen feature.
+of `CanteenMain` to begin the Canteen feature.
 
 ![CanteenSequenceDiagram](diagrams/CanteenSequenceDiagram.drawio.png)
 ___
@@ -40,7 +40,7 @@ At the end, an instance of the record `NearestCanteenData` is returned to `Cante
 be printed to the user.
 
 The following UML Sequence diagram shows the overall and parsing aspect of the Canteen Finder feature. 
-The starting arrow indicates `Canteen` calling `startCanteenFinder()` of `CanteenFinderStartup` to begin the Canteen Finder feature.
+The starting arrow indicates `CanteenMain` calling `startCanteenFinder()` of `CanteenFinderStartup` to begin the Canteen Finder feature.
 
 ![CanteenFinderStartupSequenceDiagram](diagrams/CanteenFinderStartupSequenceDiagram.drawio.png)
 
