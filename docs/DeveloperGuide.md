@@ -291,8 +291,8 @@ Hence, Navi saves time as well as promotes exploration all in one intuitive app.
 | v2.0    | adventurous user                         | check what stalls does other canteens have aside from the one nearest to me | try new food and explore new cuisines                                           |
 | v2.0    | reflective user                          | view my monthly spendings                                                   | understand my long-term eating habits and adjust accordingly                    |
 | v2.0    | user with habit of saving                | carry over unused budget to the next week                                   | have flexibility in my spending across weeks                                    |
-| v2.0    | picky user                               | know what my favorites food items are                                       |                                                                                 |
-| v2.0    | user with habit of trying new food items | keep track of what i like and dislike                                       |                                                                                 |
+| v2.0    | picky user                               | know what my favorites food items are                                       | eat what i like                                                                 |
+| v2.0    | user with habit of trying new food items | keep track of what i like and dislike                                       | remember to food items i have already tried                                     |
 
 ## Non-Functional Requirements
 1. The app should work on any mainstream OS as long as it has java17 or above installed.
