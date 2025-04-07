@@ -93,6 +93,15 @@ public class FavoritesParser {
             // Trim each part to remove any surrounding spaces/tabs
             String description = params[0].trim();
             int rating = Integer.parseInt(params[1].trim());  // Parse rating to an integer
+
+            // Check if the rating is less than 100
+            if (rating >= 100) {
+
+                System.out.println("Rating must be a number less than 100.");
+                TextUi.printLineSeparator();
+                return;
+            }
+
             String category = params[2].trim();
 
             // Add to favorites
@@ -100,11 +109,12 @@ public class FavoritesParser {
 
             TextUi.printLineSeparator();
         } catch (NumberFormatException e) {
-            TextUi.printLineSeparator();
-            System.out.println("Rating must be a number.");
+
+            System.out.println("Rating must be a valid number less than 100.");
             TextUi.printLineSeparator();
         }
     }
+
 
 
     private void handleRemoveCommand(String arguments) {
