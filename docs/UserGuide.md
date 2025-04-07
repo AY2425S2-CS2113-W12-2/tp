@@ -1,5 +1,7 @@
 # User Guide
 
+## Table of Contents
+
 * ### [Introduction](#introduction)
 * ### [Quick start](#quick-start)
 * ### [Starting Navi](#starting-navi)
@@ -145,7 +147,7 @@ The full list of supported commands are listed in
 **Tip 2:** Navi does not support users to enter both `halal certified` and `muslim owned`.
 Reasoning is answered in the [FAQ section](#faq).
 
-Format: `SEARCH | LOACTION | CRITERION 1, CRITERION 2`
+Format: `SEARCH TYPE | LOACTION | CRITERION 1, CRITERION 2`
 
 Example 1: `1 | School of Computing | halal certified, aircon`
 ```
@@ -570,7 +572,6 @@ ___
 | Enter budget tracker    | `budget`         |
 | Enter favorites manager | `favorites`      |
 | Exit Navi               | `exit`           |
-___
 
 ### Canteen feature (main)
 
@@ -593,7 +594,7 @@ ___
 |------------------------|---------------|---------|
 | View stalls in canteen | `CANTEEN`     | `deck`  |
 | Exit Canteen Lookup    | `exit` or `e` | `e`     |
-___
+
 ### Budget tracker
 
 | Feature                              | Command         | Prompt                                                             |
