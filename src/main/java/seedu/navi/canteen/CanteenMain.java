@@ -3,7 +3,7 @@ package seedu.navi.canteen;
 import seedu.navi.canteen.canteenfinder.CanteenFinderStartup;
 import seedu.navi.canteen.canteenlookup.CanteenLookupStartup;
 import seedu.navi.textui.CanteenMainTextUi;
-import seedu.navi.textui.TextUi;
+import seedu.navi.textui.NaviTextUi;
 
 /**
  * The CanteenMain class serves as the entry point for the canteen-related functionalities.
@@ -41,7 +41,7 @@ public class CanteenMain {
         CanteenMainTextUi.printCanteenGreetingC();
         String command;
         while (true) {
-            command = TextUi.IN.nextLine().trim();
+            command = NaviTextUi.IN.nextLine().trim();
             switch (command.toLowerCase()) {
             case "exit":
             case "e":

@@ -2,7 +2,7 @@ package seedu.navi.canteen.canteenlookup;
 
 import seedu.navi.canteen.usershortcuts.CanteenShortcuts;
 import seedu.navi.textui.CanteenLookupTextUi;
-import seedu.navi.textui.TextUi;
+import seedu.navi.textui.NaviTextUi;
 
 /**
  * The CanteenLookupStartup class serves as the entry point for the Canteen Lookup module.
@@ -32,7 +32,7 @@ public class CanteenLookupStartup {
         CanteenLookupTextUi.printCanteenLookupGreetingCL();
         String command;
         while (true) {
-            command = TextUi.IN.nextLine().trim().toLowerCase();
+            command = NaviTextUi.IN.nextLine().trim().toLowerCase();
             if (command.equalsIgnoreCase("e") ||
                     command.equalsIgnoreCase("exit")) {
                 CanteenLookupTextUi.printExitCanteenLookupCL();

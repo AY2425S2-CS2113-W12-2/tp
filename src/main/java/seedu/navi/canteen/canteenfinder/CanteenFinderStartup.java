@@ -14,7 +14,7 @@ import seedu.navi.exceptions.LocationNotFound;
 import seedu.navi.exceptions.MissingCanteenFinderFields;
 import seedu.navi.exceptions.NILWithOtherCriteria;
 import seedu.navi.textui.CanteenFinderTextUi;
-import seedu.navi.textui.TextUi;
+import seedu.navi.textui.NaviTextUi;
 
 /**
  * The CanteenFinderStartup class serves as the entry point for the Canteen Finder module.
@@ -46,7 +46,7 @@ public class CanteenFinderStartup {
         CanteenFinderTextUi.printCanteenFinderGreetingCF();
         String command;
         while (true) {
-            command = TextUi.IN.nextLine().trim();
+            command = NaviTextUi.IN.nextLine().trim();
 
             if (command.equalsIgnoreCase("e") ||
                     command.equalsIgnoreCase("exit")) {

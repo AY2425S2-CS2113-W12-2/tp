@@ -1,8 +1,10 @@
 package seedu.navi.budget;
-import seedu.navi.textui.TextUi;
-import java.io.File;
+
+import seedu.navi.textui.NaviTextUi;
+
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -80,10 +82,10 @@ public class Budget {
         }
         weeklyBudget += amount;
         saveBudgetData();
-        TextUi.printLineSeparator();
+        NaviTextUi.printLineSeparator();
         System.out.println("Added $" + df.format(amount) + " to this week's budget.");
         System.out.println("Remaining weekly budget: $" + df.format(weeklyBudget));
-        TextUi.printLineSeparator();
+        NaviTextUi.printLineSeparator();
     }
 
     /**
@@ -105,22 +107,22 @@ public class Budget {
         monthlyExpenses += amount;
         saveBudgetData();
 
-        TextUi.printLineSeparator();
+        NaviTextUi.printLineSeparator();
         System.out.println("Deducted $" + df.format(amount) + " from your weekly budget.");
         System.out.println("Remaining weekly budget: $" + df.format(weeklyBudget));
-        TextUi.printLineSeparator();
+        NaviTextUi.printLineSeparator();
     }
 
     /**
      * Displays the current budget and expenses.
      */
     public void viewExpenses() {
-        TextUi.printLineSeparator();
+        NaviTextUi.printLineSeparator();
         System.out.println("Remaining weekly budget: $" + df.format(weeklyBudget));
         System.out.println("Total spent today: $" + df.format(dailyExpenses));
         System.out.println("Total spent this week: $" + df.format(weeklyExpenses));
         System.out.println("Total spent this month: $" + df.format(monthlyExpenses));
-        TextUi.printLineSeparator();
+        NaviTextUi.printLineSeparator();
     }
 
     /**
