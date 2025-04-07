@@ -424,7 +424,7 @@ To enter the favorites feature, users can enter `favorites` in the main menu.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 favorites
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-🌟 Favorites Tracker: Enter a command:
+Favorites Tracker: Enter a command:
 - add <description> : <rating> : <location>
 - remove N
 - view
@@ -442,7 +442,7 @@ Format: `add <description> : <rating> : <location>`
 
 > add milo:3:com
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-✅ Added: milo | Rating: 3 | Category: com
+Added: milo | Rating: 3 | Category: com
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ```
 #### Remove from favorites list
@@ -451,7 +451,7 @@ Format: `remove N`
 ```
 > remove 1
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-❌ Removed: milo | Rating: 3 | Category: com
+Removed: milo | Rating: 3 | Category: com
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ```
 #### View favorites list
@@ -460,7 +460,7 @@ Format:`view`
 ```
 > view
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-🌟 Your favorite items:
+Your favorite items:
 1. milo | Rating: 3 | Category: com
 2. cheese prata | Rating: 10 | Category: utown
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -471,11 +471,11 @@ Format: `sort asc`
 ```
 > sort asc
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-📊 Favorites sorted in ascending order.
+Favorites sorted in ascending order.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 > view
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-🌟 Your favorite items:
+Your favorite items:
 1. milo | Rating: 3 | Category: com
 2. cheese prata | Rating: 10 | Category: utown
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -486,11 +486,11 @@ Format: `sort desc`
 ```
 > sort desc
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-📊 Favorites sorted in descending order.
+Favorites sorted in descending order.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 > view
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-🌟 Your favorite items:
+Your favorite items:
 1. cheese prata | Rating: 10 | Category: utown
 2. milo | Rating: 3 | Category: com
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -501,7 +501,7 @@ Format: `search X`
 ```
 > search milo
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-🔎 Search results for 'milo':
+Search results for 'milo':
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 milo | Rating: 3 | Category: com
 milo | Rating: 8 | Category: deck
@@ -513,7 +513,7 @@ Format: `Undo`
 ```
 > undo 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-🔄 Restored: milo | Rating: 8 | Category: deck
+Restored: milo | Rating: 8 | Category: deck
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ```
 #### Exit favorites tracker
@@ -522,15 +522,15 @@ Format: `exit`
 ```
 > exit
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-👋 Exiting Favorites Tracker.
+Exiting Favorites Tracker.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ```
 
 ## FAQ
 
-**Q**: How do I transfer my data to another computer? 
+**Q**: How do I transfer my data to another computer?
 
-**A**: {your answer here}
+**A**: Export your data files and put it in the same directory as the jar file.
 
 **Q**: For Canteen Finder feature, what is the difference between Halal Certified and 
 Muslim Owned?
