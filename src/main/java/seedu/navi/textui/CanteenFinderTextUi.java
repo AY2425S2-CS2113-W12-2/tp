@@ -4,57 +4,21 @@ import seedu.navi.canteen.canteenfinder.landmark.canteen.stall.Stall;
 import seedu.navi.canteen.canteenfinder.nearestcanteendata.NearestCanteenData;
 
 import java.util.ArrayList;
-import java.util.Scanner;
 
+import static seedu.navi.textui.NaviTextUi.printLineSeparator;
 
-public class TextUi {
-    public static final Scanner IN = new Scanner(System.in);
-
-    private static final String LOGO = """
-                
-                 _   _             _
-                | \\ | | __ ___   _(_)
-                |  \\| |/ _` \\ \\ / / |
-                | |\\  | (_| |\\ V /| |
-                |_| \\_|\\__,_| \\_/ |_|""";
-
-    public static void printLineSeparator() {
-        System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
-    }
+/**
+ * The CanteenFinderTextUi class provides methods to handle text-based user interaction specifically
+ * for the Canteen Finder feature. It displays messages, prompts, and errors to guide users through
+ * the process of finding the nearest canteen based on their criteria.
+ */
+public class CanteenFinderTextUi {
 
     /**
-     * @author kevinchangckc
+     * Prints the greeting message for the Canteen Finder feature.
+     * <p>
+     * This method explains the format of the command required to use the Canteen Finder feature.
      */
-    public static void printGreeting() {
-        printLineSeparator();
-        System.out.println("Welcome! I'm:" + LOGO);
-        System.out.println("Alright, what can I do for you?");
-        printLineSeparator();
-    }
-
-    /**
-     * @author kevinchangckc
-     */
-    public static void printExitMessage() {
-        printLineSeparator();
-        System.out.println("Ah, you’re heading off? No worries!");
-        System.out.println("We’ll catch you next time!");
-        printLineSeparator();
-    }
-
-    public static void printInvalidCommand() {
-        printLineSeparator();
-        System.out.print("""
-                You've entered an invalid command!
-                Remember that I can help you with:
-                - "canteen" to find canteens
-                - "budget" to set or check your budget
-                - "favorites" to manage your favorite spots
-                - "exit" to quit Navi
-                """);
-        printLineSeparator();
-    }
-
     public static void printCanteenFinderGreetingCF() {
         printLineSeparator();
         System.out.print("""
@@ -65,6 +29,11 @@ public class TextUi {
         printLineSeparator();
     }
 
+    /**
+     * Prints an error message when the user does not enter any command in the Canteen Finder feature.
+     * <p>
+     * This method reminds the user of the correct command format.
+     */
     public static void printEmptyCanteenFinderCommandCF() {
         printLineSeparator();
         System.out.print("""
@@ -75,6 +44,11 @@ public class TextUi {
         printLineSeparator();
     }
 
+    /**
+     * Prints an error message when the user misses required fields in the Canteen Finder feature.
+     * <p>
+     * This method reminds the user of the correct command format.
+     */
     public static void printMissingCanteenFinderFieldsCF() {
         printLineSeparator();
         System.out.print("""
@@ -85,6 +59,11 @@ public class TextUi {
         printLineSeparator();
     }
 
+    /**
+     * Prints an error message when the user enters an invalid search type in the Canteen Finder feature.
+     * <p>
+     * This method explains the valid search types and prompts the user to correct their input.
+     */
     public static void printInvalidSearchTypeCF() {
         printLineSeparator();
         System.out.println("Oh no! You did not enter a valid search type!");
@@ -92,6 +71,14 @@ public class TextUi {
         printLineSeparator();
     }
 
+    /**
+     * Prints the details of the nearest canteen that matches the user's criteria.
+     * <p>
+     * This method displays the canteen's name, valid stalls, and distance from the user's location.
+     *
+     * @param nearestCanteenData An object containing the nearest canteen's data, including its name, distance,
+     *                           and valid stalls.
+     */
     public static void printNearestCanteenCF(NearestCanteenData nearestCanteenData) {
         printLineSeparator();
         System.out.println("Alright! The nearest canteen to you that fit your criteria is");
@@ -104,6 +91,11 @@ public class TextUi {
         printLineSeparator();
     }
 
+    /**
+     * Prints an error message when the user's location is not found in the system.
+     * <p>
+     * This method informs the user that their location is invalid and prompts them to try again.
+     */
     public static void printLocationNotFoundCF() {
         printLineSeparator();
         System.out.println("Sorry! The location you entered does not exist in my data. :(");
@@ -112,6 +104,11 @@ public class TextUi {
         printLineSeparator();
     }
 
+    /**
+     * Prints an error message when no canteen matches the user's criteria.
+     * <p>
+     * This method informs the user that no matching canteen was found and prompts them to adjust their criteria.
+     */
     public static void printCanteenNotFoundCF() {
         printLineSeparator();
         System.out.println("Sorry! I couldn't find any canteen that meets your criteria. :(");
@@ -120,6 +117,11 @@ public class TextUi {
         printLineSeparator();
     }
 
+    /**
+     * Prints an error message when the user enters invalid canteen criteria.
+     * <p>
+     * This method lists the valid criteria and prompts the user to correct their input.
+     */
     public static void printInvalidCanteenCriteriaCF() {
         printLineSeparator();
         System.out.println("Please enter a valid criteria that is,");
@@ -129,24 +131,44 @@ public class TextUi {
         printLineSeparator();
     }
 
+    /**
+     * Prints an error message when the user includes "NIL" with other criteria.
+     * <p>
+     * This method informs the user that "NIL" cannot be combined with other criteria.
+     */
     public static void printNILWithOtherCriteriaErrorCF() {
         printLineSeparator();
         System.out.println("You can't include other criteria with \"NIL\"!");
         printLineSeparator();
     }
 
+    /**
+     * Prints an error message when the user enters duplicate criteria.
+     * <p>
+     * This method informs the user that duplicate criteria are not allowed.
+     */
     public static void printDuplicateCanteenCriteriaCF() {
         printLineSeparator();
         System.out.println("You've entered the same type of criteria more than once!");
         printLineSeparator();
     }
 
+    /**
+     * Prints an error message when the user includes both "Halal Certified" and "Muslim Owned" criteria.
+     * <p>
+     * This method informs the user to choose only one of these criteria.
+     */
     public static void printHCAndMOCriteriaErrorCF() {
         printLineSeparator();
         System.out.println("Please enter either Halal Certified or Muslim Owned and not both!");
         printLineSeparator();
     }
 
+    /**
+     * Prints an error message when the user includes both "Halal Certified" and "Muslim Owned" criteria.
+     * <p>
+     * This method informs the user to choose only one of these criteria.
+     */
     public static void printExitCanteenFinderCF() {
         printLineSeparator();
         System.out.println("You have exited the Canteen Finder feature!");
@@ -158,57 +180,16 @@ public class TextUi {
         System.out.println("or \"exit\" to exit canteen finder.");
     }
 
+    /**
+     * Prints the list of valid stalls in a canteen.
+     * <p>
+     * This method iterates through the list of stalls and prints their details.
+     *
+     * @param validStalls A list of {@link Stall} objects representing the valid stalls to display.
+     */
     public static void printValidStallsCF(ArrayList<Stall> validStalls) {
         for (Stall stall : validStalls) {
             System.out.print(stall);
         }
-    }
-
-    public static void printCanteenGreetingC() {
-        printLineSeparator();
-        System.out.println("You've entered the Canteen feature!");
-        System.out.println("You can enter \"finder\" to look for the nearest canteen to you,");
-        System.out.println("or you can enter \"lookup\" to see a canteen's stalls information.");
-        printLineSeparator();
-    }
-
-    public static void printExitCanteenC() {
-        printLineSeparator();
-        System.out.println("You've exited the Canteen feature!");
-        printLineSeparator();
-    }
-
-    public static void printInvalidCommandC() {
-        printLineSeparator();
-        System.out.println("You've entered an invalid command!");
-        System.out.println("Please only enter \"finder\", \"lookup\" or \"exit\".");
-        printLineSeparator();
-    }
-
-    public static void printCanteenLookupGreetingCL() {
-        printLineSeparator();
-        System.out.println("You've entered the Canteen Lookup feature!");
-        System.out.println("Enter any Canteen in NUS to check what kind of stalls it have!");
-        System.out.println("Eg. Techno Edge");
-        printLineSeparator();
-    }
-
-    public static void printExitCanteenLookupCL() {
-        printLineSeparator();
-        System.out.println("You've exited the Canteen Lookup feature");
-        printLineSeparator();
-    }
-
-    public static void printCanteenStallsCL(String canteenName, ArrayList<Stall> stalls) {
-        printLineSeparator();
-        System.out.println("Here are all the stalls in " + canteenName + ":");
-        printValidStallsCF(stalls);
-        printLineSeparator();
-    }
-
-    public static void printCanteenNotFoundCL() {
-        printLineSeparator();
-        System.out.println("Sorry, we could not find the canteen you're looking for!");
-        printLineSeparator();
     }
 }

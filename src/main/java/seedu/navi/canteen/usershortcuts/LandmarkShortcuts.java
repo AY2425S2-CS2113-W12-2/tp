@@ -2,6 +2,17 @@ package seedu.navi.canteen.usershortcuts;
 
 import java.util.HashMap;
 
+/**
+ * The LandmarkShortcuts class provides a mapping of shorthand notations to their full-form
+ * landmark names. This class is used to standardize user input by converting shorthand or
+ * alternative names into their canonical forms.
+ * <p>
+ * The class contains a static {@link HashMap} named {@code LANDMARK_MAP}, which maps user-friendly
+ * shortcuts (e.g., "soc", "nbs") to their corresponding full-form landmark names (e.g., "SOC",
+ * "NBS"). The map is initialized statically and is immutable once created.
+ *
+ * @see #LANDMARK_MAP
+ */
 public class LandmarkShortcuts {
     public static final HashMap<String, String> LANDMARK_MAP = new HashMap<>();
 

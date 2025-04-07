@@ -1,6 +1,6 @@
 package seedu.navi.favorites;
 
-import seedu.navi.textui.TextUi;
+import seedu.navi.textui.NaviTextUi;
 
 import java.util.Scanner;
 
@@ -28,7 +28,7 @@ public class FavoritesParser {
      */
     public void start() {
         scanner = new Scanner(System.in);
-        TextUi.printLineSeparator();
+        NaviTextUi.printLineSeparator();
         System.out.println("Favorites Tracker: Enter a command:");
         System.out.println("  - add <description> : <rating> : <location>");
         System.out.println("  - remove N");
@@ -38,16 +38,16 @@ public class FavoritesParser {
         System.out.println("  - search X");
         System.out.println("  - undo");
         System.out.println("  - exit");
-        TextUi.printLineSeparator();
+        NaviTextUi.printLineSeparator();
 
         while (true) {
             System.out.print("> ");
             String input = scanner.nextLine().trim();
 
             if (input.isEmpty()) {
-                TextUi.printLineSeparator();
+                NaviTextUi.printLineSeparator();
                 System.out.println("Please enter a command.");
-                TextUi.printLineSeparator();
+                NaviTextUi.printLineSeparator();
                 continue;
             }
 
@@ -70,21 +70,21 @@ public class FavoritesParser {
                 break;
             case "search":
                 favorites.searchFavorites(arguments);
-                TextUi.printLineSeparator();
+                NaviTextUi.printLineSeparator();
                 break;
             case "undo":
                 favorites.undoRemove();
                 break;
             case "exit":
-                TextUi.printLineSeparator();
+                NaviTextUi.printLineSeparator();
                 System.out.println("Exiting Favorites Tracker.");
-                TextUi.printLineSeparator();
+                NaviTextUi.printLineSeparator();
                 return;
             default:
-                TextUi.printLineSeparator();
+                NaviTextUi.printLineSeparator();
                 System.out.println("Unknown command. Try: add description : rating : location, remove N, view, " +
                         "sort asc/desc, search X, undo, exit.");
-                TextUi.printLineSeparator();
+                NaviTextUi.printLineSeparator();
             }
         }
     }
@@ -99,26 +99,26 @@ public class FavoritesParser {
         String[] params = arguments.split("\\s*:\\s*");
 
         if (params.length != 3) {
-            TextUi.printLineSeparator();
+            NaviTextUi.printLineSeparator();
             System.out.println("Invalid format. Use: add <description> : <rating> : <location>");
-            TextUi.printLineSeparator();
+            NaviTextUi.printLineSeparator();
             return;
         }
 
         try {
-            TextUi.printLineSeparator();
+            NaviTextUi.printLineSeparator();
             String description = params[0].trim();
             String category = params[2].trim();
 
             if (description.isEmpty() || category.isEmpty()) {
                 System.out.println("Description and location cannot be empty.");
-                TextUi.printLineSeparator();
+                NaviTextUi.printLineSeparator();
                 return;
             }
 
             if (!params[1].trim().matches("\\d+")) {
                 System.out.println("Rating must be a valid integer (no decimals allowed).");
-                TextUi.printLineSeparator();
+                NaviTextUi.printLineSeparator();
                 return;
             }
 
@@ -126,7 +126,7 @@ public class FavoritesParser {
 
             if (rating < 0) {
                 System.out.println("Rating cannot be negative.");
-                TextUi.printLineSeparator();
+                NaviTextUi.printLineSeparator();
                 return;
             }
 
@@ -151,10 +151,10 @@ public class FavoritesParser {
                 favorites.addFavorite(description, rating, category);
             }
 
-            TextUi.printLineSeparator();
+            NaviTextUi.printLineSeparator();
         } catch (NumberFormatException e) {
             System.out.println("Rating must be a valid number.");
-            TextUi.printLineSeparator();
+            NaviTextUi.printLineSeparator();
         }
     }
 
@@ -169,9 +169,9 @@ public class FavoritesParser {
             int index = Integer.parseInt(arguments.trim()) - 1;
             favorites.removeFavorite(index);
         } catch (NumberFormatException e) {
-            TextUi.printLineSeparator();
+            NaviTextUi.printLineSeparator();
             System.out.println("Please enter a valid index number.");
-            TextUi.printLineSeparator();
+            NaviTextUi.printLineSeparator();
         }
     }
 

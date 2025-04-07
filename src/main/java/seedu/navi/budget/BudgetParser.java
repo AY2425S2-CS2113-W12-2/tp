@@ -1,5 +1,5 @@
 package seedu.navi.budget;
-import seedu.navi.textui.TextUi;
+import seedu.navi.textui.NaviTextUi;
 
 import java.time.LocalDate;
 import java.util.Scanner;
@@ -25,16 +25,16 @@ public class BudgetParser {
         LocalDate lastUpdated = budget.getLastUpdatedDate();
 
         if ((lastUpdated!=null) && (budget.isNewWeek(lastUpdated, today))) {
-            TextUi.printLineSeparator();
+            NaviTextUi.printLineSeparator();
             System.out.println("Do you want to carry over last week's remaining budget of $" + String.format("%.2f",
                     budget.getWeeklyBudget()) + "? (yes/no)");
-            TextUi.printLineSeparator();
+            NaviTextUi.printLineSeparator();
             System.out.print("> ");
             String response = scanner.nextLine().trim().toLowerCase();
             while (!response.equals("yes") && !response.equals("no")) {
-                TextUi.printLineSeparator();
+                NaviTextUi.printLineSeparator();
                 System.out.println("Please enter 'yes' or 'no'.");
-                TextUi.printLineSeparator();
+                NaviTextUi.printLineSeparator();
                 System.out.print("> ");
                 response = scanner.nextLine().trim().toLowerCase();
             }
@@ -43,18 +43,18 @@ public class BudgetParser {
 
         budget.resetIfNeeded(); // Check if a reset is needed (daily, weekly, monthly)
 
-        TextUi.printLineSeparator();
+        NaviTextUi.printLineSeparator();
         System.out.println("Budget Tracker: Enter a command (add X, deduct X, view, exit)");
-        TextUi.printLineSeparator();
+        NaviTextUi.printLineSeparator();
 
         while (true) {
             System.out.print("> ");
             String input = scanner.nextLine().trim();
 
             if (input.isEmpty()) {
-                TextUi.printLineSeparator();
+                NaviTextUi.printLineSeparator();
                 System.out.println("Please enter a command (add X, deduct X, view, exit)");
-                TextUi.printLineSeparator();
+                NaviTextUi.printLineSeparator();
                 continue;
             }
 
@@ -65,9 +65,9 @@ public class BudgetParser {
 
             if (isAddOrDeduct) {
                 if (parts.length < 2 || parts[1].trim().isEmpty()) {
-                    TextUi.printLineSeparator();
+                    NaviTextUi.printLineSeparator();
                     System.out.println("Please enter an amount after the command.");
-                    TextUi.printLineSeparator();
+                    NaviTextUi.printLineSeparator();
                     continue;
                 }
 
@@ -79,20 +79,20 @@ public class BudgetParser {
                         throw new ArithmeticException("Amount is too large or invalid.");
                     }
                     if (amount < 0) {
-                        TextUi.printLineSeparator();
+                        NaviTextUi.printLineSeparator();
                         System.out.println("Please enter a positive number.");
-                        TextUi.printLineSeparator();
+                        NaviTextUi.printLineSeparator();
                         continue;
                     }
                 } catch (NumberFormatException e) {
-                    TextUi.printLineSeparator();
+                    NaviTextUi.printLineSeparator();
                     System.out.println("Please enter a valid number.");
-                    TextUi.printLineSeparator();
+                    NaviTextUi.printLineSeparator();
                     continue;
                 } catch (ArithmeticException e) {
-                    TextUi.printLineSeparator();
+                    NaviTextUi.printLineSeparator();
                     System.out.println("Amount is too large to be processed.");
-                    TextUi.printLineSeparator();
+                    NaviTextUi.printLineSeparator();
                     continue;
                 }
             }
@@ -103,18 +103,18 @@ public class BudgetParser {
                 try {
                     budget.addWeeklyBudget(amount);
                 } catch (IllegalArgumentException e) {
-                    TextUi.printLineSeparator();
+                    NaviTextUi.printLineSeparator();
                     System.out.println("Error: " + e.getMessage());
-                    TextUi.printLineSeparator();
+                    NaviTextUi.printLineSeparator();
                 }
                 break;
             case "deduct":
                 try {
                     budget.deductExpense(amount);
                 } catch (IllegalArgumentException | IllegalStateException e) {
-                    TextUi.printLineSeparator();
+                    NaviTextUi.printLineSeparator();
                     System.out.println("Error: " + e.getMessage());
-                    TextUi.printLineSeparator();
+                    NaviTextUi.printLineSeparator();
                 }
                 break;
             case "view":
@@ -124,14 +124,14 @@ public class BudgetParser {
                 budget.resetWeeklyBudget(false); // Reset weekly budget (user chooses whether to carry over)
                 break;
             case "exit":
-                TextUi.printLineSeparator();
+                NaviTextUi.printLineSeparator();
                 System.out.println("Exiting Budget Tracker.");
-                TextUi.printLineSeparator();
+                NaviTextUi.printLineSeparator();
                 return;
             default:
-                TextUi.printLineSeparator();
+                NaviTextUi.printLineSeparator();
                 System.out.println("Unknown command. Try: add X, deduct X, view, exit.");
-                TextUi.printLineSeparator();
+                NaviTextUi.printLineSeparator();
             }
         }
     }

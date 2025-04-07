@@ -6,7 +6,7 @@ import seedu.navi.canteen.CanteenMain;
 import seedu.navi.canteen.storage.Storage;
 import seedu.navi.favorites.Favorites;
 import seedu.navi.favorites.FavoritesParser;
-import seedu.navi.textui.TextUi;
+import seedu.navi.textui.NaviTextUi;
 
 import java.util.Scanner;
 
@@ -17,7 +17,7 @@ public class Navi {
     public static void main(String[] args) {
         Storage.processDataFromFiles();
 
-        TextUi.printGreeting();
+        NaviTextUi.printGreeting();
         Scanner in = new Scanner(System.in);
 
         // instantiate Budget and BudgetParser once
@@ -33,7 +33,7 @@ public class Navi {
             switch (input) {
             case "exit":
             case "e":
-                TextUi.printExitMessage();
+                NaviTextUi.printExitMessage();
                 System.exit(0);
                 break;
             case "canteen":
@@ -47,7 +47,7 @@ public class Navi {
                 favoritesParser.start();
                 break;
             default:
-                TextUi.printInvalidCommand();
+                NaviTextUi.printInvalidCommand();
             }
         }
     }

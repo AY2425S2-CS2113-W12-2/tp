@@ -1,11 +1,12 @@
 package seedu.navi;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import org.junit.jupiter.api.Test;
+import seedu.navi.textui.NaviTextUi;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
-import org.junit.jupiter.api.Test;
-import seedu.navi.textui.TextUi;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
 class NaviTest {
@@ -14,7 +15,7 @@ class NaviTest {
         ByteArrayOutputStream outContent = new ByteArrayOutputStream();
         System.setOut(new PrintStream(outContent));
 
-        TextUi.printExitMessage();
+        NaviTextUi.printExitMessage();
 
         String expectedOutput = """
                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

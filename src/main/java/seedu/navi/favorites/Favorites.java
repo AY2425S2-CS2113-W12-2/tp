@@ -1,6 +1,7 @@
 package seedu.navi.favorites;
 
-import seedu.navi.textui.TextUi;
+import javafx.util.Pair;
+import seedu.navi.textui.NaviTextUi;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -10,7 +11,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
-import javafx.util.Pair;
 
 /**
  * Manages the user's list of favorite items.
@@ -94,17 +94,17 @@ public class Favorites {
     public void removeFavorite(int index) {
         
         if (index < 0 || index >= favoriteItems.size()) {
-            TextUi.printLineSeparator();
+            NaviTextUi.printLineSeparator();
             System.out.println("Invalid index.");
-            TextUi.printLineSeparator();
+            NaviTextUi.printLineSeparator();
             return;
         }
         String removedItem = favoriteItems.remove(index);
         undoStack.push(new Pair<>(index, removedItem));
         saveFavorites();
-        TextUi.printLineSeparator();
+        NaviTextUi.printLineSeparator();
         System.out.println("Removed: " + removedItem);
-        TextUi.printLineSeparator();
+        NaviTextUi.printLineSeparator();
     }
 
     /**
@@ -113,9 +113,9 @@ public class Favorites {
      */
     public void undoRemove() {
         if (undoStack.isEmpty()) {
-            TextUi.printLineSeparator();
+            NaviTextUi.printLineSeparator();
             System.out.println("No recent deletions to undo.");
-            TextUi.printLineSeparator();
+            NaviTextUi.printLineSeparator();
             return;
         }
         Pair<Integer, String> lastRemoved = undoStack.pop();
@@ -124,9 +124,9 @@ public class Favorites {
 
         favoriteItems.add(originalIndex, restoredItem);
         saveFavorites();
-        TextUi.printLineSeparator();
+        NaviTextUi.printLineSeparator();
         System.out.println("Restored: " + restoredItem);
-        TextUi.printLineSeparator();
+        NaviTextUi.printLineSeparator();
     }
 
     /**
@@ -146,7 +146,7 @@ public class Favorites {
         if (favoriteItems.isEmpty()) {
             loadFavorites();
         }
-        TextUi.printLineSeparator();
+        NaviTextUi.printLineSeparator();
         if (favoriteItems.isEmpty()) {
             System.out.println("No favorites yet.");
         } else {
@@ -155,7 +155,7 @@ public class Favorites {
                 System.out.println((i + 1) + ". " + favoriteItems.get(i));
             }
         }
-        TextUi.printLineSeparator();
+        NaviTextUi.printLineSeparator();
     }
 
     /**
@@ -170,9 +170,9 @@ public class Favorites {
             return descending ? Integer.compare(ratingB, ratingA) : Integer.compare(ratingA, ratingB);
         });
         saveFavorites();
-        TextUi.printLineSeparator();
+        NaviTextUi.printLineSeparator();
         System.out.println("Favorites sorted in " + (descending ? "descending" : "ascending") + " order.");
-        TextUi.printLineSeparator();
+        NaviTextUi.printLineSeparator();
     }
 
     /**
@@ -185,14 +185,14 @@ public class Favorites {
         keyword = keyword.trim();
 
         if (keyword.isEmpty()) {
-            TextUi.printLineSeparator();
+            NaviTextUi.printLineSeparator();
             System.out.println("Please enter a valid search term.");
             return false;
         }
 
-        TextUi.printLineSeparator();
+        NaviTextUi.printLineSeparator();
         System.out.println("Search results for '" + keyword + "':");
-        TextUi.printLineSeparator();
+        NaviTextUi.printLineSeparator();
 
         boolean found = false;
         for (String item : favoriteItems) {

@@ -2,6 +2,17 @@ package seedu.navi.canteen.usershortcuts;
 
 import java.util.HashMap;
 
+/**
+ * The CanteenShortcuts class provides a mapping of shorthand notations and alternative names to their
+ * full-form canteen names. This class is used to standardize user input by converting shorthand or
+ * alternative names into their canonical forms.
+ * <p>
+ * The class contains a static {@link HashMap} named {@code CANTEEN_MAP}, which maps user-friendly shortcuts
+ * (e.g., "techno", "pgp") to their corresponding full-form canteen names (e.g., "Techno Edge", "PGP Canteen").
+ * The map is initialized statically and is immutable once created.
+ *
+ * @see #CANTEEN_MAP
+ */
 public class CanteenShortcuts {
     public static final HashMap<String, String> CANTEEN_MAP = new HashMap<>();
 
