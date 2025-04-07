@@ -26,11 +26,11 @@ Some UML diagrams within the Developer Guide have been created on [Draw.io](http
 Navi is the main class of the application which controls the 3 core features that Navi provides: Canteen, 
 Budget and Favorites.
 
-If the user enters `canteen`, Navi will call `startCanteen()` of `CanteenMain` to bring users to the canteen feature.
+If the user enters `canteen`, Navi will call `startCanteen()`, a class level method, of `CanteenMain` to bring users to the canteen feature.
 
-If the user enters `budget`, Navi will call `start()` of `BudgetParser` to bring users to the budget feature.
+If the user enters `budget`, Navi will call `start()` of `budgetParser`, an instance of `BudgetParser`, to bring users to the budget feature.
 
-If the user enters `favorites`, Navi will call `start()` of `FavoritesParser` to bring users to the favorites feature.
+If the user enters `favorites`, Navi will call `start()` of `favoritesParser`, an instance of `FavoritesParser` to bring users to the favorites feature.
 
 If the user enters `exit`, Navi will exit the application and the program ends.
 
