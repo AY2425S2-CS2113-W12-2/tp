@@ -211,10 +211,12 @@ Stack<String> is used for undoStack because:
 
 Persistent Storage ensures data is not lost between sessions by saving the favorites list to a file.
 
+![favorites](diagrams/favorites.png)
+
 #### Future Enhancements
 Potential improvements include Expanded search/filter options, multi-step undo/redo, and additional 
 sorting criteria.
-![favorites](diagrams/favorites.png)
+
 
 ## Budget Feature
 This feature allows users to track their daily, weekly and monthly expenses on food as well as the weekly budget.
