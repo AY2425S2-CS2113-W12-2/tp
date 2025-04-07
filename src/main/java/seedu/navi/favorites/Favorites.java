@@ -12,17 +12,28 @@ import java.util.List;
 import java.util.Stack;
 import javafx.util.Pair;
 
+/**
+ * Manages the user's list of favorite items.
+ * Provides functionality for adding, removing, viewing, sorting, searching, and undoing deletions of favorites.
+ * Handles persistent storage by saving and loading favorites from a file.
+ */
 public class Favorites {
     private static final String FILE_PATH = "favorites.txt"; // Path to save the favorites data
     private List<String> favoriteItems;
     private Stack<Pair<Integer, String>> undoStack;  // Stores (index, item)
 
+    /**
+     * Constructs a Favorites object with an empty favorites list and undo stack.
+     */
     public Favorites() {
         this.favoriteItems = new ArrayList<>();
         this.undoStack = new Stack<>();
     }
 
-    // Loads the favorites from the file into the favoriteItems list
+    /**
+     * Loads the favorites from the save file into the favorites list.
+     * If the file does not exist, initializes with an empty list.
+     */
     private void loadFavorites() {
         try (BufferedReader reader = new BufferedReader(new FileReader(FILE_PATH))) {
             String line;
@@ -30,11 +41,13 @@ public class Favorites {
                 favoriteItems.add(line);
             }
         } catch (IOException e) {
-            // If file doesn't exist or can't be read, we initialize with an empty list
+            // Initialize with empty list if file not found or unreadable
         }
     }
 
-    // Saves the current favoriteItems list to a file
+    /**
+     * Saves the current favorites list to the save file.
+     */
     private void saveFavorites() {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(FILE_PATH))) {
             for (String item : favoriteItems) {
@@ -46,12 +59,23 @@ public class Favorites {
         }
     }
 
+    /**
+     * Clears all favorites and the undo stack.
+     * Saves the cleared state to file.
+     */
     public void clearFavorites() {
         favoriteItems.clear();
         undoStack.clear();
         saveFavorites();
     }
 
+    /**
+     * Adds a new favorite item with the given details.
+     *
+     * @param description The description of the item.
+     * @param rating The rating of the item.
+     * @param category The category of the item.
+     */
     public void addFavorite(String description, int rating, String category) {
         String item = description + " | Rating: " + rating + " | Location: " + category;
         favoriteItems.add(item);
@@ -59,6 +83,12 @@ public class Favorites {
         System.out.println("Added: " + item);
     }
 
+    /**
+     * Removes the favorite item at the specified index.
+     * Stores the removed item in the undo stack for possible restoration.
+     *
+     * @param index The index of the item to remove (0-based).
+     */
     public void removeFavorite(int index) {
         if (index < 0 || index >= favoriteItems.size()) {
             TextUi.printLineSeparator();
@@ -67,13 +97,17 @@ public class Favorites {
             return;
         }
         String removedItem = favoriteItems.remove(index);
-        undoStack.push(new Pair<>(index, removedItem));  // Store index + item
+        undoStack.push(new Pair<>(index, removedItem));
         saveFavorites();
         TextUi.printLineSeparator();
         System.out.println("Removed: " + removedItem);
         TextUi.printLineSeparator();
     }
 
+    /**
+     * Undoes the most recent removal of a favorite item.
+     * Restores the removed item to its original position.
+     */
     public void undoRemove() {
         if (undoStack.isEmpty()) {
             TextUi.printLineSeparator();
@@ -85,36 +119,47 @@ public class Favorites {
         int originalIndex = lastRemoved.getKey();
         String restoredItem = lastRemoved.getValue();
 
-        favoriteItems.add(originalIndex, restoredItem);  // Restore at correct position
+        favoriteItems.add(originalIndex, restoredItem);
         saveFavorites();
         TextUi.printLineSeparator();
         System.out.println("Restored: " + restoredItem);
         TextUi.printLineSeparator();
     }
 
+    /**
+     * Returns a copy of the current favorites list.
+     *
+     * @return A list of favorite items.
+     */
     public List<String> getFavoriteItems() {
         return new ArrayList<>(favoriteItems);
     }
 
+    /**
+     * Displays all favorite items to the user.
+     * Loads favorites from file if the list is currently empty.
+     */
     public void viewFavorites() {
-        // Load the favorites when viewing them, if the list is empty
         if (favoriteItems.isEmpty()) {
-            loadFavorites(); // Only load favorites if the list is empty
+            loadFavorites();
         }
+        TextUi.printLineSeparator();
         if (favoriteItems.isEmpty()) {
-            TextUi.printLineSeparator();
             System.out.println("No favorites yet.");
-            TextUi.printLineSeparator();
         } else {
-            TextUi.printLineSeparator();
             System.out.println("Your favorite items:");
             for (int i = 0; i < favoriteItems.size(); i++) {
                 System.out.println((i + 1) + ". " + favoriteItems.get(i));
             }
-            TextUi.printLineSeparator();
         }
+        TextUi.printLineSeparator();
     }
 
+    /**
+     * Sorts the favorites list based on rating.
+     *
+     * @param descending If true, sorts in descending order. Otherwise, sorts in ascending order.
+     */
     public void sortFavorites(boolean descending) {
         favoriteItems.sort((a, b) -> {
             int ratingA = Integer.parseInt(a.split("\\| Rating: ")[1].split(" ")[0]);
@@ -127,19 +172,21 @@ public class Favorites {
         TextUi.printLineSeparator();
     }
 
+    /**
+     * Searches for favorite items containing the given keyword.
+     *
+     * @param keyword The search keyword.
+     * @return True if matching items were found, false otherwise.
+     */
     public boolean searchFavorites(String keyword) {
-        // Trim the keyword to remove leading/trailing spaces and check if it's empty
         keyword = keyword.trim();
 
-        // If the keyword is empty, print a message and return false
         if (keyword.isEmpty()) {
             TextUi.printLineSeparator();
             System.out.println("Please enter a valid search term.");
-
             return false;
         }
 
-        // If the keyword is not empty, proceed with the search
         TextUi.printLineSeparator();
         System.out.println("Search results for '" + keyword + "':");
         TextUi.printLineSeparator();
@@ -160,4 +207,5 @@ public class Favorites {
     }
 
 }
+
 
