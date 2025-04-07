@@ -272,21 +272,23 @@ A favorites list that lets users save, rate, and comment on stalls, making it ea
 Hence, Navi saves time as well as promotes exploration all in one intuitive app.
 
 ## User Stories
-| Version | As a ...                      | I want to ...                                                               | So that I can ...                                                               |
-|---------|-------------------------------|-----------------------------------------------------------------------------|---------------------------------------------------------------------------------|
-| v1.0    | new user                      | see usage instructions                                                      | refer to them when I forget how to use the application                          |
-| v1.0    | user with dietary restriction | find a canteen that matches my dietary restrictions                         | conveniently find canteens to dine at that falls within my dietary restrictions |
-| v1.0    | hungry user                   | know which canteen is nearest to me                                         | go and eat as soon as possible                                                  |
-| v1.0    | hot user                      | know which canteen has air conditioning                                     | go and eat in a cooling environment                                             |
-| v1.0    | user                          | know how far the nearest canteen is away from me                            | roughly know how long it'll take to get there                                   |
-| v1.0    | student                       | set a weekly budget                                                         | manage my spending on meals effectively                                         |
-| v1.0    | budget-conscious user         | track my daily/weekly food expenses                                         | stay within my weekly budget                                                    |
-| v1.0    | organised user                | see my remaining weekly budget                                              | make informed decisions about where/what to eat                                 |
-| v2.0    | user with dietary restriction | know which exact stalls in the canteen that matches my dietary restrictions | conveniently find stalls to buy from that falls within my dietary restrictions  |
-| v2.0    | lazy user                     | have command shortcuts                                                      | save time typing and manoeuvre around the app quickly                           |
-| v2.0    | adventurous user              | check what stalls does other canteens have aside from the one nearest to me | try new food and explore new cuisines                                           |
-| v2.0    | reflective user               | view my monthly spendings                                                   | understand my long-term eating habits and adjust accordingly                    |
-| v2.0    | user with habit of saving     | carry over unused budget to the next week                                   | have flexibility in my spending across weeks                                    |
+| Version | As a ...                                 | I want to ...                                                               | So that I can ...                                                               |
+|---------|------------------------------------------|-----------------------------------------------------------------------------|---------------------------------------------------------------------------------|
+| v1.0    | new user                                 | see usage instructions                                                      | refer to them when I forget how to use the application                          |
+| v1.0    | user with dietary restriction            | find a canteen that matches my dietary restrictions                         | conveniently find canteens to dine at that falls within my dietary restrictions |
+| v1.0    | hungry user                              | know which canteen is nearest to me                                         | go and eat as soon as possible                                                  |
+| v1.0    | hot user                                 | know which canteen has air conditioning                                     | go and eat in a cooling environment                                             |
+| v1.0    | user                                     | know how far the nearest canteen is away from me                            | roughly know how long it'll take to get there                                   |
+| v1.0    | student                                  | set a weekly budget                                                         | manage my spending on meals effectively                                         |
+| v1.0    | budget-conscious user                    | track my daily/weekly food expenses                                         | stay within my weekly budget                                                    |
+| v1.0    | organised user                           | see my remaining weekly budget                                              | make informed decisions about where/what to eat                                 |
+| v2.0    | user with dietary restriction            | know which exact stalls in the canteen that matches my dietary restrictions | conveniently find stalls to buy from that falls within my dietary restrictions  |
+| v2.0    | lazy user                                | have command shortcuts                                                      | save time typing and manoeuvre around the app quickly                           |
+| v2.0    | adventurous user                         | check what stalls does other canteens have aside from the one nearest to me | try new food and explore new cuisines                                           |
+| v2.0    | reflective user                          | view my monthly spendings                                                   | understand my long-term eating habits and adjust accordingly                    |
+| v2.0    | user with habit of saving                | carry over unused budget to the next week                                   | have flexibility in my spending across weeks                                    |
+| v2.0    | picky user                               | know what my favorites food items are                                       |                                                                                 |
+| v2.0    | user with habit of trying new food items | keep track of what i like and dislike                                       |                                                                                 |
 
 ## Non-Functional Requirements
 1. The app should work on any mainstream OS as long as it has java17 or above installed.
