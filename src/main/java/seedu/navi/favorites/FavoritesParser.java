@@ -133,7 +133,8 @@ public class FavoritesParser {
                 int itemRating = Integer.parseInt(itemRatingString);
 
                 // If description, rating, and category match, it's a duplicate
-                if (itemDescription.equalsIgnoreCase(description) && itemRating == rating && itemCategory.equalsIgnoreCase(category)) {
+                if (itemDescription.equalsIgnoreCase(description) && itemRating == rating &&
+                        itemCategory.equalsIgnoreCase(category)) {
                     isDuplicate = true;
                     break;  // Exit the loop early once a duplicate is found
                 }
