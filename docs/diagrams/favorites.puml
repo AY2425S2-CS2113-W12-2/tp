@@ -12,41 +12,41 @@ alt Favorites list empty
 else Favorites list not empty
     Favorites -> TextUi: print "Your favorite items:"
     Favorites -> Favorites: display list of favorites
-    FavoritesParser -> User: show favorites
 end
+FavoritesParser --> User: show favorites
 
 User -> FavoritesParser: "add Pizza : 9 : Food"
 FavoritesParser -> Favorites: handleAddCommand("Pizza : 9 : Food")
 Favorites -> Favorites: addFavorite("Pizza", 9, "Food")
 Favorites -> Favorites: saveFavorites()
 Favorites -> TextUi: print "Added: Pizza | Rating: 9 | Category: Food"
-FavoritesParser -> User: "Added Pizza to favorites"
+FavoritesParser --> User: "Added Pizza to favorites"
 
 User -> FavoritesParser: "remove 1"
 FavoritesParser -> Favorites: handleRemoveCommand("1")
 Favorites -> Favorites: removeFavorite(0)
 Favorites -> Favorites: saveFavorites()
 Favorites -> TextUi: print "Removed: Pizza"
-FavoritesParser -> User: "Removed Pizza from favorites"
+FavoritesParser --> User: "Removed Pizza from favorites"
 
 User -> FavoritesParser: "undo"
 FavoritesParser -> Favorites: undoRemove()
 Favorites -> Favorites: restore last removed item
 Favorites -> Favorites: saveFavorites()
 Favorites -> TextUi: print "Restored: Pizza"
-FavoritesParser -> User: "Restored Pizza to favorites"
+FavoritesParser --> User: "Restored Pizza to favorites"
 
 User -> FavoritesParser: "sort asc"
 FavoritesParser -> Favorites: handleSortCommand("asc")
 Favorites -> Favorites: sortFavorites(false)
 Favorites -> Favorites: saveFavorites()
 Favorites -> TextUi: print "Favorites sorted in ascending order"
-FavoritesParser -> User: "Sorted favorites in ascending order"
+FavoritesParser --> User: "Sorted favorites in ascending order"
 
 User -> FavoritesParser: "search Pizza"
 FavoritesParser -> Favorites: searchFavorites("Pizza")
 Favorites -> Favorites: search for keyword "Pizza"
 Favorites -> TextUi: print "Search results for 'Pizza'"
-FavoritesParser -> User: show search results
+FavoritesParser --> User: show search results
 
 @enduml
