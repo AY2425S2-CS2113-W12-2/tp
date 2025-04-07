@@ -92,28 +92,43 @@ public class FavoritesParser {
 
             // Trim each part to remove any surrounding spaces/tabs
             String description = params[0].trim();
-            int rating = Integer.parseInt(params[1].trim());  // Parse rating to an integer
+            String category = params[2].trim();
 
-            // Check if the rating is less than 100
-            if (rating >= 100) {
-
-                System.out.println("Rating must be a number less than 100.");
+            // Check if description and category are empty
+            if (description.isEmpty() || category.isEmpty()) {
+                System.out.println("Description and location cannot be empty.");
                 TextUi.printLineSeparator();
                 return;
             }
 
-            String category = params[2].trim();
+            // Check if the rating is an integer (no decimal point allowed)
+            if (!params[1].trim().matches("\\d+")) {
+                System.out.println("Rating must be a valid integer (no decimals allowed).");
+                TextUi.printLineSeparator();
+                return;
+            }
+
+            // Parse rating as an integer
+            int rating = Integer.parseInt(params[1].trim());
+
+            // Check if rating is a valid positive number (non-negative)
+            if (rating < 0) {
+                System.out.println("Rating cannot be negative.");
+                TextUi.printLineSeparator();
+                return;
+            }
 
             // Add to favorites
             favorites.addFavorite(description, rating, category);
 
             TextUi.printLineSeparator();
         } catch (NumberFormatException e) {
-
-            System.out.println("Rating must be a valid number less than 100.");
+            System.out.println("Rating must be a valid number.");
             TextUi.printLineSeparator();
         }
     }
+
+
 
 
 
