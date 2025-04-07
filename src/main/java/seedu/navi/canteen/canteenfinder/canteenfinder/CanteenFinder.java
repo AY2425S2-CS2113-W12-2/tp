@@ -74,13 +74,6 @@ public class CanteenFinder {
      *
      * @param userFields A {@link UserFields} object containing the user's location and criteria.
      * @return A {@link NearestCanteenData} object containing the nearest canteen, its distance, and valid stalls.
-     * @throws LocationNotFound If the user's location cannot be resolved to a known landmark.
-     * @throws CanteenNotFound If no canteen is found within the resolved landmark.
-     * @throws InvalidCanteenCriteria If the user's canteen criteria are invalid.
-     * @throws NILWithOtherCriteria If "NIL" is used with other criteria.
-     * @throws DuplicateCanteenCriterion If duplicate criteria are detected.
-     * @throws HCAndMOCriteriaError If both "Halal Certified" and "Muslim Owned" criteria are used together.
-     * @throws EmptyUserLocation If the user's location is empty.
      * @see LandmarkShortcuts#LANDMARK_MAP
      * @see #searchLandmark(UserFields)
      */

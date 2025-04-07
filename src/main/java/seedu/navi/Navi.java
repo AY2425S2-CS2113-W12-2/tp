@@ -10,9 +10,29 @@ import seedu.navi.textui.NaviTextUi;
 
 import java.util.Scanner;
 
+/**
+ * The Navi class serves as the main entry-point for the application.
+ * It initializes the system, processes user input, and delegates tasks to specific modules
+ * such as Budget, Favorites, and Canteen.
+ */
 public class Navi {
+
     /**
-     * Main entry-point for the java.duke.Duke application.
+     * The main entry-point for the Navi application.
+     * <p>
+     * This method performs the following steps:
+     * 1. Loads data from storage using {@link Storage#processDataFromFiles()}.
+     * 2. Displays a greeting message using {@link NaviTextUi#printGreeting()}.
+     * 3. Continuously prompts the user for input and processes commands
+     *
+     * @param args Command-line arguments (not used in this application).
+     * @see Storage#processDataFromFiles()
+     * @see NaviTextUi#printGreeting()
+     * @see NaviTextUi#printExitMessage()
+     * @see NaviTextUi#printInvalidCommand()
+     * @see CanteenMain#startCanteen()
+     * @see BudgetParser#start()
+     * @see FavoritesParser#start()
      */
     public static void main(String[] args) {
         Storage.processDataFromFiles();

@@ -12,9 +12,6 @@ import seedu.navi.textui.NaviTextUi;
  * specific commands.
  * <p>
  * This class continuously prompts the user for input until they explicitly exit the program.
- *
- * @see CanteenFinderStartup#startCanteenFinder()
- * @see CanteenLookupStartup#startCanteenLookup()
  */
 public class CanteenMain {
 
@@ -22,14 +19,7 @@ public class CanteenMain {
      * Starts the canteen application and enters an interactive loop where users can choose between
      * the Canteen Finder, Canteen Lookup, or exit the program.
      * <p>
-     * This method continuously prompts the user for input and processes commands as follows:
-     * "finder" or "f" starts the Canteen Finder module by invoking
-     * {@link CanteenFinderStartup#startCanteenFinder()}.
-     * "lookup" or "l" starts the Canteen Lookup module by invoking
-     * {@link CanteenLookupStartup#startCanteenLookup()}.
-     * "exit" or "e" exits the canteen application by displaying a farewell message and terminating the loop.
-     * If an invalid command is entered, an error message is displayed using
-     * {@link CanteenMainTextUi#printInvalidCommandC()}, and the user is prompted again.
+     * This method continuously prompts the user for input and processes commands
      *
      * @see CanteenMainTextUi#printCanteenGreetingC()
      * @see CanteenMainTextUi#printExitCanteenC()
