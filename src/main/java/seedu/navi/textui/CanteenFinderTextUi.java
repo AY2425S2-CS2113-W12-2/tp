@@ -24,7 +24,7 @@ public class CanteenFinderTextUi {
         System.out.print("""
                 So you wanna find where's the nearest canteen to you?
                 You can enter the command as follows:
-                "search type | your location | canteen criteria 1, canteen criteria 2"
+                "search type | your location | canteen criterion 1, canteen criterion 2"
                 """);
         printLineSeparator();
     }
@@ -39,7 +39,7 @@ public class CanteenFinderTextUi {
         System.out.print("""
                 Oh no! You did not enter anything!
                 Please enter the command as follows:
-                "search type | your location | canteen criteria 1, canteen criteria 2"
+                "search type | your location | canteen criterion 1, canteen criterion 2"
                 """);
         printLineSeparator();
     }
@@ -54,7 +54,7 @@ public class CanteenFinderTextUi {
         System.out.print("""
                 Oh no! You did not fill in all the required fields!
                 Please enter the command as follows:
-                "search type | your location | canteen criteria 1, canteen criteria 2"
+                "search type | your location | canteen criterion 1, canteen criterion 2"
                 """);
         printLineSeparator();
     }
@@ -160,7 +160,8 @@ public class CanteenFinderTextUi {
      */
     public static void printHCAndMOCriteriaErrorCF() {
         printLineSeparator();
-        System.out.println("Please enter either Halal Certified or Muslim Owned and not both!");
+        System.out.println("Please enter either Halal Certified or Muslim Owned and not both");
+        System.out.println("for search type 2!");
         printLineSeparator();
     }
 

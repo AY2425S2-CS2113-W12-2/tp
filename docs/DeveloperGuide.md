@@ -320,8 +320,9 @@ Hence, Navi saves time as well as promotes exploration all in one intuitive app.
   * Expected: Navi enters the budget feature
 * Test case: `bye`
   * Expected: Exits Navi, program ends
-* Test case: `CS2113` or ` `
+* Test case: `CS2113`
   * Expected: Nothing happens and error message is shown with details on valid inputs
+
 #### <u> 1. Canteen menu</u>
 Prerequisites: Entered `canteen`
 * Test case: `finder`
@@ -330,24 +331,31 @@ Prerequisites: Entered `canteen`
   * Expected: Navi enters canteen lookup feature
 * Test case: `exit`
   * Expected: Navi exits Canteen feature
+* Test case: `CS2113`
+  * Expected: Nothing happens and error message is shown with details on valid inputs
+
 #### <u> 1.1 Canteen Finder </u>
 Prerequisites: Entered `canteen` -> `finder`
-* Test case: `Halal Certified` -> `CDE`
-  * Expected: Navi lists all the halal certified stalls in Techno Edge
-* Test case: `NIL` -> `SOC`
-  * Expected: Navi lists all the stalls in Terrace
+* Test case: `1 | cde | halal certified, muslim owned`
+  * Expected: Navi lists all the halal certified or muslim owned stalls in Techno Edge
+* Test case: `2 | cde | hc, a`
+  * Expected: Navi lists all the halal certified stalls that are in aircon area in Techno Edge
+* Test case: `1 | soc | nil`
+  * Expected: Navi lists all the stalls in Terrace.
 * Test case: `exit`
   * Expected: Navi exits Canteen Finder feature
-* Test case: `CS2113` or ` `
+* Test case: `CS2113`
     * Expected: Nothing happens and error message is shown with details on valid inputs
+
 #### <u> 1.2 Canteen Lookup </u>
 Prerequisites: Entered `canteen` -> `lookup`
 * Test case: `Techno Edge`
   * Expected: Navi lists all the stalls in Techno Edge
 * Test case: `exit`
   * Expected: Navi exits Canteen Lookup feature
-* Test case: `CS2113` or ` `
+* Test case: `CS2113`
     * Expected: Nothing happens and error message is shown with details on valid inputs
+
 #### <u> 2. Budget tracker </u>
 Prerequisites: Entered `budget`
 * Test case: `add 100`
