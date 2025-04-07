@@ -118,8 +118,33 @@ public class FavoritesParser {
                 return;
             }
 
-            // Add to favorites
-            favorites.addFavorite(description, rating, category);
+            // Check if the item already exists in favorites to prevent duplicates
+            boolean isDuplicate = false;
+            for (String item : favorites.getFavoriteItems()) {
+                // Assuming each item is stored as "description | Rating: <rating> | Location: <location>"
+                String[] itemDetails = item.split("\\|");
+
+                // Extract the individual parts of the existing favorite item
+                String itemDescription = itemDetails[0].trim();
+                String itemRatingString = itemDetails[1].trim().replace("Rating: ", "");
+                String itemCategory = itemDetails[2].trim().replace("Location: ", "");
+
+                // Parse the rating as an integer
+                int itemRating = Integer.parseInt(itemRatingString);
+
+                // If description, rating, and category match, it's a duplicate
+                if (itemDescription.equalsIgnoreCase(description) && itemRating == rating && itemCategory.equalsIgnoreCase(category)) {
+                    isDuplicate = true;
+                    break;  // Exit the loop early once a duplicate is found
+                }
+            }
+
+            if (isDuplicate) {
+                System.out.println("This favorite already exists. Duplicate entries are not allowed.");
+            } else {
+                // Add to favorites if it's not a duplicate
+                favorites.addFavorite(description, rating, category);
+            }
 
             TextUi.printLineSeparator();
         } catch (NumberFormatException e) {
@@ -127,6 +152,7 @@ public class FavoritesParser {
             TextUi.printLineSeparator();
         }
     }
+
 
 
 
