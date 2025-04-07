@@ -38,6 +38,7 @@ If the user enters `favorites`, Navi will call `start()` of `favoritesParser`, a
 If the user enters `exit`, Navi will exit the application and the program ends.
 
 The following UML Sequence diagram shows the interactions within `Navi` as users enters the Navi application.
+
 ![NaviSequenceDiagram](diagrams/NaviSequenceDiagram.drawio.png)
 
 ___
@@ -118,12 +119,13 @@ If true, `containsAnyFields()` is called else `containsAllFields()` is called.
 `containsAllFields()` return true only if all the stall characteristics matches every canteen criteria.
 
 The following UML Class diagram depicts the overview explained above.
+
 ![CanteenFinderClassDiagram](diagrams/CanteenFinderClassDiagram.drawio.png)
 
 #### Proposed implementations of future features
 One future feature we propose to implement is the ability for users to enter a specific building in a faculty as their location.
 Due to time constraints, we did not manage to implement this feature. However, we have already created a child class `Faculty` which
-inherits `Landmark`. The `Faculty` class will additionally store an array of buildings which belong to the NUS faculty.
+inherits `Landmark`. The `Faculty` class will additionally store an array of buildings which belong to a NUS faculty.
 For example, the SOC Faculty will contain buildings such as COM1, COM2 etc.
 
 ___
@@ -142,6 +144,7 @@ inform the user.
 
 This sub-feature enhances usability by providing a fast and user-friendly way to access canteen and stall information based on shortcut keywords, 
 reducing the effort needed to navigate through the full dataset.
+
 ![CanteenLookupSequenceDiagram](diagrams/CanteenLookupSequenceDiagram.png)
 
 ___
@@ -169,6 +172,7 @@ It shows Navi, the main program, invoking `processDataFromFiles()` in the `Stora
 processing of specific data types to `CanteenDataProcessor`, `FacultyDataProcessor`, `HostelDataProcessor`, and
 `OtherBuildingDataProcessor`. These processors create appropriate objects (`Canteen`, `Faculty`, `Landmark`) and establish
 relationships such as nearest canteens and distances between entities.
+
 ![](diagrams/Storage.png)
 
 ### Favorites Feature
