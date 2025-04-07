@@ -10,10 +10,20 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Handles the storage and initialization of canteen-related data.
+ * This includes reading and processing data from files to populate
+ * canteen mappings and associated landmarks (faculties, hostels, and buildings).
+ */
 public class Storage {
 
     private static final Map<String, Canteen> canteenMap = new HashMap<>();
 
+    /**
+     * Returns the map of canteen names to their corresponding {@code Canteen} objects.
+     *
+     * @return A map containing canteen data.
+     */
     public static Map<String, Canteen> getCanteenMap() {
         return canteenMap;
     }

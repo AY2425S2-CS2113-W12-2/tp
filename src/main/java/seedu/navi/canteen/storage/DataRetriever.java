@@ -3,8 +3,21 @@ package seedu.navi.canteen.storage;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Provides hardcoded mock data for canteens, hostels, faculties, and other buildings.
+ * <p>
+ * This class simulates data retrieval from external sources (e.g., database or file)
+ * for use in data processing modules.
+ */
 public class DataRetriever {
 
+    /**
+     * Returns a list of mock canteen stall data.
+     * Each entry represents one stall, with the format:
+     * {@code canteenName | stallName | halal | muslim | aircon | vegetarian}
+     *
+     * @return A list of strings representing canteen stalls.
+     */
     public static List<String> getCanteenData() {
         List<String> data = new ArrayList<>();
         data.add("Techno Edge | Western Food | F | F | F | F");
@@ -99,6 +112,13 @@ public class DataRetriever {
         return data;
     }
 
+    /**
+     * Returns a list of mock hostel data.
+     * Each entry represents a hostel and its nearby canteens with distances.
+     * Format: {@code hostelName: canteen1 (distance) | canteen2 (distance) | ...}
+     *
+     * @return A list of strings representing hostel data and their nearby canteens.
+     */
     static List<String> getHostelData() {
         List<String> data = new ArrayList<>();
         data.add("Raffles: Techno Edge (550m) | Fine Food (650m) | " +
@@ -155,6 +175,13 @@ public class DataRetriever {
         return data;
     }
 
+    /**
+     * Returns a list of mock other building data.
+     * Each entry represents a building and its nearby canteens with distances.
+     * Format: {@code buildingName: canteen1 (distance) | canteen2 (distance) | ...}
+     *
+     * @return A list of strings representing other building data.
+     */
     static List<String> getOtherBuildingData() {
         List<String> data = new ArrayList<>();
         data.add("CELC: Techno Edge (400m) | The Deck (650m) | " +
@@ -196,6 +223,13 @@ public class DataRetriever {
         return data;
     }
 
+    /**
+     * Returns a list of mock faculty data.
+     * Each entry represents a faculty and its nearby canteens with distances.
+     * Format: {@code facultyName: canteen1 (distance) | canteen2 (distance) | ...}
+     *
+     * @return A list of strings representing faculty data and associated canteens.
+     */
     static List<String> getFacultyData() {
         List<String> data = new ArrayList<>();
         data.add("CDE: Techno Edge (400m) | Fine Food (850m) | " +

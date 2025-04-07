@@ -8,15 +8,32 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * Processes faculty data and links each faculty to nearby canteens with specified distances.
+ */
 public class FacultyDataProcessor {
 
     private final Map<String, Canteen> canteenMap;
 
+
+    /**
+     * Constructs a {@code FacultyDataProcessor} with the provided canteen map.
+     *
+     * @param canteenMap A map of canteen names to their corresponding {@code Canteen} objects.
+     * @throws AssertionError If {@code canteenMap} is null.
+     */
     public FacultyDataProcessor(Map<String, Canteen> canteenMap) {
         assert canteenMap != null : "Canteen map should not be null";
         this.canteenMap = canteenMap;
     }
 
+    /**
+     * Parses and processes data from faculty sources and populates the given list with faculty objects.
+     * Each faculty may also be linked to their nearest canteens and distances.
+     *
+     * @param faculties The list to populate with {@code Faculty} objects.
+     * @throws AssertionError If {@code faculties} is null.
+     */
     public void processData(ArrayList<Faculty> faculties) {
         assert faculties != null : "Faculty list should not be null";
 
@@ -27,6 +44,13 @@ public class FacultyDataProcessor {
     }
 
 
+    /**
+     * Parses a line of raw faculty data and inserts the resulting {@code Faculty} object into the list.
+     *
+     * @param facultyData The raw data line representing a faculty and its nearby canteens.
+     * @param faculties   The list to populate with the parsed {@code Faculty}.
+     * @throws InvalidFacultyDataException If the faculty name is missing or malformed.
+     */
     private void insertFacultyFromData(String facultyData, ArrayList<Faculty> faculties) {
         assert facultyData != null : "Faculty data line should not be null";
         assert faculties != null : "Faculty list should not be null";
@@ -47,6 +71,13 @@ public class FacultyDataProcessor {
         processCanteenData(parts[1], faculty, facultyName);
     }
 
+    /**
+     * Processes a string containing canteen information and associates them with the given faculty.
+     *
+     * @param canteenDataString The string describing canteen names and distances.
+     * @param faculty           The faculty to associate with the canteens.
+     * @param facultyName       The name of the faculty (for exception messaging).
+     */
     private void processCanteenData(String canteenDataString, Faculty faculty, String facultyName) {
         assert canteenDataString != null : "Canteen data string should not be null";
 
@@ -60,6 +91,14 @@ public class FacultyDataProcessor {
         }
     }
 
+    /**
+     * Parses an individual canteen entry and updates the faculty with the canteen and its distance.
+     *
+     * @param canteenInfo  The raw canteen entry string (e.g., "Deck (150m)").
+     * @param faculty      The faculty to associate with the canteen.
+     * @param facultyName  The name of the faculty (for exception messaging).
+     * @throws InvalidFacultyDataException If the canteen name is missing or the canteen cannot be found.
+     */
     private void processCanteenInfo(String canteenInfo, Faculty faculty, String facultyName) {
         assert canteenInfo != null : "Canteen info should not be null";
 
@@ -81,6 +120,13 @@ public class FacultyDataProcessor {
         faculty.setCanteenDistance(canteen, distance);
     }
 
+    /**
+     * Extracts the distance value from the parsed canteen parts.
+     *
+     * @param canteenParts The array resulting from splitting the canteen string.
+     * @return The integer distance to the canteen, or 0 if not specified or invalid.
+     * @throws AssertionError If {@code canteenParts} is null.
+     */
     private int extractDistance(String[] canteenParts) {
         assert canteenParts != null : "Canteen parts should not be null";
 
