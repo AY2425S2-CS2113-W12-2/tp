@@ -3,7 +3,7 @@ package seedu.navi.canteencriterionparser;
 import org.junit.jupiter.api.Test;
 import seedu.navi.canteen.canteenfinder.canteencrtierionparser.CanteenCriterionParser;
 import seedu.navi.exceptions.DuplicateCanteenCriterion;
-import seedu.navi.exceptions.HCAndMOCrtieriaError;
+import seedu.navi.exceptions.HCAndMOCriteriaError;
 import seedu.navi.exceptions.InvalidCanteenCriteria;
 import seedu.navi.exceptions.NILWithOtherCriteria;
 
@@ -78,7 +78,7 @@ public class CanteenMainCriterionParserTest {
         try {
             String[] testCriteria = CanteenCriterionParser.handleCanteenCriterion("mo, hc", false);
             fail();
-        } catch (HCAndMOCrtieriaError e) {
+        } catch (HCAndMOCriteriaError e) {
             assertTrue(true);
         }
     }
