@@ -12,7 +12,7 @@ public class BudgetParser {
         BudgetParser.budget = budget;
     }
 
-    public static void start() {
+    public void start() {
         scanner = new Scanner(System.in);
 
         LocalDate today = LocalDate.now();
