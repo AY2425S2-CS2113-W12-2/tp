@@ -12,13 +12,10 @@ import java.util.List;
 import java.util.Stack;
 import javafx.util.Pair;
 
-
 public class Favorites {
     private static final String FILE_PATH = "favorites.txt"; // Path to save the favorites data
     private List<String> favoriteItems;
     private Stack<Pair<Integer, String>> undoStack;  // Stores (index, item)
-
-
 
     public Favorites() {
         this.favoriteItems = new ArrayList<>();
@@ -48,24 +45,24 @@ public class Favorites {
             System.out.println("Error saving favorites to file.");
         }
     }
+
     public void clearFavorites() {
         favoriteItems.clear();
         undoStack.clear();
         saveFavorites();
     }
 
-
     public void addFavorite(String description, int rating, String category) {
         String item = description + " | Rating: " + rating + " | Location: " + category;
         favoriteItems.add(item);
         saveFavorites();
-        System.out.println("✅ Added: " + item);
+        System.out.println("Added: " + item);
     }
 
     public void removeFavorite(int index) {
         if (index < 0 || index >= favoriteItems.size()) {
             TextUi.printLineSeparator();
-            System.out.println("⚠️ Invalid index.");
+            System.out.println("Invalid index.");
             TextUi.printLineSeparator();
             return;
         }
@@ -73,15 +70,14 @@ public class Favorites {
         undoStack.push(new Pair<>(index, removedItem));  // Store index + item
         saveFavorites();
         TextUi.printLineSeparator();
-        System.out.println("❌ Removed: " + removedItem);
+        System.out.println("Removed: " + removedItem);
         TextUi.printLineSeparator();
     }
-
 
     public void undoRemove() {
         if (undoStack.isEmpty()) {
             TextUi.printLineSeparator();
-            System.out.println("⚠️ No recent deletions to undo.");
+            System.out.println("No recent deletions to undo.");
             TextUi.printLineSeparator();
             return;
         }
@@ -92,11 +88,9 @@ public class Favorites {
         favoriteItems.add(originalIndex, restoredItem);  // Restore at correct position
         saveFavorites();
         TextUi.printLineSeparator();
-        System.out.println("🔄 Restored: " + restoredItem);
+        System.out.println("Restored: " + restoredItem);
         TextUi.printLineSeparator();
     }
-
-
 
     public List<String> getFavoriteItems() {
         return new ArrayList<>(favoriteItems);
@@ -113,7 +107,7 @@ public class Favorites {
             TextUi.printLineSeparator();
         } else {
             TextUi.printLineSeparator();
-            System.out.println("🌟 Your favorite items:");
+            System.out.println("Your favorite items:");
             for (int i = 0; i < favoriteItems.size(); i++) {
                 System.out.println((i + 1) + ". " + favoriteItems.get(i));
             }
@@ -129,13 +123,13 @@ public class Favorites {
         });
         saveFavorites();
         TextUi.printLineSeparator();
-        System.out.println("📊 Favorites sorted in " + (descending ? "descending" : "ascending") + " order.");
+        System.out.println("Favorites sorted in " + (descending ? "descending" : "ascending") + " order.");
         TextUi.printLineSeparator();
     }
 
     public boolean searchFavorites(String keyword) {
         TextUi.printLineSeparator();
-        System.out.println("🔎 Search results for '" + keyword + "':");
+        System.out.println("Search results for '" + keyword + "':");
         TextUi.printLineSeparator();
         boolean found = false;
         for (String item : favoriteItems) {
@@ -145,10 +139,9 @@ public class Favorites {
             }
         }
         if (!found) {
-            System.out.println("❌ No matching favorites found.");
+            System.out.println("No matching favorites found.");
         }
         return found;
-
     }
 }
 
