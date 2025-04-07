@@ -19,6 +19,7 @@ The hash map will be referenced in the Canteen Finder and Canteen lookup functio
 This feature allows users to look up a specific canteen's stalls
 to allow user to explore different dining options at the canteens ahead of time.
 Only implemented how data is found and displayed for this feature.
+
 ___
 ### User Guide Contributions
 Contributed to all information relating to:
@@ -29,12 +30,14 @@ ___
 ### ReadMe Contributions
 Contributed to all information relating to:
 - Overview
+
 ___
 ### Developer Guide Contributions
 Contributed to all information relating to:
 - Design and Implementation
     - Storage
     - CanteenFinder function
+
 ___
 ### Contributions to Team-based Tasks
 - General code enhancements and refactoring

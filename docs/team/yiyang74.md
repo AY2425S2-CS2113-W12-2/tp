@@ -22,6 +22,7 @@ Users can input filters for the search to look for specific canteens/stalls that
 This feature allows users to look up a specific canteen's stalls 
 to allow user to explore different dining options at the canteens ahead of time.
 Only implemented how this feature interacts with the user. 
+
 ___
 ### User Guide Contributions
 Contributed to all information relating to:
@@ -36,6 +37,7 @@ Contributed to all information relating to:
 - Command Summary
   - related to Canteen features
 - Canteen Feature Related Shortcuts
+
 ___
 ### Developer Guide Contributions
 Contributed to all information relating to:
@@ -56,14 +58,16 @@ Contributed to all information relating to:
   - Launching Navi
   - Test cases
     - related to Canteen features
+
 ___
 ### Contributions to Team-based Tasks
 - Necessary general code enhancements
 - Maintaining the issue tracker
 - Release management
 - Manage workflow
+
 ___
 ### Mentoring Contributions
 - Help resolve checkstyle errors
 - Help resolve Continuous Integration (CI) errors
-___
+

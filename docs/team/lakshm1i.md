@@ -28,12 +28,14 @@ ___
 * Contributed to parts of the Features section, including the introduction of the three main features: Canteen, Budget, and Favorites
 * Fully developed the Budget Feature
 * Wrote most of the Command Summary to ensure users have clear guidance on how to use the app’s functions
+
 ___
 ### Developer Guide Contributions
 Contributed to all information relating to:
 - Design and Implementation: Budget feature
 - User Stories related to Budget features
 - Instruction for Manual Testing: Test cases for Budget feature
+
 ___
 ### Contributions to Team-based Tasks
 * General code enhancements and refactoring.
