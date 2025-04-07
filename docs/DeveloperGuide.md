@@ -1,4 +1,7 @@
 # Developer Guide
+
+## Table of Contents
+
 * ### [Acknowledgements](#acknowledgements)
 * ### [Design & Implementation](#design--implementation)
   * #### [Navi](#navi)
@@ -272,6 +275,7 @@ A favorites list that lets users save, rate, and comment on stalls, making it ea
 Hence, Navi saves time as well as promotes exploration all in one intuitive app.
 
 ## User Stories
+
 | Version | As a ...                                 | I want to ...                                                               | So that I can ...                                                               |
 |---------|------------------------------------------|-----------------------------------------------------------------------------|---------------------------------------------------------------------------------|
 | v1.0    | new user                                 | see usage instructions                                                      | refer to them when I forget how to use the application                          |
