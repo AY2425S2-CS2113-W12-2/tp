@@ -2,14 +2,14 @@
 'https://plantuml.com/sequence-diagram
 
 actor User
-participant Parser
+participant Navi
 participant BudgetParser
 participant Budget
 
-User -> Parser: "budget"
-activate Parser
-Parser -> BudgetParser: start()
-deactivate Parser
+User -> Navi: "budget"
+activate Navi
+Navi -> BudgetParser: start()
+deactivate Navi
 activate BudgetParser
 BudgetParser -> Budget: resetWeeklyBudget(boolean carryOver)
 activate Budget
