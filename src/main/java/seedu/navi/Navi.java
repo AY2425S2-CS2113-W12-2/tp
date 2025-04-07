@@ -16,23 +16,14 @@ import java.util.Scanner;
  * such as Budget, Favorites, and Canteen.
  */
 public class Navi {
-    
+
     /**
      * The main entry-point for the Navi application.
      * <p>
      * This method performs the following steps:
      * 1. Loads data from storage using {@link Storage#processDataFromFiles()}.
      * 2. Displays a greeting message using {@link NaviTextUi#printGreeting()}.
-     * 3. Continuously prompts the user for input and processes commands as follows:
-     *    - "exit" or "e": Exits the application by displaying a farewell message and terminating the program.
-     *    - "canteen" or "c": Starts the Canteen feature by invoking {@link CanteenMain#startCanteen()}.
-     *    - "budget": Starts the Budget feature by invoking {@link BudgetParser#start()}.
-     *    - "favorites": Starts the Favorites feature by invoking {@link FavoritesParser#start()}.
-     *    - Invalid commands: Displays an error message using {@link NaviTextUi#printInvalidCommand()}.
-     * <p>
-     * The method uses a single instance of {@link Scanner} to read user input and maintains instances of
-     * {@link Budget}, {@link BudgetParser}, {@link Favorites}, and {@link FavoritesParser} for handling
-     * respective features.
+     * 3. Continuously prompts the user for input and processes commands
      *
      * @param args Command-line arguments (not used in this application).
      * @see Storage#processDataFromFiles()
