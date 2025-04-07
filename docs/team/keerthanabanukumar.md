@@ -31,9 +31,8 @@ Implemented a command-line parser to process user commands for adding, removing,
 ___
 ### User Guide Contributions
 Contributed to all information relating to:
-* Documenting the Favorites Tracker feature.
-* Writing clear instructions for adding, removing, sorting, and searching favorites.
-* Providing usage examples and expected output.
+* Documented all aspects of the Favorites feature, including usage instructions, command formats, and expected outputs.
+* Provided clear examples to guide new users.
 ___
 ### Developer Guide Contributions
 Contributed to all information relating to:
@@ -41,6 +40,7 @@ Contributed to all information relating to:
 * Undo functionality explanation and implementation rationale.
 * Persistent storage design and integration.
 * Product Scope, including defining the target user profile and value proposition.
+* Instruction for Manual Testing: Test cases for Favorites feature
 * Non-Functional Requirements ensuring robustness and efficiency.
 ___
 ### Contributions to Team-based Tasks
