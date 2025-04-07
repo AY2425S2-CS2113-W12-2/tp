@@ -3,6 +3,7 @@ package seedu.navi;
 import seedu.navi.budget.BudgetParser;
 import seedu.navi.canteen.CanteenMain;
 import seedu.navi.canteen.storage.Storage;
+import seedu.navi.favorites.Favorites;
 import seedu.navi.favorites.FavoritesParser;
 import seedu.navi.textui.TextUi;
 
@@ -11,13 +12,17 @@ import java.util.Scanner;
 public class Navi {
     /**
      * Main entry-point for the java.duke.Duke application.
-     * @author kevinchangckc
      */
     public static void main(String[] args) {
         Storage.processDataFromFiles();
 
         TextUi.printGreeting();
         Scanner in = new Scanner(System.in);
+
+        // instantiate Favorites and FavoritesParser once
+        Favorites favorites = new Favorites();
+        FavoritesParser favoritesParser = new FavoritesParser(favorites);
+
         while (true) {
             String input = in.nextLine().toLowerCase().trim();
             switch (input) {
@@ -34,7 +39,7 @@ public class Navi {
                 BudgetParser.start();
                 break;
             case "favorites":
-                FavoritesParser.start();
+                favoritesParser.start();
                 break;
             default:
                 TextUi.printInvalidCommand();
@@ -42,3 +47,4 @@ public class Navi {
         }
     }
 }
+
