@@ -25,7 +25,7 @@
 Some UML diagrams within the Developer Guide have been created on [Draw.io](https://draw.io/)
 
 ## Design & Implementation
-## Navi
+### Navi
 Navi is the main class of the application which controls the 3 core features that Navi provides: Canteen, 
 Budget and Favorites.
 
@@ -41,7 +41,7 @@ The following UML Sequence diagram shows the interactions within `Navi` as users
 ![NaviSequenceDiagram](diagrams/NaviSequenceDiagram.drawio.png)
 
 ___
-## Canteen Feature
+### Canteen Feature
 The Canteen feature provides 2 sub-features: Canteen Finder and Canteen Lookup.
 
 This functionality is controlled by the `Canteen` class where `startCanteen()`, a class level method,
@@ -171,7 +171,7 @@ processing of specific data types to `CanteenDataProcessor`, `FacultyDataProcess
 relationships such as nearest canteens and distances between entities.
 ![](diagrams/Storage.png)
 
-## Favorites Feature
+### Favorites Feature
 This feature allows users to manage a list of favorite items, supporting adding, removing, viewing, sorting, and 
 searching. It also includes an undo function for deletions.
 
@@ -218,13 +218,13 @@ Potential improvements include Expanded search/filter options, multi-step undo/r
 sorting criteria.
 
 
-## Budget Feature
+### Budget Feature
 This feature allows users to track their daily, weekly and monthly expenses on food as well as the weekly budget.
 * Budget class: Handles core budget logic, including managing expenses, budget resets, and file persistence.
 * BudgetParser class: Handles user interaction and command parsing
 * Data storage: Budget data is stored persistently in a JSON-like format.
 
-##### Core Logic
+#### Core Logic
 The Budget class maintains several data:
 * `weeklyBudget`: Current available budget
 * `dailyExpenses`, `weeklyExpenses`, `monthlyExpenses`: Tracked expenses
