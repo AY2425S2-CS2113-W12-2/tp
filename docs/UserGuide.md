@@ -530,7 +530,8 @@ Exiting Favorites Tracker.
 
 **Q**: How do I transfer my data to another computer?
 
-**A**: Export your data files and put it in the same directory as the jar file.
+**A**: Export your data files and put it in the same directory as the `Navi.jar` file of 
+the other computer. Then, open terminal and cd into that directory and enter `java -jar Navi.jar` again.
 
 **Q**: For Canteen Finder feature, what is the difference between Halal Certified and 
 Muslim Owned?
@@ -540,11 +541,11 @@ by Majlis Ugama Islam Singapura (MUIS) in Singapore. This certification is not f
 Muslim owned refers to stalls that aren't halal certified but are owned by muslims who would 
 prepare food to the halal standard and are not willing or able to afford the certification by MUIS. 
 
-**Q**: Why can't I enter both Halal Certified and Muslim Owned into the canteen criteria?
+**Q**: Why can't I enter both Halal Certified and Muslim Owned into the canteen criteria for <br>`SEARCH TYPE == 2`?
 
-**A**: If a stall is already Halal Certified, there is no need to worry about whether the stall is
-muslim owned. Hence, there is no point in putting both Halal Certified and Muslim Owned into the
-canteen criteria field.
+**A**: If a stall is already Halal Certified, it doesn't matter whether the stall is muslim owned or not 
+thus there are no stalls that are both halal certified and muslim owned. Hence, there is 
+no point in putting both Halal Certified and Muslim Owned into the canteen criteria field for <br>`SEARCH TYPE == 2`. 
 
 **Q**: What does [Y] and [N] mean regarding canteen stalls?
 

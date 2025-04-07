@@ -30,7 +30,7 @@ public class CanteenFinderParser {
         }
         String userLocation = commands[1].trim();
         String[] canteenCriteria;
-        canteenCriteria = CanteenCriterionParser.handleCanteenCriterion(commands[2]);
+        canteenCriteria = CanteenCriterionParser.handleCanteenCriterion(commands[2], isOrSearchType);
 
         assert canteenCriteria == null || canteenCriteria.length > 0 :
                 "Output canteenCriteria should either be null or non-empty.";

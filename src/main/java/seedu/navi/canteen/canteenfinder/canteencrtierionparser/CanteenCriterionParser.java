@@ -11,7 +11,7 @@ import java.util.Set;
 
 public class CanteenCriterionParser {
 
-    private static String[] verifyCanteenCriteria(String[] canteenCriteria)
+    private static String[] verifyCanteenCriteria(String[] canteenCriteria, boolean isOrSearchType)
             throws NILWithOtherCriteria, DuplicateCanteenCriterion, InvalidCanteenCriteria {
         Set<String> uniqueCriteria = new HashSet<>();
         String[] validCanteenCriteria = new String[canteenCriteria.length];
@@ -52,7 +52,7 @@ public class CanteenCriterionParser {
         String[] trimmedValidCanteenCriteria = new String[validIndex];
         System.arraycopy(validCanteenCriteria, 0, trimmedValidCanteenCriteria, 0, validIndex);
 
-        if (isHalalCertifiedPresent && isMuslimOwnedPresent) {
+        if (!isOrSearchType && isHalalCertifiedPresent && isMuslimOwnedPresent) {
             throw new HCAndMOCrtieriaError();
         }
         if (isNILPresent && uniqueCriteria.size() > 1) {
@@ -61,7 +61,7 @@ public class CanteenCriterionParser {
         return trimmedValidCanteenCriteria;
     }
 
-    public static String[] handleCanteenCriterion(String canteenCriterion) throws
+    public static String[] handleCanteenCriterion(String canteenCriterion, boolean isOrSearchType) throws
             InvalidCanteenCriteria, NILWithOtherCriteria, DuplicateCanteenCriterion {
         assert canteenCriterion != null : "canteenCriterion should not be null";
         String[] canteenCriteria = canteenCriterion.split(",");
@@ -69,7 +69,7 @@ public class CanteenCriterionParser {
         if (canteenCriteria.length == 0) {
             throw new InvalidCanteenCriteria();
         }
-        String[] validCanteenCriteria = verifyCanteenCriteria(canteenCriteria);
+        String[] validCanteenCriteria = verifyCanteenCriteria(canteenCriteria, isOrSearchType);
 
         if (validCanteenCriteria.length == 1 && validCanteenCriteria[0].equalsIgnoreCase("nil")) {
             return null;
