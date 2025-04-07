@@ -18,6 +18,7 @@ public class FavoritesParser {
      * @param favorites The Favorites object to manipulate.
      */
     public FavoritesParser(Favorites favorites) {
+        assert favorites != null : "Favorites object cannot be null";
         this.favorites = favorites;
     }
 

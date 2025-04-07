@@ -28,6 +28,8 @@ public class Favorites {
     public Favorites() {
         this.favoriteItems = new ArrayList<>();
         this.undoStack = new Stack<>();
+        assert favoriteItems != null : "favoriteItems list should not be null";
+        assert undoStack != null : "undoStack should not be null";
     }
 
     /**
@@ -90,6 +92,7 @@ public class Favorites {
      * @param index The index of the item to remove (0-based).
      */
     public void removeFavorite(int index) {
+        
         if (index < 0 || index >= favoriteItems.size()) {
             TextUi.printLineSeparator();
             System.out.println("Invalid index.");
