@@ -28,11 +28,13 @@ accidental deletions.
 
 #### 3. Command Line Parser for Favorites
 Implemented a command-line parser to process user commands for adding, removing, sorting, and searching favorites.
+
 ___
 ### User Guide Contributions
 Contributed to all information relating to:
 * Documented all aspects of the Favorites feature, including usage instructions, command formats, and expected outputs.
 * Provided clear examples to guide new users.
+
 ___
 ### Developer Guide Contributions
 Contributed to all information relating to:
@@ -42,12 +44,10 @@ Contributed to all information relating to:
 * Product Scope, including defining the target user profile and value proposition.
 * Instruction for Manual Testing: Test cases for Favorites feature
 * Non-Functional Requirements ensuring robustness and efficiency.
+
 ___
 ### Contributions to Team-based Tasks
 * General code enhancements and refactoring.
 * Maintaining the issue tracker and managing bugs.
 * Overseeing release management, ensuring timely feature delivery.
 
-___
-
-___
