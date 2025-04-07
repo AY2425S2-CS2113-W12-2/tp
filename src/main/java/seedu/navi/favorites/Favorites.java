@@ -128,9 +128,22 @@ public class Favorites {
     }
 
     public boolean searchFavorites(String keyword) {
+        // Trim the keyword to remove leading/trailing spaces and check if it's empty
+        keyword = keyword.trim();
+
+        // If the keyword is empty, print a message and return false
+        if (keyword.isEmpty()) {
+            TextUi.printLineSeparator();
+            System.out.println("Please enter a valid search term.");
+
+            return false;
+        }
+
+        // If the keyword is not empty, proceed with the search
         TextUi.printLineSeparator();
         System.out.println("Search results for '" + keyword + "':");
         TextUi.printLineSeparator();
+
         boolean found = false;
         for (String item : favoriteItems) {
             if (item.toLowerCase().contains(keyword.toLowerCase())) {
@@ -138,10 +151,13 @@ public class Favorites {
                 found = true;
             }
         }
+
         if (!found) {
             System.out.println("No matching favorites found.");
         }
+
         return found;
     }
+
 }
 
