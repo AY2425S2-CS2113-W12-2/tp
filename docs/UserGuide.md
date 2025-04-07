@@ -2,18 +2,18 @@
 
 ## Table of Contents
 
-* ### [Introduction](#introduction)
-* ### [Quick start](#quick-start)
-* ### [Starting Navi](#starting-navi)
-* ### [Features](#features)
-  * #### [Canteen: `canteen`](#canteen-canteen)
+* [Introduction](#introduction)
+* [Quick start](#quick-start)
+* [Starting Navi](#starting-navi)
+* [Features](#features)
+  * [Canteen: `canteen`](#canteen-canteen)
     * [Canteen finder: `finder`](#to-enter-canteen-finder-finder)
     * [Canteen lookup: `lookup`](#to-enter-canteen-lookup-lookup)
-  * #### [Budget: `budget`](#budget-budget)
-  * #### [Favorites: `favorites`](#favorites-favorites)
-* ### [FAQ](#faq)
-* ### [Command Summary](#command-summary)
-* ### [Canteen Feature Related Shortcuts](#canteen-feature-related-shortcuts)
+  * [Budget: `budget`](#budget-budget)
+  * [Favorites: `favorites`](#favorites-favorites)
+* [FAQ](#faq)
+* [Command Summary](#command-summary)
+* [Canteen Feature Related Shortcuts](#canteen-feature-related-shortcuts)
 
 
 ## Introduction
