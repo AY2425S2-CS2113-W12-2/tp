@@ -6,13 +6,13 @@ import java.util.Scanner;
 
 public class FavoritesParser {
     private static Favorites favorites;
-    private static Scanner scanner;
+    private Scanner scanner;
 
     public FavoritesParser(Favorites favorites) {
-        FavoritesParser.favorites = favorites;
+        this.favorites = favorites;
     }
 
-    public static void start() {
+    public void start() {
         scanner = new Scanner(System.in);
         TextUi.printLineSeparator();
         System.out.println("Favorites Tracker: Enter a command:");
@@ -76,8 +76,10 @@ public class FavoritesParser {
     }
 
     private static void handleAddCommand(String arguments) {
+        // Use regular expression to split by ":" while allowing spaces/tabs before/after
         String[] params = arguments.split("\\s*:\\s*");
 
+        // Check if there are exactly 3 parameters
         if (params.length != 3) {
             TextUi.printLineSeparator();
             System.out.println("Invalid format. Use: add <description> : <rating> : <location>");
@@ -88,10 +90,12 @@ public class FavoritesParser {
         try {
             TextUi.printLineSeparator();
 
+            // Trim each part to remove any surrounding spaces/tabs
             String description = params[0].trim();
-            int rating = Integer.parseInt(params[1].trim());
+            int rating = Integer.parseInt(params[1].trim());  // Parse rating to an integer
             String category = params[2].trim();
 
+            // Add to favorites
             favorites.addFavorite(description, rating, category);
 
             TextUi.printLineSeparator();
@@ -102,7 +106,8 @@ public class FavoritesParser {
         }
     }
 
-    private static void handleRemoveCommand(String arguments) {
+
+    private void handleRemoveCommand(String arguments) {
         try {
             int index = Integer.parseInt(arguments.trim()) - 1;
             favorites.removeFavorite(index);
@@ -113,7 +118,7 @@ public class FavoritesParser {
         }
     }
 
-    private static void handleSortCommand(String arguments) {
+    private void handleSortCommand(String arguments) {
         if (arguments.equalsIgnoreCase("asc")) {
             favorites.sortFavorites(false);
         } else if (arguments.equalsIgnoreCase("desc")) {
