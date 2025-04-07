@@ -1,5 +1,6 @@
 package seedu.navi;
 
+import seedu.navi.budget.Budget;
 import seedu.navi.budget.BudgetParser;
 import seedu.navi.canteen.CanteenMain;
 import seedu.navi.canteen.storage.Storage;
@@ -19,6 +20,10 @@ public class Navi {
         TextUi.printGreeting();
         Scanner in = new Scanner(System.in);
 
+        // instantiate Budget and BudgetParser once
+        Budget budget = new Budget();
+        BudgetParser budgetParser = new BudgetParser(budget);
+
         // instantiate Favorites and FavoritesParser once
         Favorites favorites = new Favorites();
         FavoritesParser favoritesParser = new FavoritesParser(favorites);
@@ -36,7 +41,7 @@ public class Navi {
                 CanteenMain.startCanteen();
                 break;
             case "budget":
-                BudgetParser.start();
+                budgetParser.start();
                 break;
             case "favorites":
                 favoritesParser.start();
