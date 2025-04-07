@@ -4,6 +4,7 @@ import seedu.navi.canteen.canteenfinder.canteenfinder.CanteenFinder;
 import seedu.navi.canteen.canteenfinder.landmark.Faculty;
 import seedu.navi.canteen.canteenfinder.landmark.Landmark;
 import seedu.navi.canteen.canteenfinder.landmark.canteen.Canteen;
+import seedu.navi.exceptions.DataProcessingException;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -20,25 +21,35 @@ public class Storage {
     public static void processDataFromFiles() {
         canteenMap.clear();
 
-        // No need for try-catch here for CanteenDataProcessor
-        CanteenDataProcessor canteenProcessor = new CanteenDataProcessor(canteenMap);
-        canteenProcessor.processData();
-        assert !canteenMap.isEmpty() : "Canteen map is empty after processing.";
+        try {
+            CanteenDataProcessor canteenProcessor = new CanteenDataProcessor(canteenMap);
+            canteenProcessor.processData();
+            if (canteenMap.isEmpty()) {
+                throw new DataProcessingException("Canteen map is empty after processing.");
+            }
 
-        ArrayList<Faculty> faculties = new ArrayList<>();
-        FacultyDataProcessor facultyProcessor = new FacultyDataProcessor(canteenMap);
-        facultyProcessor.processData(faculties);
+            ArrayList<Faculty> faculties = new ArrayList<>();
+            FacultyDataProcessor facultyProcessor = new FacultyDataProcessor(canteenMap);
+            facultyProcessor.processData(faculties);
+            assert faculties != null : "Faculties list is null";
 
-        ArrayList<Landmark> hostels = new ArrayList<>();
-        HostelDataProcessor hostelProcessor = new HostelDataProcessor(canteenMap);
-        hostelProcessor.processData(hostels);
+            ArrayList<Landmark> hostels = new ArrayList<>();
+            HostelDataProcessor hostelProcessor = new HostelDataProcessor(canteenMap);
+            hostelProcessor.processData(hostels);
+            assert hostels != null : "Hostels list is null";
 
-        ArrayList<Landmark> otherBuildings = new ArrayList<>();
-        OtherBuildingDataProcessor otherBuildingProcessor = new OtherBuildingDataProcessor(canteenMap);
-        otherBuildingProcessor.processData(otherBuildings);
+            ArrayList<Landmark> otherBuildings = new ArrayList<>();
+            OtherBuildingDataProcessor otherBuildingProcessor = new OtherBuildingDataProcessor(canteenMap);
+            otherBuildingProcessor.processData(otherBuildings);
+            assert otherBuildings != null : "Other buildings list is null";
 
-        CanteenFinder.LANDMARKS.addAll(faculties);
-        CanteenFinder.LANDMARKS.addAll(hostels);
-        CanteenFinder.LANDMARKS.addAll(otherBuildings);
+            CanteenFinder.LANDMARKS.addAll(faculties);
+            CanteenFinder.LANDMARKS.addAll(hostels);
+            CanteenFinder.LANDMARKS.addAll(otherBuildings);
+            assert !CanteenFinder.LANDMARKS.isEmpty() : "LANDMARKS list is empty after processing.";
+
+        } catch (RuntimeException e) {
+            throw new DataProcessingException("Failed to process data from files: " + e.getMessage(), e);
+        }
     }
 }
