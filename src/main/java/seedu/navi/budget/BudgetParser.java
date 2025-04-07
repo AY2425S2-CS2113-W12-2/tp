@@ -4,6 +4,9 @@ import seedu.navi.textui.TextUi;
 import java.time.LocalDate;
 import java.util.Scanner;
 
+/**
+ * Handles user interactions for the Budget module, parsing and executing commands.
+ */
 public class BudgetParser {
     private static seedu.navi.budget.Budget budget;
     private static Scanner scanner;
@@ -12,6 +15,9 @@ public class BudgetParser {
         BudgetParser.budget = budget;
     }
 
+    /**
+     * Starts the Budget command-line interface loop.
+     */
     public void start() {
         scanner = new Scanner(System.in);
 

@@ -12,6 +12,9 @@ import java.time.temporal.WeekFields;
 import java.util.HashMap;
 import java.util.Locale;
 
+/**
+ * Handles budgeting operations including tracking weekly, daily, and monthly expenses.
+ */
 public class Budget {
     private static final DecimalFormat df = new DecimalFormat("0.00");
     private static String filePath = "budget_data.json";
@@ -23,14 +26,24 @@ public class Budget {
     private LocalDate lastUpdatedDate;
     private LocalDate currentDateForTesting; // Add this field
 
+    /**
+     * Constructor that loads budget data from file.
+     */
     public Budget() {
         loadBudgetData();
     }
 
+    /**
+     * Sets a custom file path for storing budget data.
+     * @param path Path to data file
+     */
     public static void setFilePath(String path) {
         filePath = path;
     }
 
+    /**
+     * Resets expenses if the date has changed (new day, new week, or new month).
+     */
     public void resetIfNeeded() {
         LocalDate today = getCurrentDate();
         if (lastUpdatedDate == null || isNewWeek(lastUpdatedDate, today)) {
@@ -46,6 +59,10 @@ public class Budget {
         }
     }
 
+    /**
+     * Resets the weekly budget.
+     * @param carryOver Whether to carry over remaining budget from the previous week
+     */
     public void resetWeeklyBudget(boolean carryOver) {
         if (!carryOver) {
             weeklyBudget = 0;
@@ -53,6 +70,10 @@ public class Budget {
         saveBudgetData();
     }
 
+    /**
+     * Adds money to the weekly budget.
+     * @param amount Amount to add
+     */
     public void addWeeklyBudget(double amount) {
         if (amount < 0) {
             throw new IllegalArgumentException("Invalid amount. Please enter a positive value.");
@@ -65,7 +86,10 @@ public class Budget {
         TextUi.printLineSeparator();
     }
 
-    // Deducts money from weekly budget, records daily expenses, and adds to monthly spending
+    /**
+     * Deducts an expense from the weekly budget and updates all related expense records.
+     * @param amount Amount to deduct
+     */
     public void deductExpense(double amount) {
 
         if (amount < 0) {
@@ -87,7 +111,9 @@ public class Budget {
         TextUi.printLineSeparator();
     }
 
-    // Views remaining weekly budget & total spent this month
+    /**
+     * Displays the current budget and expenses.
+     */
     public void viewExpenses() {
         TextUi.printLineSeparator();
         System.out.println("Remaining weekly budget: $" + df.format(weeklyBudget));
@@ -97,6 +123,9 @@ public class Budget {
         TextUi.printLineSeparator();
     }
 
+    /**
+     * Saves budget data to the file.
+     */
     private void saveBudgetData() {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath))) {
             HashMap<String, String> data = new HashMap<>();
@@ -111,6 +140,9 @@ public class Budget {
         }
     }
 
+    /**
+     * Loads budget data from the file.
+     */
     private void loadBudgetData() {
         File file = new File(filePath);
         if (!file.exists()) {
@@ -169,11 +201,21 @@ public class Budget {
         return lastUpdatedDate;
     }
 
+    /**
+     * Sets the last updated date (for testing and initialization).
+     * @param lastUpdatedDate The last updated date
+     */
     public void setLastUpdatedDate(LocalDate lastUpdatedDate) {
         this.lastUpdatedDate = lastUpdatedDate;
     }
 
 
+    /**
+     * Checks if the current date belongs to a new week.
+     * @param lastUpdatedDate The last updated date
+     * @param today Current date
+     * @return true if new week, false otherwise
+     */
     public boolean isNewWeek(LocalDate lastUpdatedDate, LocalDate today) {
         if (lastUpdatedDate == null) {
             return true;
@@ -183,7 +225,10 @@ public class Budget {
         return currentWeek != lastWeek || today.getYear() != lastUpdatedDate.getYear();
     }
 
-
+    /**
+     * Sets the current date (for testing purposes).
+     * @param date Test date
+     */
     public void setCurrentDateForTesting(LocalDate date) {
         this.currentDateForTesting = date;
     }
@@ -192,6 +237,9 @@ public class Budget {
         return currentDateForTesting != null ? currentDateForTesting : LocalDate.now();
     }
 
+    /**
+     * Clears the test date and reverts to system date.
+     */
     public void clearTestDate() {
         this.currentDateForTesting = null;
     }
