@@ -68,7 +68,7 @@ class CanteenMainFinderTest {
     public void testFindNearestCanteen_correctOrWithHSSMLWithNull_success() {
         NearestCanteenData nearestCanteenData = CanteenFinder.findNearestCanteen(new UserFields(true,
                 "hssml", null));
-        assertEquals("Terrace", nearestCanteenData.nearestCanteen().getName());
+        assertEquals("The Deck", nearestCanteenData.nearestCanteen().getName());
     }
 
     @Test

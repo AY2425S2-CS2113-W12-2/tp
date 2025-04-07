@@ -161,7 +161,7 @@ public class DataRetriever {
                 "Terrace (850m) | Fine Food (1300m) | " +
                 "Flavours (1400m) | Frontier (1400m) | " +
                 "PGP Canteen (1800m)");
-        data.add("HSSML: Terrace (700m) | The Deck (500m) | " +
+        data.add("HSSML: The Deck (500m) | Terrace (700m) | " +
                 "PGP Canteen (950m) | Techno Edge (1100m) | " +
                 "Frontier (1750m) | Fine Food (2000m) | " +
                 "Flavours (2100m)");
