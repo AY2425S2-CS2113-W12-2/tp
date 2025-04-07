@@ -359,13 +359,40 @@ Navi shows remaining weekly budget.
 To test automatic reset of daily/weekly/monthly expenses and manual reset of weekly budget:
 1. Add budget and deduct some expenses as per normal
 2. Quit Navi jar file and change the date on your computer settings
-   1. To test all 4 resets at the same time, change the date to 2 May 2025 
+   1. To test all 4 resets at the same time, change the date to 2 May 2025
    2. To test daily expenses reset only, change the date to 12 April.
    3. To test reset of weekly expenses and weekly budget (where you will be prompted with the question of `Do you want to carry over last week's remaining budget? (yes/no)`),
-change the date to 14 April 
+      change the date to 14 April
    4. To test monthly expenses reset only, change the date to 2 May
 3. Enter Navi jar file again and enter budget feature (`budget`)
 4. Check remaining budget and expenses by entering `view`
-#### <u> 3. Favorites manager </u>
+
+#### <u> 3. Favorites Manager </u>
+Prerequisites: Entered `favorites`
+* Test case: `add cheese prata:3:com`
+    * Expected: Navi adds `cheese prata | Rating: 3 | Location: com` into favorites manager.
+* Test case: `view`
+    * Expected: Navi shows the list of favorite items.
+* Test case: `remove 1`
+    * Expected: Navi removes that line item from the list of favorites.
+* Test case: `sort asc`
+    * Expected: Navi sort the favorites list in ascending order according to your rankings.
+* Test case: `sort desc`
+    * Expected: Navi sort the favorites list in descending order according to your rankings.
+* Test case: `search milo`
+    * Expected: Navi lists all the favorites items with milo in it.
+* Test case: `undo`
+    * Expected: If you have removed any line item before, Navi will add that line item back into the list.
+* Test case: `exit`
+    * Expected: Navi exits the favorites manager.
+
+To test save and load function for favorites:
+1. Add a few favorites items into your favorites list (`add cheese prata:3:com`)
+2. Quit Navi jar file
+3. Enter Navi jar file again and enter favorites feature(`favorites`)
+4. Check if your favorites have been saved (`view`)
+
+
+
 
 
