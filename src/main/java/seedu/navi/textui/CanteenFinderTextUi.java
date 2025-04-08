@@ -52,7 +52,7 @@ public class CanteenFinderTextUi {
     public static void printMissingCanteenFinderFieldsCF() {
         printLineSeparator();
         System.out.print("""
-                Oh no! You did not fill in all the required fields!
+                Oh no! You did not fill in the correct amount of required fields!
                 Please enter the command as follows:
                 "search type | your location | canteen criterion 1, canteen criterion 2"
                 """);
