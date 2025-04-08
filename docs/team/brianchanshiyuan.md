@@ -11,8 +11,8 @@ Code contribution to project: [Reposense Page](https://nus-cs2113-ay2425s2.githu
 
 ### Enhancements Implemented
 #### 1. Storage Feature
-This feature serves as the program to load and store data regarding Canteen stalls as well as their relative distances from various faculties and landmarks around NUS.
-It stores the Canteen, faculty, and other building's data in a hashmap.
+This feature serves as the program to load and store data regarding Canteen stalls as well as their relative distances 
+from various faculties and landmarks around NUS. It stores the Canteen, faculty, and other building's data in a hashmap.
 The hash map will be referenced in the Canteen Finder and Canteen lookup functions.
 
 #### 2. Canteen Lookup Feature
@@ -24,7 +24,6 @@ ___
 ### User Guide Contributions
 Contributed to all information relating to:
 - Introduction
-- Storage
 
 ___
 ### ReadMe Contributions
@@ -37,6 +36,7 @@ Contributed to all information relating to:
 - Design and Implementation
     - Storage
     - CanteenFinder function
+    - Test Cases
 
 ___
 ### Contributions to Team-based Tasks
