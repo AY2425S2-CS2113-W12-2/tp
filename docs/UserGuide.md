@@ -27,9 +27,9 @@ you can easily navigate and make the most of everything Navi offers. Get ready t
 ## Quick Start
 
 1. Ensure that you have Java 17 or above installed.
-2. Down the latest zip file of `Navi` from [here](https://github.com/AY2425S2-CS2113-W12-2/tp/releases).
-3. Unzip the file and cd into that directory on your terminal.
-4. Enter `java -jar Navi.jar` and enjoy the app!
+2. Down the latest jar file of `Navi` from [here](https://github.com/AY2425S2-CS2113-W12-2/tp/releases).
+3. Move the file into an empty directory and cd into that directory on your terminal.
+4. Enter `java -jar Navi.jar` into your terminal and enjoy the app!
 
 ## Starting Navi
 Whenever users start Navi, they will first be greeted by Navi.
