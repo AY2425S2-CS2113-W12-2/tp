@@ -340,7 +340,7 @@ Budget Tracker: Enter a command (add X, deduct X, view, exit)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ```
 #### Weekly budget resets
-Every mondays only, system will prompt the following question, before showing the above prompt (`Budget Tracker: Enter a command (add X, deduct X, view, exit`)) 
+Every sundays only, system will prompt the following question, before showing the above prompt (`Budget Tracker: Enter a command (add X, deduct X, view, exit`)) 
 
 ```
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -600,7 +600,7 @@ ___
 
 | Feature                              | Command         | Prompt                                                             |
 |--------------------------------------|-----------------|--------------------------------------------------------------------|
-| Enter Budget                         | `budget`        |                                                                    |
+| Enter Budget                         | `budget`        | -                                                                  |
 | Carry over budget from previous week | `yes` or `no`   | `Do you want to carry over last week's remaining budget? (yes/no)` |
 | Add funds to weekly budget           | `add AMOUNT`    | -                                                                  |
 | Record expenses                      | `deduct AMOUNT` | -                                                                  |

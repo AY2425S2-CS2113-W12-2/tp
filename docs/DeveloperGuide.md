@@ -249,17 +249,17 @@ from the previous week.
 
 #### Sequence of Operations
 1. Upon launching the application, the Navi.main() method initializes the system and prompts the user for input.
-If the user enters the command budget, the `BudgetParser.start()` method is invoked.
-2. If it is Monday, Budget asks the user if they want to carry over weekly budget from previous week and
-`resetWeeklyBudget(boolean carryOver)` is invoked. If it is midnight,monday or the date is 1st, `resetIfNeeded()` is 
+If the user enters the command `budget`, the `BudgetParser.start()` method is invoked.
+2. If it is Sunday, Budget asks the user if they want to carry over weekly budget from previous week and
+`resetWeeklyBudget(boolean carryOver)` is invoked. If it is midnight, Sunday or the date is 1st, `resetIfNeeded()` is 
 invoked to do periodic resets to the expenses.
-3. The BudgetParser class displays a prompt asking the user to enter a command: `add X, deduct X, view, reset, or exit.`
+3. The BudgetParser class displays a prompt asking the user to enter a command: `Enter a command (add X, deduct X, view, exit)`
 4. The user can add a specified amount (X) to their weekly budget by entering `add X`. The `Budget.addWeeklyBudget()`
 method is invoked, which updates the weekly budget and saves the data.
 5. The user can deduct an amount (X) from the weekly budget by entering `deduct X`. The `Budget.deductExpense()` 
 method is called to handle this operation, and the daily, weekly and monthly expenses are updated accordingly. 
-The `Budget.addWeeklyBudget()` method is invoked, which updates the weekly budget and saves the data.
-6. The user can view the current budget and expenses for the day, week, and month by entering `view`. 
+The `Budget.addWeeklyBudget()` method is also invoked, which updates the weekly budget and saves the data.
+6. The user can view the current budget available and expenses for the day, week, and month by entering `view`. 
 The `Budget.viewExpenses()` method displays this information.
 7. The user can exit the budget feature by entering `exit`, which ends the BudgetParser session.
 
