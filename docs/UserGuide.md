@@ -51,8 +51,8 @@ Alright, what can I do for you?
 After the greeting message, Navi provides 3 main features which users can access. 
 We will refer to this state as the **main menu**.
 1. [Canteen Feature](#canteen)
-2. [Budget Feature](#budget-budget)
-3. [Favorites Feature](#favorites-favorites)
+2. [Budget Feature](#budget)
+3. [Favorites Feature](#favorites)
 
 ### To exit Navi
 ___
